@@ -9,17 +9,19 @@
     </div>
     <div class="go-bt"><img src="" alt=""></div>
     <div class="pay-bag-button">
-        <div class="pay"><img :src="pay1Img" alt=""></div>
-        <div class="bag"><img :src="bag1Img" alt=""></div>
+        <div class="pay" @click="payVisbile=true;"><img :src="pay1Img" alt=""></div>
+        <div class="bag" @click="recordVisible=true;"><img :src="bag1Img" alt=""></div>
     </div>
     <div class="back" @click="back()"><img :src="back1Img" alt=""></div>
+    <v-paylist v-show="payVisbile" :is-show="payVisbile" @panelHide="panelHide"></v-paylist>
+    <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHide"></v-record>
 </div>
 </template>
-</template>
-
-
 <script>
+import vPaylist from "../CompanyProfile/pay.vue";
+import vRecord from '../CompanyProfile/record.vue';
 export default {
+
     data() {
         return {
             btGo1Img:'./static/img/ingame_btn_go1.png',
@@ -38,16 +40,23 @@ export default {
             bag1Img:'./static/img/ingame_btn_bag1.png',
             bag2Img:'./static/img/ingame_btn_bag2.png',
             back1Img:'./static/img/ingame_btn_back1.png',
-            back2Img:'./static/img/ingame_btn_back2.png'
+            back2Img:'./static/img/ingame_btn_back2.png',
+            payVisbile:false,
+            recordVisible:false,
         }
     },
     methods: {
+        panelHide(visible){
+            this.payVisbile =visible;
+            this.recordVisible = visible;
+        },
         back(){
             this.$router.go(-1);
         }
     },
-    created(){ 
-        
+    components: {vPaylist,vRecord},
+    created(){
+
     }
 }
 </script>
