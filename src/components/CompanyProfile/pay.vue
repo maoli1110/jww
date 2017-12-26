@@ -105,7 +105,7 @@
         width:88%;background:#fff;border-radius: 5px;
     }
     .pay_list_info div:last-child>img{
-        width:55%;background:#fff;border-radius: 5px;
+        width:88%;background:#fff;border-radius: 5px;
     }
     .pay_list_info .order-price span{
         font-size:0.2rem;
