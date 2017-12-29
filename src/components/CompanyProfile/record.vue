@@ -32,23 +32,18 @@
             return {
                 payInfo:[
                     {
-                        imgUrl:"../../../static/img/pay_icon_coin50.png",
-                        btnBg:"../../../static/img/pay_btn_buy1.png",
+                        imgUrl:"./static/img/pay_icon_coin50.png",
+                        btnBg:"./static/img/pay_btn_buy1.png",
                         price:50,
                         count:100
                     },{
-                        imgUrl:"../../../static/img/pay_icon_coin50.png",
-                        btnBg:"../../../static/img/pay_btn_buy1.png",
+                        imgUrl:"./static/img/pay_icon_coin50.png",
+                        btnBg:"./static/img/pay_btn_buy1.png",
                         price:50,
                         count:100
                     },{
-                        imgUrl:"../../../static/img/pay_icon_coin50.png",
-                        btnBg:"../../../static/img/pay_btn_buy1.png",
-                        price:50,
-                        count:100
-                    },{
-                        imgUrl:"../../../static/img/pay_icon_coin50.png",
-                        btnBg:"../../../static/img/pay_btn_buy1.png",
+                        imgUrl:"./static/img/pay_icon_coin50.png",
+                        btnBg:"./static/img/pay_btn_buy1.png",
                         price:50,
                         count:100
                     }
@@ -77,7 +72,7 @@
         width: 124px;
         height: 90px;
         margin-top:10px;
-        background: url("../../../static/img/my_btn_cancel1.png") center no-repeat;
+        background: url("./../../../static/img/my_btn_cancel1.png") center no-repeat;
         background-size: 35%;
         right: -4%;
         top: 8%;
@@ -85,9 +80,9 @@
     }
     .recode-bg .recode-list{
         width:100%;
-        height:70%;
+        height:78%;
         font-size:12px;
-        background:url('../../../static/img/my_frame_bg.png') center 0 no-repeat;
+        background:url('./../../../static/img/my_frame_bg.png') center 0 no-repeat;
         z-index:10;
         z-index: 10;
         top: 7%;

@@ -1,37 +1,19 @@
  <template>
  <div class="home-wrap">
     <div class="home">
+        <div class="login-out"></div>
+        <div class="relat">
+            <div class="game-them">{{them}}</div>
+            <div class="absol add-coin"><img src="../../../static/img/ingame_btn_pay3.png" alt=""></div>
+        </div>
+
        <div class="select-list">
            <ul>
-               <li class="raduis-1">
+               <li class="raduis-1 relat" v-for="(item,index) in 10">
                   <p>这是一只大娃娃</p>
                   <div><img :src="defalultWW" alt=""></div>
-                  <div class="li-bottom"><span class="time raduis-2">99/次</span><span class="go raduis-2" @click="inGame">GO</span></div>
-               </li>
-               <li class="raduis-1">
-                  <p>这是一只大娃娃</p>
-                  <div><img :src="defalultWW" alt=""></div>
-                  <div class="li-bottom"><span class="time raduis-2">99/次</span><span class="go raduis-2">GO</span></div>
-               </li>
-               <li class="raduis-1">
-                  <p>这是一只大娃娃</p>
-                  <div><img :src="defalultWW" alt=""></div>
-                  <div class="li-bottom"><span class="time raduis-2">99/次</span><span class="go raduis-2">GO</span></div>
-               </li>
-               <li class="raduis-1">
-                  <p>这是一只大娃娃</p>
-                  <div><img :src="defalultWW" alt=""></div>
-                  <div class="li-bottom"><span class="time raduis-2">99/次</span><span class="go raduis-2">GO</span></div>
-               </li>
-               <li class="raduis-1">
-                  <p>这是一只大娃娃</p>
-                  <div><img :src="defalultWW" alt=""></div>
-                  <div class="li-bottom"><span class="time raduis-2">99/次</span><span class="go raduis-2">GO</span></div>
-               </li>
-               <li class="raduis-1">
-                  <p>这是一只大娃娃</p>
-                  <div><img :src="defalultWW" alt=""></div>
-                  <div class="li-bottom"><span class="time raduis-2">99/次</span><span class="go raduis-2">GO</span></div>
+                  <div class="li-bottom"><span class="time raduis-2"><span class="pay-coin block"></span>99&nbsp;/次</span><span class="go raduis-2" @click="inGame(index)">GO</span></div>
+                   <div class="absol switch text-color"><span class="block switch-text" >碎片合成</span></div>
                </li>
            </ul>
        </div>
@@ -40,24 +22,37 @@
                <li @click="changebg('home')"><img :src="homeNavImg" alt=""></li>
                <li @click="changebg('bag')"><img :src="bagNavImg" alt=""></li>
                <li @click="changebg('mine')"><img :src="mineNavImg" alt=""></li>
+               <!--<li><router-link to="/main/big" ><img :src="bagNavImg" alt=""></router-link></li>
+               <li><router-link to="/main/mine" ><img :src="mineNavImg" alt=""></router-link></li>-->
            </ul>
        </div>
        <div class="goBack"><img src="" alt=""></div>
     </div>
+     <v-paylist v-show="payVisbile" :is-show="payVisbile" @panelHide="panelHide"></v-paylist>
+     <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHide"></v-record>
 </div>
 </template>
 
 <script>
+    import vPaylist from "../CompanyProfile/pay.vue";
+    import vRecord from '../CompanyProfile/record.vue';
 export default {
     data() {
         return {
             defalultWW:'./static/img/ingame_toy.png',
             homeNavImg:'./static/img/home_btn_home1.png',
             bagNavImg:'./static/img/home_btn_bag1.png',
-            mineNavImg:'./static/img/home_btn_my1.png'
+            mineNavImg:'./static/img/home_btn_my1.png',
+            them:'选择娃娃机',
+            payVisbile:false,
+            recordVisible:false,
         }
     },
     methods: {
+        panelHide(visible){
+            this.payVisbile =visible;
+            this.recordVisible = visible;
+        },
         handleOpen(key, keyPath) {
             console.log(key, keyPath);
         },
@@ -75,23 +70,60 @@ export default {
                 this.homeNavImg = './static/img/home_btn_home2.png';
                 break;
                 case "bag":
+                    this.recordVisible = true;
                 // this.bagNavImg = './static/img/home_btn_bag2.png';
                 break;
                 case "mine":
                 this.mineNavImg = './static/img/home_btn_my2.png';
+                    this.payVisbile = true;
                 break;
             }
         },
-        inGame(){
-            this.$router.push('/main/ingame');
+        inGame(index){
+            if(index==0){
+                this.$router.push('/main/ingame');
+            }else if(index==1){
+               window.location.href="http://www.910nice.com";
+            }else if(index==2){
+                window.location.href='http://h.mashangzhua.com/pages/index.html?appId=ba82de9ff96248569eef2ccc796000f3';
+            }
         }
     },
     created(){
-    }
+    },
+    components: {vPaylist,vRecord},
 }
 </script>
 
 <style scoped>
+  .text-color{color:#af6c00;}
+ .relat{position:relative}
+ .absol{position:absolute}
+ .block{display:block;}
+ .switch-text{
+     font-size: 0.15rem;
+     line-height: 0.18rem;
+     width:0.2rem;
+     font-weight:bold;
+     padding:0.05rem 0 0.05rem 0.08rem;
+ }
+ .switch{
+     width: 0.35rem;
+     height: 45%;
+     top: 0.45rem;
+     left: -0rem;
+     background:url('../../../static/img/home_bg_info.png') center no-repeat;
+     background-size:0.35rem;
+
+ }
+ .pay-coin{
+     width:0.2rem;
+     height:100%;
+     float:left;
+     margin-left:0.1rem;
+     background:url('../../../static/img/pay_icon_coin50.png') center no-repeat;
+     background-size:0.3rem;
+ }
 .container{
     overflow: hidden;
 }
@@ -142,7 +174,6 @@ export default {
     display: block;
     margin: 0 auto;
     width: 0.8rem;
-    height: 1.40rem;
 }
 .home .select-list ul>li>p{
     font-weight: bold;
@@ -158,25 +189,38 @@ export default {
     display: inline-block;
     background: #af6c00;
     width: 70%;
-    height: 0.21rem;
-    line-height: 0.21rem;
-    margin-right: 0.1rem;
+    height: 0.25rem;
+    line-height: 0.25rem;
     color: #ead06d;
     text-align: right;
     padding-right: 0.1rem;
     font-weight: bold;
 }
 .home .select-list li .go {
-    width: 20%;
-    height: 0.21rem;
-    line-height: 0.21rem;
+    width: 25%;
+    height: 0.27rem;
+    line-height: 0.27rem;
     display: inline-block;
     background: #ff4e3d;
     color: #fff;
     text-align: center;
     font-weight: bold;
+    float:right;
 }
 .home .goBack {
 
 }
+.home .login-out{
+    width: 0.4rem;
+    height: 9%;
+    margin:0 10px;
+    background:url('../../../static/img/ingame_btn_back1.png') center no-repeat;background-size: 0.4rem;
+
+}
+    /*them*/
+.game-them{font-size:0.25rem;color:#FFFEAE;text-align:center;height:0.6rem;line-height:0.6rem;font-weight:bold;}
+.add-coin{    right: 0.18rem;
+    top: 0.2rem;
+    height: 37%;}
+  .add-coin>img{width:0.2rem;float:left;}
 </style>

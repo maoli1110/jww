@@ -27,7 +27,7 @@ export default new Router({
                     component: resolve => require(['../components/CompanyProfile/ingame.vue'], resolve)
                 }
             ],
-        },   
+        },
         {
             // 登录
             path: '/mine',

@@ -32,27 +32,21 @@
             return {
                 payInfo:[
                     {
-                        imgUrl:"../../../static/img/pay_icon_coin50.png",
-                        btnBg:"../../../static/img/pay_btn_buy1.png",
+                        imgUrl:"./static/img/pay_icon_coin50.png",
+                        btnBg:"./static/img/pay_btn_buy1.png",
                         price:50,
                         count:100
                     },{
-                        imgUrl:"../../../static/img/pay_icon_coin50.png",
-                        btnBg:"../../../static/img/pay_btn_buy1.png",
+                        imgUrl:"./static/img/pay_icon_coin50.png",
+                        btnBg:"./static/img/pay_btn_buy1.png",
                         price:50,
                         count:100
                     },{
-                        imgUrl:"../../../static/img/pay_icon_coin50.png",
-                        btnBg:"../../../static/img/pay_btn_buy1.png",
-                        price:50,
-                        count:100
-                    },{
-                        imgUrl:"../../../static/img/pay_icon_coin50.png",
-                        btnBg:"../../../static/img/pay_btn_buy1.png",
+                        imgUrl:"./static/img/pay_icon_coin50.png",
+                        btnBg:"./static/img/pay_btn_buy1.png",
                         price:50,
                         count:100
                     }
-
                 ],
                 hidePanel:false,
             }
@@ -105,7 +99,7 @@
         width:88%;background:#fff;border-radius: 5px;
     }
     .pay_list_info div:last-child>img{
-        width:88%;background:#fff;border-radius: 5px;
+        width:55%;background:#fff;border-radius: 5px;
     }
     .pay_list_info .order-price span{
         font-size:0.2rem;

@@ -109,6 +109,11 @@ export default {
     z-index: 4;
     top: 0;
     width: 100%;
-    height: 16%;
+    height: 10%;
+}
+.back>img{
+    height: 0.6rem;
+    float:left;
+    padding:0.1rem;
 }
 </style>
