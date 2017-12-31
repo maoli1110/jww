@@ -3,10 +3,11 @@ import App from './App';
 import router from './router';
 import store from './store'
 import axios from 'axios';
-import ElementUI from 'element-ui';
+import MintUI  from 'mint-ui';
 import "babel-polyfill";
 import '../static/js/jbase64';
-Vue.use(ElementUI);
+import 'mint-ui/lib/style.css';
+Vue.use(MintUI);
 Vue.prototype.$axios = axios;
 // import global_ from './global.vue'//引用config文件
 // Vue.prototype.GLOBAL = global_//挂载到Vue实例上面

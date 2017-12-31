@@ -1,0 +1,51 @@
+
+.pay-bg{
+    width: 100%;
+    height: 100%;
+}
+.pay-bg .pay-close {
+    width: 124px;
+    height: 90px;
+    margin-top:10px;
+    background: url("../../static/img/my_btn_cancel1.png") center no-repeat;
+    background-size: 35%;
+    right: -4%;
+    top: 8%;
+    z-index: 12;
+}
+.pay-bg .pay-list{
+    width:100%;
+    height:60%;
+    font-size:12px;
+    background:url('../../static/img/pay_table_bg.png') center 0 no-repeat;
+    z-index:10;
+    top:15%;
+    background-size: 3.5rem;
+}
+.pay-list-info{
+    height:83px;line-height:83px;padding:0 15%;
+}
+.pay-list-info>div{height:0.75rem;width:0.75rem;float:left;}
+
+.pay-list-info:nth-child(1){
+    margin-top:0.75rem;
+}
+.pay-list-info>div:last-child{float:right;}
+.pay-list-info div:first-child>img{
+    width:88%;background:#fff;border-radius: 5px;
+}
+.pay-list-info div:last-child>img{
+    width:88%;background:#fff;border-radius: 5px;
+}
+.pay-list-info .order-price span{
+    font-size:0.2rem;
+    position: absolute;
+    top: -0.29rem;
+}
+.pay-list-info .order-price span:last-child{
+    top: 0rem;
+}
+.pay-list-info div.payaway{
+    float:right;
+}
+.pay-count{top:-2rem}
