@@ -30,11 +30,6 @@ export default new Router({
         },
         {
             // 登录
-            path: '/mine',
-            component: resolve => require(['../components/Login/Login.vue'], resolve)
-        },
-        {
-            // 登录
             path: '/login',
             component: resolve => require(['../components/Login/Login.vue'], resolve)
         }
