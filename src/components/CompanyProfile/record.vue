@@ -10,7 +10,7 @@
             </div>
             <div class="absol recode-list">
                 <!--table选项卡-->
-                <mt-navbar v-model="selected" class="absol" style="top:1.2rem">
+                <mt-navbar v-model="selected" class="absol" style="top:1.2rem;z-index:100">
                     <mt-tab-item id="list" style=" ">
                         <img :src="tableSwitch.mineUrl" alt="">
                     </mt-tab-item>
@@ -39,6 +39,7 @@
                         <div class="history-list" >
                             <div class="history-list-item" v-for="item in 12" >
                                 <img slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="66">
+                                <p>这是一只哇哇哇哇哇哇哇</p>
                             </div>
                         </div>
                     </mt-tab-container-item>
