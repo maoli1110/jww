@@ -18,13 +18,6 @@
            </ul>
        </div>
        <div class="main-nav">
-           <ul>
-              <!-- <li @click="changebg('home')"><img :src="homeNavImg" alt=""></li>
-               <li @click="changebg('bag')"><img :src="bagNavImg" alt=""></li>
-               <li @click="changebg('mine')"><img :src="mineNavImg" alt=""></li>-->
-               <!--<li><router-link to="/main/big" ><img :src="bagNavImg" alt=""></router-link></li>
-               <li><router-link to="/main/mine" ><img :src="mineNavImg" alt=""></router-link></li>-->
-           </ul>
            <mt-tabbar v-model="selected" :value="selected">
                <mt-tab-item id="home">
                    <img slot="icon" :src="homeNavImg">

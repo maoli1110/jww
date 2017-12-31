@@ -1,27 +1,28 @@
 <template>
     <div>
         <div class="absol mask"> </div>
-
         <div v-show="isShow" class="absol pay-bg">
             <!--关闭按钮-->
             <div class="pay-close absol" @click="panelClose">
                 <span ></span>
             </div>
-            <ul class="absol pay_list">
-
-                <li class="pay-list-info" v-for="item in payInfo" :key="item.price" >
-                   <div @click="panelClose">
-                       <img :src="item.imgUrl" alt="">
-                   </div>
-                    <div class="order-price relat">
-                         <span calss="absol">{{item.count}}</span>
-                        <span calss="absol">{{item.price}}</span>
-                    </div>
-                    <div class="payaway">
-                        <img :src="item.btnBg" alt="">
-                    </div>
-                </li>
-            </ul>
+            <!--充值身体部分-->
+            <div class="absol pay-list">
+               <div class="pay-list-wrapper">
+                   <mt-cell class="relat item-infos" v-for="item in payInfo" :key="item.price">
+                       <div class="pay-type" @click="panelClose">
+                           <img slot="icon" :src="item.imgUrl" alt="" width="80" >
+                       </div>
+                       <div class="order-price relat">
+                           <span calss="absol">X{{item.count}}</span>
+                           <span calss="absol">${{item.price}}</span>
+                       </div>
+                       <div class="payaway absol">
+                           <img :src="item.btnBg" alt="" width="70">
+                       </div>
+                   </mt-cell>
+               </div>
+            </div>
 
         </div>
     </div>
