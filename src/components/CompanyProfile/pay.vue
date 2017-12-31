@@ -23,7 +23,6 @@
                    </mt-cell>
                </div>
             </div>
-
         </div>
     </div>
 </template>
