@@ -71,7 +71,7 @@
                         imgUrl: "./static/img/ingame_toy.png",
                         them: '这是一只大娃娃',
                         time: '2017年12月31日 17:42'
-                    }
+                    },
 
                 ],
                 hidePanel: false,

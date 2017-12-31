@@ -29,8 +29,8 @@
     background-size: 100%;
 }
 /*列表信息*/
-.record-content{padding:2rem 0 0;}
-.record-list-wrapper{height:100%;overflow:auto; margin: 0% 9% 0;}
+.record-content{padding:2rem 0 0;height:calc(100vh - 2rem)}
+.record-list-wrapper{overflow:auto; margin: 0% 9% 0;}
 .item-infos{
 
 }
