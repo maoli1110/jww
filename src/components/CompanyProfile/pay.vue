@@ -42,12 +42,12 @@
                     },{
                         imgUrl:"./static/img/pay_icon_coin50.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
-                        price:50,
+                        price:60,
                         count:100
                     },{
                         imgUrl:"./static/img/pay_icon_coin50.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
-                        price:50,
+                        price:70,
                         count:100
                     }
                 ],
