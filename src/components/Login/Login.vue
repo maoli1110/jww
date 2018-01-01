@@ -24,6 +24,7 @@ export default {
     },
     methods: {
         wxLogin() {
+            debugger
             this.$router.push("/main/home");
         }
     },

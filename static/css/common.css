@@ -172,3 +172,9 @@ html {
 .absol{position:absolute;}
 /*相对定位*/
 .relat{position:relative}
+.pull-left{
+	float: left;
+}
+.pull-right{
+	float: right;
+}

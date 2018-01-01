@@ -5,6 +5,7 @@
 </template>
 <style>
 @import '../static/css/common.css';
+@import '../static/css/app.min.css';
 #app {
     height: 100%;
 }
