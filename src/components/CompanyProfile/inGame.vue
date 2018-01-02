@@ -4,48 +4,63 @@
     <div class="ingame-2"></div>
     <div class="ingame-3"></div>
     <div class="level__medium">
-    <div id="ex_doll_game">
-        <div class="doll-machine">
-            <div class="machine" id="machine">
-                <div class="machine-clip" id="machine-clip"
-                     style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);">
-                    <i class="machine-clip-line" id="machine-clip-line" style="height: 433px;"></i>
-                    <i class="machine-clip-origin"></i>
-                    <div class="machine-clip-arm machine-clip-arm__left">
-                        <i class="machine-clip-arm_item"></i>
+        <div id="ex_doll_game">
+            <div class="doll-machine">
+                <div class="machine" id="machine">
+                    <div class="machine-clip" id="machine-clip"
+                         style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);">
+                        <i class="machine-clip-line" id="machine-clip-line" style="height: 433px;"></i>
+                        <i class="machine-clip-origin"></i>
+                        <div class="machine-clip-arm machine-clip-arm__left">
+                            <i class="machine-clip-arm_item"></i>
+                        </div>
+                        <div class="machine-clip-arm machine-clip-arm__right">
+                            <i class="machine-clip-arm_item"></i>
+                        </div>
                     </div>
-                    <div class="machine-clip-arm machine-clip-arm__right">
-                        <i class="machine-clip-arm_item"></i>
+                    <div class="doll-box">
+                        <ul class="doll-list rolling" id="doll-list" style="width:10rem;"></ul>
+                    </div>
+                    <div class="doll-box doll-box__small">
+                        <ul class="doll-list" id="doll-list__small"
+                            style="width:15rem;-webkit-animation:dollListMove__small 15s .1s cubic-bezier(0.43, 0.43, 0.56, 0.56) infinite both;animation:dollListMove__small 15s .1s cubic-bezier(0.43, 0.43, 0.56, 0.56) infinite both">
+                            <li class="doll-item">    
+                                <div class="doll-img doll-img__monkey">      
+                                <div class="doll-img_move">        
+                                <i class="doll-img_face doll-img_face__2"></i>   
+                                <div class="doll-img_name doll-img_name__goods">      
+                                      <span class="doll-img_txt"></span>   
+                                </div>       
+                                <i class="doll-img_body"></i>     
+                                </div>    
+                                    <i class="doll-img_shadow"></i>    
+                                </div>  
+                             </li>
+                        </ul>
+                    </div>
+                    <i class="machine-bg_bd"></i>
+                    <i class="machine-bg_floor" id="machine-bg_floor"></i>
+                    <i class="machine-bg_bot"></i>
+                    <i class="machine-bg_repeat"></i>
+                    <div class="atm">
+                        <img src="static/img/packet.png" alt="">
                     </div>
                 </div>
-                <div class="doll-box">
-                    <ul class="doll-list rolling" id="doll-list" style="width:10rem;"></ul>
-                </div>
-                <div class="doll-box doll-box__small">
-                    <ul class="doll-list" id="doll-list__small"
-                        style="width:15rem;-webkit-animation:dollListMove__small 15s .1s cubic-bezier(0.43, 0.43, 0.56, 0.56) infinite both;animation:dollListMove__small 15s .1s cubic-bezier(0.43, 0.43, 0.56, 0.56) infinite both">
-                    </ul>
-                </div>
-                <i class="machine-bg_bd"></i>
-                <i class="machine-bg_floor" id="machine-bg_floor"></i>
-                <i class="machine-bg_bot"></i>
-                <i class="machine-bg_repeat"></i>
-                <div class="atm">
-                    <img src="static/img/packet.png" alt="">
-                </div>
-            </div>
-            <i class="doll-machine_corner doll-machine_corner__1"></i><i
-                class="doll-machine_corner doll-machine_corner__2"></i><i
-                class="doll-machine_corner doll-machine_corner__3"></i><i
-                class="doll-machine_corner doll-machine_corner__4"></i>
-            <div class="machine-tips-box cpm-hide">
-                <div class="machine-tips">
-                    <div class="machine-tips_txt"></div>
+                <i class="doll-machine_corner doll-machine_corner__1"></i><i
+                    class="doll-machine_corner doll-machine_corner__2"></i><i
+                    class="doll-machine_corner doll-machine_corner__3"></i><i
+                    class="doll-machine_corner doll-machine_corner__4"></i>
+                <div class="machine-tips-box cpm-hide">
+                    <div class="machine-tips">
+                        <div class="machine-tips_txt"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+    <div>
+        <div class=""></div>
+    </div>   
     <div class="op-btn clearfix">
         <div class="operation-btn pull-left">
             <div class="left-right">
@@ -73,7 +88,6 @@
 import vPaylist from "../CompanyProfile/pay.vue";
 import vRecord from '../CompanyProfile/record.vue';
 export default {
-
     data() {
         return {
             btGo1Img:'./static/img/ingame_btn_go1.png',
@@ -177,12 +191,11 @@ export default {
 .left-right {
     position: absolute;
     bottom: 21%;
-    left: 5%;
 }
 .left-right > img {
     width: 25%;
     display: inline-block;
-    margin-left: 15%;
+    margin-left: 22%;
 
 }
 .up-down {
