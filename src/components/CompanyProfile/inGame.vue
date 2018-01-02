@@ -24,7 +24,7 @@
                     <div class="doll-box doll-box__small">
                         <ul class="doll-list" id="doll-list__small"
                             style="width:15rem;-webkit-animation:dollListMove__small 15s .1s cubic-bezier(0.43, 0.43, 0.56, 0.56) infinite both;animation:dollListMove__small 15s .1s cubic-bezier(0.43, 0.43, 0.56, 0.56) infinite both">
-                            <li class="doll-item">    
+                            <li class="doll-item"> 
                                 <div class="doll-img doll-img__monkey">      
                                 <div class="doll-img_move">        
                                 <i class="doll-img_face doll-img_face__2"></i>   
@@ -35,7 +35,7 @@
                                 </div>    
                                     <i class="doll-img_shadow"></i>    
                                 </div>  
-                             </li>
+                            </li>
                         </ul>
                     </div>
                     <i class="machine-bg_bd"></i>
@@ -58,18 +58,18 @@
             </div>
         </div>
     </div>
-    <div>
-        <div class=""></div>
+    <div class="toys">
+        <img :src="allToysImg" alt="">
     </div>   
     <div class="op-btn clearfix">
         <div class="operation-btn pull-left">
             <div class="left-right">
-                <img :src="btLeft1Img" alt="">
-                <img :src="btRight1Img" alt="">
+                <img :src="btLeft1Img" alt="" class="btn-left">
+                <img :src="btRight1Img" alt="" class="btn-right">
             </div>
             <div class="up-down ">
-                <img :src="btUp1Img" alt="">
-                <img :src="btDown1Img" alt="">
+                <img :src="btUp1Img" alt="" class="btn-up">
+                <img :src="btDown1Img" alt="" class="btn-down">
             </div>    
         </div>
         <div class="doll-bets-btn pull-right"><img :src="btGo1Img" alt=""></div>
@@ -85,6 +85,8 @@
 </div>
 </template>
 <script>
+// import "../../../static/js/move.min.js";
+// import "../../../static/js/web.min.js";
 import vPaylist from "../CompanyProfile/pay.vue";
 import vRecord from '../CompanyProfile/record.vue';
 export default {
@@ -107,6 +109,7 @@ export default {
             bag2Img:'./static/img/ingame_btn_bag2.png',
             back1Img:'./static/img/ingame_btn_back1.png',
             back2Img:'./static/img/ingame_btn_back2.png',
+            allToysImg:'./static/img/ingame-all.png',
             payVisbile:false,
             recordVisible:false,
         }
@@ -117,12 +120,27 @@ export default {
             this.recordVisible = visible;
         },
         back(){
-            this.$router.go(-1);
+            this.$router.push('home');
         }
     },
     components: {vPaylist,vRecord},
     created(){
+         setTimeout(function(){
+            var a = document.querySelectorAll(".doll-bets-btn")[0];
 
+            if ("undefined" != typeof a) {
+                    var b = new ClampDoll;
+                    a.addEventListener("click",function(){
+                        games.isRun = 0;
+                        console.log(games.isRun,'games.isRun');
+
+                         b.init();
+                        
+
+                    });
+            }
+            App.move();
+        },100);
     }
 }
 </script>
@@ -160,7 +178,7 @@ export default {
     z-index: 4;
     bottom: 0;
     width: 100%;
-    height: 16%;
+    height: 11%;
 }
 .pay-bag-button .pay{
     width: 30%;
@@ -210,5 +228,10 @@ export default {
 .doll-bets-btn{
     width: 30%;
     margin-right: 10%;
+}
+.toys{
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
 }
 </style>
