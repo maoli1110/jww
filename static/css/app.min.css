@@ -13265,7 +13265,7 @@ ul {
 	position: relative;
 	top: 65%;
 	left: -20%;
-	display: block;
+	display: block !important;
 	z-index: 20
 }
 
@@ -13406,9 +13406,9 @@ ul {
 .doll-img_name__goods {
 	right: 0;
 	left: 0;
-	bottom: -.07rem;
-	height: .94rem;
-	/*background: url(../img/rand-packet.png) 50% 70%/50% no-repeat;*/
+	/*bottom: -.07rem;*/
+	height: 1.2rem;
+	background: url(../img/ingame_toy.png) 50% 70% no-repeat;
 	-webkit-background-size: 50%
 }
 
