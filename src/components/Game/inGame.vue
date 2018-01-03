@@ -17,6 +17,20 @@
                         <div class="machine-clip-arm machine-clip-arm__right">
                             <i class="machine-clip-arm_item"></i>
                         </div>
+                        <li class="doll-item doll-item-single" data-index="453" data-theme="1" style="display:none">    
+                             <div class="doll-img doll-img__monkey">     
+                                <div class="doll-img_move">       
+                                    <i class="doll-img_face doll-img_face__1"></i>      
+                                    <div class="doll-img_name doll-img_name__goods">         
+                                        <span class="doll-img_txt"></span>        
+                                    </div>         
+                                       <i class="doll-img_body"></i>     
+                                </div>    
+                                <i class="doll-img_shadow"></i>   
+                                <i class="doll-img_smoke"></i>     
+                                <i class="doll-img_tag"></i>    
+                            </div>  
+                        </li>
                     </div>
                     <div class="doll-box">
                         <ul class="doll-list rolling" id="doll-list" style="width:10rem;"></ul>
@@ -31,7 +45,7 @@
                                 <div class="doll-img_name doll-img_name__goods">      
                                       <span class="doll-img_txt"></span>   
                                 </div>       
-                                <i class="doll-img_body"></i>     
+                                <i class="doll-img_body"></i>
                                 </div>    
                                     <i class="doll-img_shadow"></i>    
                                 </div>  
@@ -87,8 +101,8 @@
 <script>
 // import "../../../static/js/move.min.js";
 // import "../../../static/js/web.min.js";
-import vPaylist from "../CompanyProfile/pay.vue";
-import vRecord from '../CompanyProfile/record.vue';
+import vPaylist from "../Game/pay.vue";
+import vRecord from '../Game/record.vue';
 export default {
     data() {
         return {

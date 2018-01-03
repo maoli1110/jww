@@ -5,8 +5,8 @@
     </div>
 </template>
 <script>
-    import vPaylist from "../CompanyProfile/pay.vue";
-    import vRecord from '../CompanyProfile/record.vue';
+    import vPaylist from "../Game/pay.vue";
+    import vRecord from '../Game/record.vue';
     export default{
         data(){
             return {

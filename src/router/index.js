@@ -17,19 +17,19 @@ export default new Router({
             redirect: '/main/home',
             children: [
                 {
-                    //  企业概况
+                    //  home
                     path: 'home',
-                    component: resolve => require(['../components/CompanyProfile/CompanyProfile.vue'], resolve)
+                    component: resolve => require(['../components/Game/profile.vue'], resolve)
                 },
                 {
-                    //  企业概况
+                    //  ingame
                     path: 'ingame',
-                    component: resolve => require(['../components/CompanyProfile/ingame.vue'], resolve)
+                    component: resolve => require(['../components/Game/ingame.vue'], resolve)
                 }
             ],
         },
         {
-            // 登录
+            // login
             path: '/login',
             component: resolve => require(['../components/Login/Login.vue'], resolve)
         }

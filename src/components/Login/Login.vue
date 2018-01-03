@@ -1,7 +1,11 @@
 <template>
     <div class="login-wrap">
         <div class="login-bg"><img :src="bgImg" alt=""></div>
-        <div class="login-button" @click="wxLogin"><img :src="loginImg" alt=""></div>
+        <div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div>
+        <div class="login-button login-ali-qq">
+            <img :src="aliLoginImg" alt="" @click="wxLogin">
+            <img :src="qqLoginImg" alt="" @click="wxLogin">
+        </div>
     </div>
 </template>
 <script>
@@ -12,7 +16,9 @@ export default {
     data() {
         return {
             bgImg:'./static/img/login_bg.jpg',
-            loginImg:'./static/img/login_btn_wx1.png',
+            wxLoginImg:'./static/img/login_btn_wx1.png',
+            aliLoginImg:'./static/img/login_btn_ali1.png',
+            qqLoginImg:'./static/img/login_btn_qq1.png',
             loginForm: {
                 username: "",
                 password: ""
@@ -24,7 +30,6 @@ export default {
     },
     methods: {
         wxLogin() {
-            debugger
             this.$router.push("/main/home");
         }
     },
@@ -40,12 +45,23 @@ export default {
     position: fixed;
     z-index: 0;
 }
-.login-button > img {
+.login-wx > img {
     position: fixed;
     width: 2rem;
     margin: 0 auto;
     right: 0;
     left: 0;
-    bottom: 0.5rem;
+    bottom: 1rem;
+}
+.login-ali-qq {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0.2rem;
+}
+.login-ali-qq >img{
+    display: inline-block;
+    width: 49%;
+    padding: 3%;
 }
 </style>
