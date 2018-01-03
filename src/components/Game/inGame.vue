@@ -147,14 +147,11 @@ export default {
                     a.addEventListener("click",function(){
                         games.isRun = 0;
                         console.log(games.isRun,'games.isRun');
-
-                         b.init();
-                        
-
+                        b.init();
                     });
             }
             App.move();
-        },100);
+        },0);
     }
 }
 </script>
@@ -164,7 +161,7 @@ export default {
     overflow: hidden;
 }
 .ingame-1 {
-    position: fixed;
+    position: absolute;
     z-index: 3;
     width: 100%;
     height: 100vh;
@@ -172,7 +169,7 @@ export default {
     background-size:100% 100%;
 }
 .ingame-2 {
-    position: fixed;
+    position: absolute;
     z-index: 2;
     width: 100%;
     height: 100vh;
@@ -180,7 +177,7 @@ export default {
     background-size:100% 100%;
 }
 .ingame-3 {
-    position: fixed;
+    position: absolute;
     z-index: 1;
     width: 100%;
     height: 100vh;
@@ -188,7 +185,7 @@ export default {
     background-size:100% 100%;
 }
 .pay-bag-button {
-    position: fixed;
+    position: absolute;
     z-index: 4;
     bottom: 0;
     width: 100%;
@@ -203,7 +200,7 @@ export default {
     float: right;
 }
 .back{
-    position: fixed;
+    position: absolute;
     z-index: 4;
     top: 0;
     height: 10%;

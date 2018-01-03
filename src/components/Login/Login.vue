@@ -42,11 +42,11 @@ export default {
 .login-bg > img {
     width: 100%;
     height: 100%;
-    position: fixed;
+    position: absolute;
     z-index: 0;
 }
 .login-wx > img {
-    position: fixed;
+    position: absolute;
     width: 2rem;
     margin: 0 auto;
     right: 0;
@@ -54,7 +54,7 @@ export default {
     bottom: 1rem;
 }
 .login-ali-qq {
-    position: fixed;
+    position: absolute;
     right: 0;
     left: 0;
     bottom: 0.2rem;
