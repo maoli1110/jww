@@ -77,14 +77,19 @@
     </div>   
     <div class="op-btn clearfix">
         <div class="operation-btn pull-left">
-            <div class="left-right">
-                <img :src="btLeft1Img" alt="" class="btn-left">
-                <img :src="btRight1Img" alt="" class="btn-right">
-            </div>
-            <div class="up-down ">
-                <img :src="btUp1Img" alt="" class="btn-up">
-                <img :src="btDown1Img" alt="" class="btn-down">
-            </div>    
+            <div></div>
+            <div class="btn-up"></div>
+            <div></div>
+            <div class="btn-left"></div>
+            <div></div>
+            <div class="btn-right"></div>
+            <div></div>
+            <div class="btn-down"></div>
+            <div></div>
+            <!-- <img :src="btLeft1Img" alt="" class="btn-left">
+            <img :src="btRight1Img" alt="" class="btn-right">
+            <img :src="btUp1Img" alt="" class="btn-up">
+            <img :src="btDown1Img" alt="" class="btn-down"> -->
         </div>
         <div class="doll-bets-btn pull-right"><img :src="btGo1Img" alt=""></div>
     </div>
@@ -213,36 +218,43 @@ export default {
 .op-btn {
     position: absolute;
     z-index: 3;
-    width: 1rem;
-    bottom: 14%;
+    width: 100%;
+    bottom: 12%;
     width: 100%;
 }
-.left-right {
-    position: absolute;
-    bottom: 21%;
+.operation-btn {
+    width: 50%;
 }
-.left-right > img {
+.operation-btn > div {
+    height: .3rem; 
     width: 25%;
+    /*border: 1px solid #ddd;*/
     display: inline-block;
-    margin-left: 22%;
-
-}
-.up-down {
-    width: 20%;
-    position: absolute;
-    bottom: -19%;
-    margin-left: 19%;
-}
-.up-down > img{
-    padding: 13%;
 }
 .doll-bets-btn{
     width: 30%;
     margin-right: 10%;
+    margin-top: 6%;
 }
 .toys{
     position: absolute;
     z-index: 1;
-    bottom: 0;
+    bottom: -20px;
+}
+.operation-btn > div:nth-child(2){
+    background: url('../../../static/img/ingame_btn_up1.png') no-repeat 2px 5px ;
+    background-size: 100% 100%;
+}
+.operation-btn > div:nth-child(4){
+    background: url('../../../static/img/ingame_btn_left1.png') no-repeat 6px 3px ;
+    background-size: 100% 100%;
+}
+.operation-btn > div:nth-child(6){
+    background: url('../../../static/img/ingame_btn_right1.png') no-repeat -4px 4px ;
+    background-size: 100% 100%;
+}
+.operation-btn > div:nth-child(8){
+    background: url('../../../static/img/ingame_btn_down1.png')no-repeat 3px 1px ;
+    background-size: 100% 100%;
 }
 </style>
