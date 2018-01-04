@@ -147,12 +147,15 @@ export default {
          setTimeout(function(){
             var a = document.querySelectorAll(".doll-bets-btn")[0];
 
-            if ("undefined" != typeof a) {
+            if ("undefined" != typeof a ) {
+                debugger
                     var b = new ClampDoll;
                     a.addEventListener("click",function(){
-                        games.isRun = 0;
+                        if(games.isRun===0) return;
                         console.log(games.isRun,'games.isRun');
                         b.init();
+                        games.isRun = 0;
+
                     });
             }
             App.move();
