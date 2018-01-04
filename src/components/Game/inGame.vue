@@ -33,23 +33,26 @@
                         </li>
                     </div>
                     <div class="doll-box">
-                        <ul class="doll-list rolling" id="doll-list" style="width:10rem;"></ul>
-                    </div>
-                    <div class="doll-box doll-box__small">
-                        <ul class="doll-list" id="doll-list__small"
-                            style="width:15rem;-webkit-animation:dollListMove__small 15s .1s cubic-bezier(0.43, 0.43, 0.56, 0.56) infinite both;animation:dollListMove__small 15s .1s cubic-bezier(0.43, 0.43, 0.56, 0.56) infinite both">
-                            <li class="doll-item"> 
-                                <div class="doll-img doll-img__monkey">      
-                                <div class="doll-img_move">        
-                                <i class="doll-img_face doll-img_face__2"></i>   
-                                <div class="doll-img_name doll-img_name__goods">      
-                                      <span class="doll-img_txt"></span>   
-                                </div>       
-                                <i class="doll-img_body"></i>
-                                </div>    
-                                    <i class="doll-img_shadow"></i>    
-                                </div>  
-                            </li>
+                        <ul class="doll-list" id="doll-list3">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <ul class="doll-list" id="doll-list2">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <ul class="doll-list" id="doll-list1">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
                         </ul>
                     </div>
                     <i class="machine-bg_bd"></i>
@@ -261,5 +264,38 @@ export default {
 }
 .doll-machine{
     perspective: 600px;
+}
+.doll-box ul > li {
+    width: 18%;
+    height: 1rem;
+    display: inline-block;
+    border: 1px solid #ccc;
+}
+.doll-list{
+    width: 100%;
+}
+#doll-list3{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+}
+#doll-list2{
+    position: absolute;
+    z-index: 2;
+    top: 0.3rem;
+}
+#doll-list1{
+    position: absolute;
+    z-index: 3;
+    top: 1rem;
+}
+.doll-list > li{
+    background: url('../../../static/img/all_toy.png') -50px -90px no-repeat;
+    background-size: 100% 100%;
+}
+#doll-list3{
+    position: absolute;
+    z-index: 1;
+    top: 0;
 }
 </style>

@@ -6712,7 +6712,8 @@ html {
 .doll-box {
 	height: 1rem;
 	position: absolute;
-	bottom: .23rem;
+	/*bottom: .23rem;*/
+	bottom: 3.23rem;
 	right: 0;
 	left: 0;
 	-webkit-transform: translateZ(110px);
