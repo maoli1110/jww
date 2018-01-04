@@ -259,4 +259,7 @@ export default {
     background: url('../../../static/img/ingame_btn_down1.png')no-repeat 3px 1px ;
     background-size: 100% 100%;
 }
+.doll-machine{
+    perspective: 600px;
+}
 </style>
