@@ -146,11 +146,10 @@ export default {
     created(){
          setTimeout(function(){
             var a = document.querySelectorAll(".doll-bets-btn")[0];
-
             if ("undefined" != typeof a ) {
-                debugger
                     var b = new ClampDoll;
                     a.addEventListener("click",function(){
+                        if($("#machine-clip").offset().left < 20) return;
                         if(games.isRun===0) return;
                         console.log(games.isRun,'games.isRun');
                         b.init();
@@ -242,7 +241,7 @@ export default {
 .toys{
     position: absolute;
     z-index: 1;
-    bottom: -20px;
+    bottom: 3px;
 }
 .operation-btn > div:nth-child(2){
     background: url('../../../static/img/ingame_btn_up1.png') no-repeat 2px 5px ;
