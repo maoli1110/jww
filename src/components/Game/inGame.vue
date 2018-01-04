@@ -28,7 +28,7 @@
                                 </div>    
                                 <i class="doll-img_shadow"></i>   
                                 <i class="doll-img_smoke"></i>     
-                                <i class="doll-img_tag"></i>    
+                                <i class="doll-img_tag"></i>   
                             </div>  
                         </li>
                     </div>
@@ -76,7 +76,7 @@
         </div>
     </div>
     <div class="toys">
-        <img :src="allToysImg" alt="">
+        <!-- <img :src="allToysImg" alt=""> -->
     </div>   
     <div class="op-btn clearfix">
         <div class="operation-btn pull-left">
@@ -266,10 +266,10 @@ export default {
     perspective: 600px;
 }
 .doll-box ul > li {
-    width: 18%;
+    width: 19%;
     height: 1rem;
     display: inline-block;
-    border: 1px solid #ccc;
+    /*border: 1px solid #ccc;*/
 }
 .doll-list{
     width: 100%;
@@ -278,24 +278,50 @@ export default {
     position: absolute;
     z-index: 1;
     top: 0;
+    left: 10px;
 }
 #doll-list2{
     position: absolute;
     z-index: 2;
-    top: 0.3rem;
+    top: 0.5rem;
 }
 #doll-list1{
     position: absolute;
     z-index: 3;
     top: 1rem;
 }
-.doll-list > li{
-    background: url('../../../static/img/all_toy.png') -50px -90px no-repeat;
-    background-size: 100% 100%;
+#doll-list1 > li:nth-child(1),
+#doll-list1 > li:nth-child(2){
+    visibility: hidden;
 }
-#doll-list3{
-    position: absolute;
-    z-index: 1;
-    top: 0;
+
+#doll-list3 > li{
+    background: url('../../../static/img/toy_03.png') 0 0 no-repeat;
+    background-size: 90%;
+    width: 18%
 }
+
+#doll-list3 > li:nth-child(2){
+    background-size: 92%;
+}
+#doll-list3 > li:nth-child(4){
+    background-size: 92%;
+}
+#doll-list2 > li{
+    background: url('../../../static/img/toy_02.png') 0 0 no-repeat;
+    background-size: contain;
+    width: 19%
+}
+#doll-list2 > li:nth-child(2){
+    background-size: 100%;
+}
+#doll-list2 > li:nth-child(4){
+    background-size: 100%;
+}
+#doll-list1 > li{
+    background: url('../../../static/img/toy_01.png') 0 0 no-repeat; 
+    background-size: 100%;
+    width: 18%
+} 
+
 </style>
