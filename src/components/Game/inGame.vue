@@ -32,29 +32,6 @@
                             </div>  
                         </li>
                     </div>
-                    <div class="doll-box">
-                        <ul class="doll-list" id="doll-list3">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                        <ul class="doll-list" id="doll-list2">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                        <ul class="doll-list" id="doll-list1">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                    </div>
                     <i class="machine-bg_bd"></i>
                     <i class="machine-bg_floor" id="machine-bg_floor"></i>
                     <i class="machine-bg_bot"></i>
@@ -74,6 +51,29 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="doll-box">
+        <ul class="doll-list" id="doll-list3">
+            <li data-index="1"></li>
+            <li data-index="2"></li>
+            <li data-index="3"></li>
+            <li data-index="4"></li>
+            <li data-index="5"></li>
+        </ul>
+        <ul class="doll-list" id="doll-list2">
+            <li data-index="6"></li>
+            <li data-index="7"></li>
+            <li data-index="8"></li>
+            <li data-index="9"></li>
+            <li data-index="10"></li>
+        </ul>
+        <ul class="doll-list" id="doll-list1">
+            <li data-index="11"></li>
+            <li data-index="12"></li>
+            <li data-index="13"></li>
+            <li data-index="14"></li>
+            <li data-index="15"></li>
+        </ul>
     </div>
     <div class="toys">
         <!-- <img :src="allToysImg" alt=""> -->

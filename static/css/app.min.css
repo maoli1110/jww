@@ -6713,12 +6713,12 @@ html {
 	height: 1rem;
 	position: absolute;
 	/*bottom: .23rem;*/
-	bottom: 2.23rem;
+	bottom: 2.5rem;
 	right: 0;
 	left: 0;
 	-webkit-transform: translateZ(110px);
 	transform: translateZ(110px);
-	z-index: 9
+	z-index: 1
 }
 
 .doll-list {
