@@ -1,11 +1,9 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import store from './store'
 import axios from 'axios';
 import MintUI  from 'mint-ui';
 import "babel-polyfill";
-import '../static/js/jbase64';
 import 'mint-ui/lib/style.css';
 Vue.use(MintUI);
 Vue.prototype.$axios = axios;
@@ -13,7 +11,6 @@ Vue.prototype.$axios = axios;
 // Vue.prototype.GLOBAL = global_//挂载到Vue实例上面
 new Vue({
     router,
-    store,
     render: h => h(App)
 }).$mount('#app');
 
