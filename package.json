@@ -1,8 +1,8 @@
 {
   "name": "center",
   "version": "2.1.0",
-  "description": "管理系统",
-  "author": "Pc",
+  "description": "jww",
+  "author": "kylee",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
