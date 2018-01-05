@@ -6712,12 +6712,11 @@ html {
 .doll-box {
 	height: 1rem;
 	position: absolute;
-	/*bottom: .23rem;*/
-	bottom: 2.5rem;
+	bottom: 2.4rem;
 	right: 0;
 	left: 0;
-	-webkit-transform: translateZ(110px);
-	transform: translateZ(110px);
+/*	-webkit-transform: translateZ(110px);
+	transform: translateZ(110px);*/
 	z-index: 1
 }
 
