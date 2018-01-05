@@ -6428,8 +6428,8 @@ html {
 	transform-style: preserve-3d;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
-	transition-duration: 1s;
-	-webkit-transition-duration: 1s
+	transition-duration: 0.5s;
+	-webkit-transition-duration: 0.5s
 }
 
 .machine-clip.down {
