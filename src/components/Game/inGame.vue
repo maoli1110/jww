@@ -1,110 +1,113 @@
 <template>
-<div>
-    <div class="ingame-1"></div>
-    <div class="ingame-2"></div>
-    <div class="ingame-3"></div>
-    <div class="level__medium">
-        <div id="ex_doll_game">
-            <div class="doll-machine">
-                <div class="machine" id="machine">
-                    <div class="machine-clip" id="machine-clip"
-                         style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);">
-                        <i class="machine-clip-line" id="machine-clip-line" style="height: 433px;"></i>
-                        <i class="machine-clip-origin"></i>
-                        <div class="machine-clip-arm machine-clip-arm__left">
-                            <i class="machine-clip-arm_item"></i>
+    <div>
+        <div class="ingame-1"></div>
+        <div class="ingame-2"></div>
+        <div class="ingame-3"></div>
+        <div class="level__medium">
+            <div id="ex_doll_game">
+                <div class="doll-machine">
+                    <div class="machine" id="machine">
+                        <div class="machine-clip" id="machine-clip"
+                         style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);"> <i class="machine-clip-line" id="machine-clip-line" style="height: 433px;"></i> <i class="machine-clip-origin"></i>
+                            <div class="machine-clip-arm machine-clip-arm__left">
+                                <i class="machine-clip-arm_item"></i>
+                            </div>
+                            <div class="machine-clip-arm machine-clip-arm__right">
+                                <i class="machine-clip-arm_item"></i>
+                            </div>
+                            <li class="doll-item doll-item-single" data-index="453" data-theme="1" style="display:none">
+                                <div class="doll-img doll-img__monkey">
+                                    <div class="doll-img_move">
+                                        <i class="doll-img_face doll-img_face__1"></i>
+                                        <div class="doll-img_name doll-img_name__goods">
+                                            <span class="doll-img_txt"></span>
+                                        </div>
+                                        <i class="doll-img_body"></i>
+                                    </div>
+                                    <i class="doll-img_shadow"></i>
+                                    <i class="doll-img_smoke"></i>
+                                    <i class="doll-img_tag"></i>
+                                </div>
+                            </li>
                         </div>
-                        <div class="machine-clip-arm machine-clip-arm__right">
-                            <i class="machine-clip-arm_item"></i>
-                        </div>
-                        <li class="doll-item doll-item-single" data-index="453" data-theme="1" style="display:none">    
-                             <div class="doll-img doll-img__monkey">     
-                                <div class="doll-img_move">       
-                                    <i class="doll-img_face doll-img_face__1"></i>      
-                                    <div class="doll-img_name doll-img_name__goods">         
-                                        <span class="doll-img_txt"></span>        
-                                    </div>         
-                                       <i class="doll-img_body"></i>     
-                                </div>    
-                                <i class="doll-img_shadow"></i>   
-                                <i class="doll-img_smoke"></i>     
-                                <i class="doll-img_tag"></i>   
-                            </div>  
-                        </li>
+                        <i class="machine-bg_bd"></i>
+                        <i class="machine-bg_floor" id="machine-bg_floor"></i>
+                        <i class="machine-bg_bot"></i>
+                        <i class="machine-bg_repeat"></i>
+                        <div class="atm">
+                            <img src="static/img/packet.png" alt=""></div>
                     </div>
-                    <i class="machine-bg_bd"></i>
-                    <i class="machine-bg_floor" id="machine-bg_floor"></i>
-                    <i class="machine-bg_bot"></i>
-                    <i class="machine-bg_repeat"></i>
-                    <div class="atm">
-                        <img src="static/img/packet.png" alt="">
-                    </div>
-                </div>
-                <i class="doll-machine_corner doll-machine_corner__1"></i><i
-                    class="doll-machine_corner doll-machine_corner__2"></i><i
-                    class="doll-machine_corner doll-machine_corner__3"></i><i
+                    <i class="doll-machine_corner doll-machine_corner__1"></i>
+                    <i
+                    class="doll-machine_corner doll-machine_corner__2"></i>
+                    <i
+                    class="doll-machine_corner doll-machine_corner__3"></i>
+                    <i
                     class="doll-machine_corner doll-machine_corner__4"></i>
-                <div class="machine-tips-box cpm-hide">
-                    <div class="machine-tips">
-                        <div class="machine-tips_txt"></div>
+                    <div class="machine-tips-box cpm-hide">
+                        <div class="machine-tips">
+                            <div class="machine-tips_txt"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="doll-box">
-        <ul class="doll-list" id="doll-list3">
-            <li class="doll-item" data-index="1"></li>
-            <li class="doll-item" data-index="2"></li>
-            <li class="doll-item" data-index="3"></li>
-            <li class="doll-item" data-index="4"></li>
-            <li class="doll-item" data-index="5"></li>
-        </ul>
-        <ul class="doll-list" id="doll-list2">
-            <li class="doll-item" data-index="6"></li>
-            <li class="doll-item" data-index="7"></li>
-            <li class="doll-item" data-index="8"></li>
-            <li class="doll-item" data-index="9"></li>
-            <li class="doll-item" data-index="10"></li>
-        </ul>
-        <ul class="doll-list" id="doll-list1">
-            <li class="doll-item" data-index="11"></li>
-            <li class="doll-item" data-index="12"></li>
-            <li class="doll-item" data-index="13"></li>
-            <li class="doll-item" data-index="14"></li>
-            <li class="doll-item" data-index="15"></li>
-        </ul>
-    </div>
-    <div class="toys">
-        <!-- <img :src="allToysImg" alt=""> -->
-    </div>   
-    <div class="op-btn clearfix">
-        <div class="operation-btn pull-left">
-            <div></div>
-            <div class="btn-up"></div>
-            <div></div>
-            <div class="btn-left"></div>
-            <div></div>
-            <div class="btn-right"></div>
-            <div></div>
-            <div class="btn-down"></div>
-            <div></div>
-            <!-- <img :src="btLeft1Img" alt="" class="btn-left">
-            <img :src="btRight1Img" alt="" class="btn-right">
-            <img :src="btUp1Img" alt="" class="btn-up">
-            <img :src="btDown1Img" alt="" class="btn-down"> -->
+        <div class="doll-box">
+            <ul class="doll-list" id="doll-list3">
+                <li class="doll-item" data-index="1"></li>
+                <li class="doll-item" data-index="2"></li>
+                <li class="doll-item" data-index="3"></li>
+                <li class="doll-item" data-index="4"></li>
+                <li class="doll-item" data-index="5"></li>
+            </ul>
+            <ul class="doll-list" id="doll-list2">
+                <li class="doll-item" data-index="6"></li>
+                <li class="doll-item" data-index="7"></li>
+                <li class="doll-item" data-index="8"></li>
+                <li class="doll-item" data-index="9"></li>
+                <li class="doll-item" data-index="10"></li>
+            </ul>
+            <ul class="doll-list" id="doll-list1">
+                <li class="doll-item" data-index="11"></li>
+                <li class="doll-item" data-index="12"></li>
+                <li class="doll-item" data-index="13"></li>
+                <li class="doll-item" data-index="14"></li>
+                <li class="doll-item" data-index="15"></li>
+            </ul>
         </div>
-        <div class="doll-bets-btn pull-right"><img :src="btGo1Img" alt=""></div>
+        <div class="toys">
+            <!-- <img :src="allToysImg" alt="">--></div>
+        <div class="op-btn clearfix">
+            <div class="operation-btn pull-left">
+                <div></div>
+                <div class="btn-up"></div>
+                <div></div>
+                <div class="btn-left"></div>
+                <div></div>
+                <div class="btn-right"></div>
+                <div></div>
+                <div class="btn-down"></div>
+                <div></div>
+                <!-- <img :src="btLeft1Img" alt="" class="btn-left">
+                <img :src="btRight1Img" alt="" class="btn-right">
+                <img :src="btUp1Img" alt="" class="btn-up">
+                <img :src="btDown1Img" alt="" class="btn-down">--></div>
+            <div class="doll-bets-btn pull-right">
+                <img :src="btGo1Img" alt=""></div>
+        </div>
+        <div class="go-bt">
+            <img src="" alt=""></div>
+        <div class="pay-bag-button">
+            <div class="pay" @click="payVisbile=true;">
+                <img :src="pay1Img" alt=""></div>
+            <div class="bag" @click="recordVisible=true;">
+                <img :src="bag1Img" alt=""></div>
+        </div>
+        <div class="back" @click="back()">
+            <img :src="back1Img" alt=""></div>
+        <v-paylist v-show="payVisbile" :is-show="payVisbile" @panelHide="panelHide"></v-paylist>
+        <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHide"></v-record>
     </div>
-    <div class="go-bt"><img src="" alt=""></div>
-    <div class="pay-bag-button">
-        <div class="pay" @click="payVisbile=true;"><img :src="pay1Img" alt=""></div>
-        <div class="bag" @click="recordVisible=true;"><img :src="bag1Img" alt=""></div>
-    </div>
-    <div class="back" @click="back()"><img :src="back1Img" alt=""></div>
-    <v-paylist v-show="payVisbile" :is-show="payVisbile" @panelHide="panelHide"></v-paylist>
-    <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHide"></v-record>
-</div>
 </template>
 <script>
 // import "../../../static/js/move.min.js";
@@ -235,11 +238,9 @@ export default {
                 this.hit = !1,
                 this.clip = document.getElementById("machine-clip"), /*钩子*/
                 this.$clip = $(this.clip),
-        console.log(this.$clip ,'this.$clip ')
                 this.getDoll = function(b) {
                     var c = $(".doll-box").find("[data-index=" + b + "]");
                     window.xuanze = b;
-                    debugger
                     if (a.dollSerial = b, c.length) {
                         // var d = $(c).eq(0).clone();
                         // var d = $(c).eq(0).addClass("doll-rise");
@@ -515,12 +516,16 @@ export default {
                 var speed ;
                 switch (dir) {
                     case 'left':
+                    speed = -50;
+                    break;
                     case 'up':
-                    speed = -3;
+                    speed = -10;
                     break;
                     case 'right':
+                    speed = 50;
+                    break;
                     case 'down':
-                    speed = 3;
+                    speed = 10;
                     break;
                 }
                 timer = setInterval(function() {
@@ -543,8 +548,7 @@ export default {
                         $('.machine').css('transform', 'translateZ(' + n + 'px)');
                     }
                     // $('#machine-clip').css('left',m+'px');
-                }, 50);
-
+                }, 550);
             };
         };
         setTimeout(function(){
