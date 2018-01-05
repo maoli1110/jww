@@ -6504,7 +6504,7 @@ html {
 .machine-clip.catch>.machine-clip-arm__left {
 	ransition-duration: .3s!important;
 	-webkit-transition-duration: .3s!important;
-	transform: rotate(25deg)
+	transform: rotate(14deg)
 }
 
 .machine-clip-arm__right {
@@ -6520,7 +6520,7 @@ html {
 .machine-clip.catch>.machine-clip-arm__right {
 	ransition-duration: .3s!important;
 	-webkit-transition-duration: .3s!important;
-	transform: rotate(-25deg)
+	transform: rotate(-14deg)
 }
 
 .machine-clip-arm__right .machine-clip-arm_item {
@@ -6873,7 +6873,7 @@ html {
 .doll-img_name {
 	right: 0;
 	left: 0;
-	bottom: 7%;
+	bottom: -23%;
 	height: 56%;
 	z-index: 3;
 	color: #fff;
@@ -13408,7 +13408,7 @@ ul {
 	right: 0;
 	left: 0;
 	/*bottom: -.07rem;*/
-	height: 1.2rem;
+	height: 1.7rem;
 	background: url(../img/ingame_toy.png) 50% 70% no-repeat;
 	-webkit-background-size: 50%
 }
