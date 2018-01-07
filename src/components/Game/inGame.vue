@@ -8,7 +8,7 @@
                 <div class="doll-machine">
                     <div class="machine" id="machine">
                         <div class="machine-clip" id="machine-clip"
-                         style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);"> <i class="machine-clip-line" id="machine-clip-line" style="height: 433px;"></i> <i class="machine-clip-origin"></i>
+                         style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);-webkit-transform: translateY(0px)"> <i class="machine-clip-line" id="machine-clip-line" style="height: 433px;"></i> <i class="machine-clip-origin"></i>
                             <div class="machine-clip-arm machine-clip-arm__left">
                                 <i class="machine-clip-arm_item"></i>
                             </div>
@@ -90,9 +90,11 @@
         </div>
         <div class="pay-bag-button">
             <div class="pay" @click="payVisbile=true;">
-                <img :src="pay1Img" alt=""></div>
+                <img :src="pay1Img" alt="">
+            </div>
             <div class="bag" @click="recordVisible=true;">
-                <img :src="bag1Img" alt=""></div>
+                <img :src="bag1Img" alt="">
+            </div>
         </div>
         <div class="back" @click="back()">
             <img :src="back1Img" alt=""></div>
@@ -515,6 +517,7 @@ export default {
                             m = min;
                         }
                         $('#machine-clip').css('transform', 'translateX(' + m + 'px)');
+                        $('#machine-clip').css('-webkit-transform', 'translateX(' + m + 'px)');
                     } else {
                         n = n + speed;
                         if (n > 30) {
@@ -523,6 +526,7 @@ export default {
                             n = -30;
                         }
                         $('.machine').css('transform', 'translateZ(' + n + 'px)');
+                        $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
                     }
                     // $('#machine-clip').css('left',m+'px');
                 }, 550);
@@ -553,7 +557,7 @@ export default {
     overflow: hidden;
 }
 .ingame-1 {
-    position: absolute;
+    position: fixed;
     z-index: 3;
     width: 100%;
     height: 100vh;
@@ -561,7 +565,7 @@ export default {
     background-size:100% 100%;
 }
 .ingame-2 {
-    position: absolute;
+    position: fixed;
     z-index: 2;
     width: 100%;
     height: 100vh;
@@ -569,7 +573,7 @@ export default {
     background-size:100% 100%;
 }
 .ingame-3 {
-    position: absolute;
+    position: fixed;
     z-index: 1;
     width: 100%;
     height: 100vh;
@@ -577,22 +581,23 @@ export default {
     background-size:100% 100%;
 }
 .pay-bag-button {
-    position: absolute;
+    position: fixed;
     z-index: 4;
     bottom: 0;
     width: 100%;
-    height: 11%;
+    display: flex;
+    text-align: center;
+    height: 10%;
 }
-.pay-bag-button .pay{
-    width: 30%;
-    float: left;
+.pay-bag-button > div {
+    flex: 1;
 }
-.pay-bag-button .bag{
-    width: 30%;
-    float: right;
+.pay-bag-button >div img {
+    vertical-align: top;
+    width: 60%;
 }
 .back{
-    position: absolute;
+    position: fixed;
     z-index: 4;
     top: 0;
     height: 10%;
