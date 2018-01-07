@@ -54,6 +54,7 @@ export default {
     bottom: 1rem;
 }
 .login-ali-qq {
+    display: flex;
     position: absolute;
     right: 0;
     left: 0;
@@ -61,7 +62,10 @@ export default {
 }
 .login-ali-qq >img{
     display: inline-block;
-    width: 49%;
+    width: 47%;
     padding: 3%;
+    height: 80px;
+    flex: 1;
 }
+
 </style>
