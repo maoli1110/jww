@@ -278,19 +278,6 @@ html {
 	box-shadow: 0 0 .8rem 0 #e67451
 }
 
-.doll-title {
-	width: 1.44rem;
-	height: .4rem;
-	position: absolute;
-	z-index: 10;
-	right: 0;
-	top: -.01rem;
-	left: 0;
-	margin: auto;
-	background: url(../img/sprite-bg-index.png) 0 0/3.2rem 2.93rem no-repeat;
-	-webkit-background-size: 3.2rem 2.93rem
-}
-
 .doll-title-txt {
 	width: 1.44rem;
 	height: .32rem;
@@ -329,15 +316,6 @@ html {
 	z-index: 2;
 }
 
-.doll-machine_corner {
-	width: .18rem;
-	height: .34rem;
-	background: url(../img/sprite-bg-index.png) 0 -.95rem/3.2rem 2.93rem no-repeat;
-	-webkit-background-size: 3.2rem 2.93rem;
-	position: absolute;
-	z-index: 2;
-	display: none
-}
 
 .doll-machine_corner__1 {
 	top: 0;
@@ -746,39 +724,9 @@ html {
 	border-radius: .22rem
 }
 
-.machine-bg_bot {
-	height: .39rem;
-	position: absolute;
-	z-index: 1;
-	right: 0;
-	left: 0;
-	margin: auto;
-	bottom: 0;
-	background: url(../img/sprite-bg-index.png) 0 0/3.2rem 2.93rem no-repeat;
-	-webkit-background-size: 3.2rem 2.93rem;
-	-webkit-transform: translateZ(100px);
-	transform: translateZ(100px);
-	-webkit-transform-style: preserve-3d;
-	transform-style: preserve-3d;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-	border-radius: 0 0 .22rem .22rem
-}
 
 .machine-bg_bot.open {
 	z-index: 100
-}
-
-.machine-bg_floor {
-	height: .22rem;
-	position: absolute;
-	z-index: 11;
-	right: 0;
-	left: 0;
-	bottom: .38rem;
-	margin: auto;
-	background: url(../img/sprite-bg-index.png) 0 -.43rem/3.2rem 2.93rem no-repeat;
-	-webkit-background-size: 3.2rem 2.93rem
 }
 
 .machine-bg_floor.open {
@@ -890,7 +838,17 @@ html {
 	margin: auto;
 	background: url(../img/sprite-line.png) 0 0/.24rem .05rem repeat-y;
 	-webkit-background-size: .24rem .05rem;
-	z-index: 4
+	z-index: 40;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition-property: -webkit-transform!important;
+	transition-property: -webkit-transform!important;
+	transition-property: transform!important;
+	transition-property: transform,-webkit-transform!important;
+	transition-duration: 1.5s;
+	-webkit-transition-duration: 1.5s
 }
 
 .machine-clip-origin {

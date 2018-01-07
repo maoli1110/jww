@@ -323,7 +323,7 @@ export default {
                 this.$clip = $(this.clip),
                 this.setTime = {
                     falling: 600,
-                    rising: 4e3
+                    rising: 2e3
                 },
                 this.setTime.clipCatchStart = 100,
                 this.setTime.fallingToRising = this.setTime.falling,
@@ -357,9 +357,9 @@ export default {
                     }
                     move(this.clip).set("transform", a).duration(this.setTime.rising).ease("linear").end();
                     setTimeout(function() {
-                        move(_clip).set("transform", b).duration(3e3).ease("linear").end();
+                        move(_clip).set("transform", b).duration(1700).ease("linear").end();
                         games.offDoll.call(_this, _this.screen_h, _this.setTime.rising)
-                    }, 4e3);
+                    }, 2e3);
                     m = 0;
                 },
 
@@ -461,6 +461,7 @@ export default {
             });
 
             right.addEventListener('touchstart', function(e) {
+                console.log('touchstartright')
                 e.preventDefault();
                 App.playMove('right');
             });
@@ -505,7 +506,8 @@ export default {
                     speed = 10;
                     break;
                 }
-                timer = setInterval(function() {
+                // hidden timer temp
+                // timer = setInterval(function() {
                     // css($('.hand')[0], 'left', m);
                     if ((dir == 'left') || (dir == 'right')) {
                         m = m + speed;
@@ -527,7 +529,7 @@ export default {
                         $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
                     }
                     // $('#machine-clip').css('left',m+'px');
-                }, 550);
+                // }, 1000);
             };
         };
         setTimeout(function(){
