@@ -439,6 +439,7 @@ export default {
         var games = new Games,
             record = {},
             App = {};
+        var timeOutEvent;
 
         /**爪子左右移动**/
         App.move = function() {
@@ -447,47 +448,148 @@ export default {
             var up = document.querySelector('.btn-up');
             var down = document.querySelector('.btn-down');
             var timer = null;
-            // var width = css($('.paodao')[0], 'width') / 2 - css($('.hand')[0], 'width') / 2;
             var max = $(".doll-machine").width() - $(".machine-clip").width();
             var min = -30;
 
-            left.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                App.playMove('left');
+            $(left).on({
+                touchstart: function(e){
+                    timeOutEvent = setTimeout(function() {
+                        timeOutEvent = 0;   
+                        console.log("长按事件触发发"); 
+                        App.longPlayMove('left');
+                    },200);  
+                    e.preventDefault();
+                },  
+                touchmove: function(){  
+                    clearTimeout(timeOutEvent);   
+                    timeOutEvent = 0;
+                },  
+                touchend: function(){  
+                    clearTimeout(timeOutEvent);  
+                    if(timeOutEvent!=0){   
+                        App.playMove('left');
+                        console.log("你这是点击，不是长按");
+                    } else {
+                        clearInterval(timer);
+                    }
+                    return false;
+                }  
             });
 
-            left.addEventListener('touchend', function(e) {
-                clearInterval(timer);
+            $(right).on({
+                touchstart: function(e){
+                    timeOutEvent = setTimeout(function() {
+                        timeOutEvent = 0;   
+                        console.log("长按事件触发发"); 
+                        App.longPlayMove('right');
+                    },200);  
+                    e.preventDefault();
+                },  
+                touchmove: function(){  
+                    clearTimeout(timeOutEvent);   
+                    timeOutEvent = 0;
+                },  
+                touchend: function(){  
+                    clearTimeout(timeOutEvent);  
+                    if(timeOutEvent!=0){   
+                        App.playMove('right');
+                        console.log("你这是点击，不是长按");
+                    } else {
+                        clearInterval(timer);
+                    }
+                    return false;   
+                }  
             });
 
-            right.addEventListener('touchstart', function(e) {
-                console.log('touchstartright')
-                e.preventDefault();
-                App.playMove('right');
-            });
-            right.addEventListener('touchend', function(e) {
-                clearInterval(timer);
-            });
-
-            up.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                App.playMove('up');
-            });
-
-            up.addEventListener('touchend', function(e) {
-                clearInterval(timer);
-            });
-
-            down.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                App.playMove('down');
-            });
-
-            down.addEventListener('touchend', function(e) {
-                clearInterval(timer);
+            $(up).on({
+                touchstart: function(e){
+                    timeOutEvent = setTimeout(function() {
+                        timeOutEvent = 0;   
+                        console.log("长按事件触发发"); 
+                        App.longPlayMove('up');
+                    },200);  
+                    e.preventDefault();
+                },  
+                touchmove: function(){  
+                    clearTimeout(timeOutEvent);   
+                    timeOutEvent = 0;
+                },  
+                touchend: function(){  
+                    clearTimeout(timeOutEvent);  
+                    if(timeOutEvent!=0){   
+                        App.playMove('up');
+                        console.log("你这是点击，不是长按");
+                    } else {
+                        clearInterval(timer);
+                    }
+                    return false;   
+                }  
             });
 
-            this.playMove = function(dir) {
+            $(down).on({
+                touchstart: function(e){
+                    timeOutEvent = setTimeout(function() {
+                        timeOutEvent = 0;   
+                        console.log("长按事件触发发"); 
+                        App.longPlayMove('down');
+                    },200);  
+                    e.preventDefault();
+                },  
+                touchmove: function(){  
+                    clearTimeout(timeOutEvent);   
+                    timeOutEvent = 0;
+                },  
+                touchend: function(){  
+                    clearTimeout(timeOutEvent);  
+                    if(timeOutEvent!=0){   
+                        App.playMove('down');
+                        console.log("你这是点击，不是长按");
+                    } else {
+                        clearInterval(timer);
+                    }
+                    return false;   
+                }  
+            });
+
+
+            // left.addEventListener('touchstart', function(e) {
+            //     timeOutEvent = setTimeout("longPress()",500);
+            //     e.preventDefault();
+            //     App.playMove('left');
+            // });
+
+            // left.addEventListener('touchend', function(e) {
+            //     clearInterval(timer);
+            // });
+
+            // right.addEventListener('touchstart', function(e) {
+            //     console.log('touchstartright')
+            //     e.preventDefault();
+            //     App.playMove('right');
+            // });
+            // right.addEventListener('touchend', function(e) {
+            //     clearInterval(timer);
+            // });
+
+            // up.addEventListener('touchstart', function(e) {
+            //     e.preventDefault();
+            //     App.playMove('up');
+            // });
+
+            // up.addEventListener('touchend', function(e) {
+            //     clearInterval(timer);
+            // });
+
+            // down.addEventListener('touchstart', function(e) {
+            //     e.preventDefault();
+            //     App.playMove('down');
+            // });
+
+            // down.addEventListener('touchend', function(e) {
+            //     clearInterval(timer);
+            // });
+
+            this.longPlayMove = function(dir) {
                 // $('#machine-clip').css('transform','translateX(93px)');
                 // App.handAnim('handAnim', App.animArr, 'litre', 'loop', -1, 35, 30);
                 // if (!off) return;
@@ -507,8 +609,8 @@ export default {
                     break;
                 }
                 // hidden timer temp
-                // timer = setInterval(function() {
-                    // css($('.hand')[0], 'left', m);
+                timer = setInterval(function() {
+                    console.log("timer....")
                     if ((dir == 'left') || (dir == 'right')) {
                         m = m + speed;
                         if (m > max) {
@@ -528,8 +630,43 @@ export default {
                         $('.machine').css('transform', 'translateZ(' + n + 'px)');
                         $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
                     }
-                    // $('#machine-clip').css('left',m+'px');
-                // }, 1000);
+                }, 450);
+            };
+            this.playMove = function(dir) {
+                var speed ;
+                switch (dir) {
+                    case 'left':
+                    speed = -50;
+                    break;
+                    case 'up':
+                    speed = -10;
+                    break;
+                    case 'right':
+                    speed = 50;
+                    break;
+                    case 'down':
+                    speed = 10;
+                    break;
+                }
+                if ((dir == 'left') || (dir == 'right')) {
+                    m = m + speed;
+                    if (m > max) {
+                        m = max;
+                    } else if (m < min) {
+                        m = min;
+                    }
+                    $('#machine-clip').css('transform', 'translateX(' + m + 'px)');
+                    $('#machine-clip').css('-webkit-transform', 'translateX(' + m + 'px)');
+                } else {
+                    n = n + speed;
+                    if (n > 30) {
+                        n = 30;
+                    } else if (n < -30) {
+                        n = -30;
+                    }
+                    $('.machine').css('transform', 'translateZ(' + n + 'px)');
+                    $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
+                }
             };
         };
         setTimeout(function(){
