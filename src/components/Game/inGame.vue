@@ -37,13 +37,6 @@
                         <div class="atm">
                             <img src="static/img/packet.png" alt=""></div>
                     </div>
-                    <i class="doll-machine_corner doll-machine_corner__1"></i>
-                    <i
-                    class="doll-machine_corner doll-machine_corner__2"></i>
-                    <i
-                    class="doll-machine_corner doll-machine_corner__3"></i>
-                    <i
-                    class="doll-machine_corner doll-machine_corner__4"></i>
                     <div class="machine-tips-box cpm-hide">
                         <div class="machine-tips">
                             <div class="machine-tips_txt"></div>
@@ -95,8 +88,6 @@
             <div class="doll-bets-btn pull-right">
                 <img :src="btGo1Img" alt=""></div>
         </div>
-        <div class="go-bt">
-            <img src="" alt=""></div>
         <div class="pay-bag-button">
             <div class="pay" @click="payVisbile=true;">
                 <img :src="pay1Img" alt=""></div>
@@ -232,105 +223,98 @@ export default {
         /*games对象*/
         function Games() {
             var a = this;
-
             this.isRun = !1,
-                this.dollSerial = -1,
-                this.hit = !1,
-                this.clip = document.getElementById("machine-clip"), /*钩子*/
-                this.$clip = $(this.clip),
-                this.getDoll = function(b) {
-                    var c = $(".doll-box").find("[data-index=" + b + "]");
-                    window.xuanze = b;
-                    if (a.dollSerial = b, c.length) {
-                        // var d = $(c).eq(0).clone();
-                        // var d = $(c).eq(0).addClass("doll-rise");
-                        $(c).addClass("v-hidden")
-                        // $("#machine-clip").append(d)
-                    } else this.$clip && this.$clip.removeClass("catch")
+            this.dollSerial = -1,
+            this.hit = !1,
+            this.clip = document.getElementById("machine-clip"), /*钩子*/
+            this.$clip = $(this.clip),
+            this.getDoll = function(b) {
+                var c = $(".doll-box").find("[data-index=" + b + "]");
+                window.xuanze = b;
+                if (a.dollSerial = b, c.length) {
+                    // var d = $(c).eq(0).clone();
+                    // var d = $(c).eq(0).addClass("doll-rise");
+                    $(c).addClass("v-hidden")
+                    // $("#machine-clip").append(d)
+                } else this.$clip && this.$clip.removeClass("catch")
 
-                },
+            },
 
-                this.doOffDoll = function(b, c) {
-                    var d = $("#machine-clip").find(".doll-item");
-                    this.$clip && this.$clip.removeClass("catch"),
-                        move(d[0]).y(b).duration(c).ease("linear").end(),
-                        $(d).css('display', 'none');
-                    $(d).css('transformY', '0px');
-                    a.mcFloorOpen()
-                    // a.packetFly(b / 2, c)
-                    games.isRun = 1;
-                },
+            this.doOffDoll = function(b, c) {
+                var d = $("#machine-clip").find(".doll-item");
+                this.$clip && this.$clip.removeClass("catch"),
+                move(d[0]).y(b).duration(c).ease("linear").end(),
+                $(d).css('display', 'none');
+                $(d).css('transformY', '0px');
+                games.isRun = 1;
+            },
 
-                this.offDoll = function(b, c) {
+            this.offDoll = function(b, c) {
 
-                    var d = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 1500,
-                        e = $("#machine-clip").find(".doll-item");
-                    e.length ? setTimeout(function() {
-                        var c = window.record;
-                        a.doOffDoll(b, d);
-                    }.bind(this), c * (.5 + .3 * Math.random())) : a.packetFly(b / 2, d, 600, !0)
-                },
-                this.mcFloorOpen = function() {
-                    var a = $("#machine i.machine-bg_floor"),
-                        b = $("#machine i.machine-bg_bot");
-                    a.addClass("open"),
-                        b.addClass("open")
-                },
-                this.mcFloorClose = function(a) {
+                var d = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 1500,
+                    e = $("#machine-clip").find(".doll-item");
+                e.length ? setTimeout(function() {
+                    var c = window.record;
+                    a.doOffDoll(b, d);
+                }.bind(this), c * (.5 + .3 * Math.random())) : a.packetFly(b / 2, d, 600, !0)
+            },
+
+            this.mcFloorClose = function(a) {
 
 
-                    setTimeout(function() {
-                            var a = $("#machine i.machine-bg_floor"),
-                                b = $("#machine i.machine-bg_bot");
-                            a.removeClass("open"),
-                                b.removeClass("open")
-                        },
-                        a)
-                },
-                this.packetFly = function(b, c) {
-                    var d = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 600,
-                        e = arguments.length > 3 && void 0 !== arguments[3] && arguments[3],
-                        f = $(".atm");
-                    setTimeout(function() {
-                        move(f[0]).set("opacity", 1).y(-b / 2 - 75).scale(.6).rotate(30).then().set("opacity", 0).rotate(-30).delay("0.2s").duration(d).pop().end(),
-                            this.mcFloorClose(d),
-                            setTimeout(function() {
-                                    $(".games-dialog-mod").addClass("open"),
-                                        $(".games-dialog-mod .packet-dialog").addClass("open"),
-                                        a.onOpenRecord(e)
-                                },
-                                d + 600)
-                    }.bind(this), c)
-                },
-                this.onOpenRecord = function() {
+                setTimeout(function() {
+                        var a = $("#machine i.machine-bg_floor"),
+                            b = $("#machine i.machine-bg_bot");
+                        a.removeClass("open"),
+                            b.removeClass("open")
+                    },
+                    a)
+            },
 
-                    // alert(window.xuanze);
-
-                    var zhongjiangcode = window.xuanze;
-
-                    var chang = $(".quota-btn.active").data("price");
-
-                },
-
-                this.machineTips = function(a) {
-                    if (a) {
-                        switch ($(".machine-tips-box").removeClass("cpm-hide"), $(".machine-tips-box .machine-tips").addClass("machine-tips__" + a), a) {
-                            case "error":
-                                var b = ["换个姿势再来一次！"];
-                                $(".machine-tips-box .machine-tips .machine-tips_txt").html(b[Math.floor(Math.random() * b.length)]);
-                                break;
-                            case "success":
-                                $(".machine-tips-box .machine-tips .machine-tips_txt").html("恭喜你夹中了！")
-                        }
+            this.packetFly = function(b, c) {
+                var d = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 600,
+                    e = arguments.length > 3 && void 0 !== arguments[3] && arguments[3],
+                    f = $(".atm");
+                setTimeout(function() {
+                    move(f[0]).set("opacity", 1).y(-b / 2 - 75).scale(.6).rotate(30).then().set("opacity", 0).rotate(-30).delay("0.2s").duration(d).pop().end(),
+                        this.mcFloorClose(d),
                         setTimeout(function() {
-                                $(".machine-tips-box").addClass("cpm-hide"),
-                                    $(".machine-tips-box .machine-tips").removeClass("machine-tips__" + a)
+                                $(".games-dialog-mod").addClass("open"),
+                                    $(".games-dialog-mod .packet-dialog").addClass("open"),
+                                    a.onOpenRecord(e)
                             },
-                            1500)
-                    }
-                }
-        }
+                            d + 600)
+                }.bind(this), c)
+            },
 
+            this.onOpenRecord = function() {
+
+                // alert(window.xuanze);
+
+                var zhongjiangcode = window.xuanze;
+
+                var chang = $(".quota-btn.active").data("price");
+
+            },
+
+            this.machineTips = function(a) {
+                if (a) {
+                    switch ($(".machine-tips-box").removeClass("cpm-hide"), $(".machine-tips-box .machine-tips").addClass("machine-tips__" + a), a) {
+                        case "error":
+                            var b = ["换个姿势再来一次！"];
+                            $(".machine-tips-box .machine-tips .machine-tips_txt").html(b[Math.floor(Math.random() * b.length)]);
+                            break;
+                        case "success":
+                            $(".machine-tips-box .machine-tips .machine-tips_txt").html("恭喜你夹中了！")
+                    }
+                    setTimeout(function() {
+                            $(".machine-tips-box").addClass("cpm-hide"),
+                                $(".machine-tips-box .machine-tips").removeClass("machine-tips__" + a)
+                        },
+                        1500)
+                }
+            }
+        }
 
         function ClampDoll() { /*钩子*/
 
@@ -419,15 +403,10 @@ export default {
 
                     setTimeout(function() {
                         this.rising()
-                        // games.offDoll.call(this, this.screen_h, this.setTime.rising)
                     }.bind(this), this.setTime.fallingToRising)
 
                 },
                 this.clipEnd = function(a) {
-
-                    var b;
-
-                    var isjiazhong = $("#isjiazhong").attr('zhi');
 
                     setTimeout(function() {
                         if(isCatch){
@@ -439,8 +418,6 @@ export default {
                 },
 
                 this.init = function(a) {
-
-                    this.XGame = a,
                         this.falling(),
                         this.clipStarting(),
                         this.catchDoll(),
@@ -454,8 +431,8 @@ export default {
                 dolls: a.concat(a)
             };
             $("#doll-list,#doll-list__small").html(""),
-                $("#doll-items-tmpl").tmpl(b).appendTo("#doll-list"),
-                $("#small-doll-items-tmpl").tmpl(b).appendTo("#doll-list__small")
+            $("#doll-items-tmpl").tmpl(b).appendTo("#doll-list"),
+            $("#small-doll-items-tmpl").tmpl(b).appendTo("#doll-list__small")
         }
 
 
@@ -629,7 +606,7 @@ export default {
     position: absolute;
     z-index: 3;
     width: 100%;
-    bottom: 12%;
+    bottom: 10%;
     width: 100%;
 }
 .operation-btn {
@@ -637,14 +614,12 @@ export default {
 }
 .operation-btn > div {
     height: .3rem; 
-    width: 25%;
-    /*border: 1px solid #ddd;*/
-    display: inline-block;
+    width: 26%;
+    float: left;
 }
 .doll-bets-btn{
     width: 30%;
     margin-right: 10%;
-    margin-top: 6%;
 }
 .toys{
     position: absolute;
