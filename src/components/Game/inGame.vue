@@ -69,9 +69,9 @@
             </ul>
         </div>
         <div class="toys">
-            <!-- <img :src="allToysImg" alt="">--></div>
-        <div class="op-btn clearfix">
-            <div class="operation-btn pull-left">
+        </div>
+        <div class="op-btn">
+            <div class="operation-btn">
                 <div></div>
                 <div class="btn-up"></div>
                 <div></div>
@@ -81,12 +81,10 @@
                 <div></div>
                 <div class="btn-down"></div>
                 <div></div>
-                <!-- <img :src="btLeft1Img" alt="" class="btn-left">
-                <img :src="btRight1Img" alt="" class="btn-right">
-                <img :src="btUp1Img" alt="" class="btn-up">
-                <img :src="btDown1Img" alt="" class="btn-down">--></div>
+            </div>
             <div class="doll-bets-btn pull-right">
-                <img :src="btGo1Img" alt=""></div>
+                <img :src="btGo1Img" alt="">
+            </div>
         </div>
         <div class="pay-bag-button">
             <div class="pay" @click="payVisbile=true;">
@@ -557,7 +555,7 @@ export default {
     overflow: hidden;
 }
 .ingame-1 {
-    position: fixed;
+    position: absolute;
     z-index: 3;
     width: 100%;
     height: 100vh;
@@ -565,7 +563,7 @@ export default {
     background-size:100% 100%;
 }
 .ingame-2 {
-    position: fixed;
+    position: absolute;
     z-index: 2;
     width: 100%;
     height: 100vh;
@@ -573,7 +571,7 @@ export default {
     background-size:100% 100%;
 }
 .ingame-3 {
-    position: fixed;
+    position: absolute;
     z-index: 1;
     width: 100%;
     height: 100vh;
@@ -583,11 +581,11 @@ export default {
 .pay-bag-button {
     position: fixed;
     z-index: 4;
-    bottom: 0;
+    bottom: -0.6rem;
     width: 100%;
     display: flex;
+    display: -webkit-flex;
     text-align: center;
-    height: 10%;
 }
 .pay-bag-button > div {
     flex: 1;
@@ -611,21 +609,38 @@ export default {
     position: absolute;
     z-index: 3;
     width: 100%;
+    height: 20%;
     bottom: 10%;
     width: 100%;
+    display: flex;
+    display: -webkit-flex;
+}
+.op-btn > .operation-btn {
+    flex:1;
+}
+.op-btn > .doll-bets-btn {
+    flex:0 0 40%;
 }
 .operation-btn {
-    width: 50%;
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap:wrap;
 }
 .operation-btn > div {
     height: .3rem; 
-    width: 26%;
-    float: left;
+    width: 30%;
 }
+
 .doll-bets-btn{
     width: 30%;
     margin-right: 10%;
+    text-align: right;
 }
+
+.doll-bets-btn > img {
+    width: 90%;
+}
+
 .toys{
     position: absolute;
     z-index: 1;
@@ -663,7 +678,7 @@ export default {
     position: absolute;
     z-index: 1;
     top: 0;
-    left: 10px;
+    /*left: 10px;*/
 }
 #doll-list2{
     position: absolute;
