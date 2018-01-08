@@ -194,11 +194,23 @@ export default {
             } else {
                 $('.machine').css('transform', 'translateZ(' + n + 'px)');
                 $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
-                $('.machine').css('transition-duration', '0.5s');
-                $('.machine').css('-webkit-transition-duration', '0.5s');
+                $('.machine').css('transition-duration', '0.7s');
+                $('.machine').css('-webkit-transition-duration', '0.7s');
             }
         }
 
+        function getLevel() {
+            var level;
+            if(n>=-10 && n<=10 ){ //第二层
+                level=2;
+            } else if(n>10 && n<=30){ //第一层
+                level=1;
+            } else if(n>=-30 && n<10){ //第三层
+                level=3;
+            }
+            return level;
+        }
+        
         function changeTitle(a) {
             if (document.title = a, navigator.userAgent.toLowerCase().indexOf("iphone") >= 0) {
                 var b = $("body"),
@@ -343,23 +355,19 @@ export default {
                 this.setTime.fallingToRising = this.setTime.falling,
                 this.setTime.risingEnd = this.setTime.falling + this.setTime.rising,
                 this.getHeight = function() {
-                    var a = document.getElementById("machine").offsetHeight,
-                        b = document.getElementById("machine-clip").offsetHeight,
-                        c = document.getElementById("doll-list1").offsetHeight,
-                        d = a - b - c + 24 - 170;
-                    return console.log(d),
-                        d
+                    var level = getLevel();
+                    var a = $(document).height(),
+                        b = document.getElementById("doll-list"+level).offsetHeight,
+                        c = document.getElementById("doll-list"+level).offsetTop,
+                        d = a - (a-c)+100;
+                    return d
                 },
                 this.screen_h = $(document).height(),
-
-
                 this.falling = function() { /*钩子开始下落*/
                     this.running = !0;
-                    // var a = "translate(" + m + "px," + this.getHeight() + "px)";
                     var a = "translate3d(" + m + "px," + this.getHeight() + "px,"+n+"px)";
                     move(this.clip).set("transform", a).duration(this.setTime.falling).ease("linear").end()
                 },
-
 
                 this.rising = function() { /*钩子触碰到*/
                     var a = "translate(" + m + "px," + 0 + "px)";
@@ -379,31 +387,19 @@ export default {
 
                 this.clipStarting = function() {
                     /*钩子开始下落*/
-
                     setTimeout(function() {
                         this.$clip.addClass("catch")
                     }.bind(this), this.setTime.clipCatchStart)
-
                 },
+
                 this.catchDoll = function(a) {
                     var b = 1;
-                    console.log(n,'n')
                     return setTimeout(function() {
                         var a = -1;
-                        var level = 0;
+                        var level = getLevel();
                         b = this.$clip.offset().left;
-                        console.log(this.$clip.css('transform'),'this.$clip');
-                        if(n>=-10 && n<=10 ){ //第二层
-                            level=2;
-                        } else if(n>10 && n<=30){ //第一层
-                            level=1;
-                        } else if(n>=-30 && n<10){ //第三层
-                            level=3;
-                        }
                         $('#doll-list'+level+' >li').map(function(c, d) {
-                            console.log(d,'eee')
                             var e = Math.abs($(d).offset().left);
-                            // (Math.abs(e-b) <= 40) && (a = $(d).attr("data-index")) &&(isCatch = true)
                             if(Math.abs(e-b) <= 20 && ($(d).css('visibility')!='hidden')){
                                 a = $(d).attr("data-index");
                                 isCatch = true;
