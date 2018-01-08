@@ -814,8 +814,6 @@ html {
 	z-index: 30;
 	-webkit-transition-property: -webkit-transform!important;
 	transition-property: -webkit-transform!important;
-	transition-property: transform!important;
-	transition-property: transform,-webkit-transform!important;
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 	-webkit-backface-visibility: hidden;

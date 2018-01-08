@@ -185,6 +185,20 @@ export default {
             return b.substring(0, b.indexOf("T"))
         }
 
+        function restTransition(domName) {
+            if(domName == 'xy'){
+                $('#machine-clip').css('transform', 'translateX(' + m + 'px)');
+                $('#machine-clip').css('-webkit-transform', 'translateX(' + m + 'px)');
+                $('#machine-clip').css('transition-duration', '0.5s');
+                $('#machine-clip').css('-webkit-transition-duration', '0.5s'); 
+            } else {
+                $('.machine').css('transform', 'translateZ(' + n + 'px)');
+                $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
+                $('.machine').css('transition-duration', '0.5s');
+                $('.machine').css('-webkit-transition-duration', '0.5s');
+            }
+        }
+
         function changeTitle(a) {
             if (document.title = a, navigator.userAgent.toLowerCase().indexOf("iphone") >= 0) {
                 var b = $("body"),
@@ -618,8 +632,7 @@ export default {
                         } else if (m < min) {
                             m = min;
                         }
-                        $('#machine-clip').css('transform', 'translateX(' + m + 'px)');
-                        $('#machine-clip').css('-webkit-transform', 'translateX(' + m + 'px)');
+                        restTransition('xy');
                     } else {
                         n = n + speed;
                         if (n > 30) {
@@ -627,8 +640,7 @@ export default {
                         } else if (n < -30) {
                             n = -30;
                         }
-                        $('.machine').css('transform', 'translateZ(' + n + 'px)');
-                        $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
+                        restTransition('z');
                     }
                 }, 450);
             };
@@ -655,8 +667,7 @@ export default {
                     } else if (m < min) {
                         m = min;
                     }
-                    $('#machine-clip').css('transform', 'translateX(' + m + 'px)');
-                    $('#machine-clip').css('-webkit-transform', 'translateX(' + m + 'px)');
+                    restTransition('xy');
                 } else {
                     n = n + speed;
                     if (n > 30) {
@@ -664,8 +675,7 @@ export default {
                     } else if (n < -30) {
                         n = -30;
                     }
-                    $('.machine').css('transform', 'translateZ(' + n + 'px)');
-                    $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
+                    restTransition('z');
                 }
             };
         };
