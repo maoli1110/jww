@@ -194,8 +194,8 @@ export default {
             } else {
                 $('.machine').css('transform', 'translateZ(' + n + 'px)');
                 $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
-                $('.machine').css('transition-duration', '0.7s');
-                $('.machine').css('-webkit-transition-duration', '0.7s');
+                $('.machine').css('transition-duration', '0.5s');
+                $('.machine').css('-webkit-transition-duration', '0.5s');
             }
         }
 
@@ -359,7 +359,7 @@ export default {
                     var a = $(document).height(),
                         b = document.getElementById("doll-list"+level).offsetHeight,
                         c = document.getElementById("doll-list"+level).offsetTop,
-                        d = a - (a-c)+100;
+                        d = a-(a-c)+b;
                     return d
                 },
                 this.screen_h = $(document).height(),
