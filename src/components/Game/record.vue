@@ -10,7 +10,7 @@
             </div>
             <div class="absol recode-list">
                 <!--table选项卡-->
-                <mt-navbar v-model="selected" class="absol" style="top:1.2rem;z-index:100">
+                <mt-navbar v-model="selected" class="absol" style="top:22.8%;z-index:100">
                     <mt-tab-item id="list" style=" ">
                         <img :src="tableSwitch.mineUrl" alt="">
                     </mt-tab-item>
@@ -114,6 +114,6 @@
         }
     }
 </script>
-<style scope>
+<style scoped>
 
 </style>

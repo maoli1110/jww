@@ -226,7 +226,7 @@ footer,header,nav,section {
 .mint-tabbar .mint-tab-item-icon{width:100%;height:100%;}
 .mint-tabbar > .mint-tab-item.is-selected{background:transparent !important;}
 /*cell*/
-.mint-cell{background:transparent !important;margin-bottom:0.1rem;border-bottom:2px dashed #fff;padding-bottom:0.1rem}
+.mint-cell{background:transparent !important;margin-bottom:0.1rem;padding-bottom:0.1rem}
 .mint-cell-value{width:100%}
 .mint-navbar{background:transparent !important;}
 .mint-navbar .mint-tab-item{padding: 12px 0 0px;}
@@ -243,4 +243,65 @@ footer,header,nav,section {
 }
 .pull-right{
 	float: right;
+}
+.mint-cell-wrapper{
+    padding:0 4px !important;
+}
+
+/*substr*/
+.mint-cell-value .substr{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+/*ipad*/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
+    html{
+        font-size: 100px!important;
+    }
+    .pay-list-wrapper .mint-cell{
+        background-size:75% !important;
+        height:1.2rem !important;
+    }
+    /*背景*/
+    .pay-bg  .item-infos .pay-type{
+        width:30%;
+    }
+    /*价格相关的*/
+    .item-infos .order-price{
+        height:1.2rem !important;
+    }
+    .item-infos .order-price div{
+        height:50%;
+    }
+    .item-infos .order-price div:last-child{
+        top:68% !important;
+    }
+}
+/* ipad横屏 */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape){
+    /* style */
+}
+
+/* ipad竖屏 */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait){
+    /* style */
+}
+/* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px){
+    /* style */
+}
+/* 判断iphone4-iphone4s *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){
+    /* style */
+}
+/* 判断ipad pro */
+@media only screen and (min-device-width : 1024px) and (max-device-width : 1366px){
+    /* style */
+}
+
+/* ipad pro横屏 */
+@media only screen and (min-device-width : 1024px)and (max-device-width : 1366px) and (orientation : landscape){
+    /* style */
 }

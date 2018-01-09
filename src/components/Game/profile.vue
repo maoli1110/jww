@@ -95,11 +95,26 @@ export default {
                    this.homeNavImg = './static/img/home_btn_home2.png';
                }
            }
+        },
+        recordVisible:function(newVal,oldVal){
+            if(newVal!=oldVal && !newVal){
+                this.restNavBg();
+            }
+        },
+        payVisbile:function(newVal,oldVal){
+            if(newVal!=oldVal && !newVal){
+                this.restNavBg();
+            }
         }
     }
 }
 </script>
 
 <style scoped>
-
+    .mint-tab-item{
+        padding:0 !important;
+    }
+    .mint-tab-item-icon > *{
+        height:84%;
+    }
 </style>

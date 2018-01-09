@@ -11,11 +11,13 @@
                <div class="pay-list-wrapper">
                    <mt-cell class="relat item-infos" v-for="item in payInfo" :key="item.price">
                        <div class="pay-type" @click="panelClose">
-                           <img slot="icon" :src="item.imgUrl" alt="" width="80" >
+                           <img slot="icon" v-show ="item.count==50" :src="item.imgUrl" alt="" width="80" >
+                           <img slot="icon" v-show ="item.count==100" :src="item.imgUrl" alt="" width="80" >
+                           <img slot="icon" v-show ="item.count==200" :src="item.imgUrl" alt="" width="80" >
                        </div>
                        <div class="order-price relat">
-                           <span calss="absol">X{{item.count}}</span>
-                           <span calss="absol">${{item.price}}</span>
+                           <div class="absol substr">X{{item.count}}</div>
+                           <div class="absol substr">${{item.price}}</div>
                        </div>
                        <div class="payaway absol">
                            <img :src="item.btnBg" alt="" width="70">
@@ -38,17 +40,17 @@
                         imgUrl:"./static/img/pay_icon_coin50.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:50,
-                        count:100
+                        count:50
                     },{
-                        imgUrl:"./static/img/pay_icon_coin50.png",
+                        imgUrl:"./static/img/pay_icon_coin400.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:60,
                         count:100
                     },{
-                        imgUrl:"./static/img/pay_icon_coin50.png",
+                        imgUrl:"./static/img/pay_icon_coin100.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:70,
-                        count:100
+                        count:200
                     }
                 ],
                 hidePanel:false,
@@ -62,6 +64,6 @@
         }
     }
 </script>
-<style scope>
+<style>
 
 </style>

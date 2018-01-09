@@ -130,9 +130,9 @@
 }
 
 
-html {
+/*html {
 	font-size: 100px!important
-}
+}*/
 
 @media (min-device-width:375px) and (max-device-width:667px) and (-webkit-min-device-pixel-ratio:2) {
 	html {
@@ -145,6 +145,7 @@ html {
 		font-size: 129.38px!important
 	}
 }
+
 
 .doll-index {
 	position: absolute;
