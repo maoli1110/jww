@@ -704,7 +704,7 @@ export default {
     z-index: 3;
     width: 100%;
     height: 100vh;
-    background: url("../../../static/img/ingame_bg1.png") no-repeat center fixed;
+    background: url("../../../static/img/ingame_bg1.png") no-repeat;
     background-size:100% 100%;
 }
 .ingame-2 {
@@ -712,7 +712,7 @@ export default {
     z-index: 2;
     width: 100%;
     height: 100vh;
-    background: url("../../../static/img/ingame_bg2.png") no-repeat center fixed;
+    background: url("../../../static/img/ingame_bg2.png") no-repeat;
     background-size:100% 100%;
 }
 .ingame-3 {
@@ -720,13 +720,13 @@ export default {
     z-index: 1;
     width: 100%;
     height: 100vh;
-    background: url("../../../static/img/ingame_bg3.jpg") no-repeat center fixed;
+    background: url("../../../static/img/ingame_bg3.jpg") no-repeat;
     background-size:100% 100%;
 }
 .pay-bag-button {
-    position: fixed;
+    position: absolute;
     z-index: 4;
-    bottom: -0.6rem;
+    bottom: 0;
     width: 100%;
     display: flex;
     display: -webkit-flex;
@@ -736,7 +736,7 @@ export default {
     flex: 1;
 }
 .pay-bag-button >div img {
-    vertical-align: top;
+    vertical-align: bottom;
     width: 60%;
 }
 .back{
