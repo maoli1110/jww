@@ -368,11 +368,36 @@ footer,header,nav,section {
 /* ipad横屏 */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape){
     /* style */
+    /*充值页面*/
+    .mint-cell img{
+        width:80% !important;
+    }
+    .pay-bg .pay-close{
+        width: 0.6rem !important;
+        height: 0.6rem !important;
+    }
+    /*我的背包*/
+    .record-content{
+        padding-top:3.8rem!important;
+    }
+    .mint-navbar{top:23.6% !important;}
 }
 
 /* ipad竖屏 */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait){
     /* style */
+    .mint-cell img{
+        width:80% !important;
+    }
+    .pay-bg .pay-close{
+        width: 0.6rem !important;
+        height: 0.6rem !important;
+    }
+    /*我的背包*/
+    .record-content{
+        padding-top:3.8rem!important;
+    }
+    .mint-navbar{top:23.8% !important;}
 }
 /* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
 @media only screen and (min-device-width : 320px) and (max-device-width : 568px){
@@ -385,6 +410,29 @@ footer,header,nav,section {
 /* 判断ipad pro */
 @media only screen and (min-device-width : 1024px) and (max-device-width : 1366px){
     /* style */
+    .pay-list-wrapper{
+        padding-top:71% !important;
+    }
+    .pay-bg .pay-close,.recode-bg .recode-close{
+        top: 20% !important;
+        width: 0.6rem !important;
+        height: 0.6rem !important;
+    }
+    .recode-bg .recode-close{
+        top: 15% !important;
+    }
+    .record-content{
+        padding-top: 4.8rem !important;
+    }
+    .extract-pro {
+    width: 2rem !important;
+        bottom: 31% !important;
+        left: 50% !important;
+        margin-left: -0.9rem;
+    }
+    .history-list{
+        padding: 0rem 0.25rem 0 !important;
+    }
 }
 
 /* ipad pro横屏 */

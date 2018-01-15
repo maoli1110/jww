@@ -37,7 +37,7 @@
 }
 .item-infos .order-price{width:1rem;height:.7rem}
 .item-infos .order-price div:first-child{
-    padding-left:0.08rem;
+    padding-left:10%;
 }
 .item-infos .order-price div{
     font-size:0.2rem;
