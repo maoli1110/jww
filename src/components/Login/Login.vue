@@ -47,11 +47,12 @@ export default {
 }
 .login-wx > img {
     position: absolute;
-    width: 2rem;
+    width: 3rem;
     margin: 0 auto;
     right: 0;
     left: 0;
-    bottom: 1rem;
+    bottom: 1.5rem;
+    height: .6em;
 }
 .login-ali-qq {
     display: flex;
@@ -64,7 +65,7 @@ export default {
     display: inline-block;
     width: 47%;
     padding: 3%;
-    height: 80px;
+    height: 1rem;
     flex: 1;
 }
 

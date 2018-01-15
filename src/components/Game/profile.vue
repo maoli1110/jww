@@ -1,18 +1,20 @@
  <template>
  <div class="home-wrap">
     <div class="home">
-        <div class="login-out"></div>
-        <div class="relat">
+        <div class="back">
+            <img :src="back1Img" alt="">
+        </div>
+        <div class="relat xuanze">
             <div class="game-them">{{them}}</div>
             <div class="absol add-coin"><img src="../../../static/img/ingame_btn_pay3.png" alt=""></div>
         </div>
 
        <div class="select-list">
            <ul>
-               <li class="raduis-1 relat" v-for="(item,index) in 10">
-                  <p>这是一只大娃娃</p>
-                  <div><img :src="defalultWW" alt=""></div>
-                  <div class="li-bottom"><span class="time raduis-2"><span class="pay-coin block"></span>99&nbsp;/次</span><span class="go raduis-2" @click="inGame(index)">GO</span></div>
+               <li class="raduis-1 relat" v-for="(item,key) in list">
+                  <p>{{item.title}}</p>
+                  <div><img :src="item.wwUrl" alt=""></div>
+                  <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>99&nbsp;/次</span><span class="go raduis-1" @click="inGame(key)">GO</span></div>
                    <div class="absol switch text-color"><span class="block switch-text" >碎片合成</span></div>
                </li>
            </ul>
@@ -49,9 +51,28 @@ export default {
             homeNavImg:'./static/img/home_btn_home1.png',
             bagNavImg:'./static/img/home_btn_bag1.png',
             mineNavImg:'./static/img/home_btn_my1.png',
+            back1Img:'./static/img/ingame_btn_back1.png',
+            back2Img:'./static/img/ingame_btn_back2.png',
             them:'选择娃娃机',
             payVisbile:false,
             recordVisible:false,
+            list:[
+              {wwUrl:'./static/img/1.png','title':'美少女战士-水冰月'},
+              {wwUrl:'./static/img/2.png','title':'海贼王-圣诞节娜美'},
+              {wwUrl:'./static/img/3.png','title':'海贼王-4档路飞'},
+              {wwUrl:'./static/img/4.png','title':'海贼王-拔刀索隆'},
+              {wwUrl:'./static/img/5.png','title':'海贼王-三刀流索隆'},
+              {wwUrl:'./static/img/6.png','title':'海贼王-和服娜美'},
+              {wwUrl:'./static/img/7.png','title':'龙珠-神龙'},
+              {wwUrl:'./static/img/8.png','title':'龙珠-战士觉悟-特兰克斯'},
+              {wwUrl:'./static/img/9.png','title':'熊本熊'},
+              {wwUrl:'./static/img/11.png','title':'小猪佩奇'},
+              {wwUrl:'./static/img/10.png','title':'小猪佩奇'},
+              {wwUrl:'./static/img/11.png','title':'小猪佩奇'},
+              {wwUrl:'./static/img/12.png','title':'小猪佩奇'},
+
+            ]
+            
         }
     },
     components: {vPaylist,vRecord},
@@ -69,13 +90,16 @@ export default {
         },
         //初始化跳链接
         inGame(index){
-            if(index==0){
-                this.$router.push('/main/ingame');
-            }else if(index==1){
-               window.location.href="http://www.910nice.com";
-            }else if(index==2){
-                window.location.href='http://h.mashangzhua.com/pages/index.html?appId=ba82de9ff96248569eef2ccc796000f3';
-            }
+            index = index +1;
+            this.$router.push('/main/ingame/'+index);
+
+            // if(index==0){
+            //     this.$router.push('/main/ingame');
+            // }else if(index==1){
+            //    window.location.href="http://www.910nice.com";
+            // }else if(index==2){
+            //     window.location.href='http://h.mashangzhua.com/pages/index.html?appId=ba82de9ff96248569eef2ccc796000f3';
+            // }
         }
     },
     created(){

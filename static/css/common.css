@@ -180,7 +180,7 @@ body,html {
 	overflow-scrolling: touch
 }
 
-html {
+html { 
 	background: #ddd;
 	max-width: 600px;
 	margin: 0 auto;
@@ -190,7 +190,7 @@ html {
 body {
 	background-color: #f9f9f9;
 	color: #333;
-	max-width: 600px;
+	/*max-width: 600px;*/
 	min-height: 100%;
 	position: relative
 }
@@ -214,14 +214,30 @@ footer,header,nav,section {
 }
 
 .raduis-1 {
-	border-radius: 0.2rem;
+	border-radius: 0.15rem;
 }
 .raduis-2 {
 	border-radius: 0.08rem;
 }
+.raduis-0 {
+	border-radius: 0.4rem;
+}
+.green {
+	color:#3bcd96
+}
+.align-v-h {
+    display:flex;
+    align-items:center;/*垂直居中*/
+    justify-content: center;/*水平居中*/
+    width:100%;
+    height:100%;
+}
+.align-center {
+	text-align: center;
+}
 /*mint组件化tab样式*/
 .mint-tabbar{
-    height:10.4%;background:transparent !important;
+    height:10.4%;background:transparent !important;z-index: 3;
 }
 .mint-tabbar .mint-tab-item-icon{width:100%;height:100%;}
 .mint-tabbar > .mint-tab-item.is-selected{background:transparent !important;}
@@ -247,13 +263,83 @@ footer,header,nav,section {
 .mint-cell-wrapper{
     padding:0 4px !important;
 }
-
+/* flex */
+.Grid{
+    display: flex;
+}
+.Grid-cell{
+    flex: 1;        
+}
+.Grid-cell.u-full{
+    flex: 0 0 100%;
+}
+.Grid-cell.u-lof2{
+    flex: 0 0 50%;
+}
+.Grid-cell.u-lof3{
+    flex: 0 0 33.3333%;
+}
+.Grid-cell.u-lof4{ 
+    flex: 0 0 25%;
+}
+.Grid-cell.u-lof6{ 
+    flex: 0 0 12%;
+}
 /*substr*/
 .mint-cell-value .substr{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     word-break: break-all;
+}
+.align-h-v{
+	display:flex;
+    align-items:center;/*垂直居中*/
+    justify-content: center;/*水平居中*/
+    width:100%;
+    height:100%;
+}
+.red {
+	color: #fd7068;
+}
+.green {
+	color: #51db6d;
+}
+/* 重写mintcss */
+.message-bg .mint-button--default {
+    color: #fff;
+    background-color: #fd7068;
+    box-shadow: 0 0 1px #fd7068;
+}
+.message-bg .mint-button--primary {
+    color: #fff;
+    background-color: #51db6d;
+    box-shadow: 0 0 1px #51db6d;
+}
+.back{
+    position: absolute;
+    z-index: 4;
+    top: 0.25rem;
+    left: .3rem;
+    height: 10%;
+}
+.back>img{
+    width: .85rem;
+    float:left;
+}
+.dialog-close {
+    width: 0.4rem;
+    height: 0.5rem;
+    background: url("../../static/img/my_btn_cancel1.png") center no-repeat;
+    background-size: 100%;
+    right: 3%;
+    top: 1.8rem;
+    z-index: 12;
+}
+.common-list-wrapper {
+    width: 100%;
+    height: 100%;
+    padding-top: 1.4rem;
 }
 /*ipad*/
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px){

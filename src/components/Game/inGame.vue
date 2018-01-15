@@ -1,14 +1,18 @@
 <template>
-    <div>
+    <div class="in-game">
         <div class="ingame-1"></div>
         <div class="ingame-2"></div>
         <div class="ingame-3"></div>
+        <div class="user-info">
+        </div>
+        <div class="message" @click="messageVisbile=true;">
+        </div>
         <div class="level__medium">
             <div id="ex_doll_game">
                 <div class="doll-machine">
                     <div class="machine" id="machine">
                         <div class="machine-clip" id="machine-clip"
-                         style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);-webkit-transform: translateY(0px)"> <i class="machine-clip-line" id="machine-clip-line" style="height: 433px;"></i> <i class="machine-clip-origin"></i>
+                         style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);-webkit-transform: translateY(0px)"> <i class="machine-bar"></i><i class="machine-clip-line" id="machine-clip-line" style="height: 433px;"></i> <i class="machine-clip-origin"></i>
                             <div class="machine-clip-arm machine-clip-arm__left">
                                 <i class="machine-clip-arm_item"></i>
                             </div>
@@ -18,11 +22,8 @@
                             <li class="doll-item doll-item-single" data-index="453" data-theme="1" style="display:none">
                                 <div class="doll-img doll-img__monkey">
                                     <div class="doll-img_move">
-                                        <i class="doll-img_face doll-img_face__1"></i>
                                         <div class="doll-img_name doll-img_name__goods">
-                                            <span class="doll-img_txt"></span>
                                         </div>
-                                        <i class="doll-img_body"></i>
                                     </div>
                                     <i class="doll-img_shadow"></i>
                                     <i class="doll-img_smoke"></i>
@@ -30,12 +31,8 @@
                                 </div>
                             </li>
                         </div>
-                        <i class="machine-bg_bd"></i>
-                        <i class="machine-bg_floor" id="machine-bg_floor"></i>
-                        <i class="machine-bg_bot"></i>
-                        <i class="machine-bg_repeat"></i>
                         <div class="atm">
-                            <img src="static/img/packet.png" alt=""></div>
+                            <img :src="packetUrl" alt=""></div>
                     </div>
                     <div class="machine-tips-box cpm-hide">
                         <div class="machine-tips">
@@ -83,21 +80,31 @@
                 <div></div>
             </div>
             <div class="doll-bets-btn pull-right">
-                <img :src="btGo1Img" alt="">
+                <span class="btn-go"></span>
             </div>
         </div>
-        <div class="pay-bag-button">
+        <mt-tabbar>
+            <mt-tab-item id="tab1" >
+                <img slot="icon" :src="pay1Img" @click="payVisbile=true;">
+            </mt-tab-item>
+            <mt-tab-item id="tab2" >
+                <img slot="icon" :src="bag1Img" @click="recordVisible=true;">
+            </mt-tab-item>
+        </mt-tabbar>
+        <!-- <div class="pay-bag-button">
             <div class="pay" @click="payVisbile=true;">
                 <img :src="pay1Img" alt="">
             </div>
-            <div class="bag" @click="recordVisible=true;">
+            <div class="bag" >
                 <img :src="bag1Img" alt="">
             </div>
-        </div>
+        </div> -->
         <div class="back" @click="back()">
-            <img :src="back1Img" alt=""></div>
+            <img :src="back1Img" alt="">
+        </div>
         <v-paylist v-show="payVisbile" :is-show="payVisbile" @panelHide="panelHide"></v-paylist>
         <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHide"></v-record>
+        <v-message v-show="messageVisbile" :is-show="messageVisbile" @panelHide="panelHide"></v-message>
     </div>
 </template>
 <script>
@@ -105,9 +112,11 @@
 // import "../../../static/js/web.min.js";
 import vPaylist from "../Game/pay.vue";
 import vRecord from '../Game/record.vue';
+import vMessage from '../Game/message.vue';
 export default {
     data() {
         return {
+            packetUrl:'',
             btGo1Img:'./static/img/ingame_btn_go1.png',
             btGo2Img:'./static/img/ingame_btn_go2.png',
             btLeft1Img:'./static/img/ingame_btn_left1.png',
@@ -128,24 +137,31 @@ export default {
             allToysImg:'./static/img/ingame-all.png',
             payVisbile:false,
             recordVisible:false,
+            messageVisbile:false
         }
     },
     methods: {
         panelHide(visible){
             this.payVisbile =visible;
             this.recordVisible = visible;
+            this.messageVisbile = visible;
         },
         back(){
-            this.$router.push('home');
+            this.$router.push('/main/home');
         }
     },
-    components: {vPaylist,vRecord},
+    components: {vPaylist,vRecord,vMessage},
     created(){
          
     },
     mounted() {
-
-
+        console.log(this.$route.params.num)
+        let packetNum = this.$route.params.num + 1 ;
+        this.packetUrl = './static/img/'+packetNum+'.png';
+        $(".doll-img_name__goods").css("background",'url(./static/img/'+this.$route.params.num+'.png) 47% 0 no-repeat');
+        $(".doll-img_name__goods").css("background-size",'150%');
+        $(".doll-item").css("background",'url(./static/img/'+this.$route.params.num+'.png) 36% 0 no-repeat');
+        $(".doll-item").css("background-size","150%");
         function isInWechat() {
             var a = navigator.userAgent.toLowerCase();
             return a.indexOf("micromessenger") >= 0
@@ -737,19 +753,9 @@ export default {
 }
 .pay-bag-button >div img {
     vertical-align: bottom;
-    width: 60%;
+    height: 1.4rem;
 }
-.back{
-    position: fixed;
-    z-index: 4;
-    top: 0;
-    height: 10%;
-}
-.back>img{
-    height: 0.6rem;
-    float:left;
-    padding:0.1rem;
-}
+
 .op-btn {
     position: absolute;
     z-index: 3;
@@ -765,14 +771,24 @@ export default {
 }
 .op-btn > .doll-bets-btn {
     flex:0 0 40%;
+    vertical-align: middle;
+}
+.op-btn > .doll-bets-btn .btn-go {
+    background: url('../../../static/img/ingame_btn_go1.png') no-repeat;
+    background-size: 100%;
+    width: 2rem;
+    height: 1.5rem;
+    display: inline-block;
+    margin-top: 0.5rem;
 }
 .operation-btn {
     display: flex;
     display: -webkit-flex;
     flex-wrap:wrap;
+    margin-left: .4rem;
 }
 .operation-btn > div {
-    height: .3rem; 
+    height: .8rem; 
     width: 30%;
 }
 
@@ -783,7 +799,7 @@ export default {
 }
 
 .doll-bets-btn > img {
-    width: 90%;
+    height: 1rem;
 }
 
 .toys{
@@ -812,7 +828,7 @@ export default {
 }
 .doll-box ul > li {
     width: 19%;
-    height: 1rem;
+    height: 100%;
     display: inline-block;
     /*border: 1px solid #ccc;*/
 }
@@ -828,12 +844,12 @@ export default {
 #doll-list2{
     position: absolute;
     z-index: 2;
-    top: 0.5rem;
+    top: 1rem;
 }
 #doll-list1{
     position: absolute;
     z-index: 3;
-    top: 1rem;
+    top: 2rem;
 }
 #doll-list1 > li:nth-child(1),
 #doll-list1 > li:nth-child(2){
@@ -868,5 +884,32 @@ export default {
     background-size: 100%;
     width: 18%
 } 
+.user-info {
+    width: 2.9rem;
+    height: 1.9rem;
+    position: absolute;
+    right: 0;
+    top: .19rem;
+    z-index: 1;
+    background: url('../../../static/img/ingame_table_information.png') no-repeat;
+    background-size: 2.69rem 1.1rem;
+}
+.message {
+    position: absolute;
+    left: .3rem;
+    top: 1.4rem;
+    z-index: 6;
+    background:url('../../../static/img/message-icon.png');
+    width: .9rem;
+    height: .68rem;
+    background-size: 100% 100%;
+
+}
+</style>
+<style>
+.in-game .mint-tabbar .mint-tab-item-icon {
+    width: 70% !important;;
+    height: 100%;
+}
 
 </style>

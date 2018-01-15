@@ -134,7 +134,7 @@
 	font-size: 100px!important
 }*/
 
-@media (min-device-width:375px) and (max-device-width:667px) and (-webkit-min-device-pixel-ratio:2) {
+/*@media (min-device-width:375px) and (max-device-width:667px) and (-webkit-min-device-pixel-ratio:2) {
 	html {
 		font-size: 117.19px!important
 	}
@@ -144,7 +144,7 @@
 	html {
 		font-size: 129.38px!important
 	}
-}
+}*/
 
 
 .doll-index {
@@ -751,7 +751,7 @@
 	position: relative;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	padding: .2rem .4rem;
+	padding: .4rem .8rem;
 	text-align: center
 }
 
@@ -778,8 +778,8 @@
 }
 
 .machine-tips_txt {
-	font-size: .15rem;
-	line-height: .15rem;
+	font-size: .3rem;
+	line-height: .3rem;
 	font-weight: 700
 }
 
@@ -805,8 +805,8 @@
 }
 
 .machine-clip {
-	width: .72rem;
-	height: .88rem;
+	width: 1.44rem;
+	height: 1.76rem;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -827,11 +827,27 @@
 	transform: translateY(350px)!important
 }
 
+.machine-bar {
+	width: .72rem;
+	height: .72rem;
+	position: absolute;
+	background: url(../img/fly.png) 0em -2rem no-repeat;
+	background-size: 2.8rem 3.76rem;
+	-webkit-background-size: 2.8rem 3.76rem;
+	right: 0;
+	left: 0;
+	top: -18px;
+	margin: auto;
+	z-index: 30;
+	-webkit-transform: translateZ(130px);
+	transform: translateZ(130px)
+}
+
 .machine-clip-line {
-	width: .04rem;
+	width: .14rem;
 	height: 3rem;
 	position: absolute;
-	bottom: .56rem;
+	bottom: .8em;
 	right: 0;
 	left: 0;
 	margin: auto;
@@ -851,15 +867,15 @@
 }
 
 .machine-clip-origin {
-	width: .24rem;
-	height: .24rem;
+	width: .72rem;
+	height: .72rem;
 	position: absolute;
-	background: url(../img/sprite-index.png) 0 0 no-repeat;
-	background-size: 1.4rem 1.88rem;
-	-webkit-background-size: 1.4rem 1.88rem;
+	background: url(../img/fly.png) -2rem -2rem no-repeat;
+	background-size: 2.8rem 3.76rem;
+	-webkit-background-size: 2.8rem 3.76rem;
 	right: 0;
 	left: 0;
-	bottom: .36rem;
+	bottom: 0.76rem;
 	margin: auto;
 	z-index: 30;
 	-webkit-transform: translateZ(130px);
@@ -867,8 +883,8 @@
 }
 
 .machine-clip-arm {
-	width: .36rem;
-	height: .52rem;
+	width: .72rem;
+	height: 1.04rem;
 	position: absolute;
 	bottom: 0;
 	z-index: 40;
@@ -885,11 +901,12 @@
 }
 
 .machine-clip-arm_item {
-	width: .36rem;
-	height: .52rem;
+	width: .72rem;
+	height: 1.04rem;
 	display: block;
-	background: url(../img/sprite-index.png) 0 0/1.4rem 1.88rem no-repeat;
-	-webkit-background-size: 1.4rem 1.88rem
+	background: url(../img/fly.png) 0 0 no-repeat;
+	-webkit-background-size: 2.9rem;
+	background-size: 2.9rem;
 }
 
 .machine-clip-arm__left {
@@ -899,13 +916,13 @@
 }
 
 .machine-clip.down>.machine-clip-arm__left {
-	transform: rotate(25deg)
+	transform: rotate(20deg)
 }
 
 .machine-clip.catch>.machine-clip-arm__left {
 	ransition-duration: .3s!important;
 	-webkit-transition-duration: .3s!important;
-	transform: rotate(14deg)
+	transform: rotate(10deg)
 }
 
 .machine-clip-arm__right {
@@ -915,13 +932,13 @@
 }
 
 .machine-clip.down>.machine-clip-arm__right {
-	transform: rotate(-25deg)
+	transform: rotate(-20deg)
 }
 
 .machine-clip.catch>.machine-clip-arm__right {
 	ransition-duration: .3s!important;
 	-webkit-transition-duration: .3s!important;
-	transform: rotate(-14deg)
+	transform: rotate(-10deg)
 }
 
 .machine-clip-arm__right .machine-clip-arm_item {
@@ -1072,7 +1089,7 @@
 .doll-box {
 	height: 1rem;
 	position: absolute;
-	bottom: 2.4rem;
+	bottom: 5.2rem;
 	right: 0;
 	left: 0;
 /*	-webkit-transform: translateZ(110px);
@@ -1081,7 +1098,7 @@
 }
 
 .doll-list {
-	height: 1rem;
+	height: 2rem;
 	position: relative;
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
@@ -1095,14 +1112,14 @@
 }
 
 .doll-item {
-	width: 1rem;
-	height: 1rem;
+	width: 1.5rem;
+	height: 2rem;
 	float: left
 }
 
 .doll-img {
-	width: 1rem;
-	height: 1rem;
+	width: 1.2rem;
+	height: 2rem;
 	position: relative
 }
 
@@ -1319,11 +1336,12 @@
 }
 
 .level__medium .machine-clip-origin {
-	background-position: -.36rem -.84rem
+	background-position: 0.07rem 0.12rem;
+    background-size: 1.9rem;
 }
 
 .level__medium .machine-clip-arm_item {
-	background-position: -.64rem -.56rem
+	background-position: -1.4rem -0.2rem
 }
 
 .level__medium .doll-title {
@@ -1370,10 +1388,10 @@
 
 .doll-rise {
 	position: relative;
-	top: 65%;
-	left: -20%;
-	display: block !important;
-	z-index: 20
+    top: 60%;
+    left: 8%;
+    display: block !important;
+    z-index: 20;
 }
 
 .doll-ready-fly {
@@ -1423,10 +1441,11 @@
 .doll-img_name__goods {
 	right: 0;
 	left: 0;
-	/*bottom: -.07rem;*/
-	height: 1.7rem;
-	background: url(../img/ingame_toy.png) 50% 70% no-repeat;
-	-webkit-background-size: 50%
+	bottom: 0.1rem;
+	height: 2rem;
+	background: url(../img/ingame_toy.png) no-repeat;
+	-webkit-background-size: 56%;
+	background-size: 56%;
 }
 
 
@@ -1444,7 +1463,7 @@
 }
 
 .doll-machine {
-	top: .25rem;
+	top: 0;
 	bottom: .25rem
 }
 

@@ -59,3 +59,34 @@
 .pay-list-wrapper .mint-cell{
    height:0.8rem; background:url('../../static/img/pay_coin_bg.png') no-repeat !important;background-size:100% !important;
 }
+.pay-list-item {
+    width: 100%;
+    height: 1.1rem;
+    padding: 0 .2rem;
+}
+
+.pay-list-item .Grid-cell.count, .pay-list-item .Grid-cell.buy{
+    text-align: center;
+    margin: 0.2rem 0;
+
+}
+.pay-list-item  .Grid-cell.icon {
+    background:#fff;
+    border-radius: 0.2rem;
+    width: 70%;
+    height: 90%
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
