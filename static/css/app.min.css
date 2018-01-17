@@ -812,7 +812,7 @@
 	right: 0;
 	left: 0;
 	/*margin: auto;*/
-	z-index: 30;
+	z-index: 7;
 	-webkit-transition-property: -webkit-transform!important;
 	transition-property: -webkit-transform!important;
 	-webkit-transform-style: preserve-3d;
@@ -1388,7 +1388,7 @@
 
 .doll-rise {
 	position: relative;
-    top: 60%;
+    top: 55%;
     left: 8%;
     display: block !important;
     z-index: 20;

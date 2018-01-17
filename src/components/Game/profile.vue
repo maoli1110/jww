@@ -5,7 +5,6 @@
             <img :src="back1Img" alt="">
         </div>
         <div class="relat xuanze">
-            <div class="game-them">{{them}}</div>
             <div class="absol add-coin"><img src="../../../static/img/ingame_btn_pay3.png" alt=""></div>
         </div>
 
@@ -53,7 +52,6 @@ export default {
             mineNavImg:'./static/img/home_btn_my1.png',
             back1Img:'./static/img/ingame_btn_back1.png',
             back2Img:'./static/img/ingame_btn_back2.png',
-            them:'选择娃娃机',
             payVisbile:false,
             recordVisible:false,
             list:[

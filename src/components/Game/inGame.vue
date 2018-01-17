@@ -760,8 +760,8 @@ export default {
     position: absolute;
     z-index: 3;
     width: 100%;
-    height: 20%;
-    bottom: 10%;
+    height: 17%;
+    bottom: 12%;
     width: 100%;
     display: flex;
     display: -webkit-flex;
@@ -779,7 +779,15 @@ export default {
     width: 2rem;
     height: 1.5rem;
     display: inline-block;
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
+}
+.op-btn > .doll-bets-btn .btn-go:active {
+    background: url('../../../static/img/ingame_btn_go2.png') no-repeat;
+    background-size: 100%;
+    width: 2rem;
+    height: 1.5rem;
+    display: inline-block;
+    margin-top: 0.3rem;
 }
 .operation-btn {
     display: flex;
@@ -788,7 +796,7 @@ export default {
     margin-left: .4rem;
 }
 .operation-btn > div {
-    height: .8rem; 
+    height: .65rem; 
     width: 30%;
 }
 
@@ -822,6 +830,21 @@ export default {
 .operation-btn > div:nth-child(8){
     background: url('../../../static/img/ingame_btn_down1.png')no-repeat 3px 1px ;
     background-size: 100% 100%;
+}
+.operation-btn > div:nth-child(2):active{
+    background: url('../../../static/img/ingame_btn_up2.png') no-repeat 2px 5px ;
+    background-size: 100% 100%;
+}
+.operation-btn > div:nth-child(4):active{
+    background: url('../../../static/img/ingame_btn_left2.png') no-repeat 6px 3px ;
+    background-size: 100% 100%;
+}
+.operation-btn > div:nth-child(6):active{
+    background: url('../../../static/img/ingame_btn_right2.png') no-repeat -4px 4px ;
+    background-size: 100% 100%;
+}
+.operation-btn > div:nth-child(8):active{
+    background: url('../../../static/img/ingame_btn_down2.png')no-repeat 3px 1px ;
 }
 .doll-machine{
     perspective: 600px;
@@ -890,7 +913,7 @@ export default {
     position: absolute;
     right: 0;
     top: .19rem;
-    z-index: 1;
+    z-index: 8;
     background: url('../../../static/img/ingame_table_information.png') no-repeat;
     background-size: 2.69rem 1.1rem;
 }
