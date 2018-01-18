@@ -12,24 +12,28 @@
                 <div class="doll-machine">
                     <div class="machine" id="machine">
                         <div class="machine-clip" id="machine-clip"
-                         style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);-webkit-transform: translateY(0px)"> <i class="machine-bar"></i><i class="machine-clip-line" id="machine-clip-line" style="height: 433px;"></i> <i class="machine-clip-origin"></i>
-                            <div class="machine-clip-arm machine-clip-arm__left">
-                                <i class="machine-clip-arm_item"></i>
-                            </div>
-                            <div class="machine-clip-arm machine-clip-arm__right">
-                                <i class="machine-clip-arm_item"></i>
-                            </div>
-                            <li class="doll-item doll-item-single" data-index="453" data-theme="1" style="display:none">
-                                <div class="doll-img doll-img__monkey">
-                                    <div class="doll-img_move">
-                                        <div class="doll-img_name doll-img_name__goods">
-                                        </div>
+                         style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);-webkit-transform: translateY(0px)"> 
+                        <i class="machine-bar"></i>
+                        <i class="machine-clip-line" id="machine-clip-line" style="height: 433px;"></i>
+                        <i class="machine-clip-origin"></i>
+                        <i class="machine-shadow"></i>
+                        <div class="machine-clip-arm machine-clip-arm__left">
+                            <i class="machine-clip-arm_item"></i>
+                        </div>
+                        <div class="machine-clip-arm machine-clip-arm__right">
+                            <i class="machine-clip-arm_item"></i>
+                        </div>
+                        <li class="doll-item doll-item-single" data-index="453" data-theme="1" style="display:none">
+                            <div class="doll-img doll-img__monkey">
+                                <div class="doll-img_move">
+                                    <div class="doll-img_name doll-img_name__goods">
                                     </div>
-                                    <i class="doll-img_shadow"></i>
-                                    <i class="doll-img_smoke"></i>
-                                    <i class="doll-img_tag"></i>
                                 </div>
-                            </li>
+                                <i class="doll-img_shadow"></i>
+                                <i class="doll-img_smoke"></i>
+                                <i class="doll-img_tag"></i>
+                            </div>
+                        </li>
                         </div>
                         <div class="atm">
                             <img :src="packetUrl" alt=""></div>

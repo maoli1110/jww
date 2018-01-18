@@ -881,6 +881,21 @@
 	-webkit-transform: translateZ(130px);
 	transform: translateZ(130px)
 }
+.machine-shadow {
+	width: 1.5rem;
+	height: 1rem;
+	position: absolute;
+	background: url(../img/ingame_pic_shadow.png) 0 0 no-repeat;
+	background-size: 100%;
+	-webkit-background-size: 100%;
+	right: 0;
+	left: 0;
+	bottom: -5rem;
+	margin: auto;
+	z-index: 30;
+	-webkit-transform: translateZ(130px);
+	transform: translateZ(130px)
+}
 
 .machine-clip-arm {
 	width: .72rem;
