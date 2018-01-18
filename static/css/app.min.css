@@ -890,11 +890,11 @@
 	-webkit-background-size: 100%;
 	right: 0;
 	left: 0;
-	bottom: calc(100% - 6rem);
+	bottom:  -5rem;
 	margin: auto;
 	z-index: 30;
-	-webkit-transform: translateZ(130px);
-	transform: translateZ(130px)
+/*	-webkit-transform: translateZ(130px);
+	transform: translateZ(130px)*/
 }
 
 .machine-clip-arm {

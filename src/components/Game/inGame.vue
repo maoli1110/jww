@@ -161,6 +161,7 @@ export default {
     mounted() {
         console.log(this.$route.params.num)
         let packetNum = this.$route.params.num + 1 ;
+        let moveBottom = $(document).height() - $('.machine-shadow').offset().top-$("#machine-clip").height()/3;
         this.packetUrl = './static/img/'+packetNum+'.png';
         $(".doll-img_name__goods").css("background",'url(./static/img/'+this.$route.params.num+'.png) 47% 0 no-repeat');
         $(".doll-img_name__goods").css("background-size",'150%');
@@ -205,7 +206,8 @@ export default {
             return b.substring(0, b.indexOf("T"))
         }
 
-        function restTransition(domName) {
+        function restTransition(domName,type) {
+            
             if(domName == 'xy'){
                 $('#machine-clip').css('transform', 'translateX(' + m + 'px)');
                 $('#machine-clip').css('-webkit-transform', 'translateX(' + m + 'px)');
@@ -216,6 +218,23 @@ export default {
                 $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
                 $('.machine').css('transition-duration', '0.5s');
                 $('.machine').css('-webkit-transition-duration', '0.5s');
+                if(n== -30 || n== 30 ){
+                    return;
+                } else {
+                    console.log(n)
+                    moveBottom = -Math.abs(moveBottom);
+                    if(type == 'up'){
+                        console.log('up')
+                        moveBottom = moveBottom + 25;
+                        console.log(moveBottom)
+                        $('.machine-shadow').animate({bottom:moveBottom});
+                    } else {
+                        moveBottom = moveBottom - 25;
+                        console.log('down')
+                        console.log(moveBottom)
+                        $('.machine-shadow').animate({bottom:moveBottom});
+                    }
+                }
             }
         }
 
@@ -223,7 +242,7 @@ export default {
             var level;
             if(n>=-10 && n<=10 ){ //第二层
                 level=2;
-            } else if(n>10 && n<=30){ //第一层
+            } else if(n>10 && n<=30){ //第一层 
                 level=1;
             } else if(n>=-30 && n<10){ //第三层
                 level=3;
@@ -626,13 +645,13 @@ export default {
                 var speed ;
                 switch (dir) {
                     case 'left':
-                    speed = -50;
+                    speed = -20;
                     break;
                     case 'up':
                     speed = -10;
                     break;
                     case 'right':
-                    speed = 50;
+                    speed = 20;
                     break;
                     case 'down':
                     speed = 10;
@@ -656,7 +675,8 @@ export default {
                         } else if (n < -30) {
                             n = -30;
                         }
-                        restTransition('z');
+                        debugger
+                        restTransition('z',dir);
                     }
                 }, 450);
             };
@@ -664,13 +684,13 @@ export default {
                 var speed ;
                 switch (dir) {
                     case 'left':
-                    speed = -50;
+                    speed = -20;
                     break;
                     case 'up':
                     speed = -10;
                     break;
                     case 'right':
-                    speed = 50;
+                    speed = 20;
                     break;
                     case 'down':
                     speed = 10;
@@ -691,7 +711,7 @@ export default {
                     } else if (n < -30) {
                         n = -30;
                     }
-                    restTransition('z');
+                    restTransition('z',dir);
                 }
             };
         };
