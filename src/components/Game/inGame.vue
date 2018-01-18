@@ -161,7 +161,7 @@ export default {
     mounted() {
         console.log(this.$route.params.num)
         let packetNum = this.$route.params.num + 1 ;
-        let moveBottom = $(document).height() - $('.machine-shadow').offset().top-$("#machine-clip").height()/3;
+        let moveBottom = $('#doll-list2').offset().top-$("#machine-clip").height()/3;
         this.packetUrl = './static/img/'+packetNum+'.png';
         $(".doll-img_name__goods").css("background",'url(./static/img/'+this.$route.params.num+'.png) 47% 0 no-repeat');
         $(".doll-img_name__goods").css("background-size",'150%');
@@ -219,19 +219,19 @@ export default {
                 $('.machine').css('transition-duration', '0.5s');
                 $('.machine').css('-webkit-transition-duration', '0.5s');
                 if(n== -30 || n== 30 ){
-                    return;
+                    return; 
                 } else {
-                    console.log(n)
+                    // console.log(n)
                     moveBottom = -Math.abs(moveBottom);
                     if(type == 'up'){
-                        console.log('up')
+                        // console.log('up')
                         moveBottom = moveBottom + 25;
                         console.log(moveBottom)
                         $('.machine-shadow').animate({bottom:moveBottom});
                     } else {
                         moveBottom = moveBottom - 25;
-                        console.log('down')
-                        console.log(moveBottom)
+                        // console.log('down')
+                        // console.log(moveBottom)
                         $('.machine-shadow').animate({bottom:moveBottom});
                     }
                 }
@@ -395,16 +395,20 @@ export default {
                 this.setTime.risingEnd = this.setTime.falling + this.setTime.rising,
                 this.getHeight = function() {
                     var level = getLevel();
+                    debugger
                     var a = $(document).height(),
-                        b = document.getElementById("doll-list"+level).offsetHeight,
-                        c = document.getElementById("doll-list"+level).offsetTop,
-                        d = a-(a-c)+b;
+                        b = $("#machine-clip").height(),
+                        c = $(document.getElementById("doll-list"+level)).offset().top,
+                        d = c-b/2;
+                        console.log(a,c) 
+                    console.log('ddd')
                     return d
                 },
                 this.screen_h = $(document).height(),
                 this.falling = function() { /*钩子开始下落*/
                     this.running = !0;
                     var a = "translate3d(" + m + "px," + this.getHeight() + "px,"+n+"px)";
+
                     move(this.clip).set("transform", a).duration(this.setTime.falling).ease("linear").end()
                 },
 
