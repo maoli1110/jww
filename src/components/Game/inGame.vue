@@ -395,7 +395,6 @@ export default {
                 this.setTime.risingEnd = this.setTime.falling + this.setTime.rising,
                 this.getHeight = function() {
                     var level = getLevel();
-                    debugger
                     var a = $(document).height(),
                         b = $("#machine-clip").height(),
                         c = $(document.getElementById("doll-list"+level)).offset().top,
@@ -638,7 +637,6 @@ export default {
                         } else if (n < -30) {
                             n = -30;
                         }
-                        debugger
                         restTransition('z',dir);
                     }
                 }, 450);
