@@ -232,7 +232,7 @@ export default {
                         moveBottom = moveBottom - 25;
                         // console.log('down')
                         // console.log(moveBottom)
-                        $('.machine-shadow').animate({bottom:moveBottom});
+                        $('.machine-shadow').animate({bottom:moveBottom,speed:1000,easing:'linear'});
                     }
                 }
             }
@@ -604,48 +604,7 @@ export default {
                 }  
             });
 
-
-            // left.addEventListener('touchstart', function(e) {
-            //     timeOutEvent = setTimeout("longPress()",500);
-            //     e.preventDefault();
-            //     App.playMove('left');
-            // });
-
-            // left.addEventListener('touchend', function(e) {
-            //     clearInterval(timer);
-            // });
-
-            // right.addEventListener('touchstart', function(e) {
-            //     console.log('touchstartright')
-            //     e.preventDefault();
-            //     App.playMove('right');
-            // });
-            // right.addEventListener('touchend', function(e) {
-            //     clearInterval(timer);
-            // });
-
-            // up.addEventListener('touchstart', function(e) {
-            //     e.preventDefault();
-            //     App.playMove('up');
-            // });
-
-            // up.addEventListener('touchend', function(e) {
-            //     clearInterval(timer);
-            // });
-
-            // down.addEventListener('touchstart', function(e) {
-            //     e.preventDefault();
-            //     App.playMove('down');
-            // });
-
-            // down.addEventListener('touchend', function(e) {
-            //     clearInterval(timer);
-            // });
-
             this.longPlayMove = function(dir) {
-                // $('#machine-clip').css('transform','translateX(93px)');
-                // App.handAnim('handAnim', App.animArr, 'litre', 'loop', -1, 35, 30);
-                // if (!off) return;
                 var speed ;
                 switch (dir) {
                     case 'left':
