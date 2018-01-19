@@ -64,10 +64,10 @@ export default {
               {wwUrl:'./static/img/7.png','title':'龙珠-神龙'},
               {wwUrl:'./static/img/8.png','title':'龙珠-战士觉悟-特兰克斯'},
               {wwUrl:'./static/img/9.png','title':'熊本熊'},
-              {wwUrl:'./static/img/11.png','title':'小猪佩奇'},
               {wwUrl:'./static/img/10.png','title':'小猪佩奇'},
               {wwUrl:'./static/img/11.png','title':'小猪佩奇'},
               {wwUrl:'./static/img/12.png','title':'小猪佩奇'},
+              {wwUrl:'./static/img/13.png','title':'小猪佩奇'},
 
             ]
             

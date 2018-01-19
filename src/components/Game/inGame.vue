@@ -607,13 +607,13 @@ export default {
                 var speed ;
                 switch (dir) {
                     case 'left':
-                    speed = -20;
+                    speed = -12;
                     break;
                     case 'up':
                     speed = -10;
                     break;
                     case 'right':
-                    speed = 20;
+                    speed = 12;
                     break;
                     case 'down':
                     speed = 10;
@@ -639,19 +639,19 @@ export default {
                         }
                         restTransition('z',dir);
                     }
-                }, 450);
+                }, 50);
             };
             this.playMove = function(dir) {
                 var speed ;
                 switch (dir) {
                     case 'left':
-                    speed = -20;
+                    speed = -30;
                     break;
                     case 'up':
                     speed = -10;
                     break;
                     case 'right':
-                    speed = 20;
+                    speed = 30;
                     break;
                     case 'down':
                     speed = 10;
@@ -757,6 +757,7 @@ export default {
 .op-btn > .doll-bets-btn {
     flex:0 0 40%;
     vertical-align: middle;
+    -webkit-tap-highlight-color:rgba(255,255,255,0);
 }
 .op-btn > .doll-bets-btn .btn-go {
     background: url('../../../static/img/ingame_btn_go1.png') no-repeat;
@@ -765,6 +766,7 @@ export default {
     height: 1.5rem;
     display: inline-block;
     margin-top: 0.3rem;
+    -webkit-tap-highlight-color:rgba(255,255,255,0);
 }
 .op-btn > .doll-bets-btn .btn-go:active {
     background: url('../../../static/img/ingame_btn_go2.png') no-repeat;

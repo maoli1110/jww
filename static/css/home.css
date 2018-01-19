@@ -127,12 +127,12 @@
 /*them*/
 .game-them{font-size:0.25rem;color:#FFFEAE;text-align:center;height:0.6rem;line-height:0.6rem;font-weight:bold;}
 .add-coin{    
-    right: 0.03rem;
-    top: 0.155rem;
+    right: .03rem;
+    top: .01rem;
     height: 37%;
 }
 .add-coin>img{
-    width: 0.4rem;
+    width: .4rem;
     float: left;
 }
 
