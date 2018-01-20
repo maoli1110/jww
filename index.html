@@ -40,15 +40,18 @@
 <script>
 
 (function (doc, win) {
+        if(navigator.userAgent.indexOf("iPad") == -1 && navigator.userAgent.indexOf("iphone")){  
+            doc.documentElement.style.maxWidth = '414px';
+        }  
         var docEl = doc.documentElement,
             resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
             recalc = function () {
                 var clientWidth = docEl.clientWidth;
                 if (!clientWidth) return;
-                if(clientWidth>=640){
-                    docEl.style.fontSize = '80px';
+                if(clientWidth>=540){
+                    docEl.style.fontSize = '70px';
                 }else{
-                    docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
                 }
             };
 

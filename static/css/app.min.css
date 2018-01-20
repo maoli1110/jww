@@ -899,7 +899,7 @@
 .machine-shadow-fixed {
 	width: 1.5rem;
 	height: 1rem;
-	position: absolute;
+	position: fixed;
 	background: url(../img/ingame_pic_shadow.png) 0 0 no-repeat;
 	background-size: 100%;
 	-webkit-background-size: 100%;
@@ -1102,7 +1102,6 @@
 		transform: rotate(0) translateZ(120px)
 	}
 }
-
 @keyframes arm_right__reset {
 	from {
 		-webkit-transform: rotate(-22deg) translateZ(120px);
@@ -1118,7 +1117,7 @@
 .doll-box {
 	height: 1rem;
 	position: absolute;
-	bottom: 5.2rem;
+	bottom: 5.8rem;
 	right: 0;
 	left: 0;
 /*	-webkit-transform: translateZ(110px);

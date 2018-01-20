@@ -1,4 +1,4 @@
-<template>
+ingm<template>
     <div class="in-game">
         <div class="ingame-1"></div>
         <div class="ingame-2"></div>
@@ -85,7 +85,7 @@
                 <div></div>
             </div>
             <div class="doll-bets-btn pull-right">
-                <span class="btn-go"></span>
+                <div class="btn-go"></div>
             </div>
         </div>
         <mt-tabbar>
@@ -160,6 +160,8 @@ export default {
          
     },
     mounted() {
+
+        document.body.addEventListener('touchstart', function () {});  
         console.log(this.$route.params.num)
         let packetNum = this.$route.params.num + 1 ;
         let moveBottom = $('#doll-list2').offset().top-$("#machine-clip").height()/3;
@@ -175,7 +177,7 @@ export default {
 
         function isIos() {
             var a = navigator.userAgent.toLowerCase();
-            return a.indexOf("iphone") >= 0 || a.indexOf("ipad") >= 0 || a.indexOf("applewebkit") >= 0
+            return a.indexOf("iphone") >= 0 || a.indexOf("ipad") >= 0
         }
 
         function isAndroid() {
@@ -498,134 +500,95 @@ export default {
         var games = new Games,
             record = {},
             App = {};
-        var timeOutEvent;
+        var timeOutEvent,timer;
+        function moveDirection(directionObj,direction) {
+            // body...
+            if(!isIos()){
+                // alert('ios')
+                $(directionObj).on({
+                    mousedown: function(e){
+                        // alert('dwon')
+                        // debugger
+                        $(".btn-"+direction).addClass('btn-'+direction+'-active')
+                        console.log(games.isRun)
+                        if(!games.isRun){
+                            timeOutEvent = setTimeout(function() {
+                                timeOutEvent = 0;   
+                                console.log("长按事件触发发"); 
+                                App.longPlayMove(direction);
+                            },200); 
+                            e.preventDefault();
+                        }
+                    },  
+                    mousemove: function(){  
+                        clearTimeout(timeOutEvent);   
+                        timeOutEvent = 0;
+                    },  
+                    mouseup: function(){  
 
+                        clearTimeout(timeOutEvent);      
+                        console.log('mouseup')
+                        if(timeOutEvent!=0){  
+                            if(!games.isRun){
+                                App.playMove(direction);
+                                console.log("你这是点击，不是长按");
+                            } 
+                        } else {
+                            clearInterval(timer);
+                        }
+                        $(".btn-"+direction).removeClass('btn-'+direction+'-active')
+
+                        return false;   
+                    }  
+                });
+            } else {
+                $(directionObj).on({
+                    touchstart: function(e){
+                        // $(".btn-"+direction).addClass('btn-'+direction+'-active')
+                        console.log(games.isRun)
+                        if(!games.isRun){
+                            timeOutEvent = setTimeout(function() {
+                                timeOutEvent = 0;   
+                                console.log("长按事件触发发"); 
+                                App.longPlayMove(direction);
+                            },200); 
+                            e.preventDefault();
+                        }
+                    },  
+                    touchmove: function(){  
+                        clearTimeout(timeOutEvent);   
+                        timeOutEvent = 0;
+                    },  
+                    touchend: function(){  
+                        // $(".btn-"+direction).removeClass('btn-'+direction+'-active')
+                        clearTimeout(timeOutEvent);  
+                        if(timeOutEvent!=0){  
+                            if(!games.isRun){
+                                App.playMove(direction);
+                                console.log("你这是点击，不是长按");
+                            } 
+                        } else {
+                            clearInterval(timer);
+                        }
+                        return false;   
+                    }  
+                });  
+            }
+        }
         /**爪子左右移动**/
         App.move = function() {
             var left = document.querySelector('.btn-left');
             var right = document.querySelector('.btn-right');
             var up = document.querySelector('.btn-up');
             var down = document.querySelector('.btn-down');
-            var timer = null;
+            // var timer = null;
             var max = $(".doll-machine").width() - $(".machine-clip").width();
             var min = -30;
-            $(left).on({
-                touchstart: function(e){
-                    console.log(games.isRun)
-                    if(!games.isRun){
-                        timeOutEvent = setTimeout(function() {
-                            timeOutEvent = 0;   
-                            console.log("长按事件触发发"); 
-                            App.longPlayMove('left');
-                        },200);  
-                        e.preventDefault();
-                    }
-                },  
-                touchmove: function(){  
-                    clearTimeout(timeOutEvent);
-                    timeOutEvent = 0;
-                },  
-                touchend: function(){  
-                    clearTimeout(timeOutEvent);  
-                    if(timeOutEvent!=0){ 
-                        if(!games.isRun){
-                            App.playMove('left');
-                            console.log("你这是点击，不是长按");
-                        }
-                    } else {
-                        clearInterval(timer);
-                    }
-                    return false;
-                }  
-            });
-
-            $(right).on({
-                touchstart: function(e){
-                    console.log(games.isRun)
-                    if(!games.isRun){
-                        timeOutEvent = setTimeout(function() {
-                            timeOutEvent = 0;   
-                            console.log("长按事件触发发"); 
-                            App.longPlayMove('right');
-                        },200); 
-                        e.preventDefault();
-                    }
-                },  
-                touchmove: function(){  
-                    clearTimeout(timeOutEvent);   
-                    timeOutEvent = 0;
-                },  
-                touchend: function(){  
-                    clearTimeout(timeOutEvent);  
-                    if(timeOutEvent!=0){  
-                        if(!games.isRun){
-                            App.playMove('right');
-                            console.log("你这是点击，不是长按");
-                        } 
-                    } else {
-                        clearInterval(timer);
-                    }
-                    return false;   
-                }  
-            });
-
-            $(up).on({
-                touchstart: function(e){
-                    if(!games.isRun){
-                        timeOutEvent = setTimeout(function() {
-                            timeOutEvent = 0;   
-                            console.log("长按事件触发发"); 
-                            App.longPlayMove('up');
-                        },200);  
-                        e.preventDefault();
-                    }
-                },  
-                touchmove: function(){  
-                    clearTimeout(timeOutEvent);   
-                    timeOutEvent = 0;
-                },  
-                touchend: function(){  
-                    clearTimeout(timeOutEvent);  
-                    if(timeOutEvent!=0){   
-                        if(!games.isRun){
-                            App.playMove('up');
-                            console.log("你这是点击，不是长按");
-                        }
-                    } else {
-                        clearInterval(timer);
-                    }
-                    return false;   
-                }  
-            });
-
-            $(down).on({
-                touchstart: function(e){
-                    if(!games.isRun){
-                        timeOutEvent = setTimeout(function() {
-                            timeOutEvent = 0;   
-                            console.log("长按事件触发发"); 
-                            App.longPlayMove('down');
-                        },200);  
-                        e.preventDefault();
-                    }
-                },  
-                touchmove: function(){  
-                    clearTimeout(timeOutEvent);   
-                    timeOutEvent = 0;
-                },  
-                touchend: function(){  
-                    clearTimeout(timeOutEvent);  
-                    if(timeOutEvent!=0){   
-                        if(!games.isRun){
-                            App.playMove('down');
-                            console.log("你这是点击，不是长按");
-                        }
-                    } else {
-                        clearInterval(timer);
-                    }
-                    return false;   
-                }  
-            });
+            //方向按键
+            moveDirection(left,'left');
+            moveDirection(right,'right');
+            moveDirection(up,'up');
+            moveDirection(down,'down');
 
             this.longPlayMove = function(dir) {
                 var speed ;
@@ -653,6 +616,7 @@ export default {
                         } else if (m < min) {
                             m = min;
                         }
+                        if(m<0) return; 
                         restTransition('xy');
                     } else {
                         n = n + speed;
@@ -688,6 +652,7 @@ export default {
                     } else if (m < min) {
                         m = min;
                     }
+                    if(m<0) return; 
                     restTransition('xy');
                 } else {
                     n = n + speed;
@@ -701,12 +666,12 @@ export default {
             };
         };
         setTimeout(function(){
-            var a = document.querySelectorAll(".doll-bets-btn")[0];
+            var a = document.querySelectorAll(".btn-go")[0];
             if ("undefined" != typeof a ) {
                     var b = new ClampDoll;
-                    a.addEventListener("click",function(){
+                    a.addEventListener("touchstart",function(e){
                         isCatch = false;
-                        if($("#machine-clip").offset().left < 20) return;
+                        // if($("#machine-clip").offset().left < 20) return;
                         let shadowLeft = $(".machine-shadow").offset().left;
                         let shadowTop = $(".machine-shadow").offset().top;
                         $(".machine-shadow").css('display','none');
@@ -734,7 +699,7 @@ export default {
     position: absolute;
     z-index: 3;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background: url("../../../static/img/ingame_bg1.png") no-repeat;
     background-size:100% 100%;
 }
@@ -742,7 +707,7 @@ export default {
     position: absolute;
     z-index: 2;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background: url("../../../static/img/ingame_bg2.png") no-repeat;
     background-size:100% 100%;
 }
@@ -750,7 +715,7 @@ export default {
     position: absolute;
     z-index: 1;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background: url("../../../static/img/ingame_bg3.jpg") no-repeat;
     background-size:100% 100%;
 }
@@ -776,7 +741,7 @@ export default {
     z-index: 3;
     width: 100%;
     height: 17%;
-    bottom: 12%;
+    bottom: 13.2%;
     width: 100%;
     display: flex;
     display: -webkit-flex;
@@ -810,15 +775,15 @@ export default {
     display: flex;
     display: -webkit-flex;
     flex-wrap:wrap;
-    margin-left: .4rem;
+    margin-left: .6rem;
 }
 .operation-btn > div {
     height: .65rem; 
-    width: 30%;
+    width: 28%;
 }
 
 .doll-bets-btn{
-    width: 30%;
+    width: 28%; 
     margin-right: 10%;
     text-align: right;
 }
@@ -862,7 +827,24 @@ export default {
 }
 .operation-btn > div:nth-child(8):active{
     background: url('../../../static/img/ingame_btn_down2.png')no-repeat 3px 1px ;
+    background-size: 100% 100%;
 }
+.operation-btn > div:nth-child(2).btn-up-active{
+    background: url('../../../static/img/ingame_btn_up2.png') no-repeat 2px 5px ;
+    background-size: 100% 100%;
+}
+.operation-btn > div:nth-child(4).btn-left-active{
+    background: url('../../../static/img/ingame_btn_left2.png') no-repeat 6px 3px ;
+    background-size: 100% 100%;
+}
+.operation-btn > div:nth-child(6).btn-right-active{
+    background: url('../../../static/img/ingame_btn_right2.png') no-repeat -4px 4px ;
+    background-size: 100% 100%;
+}
+.operation-btn > div:nth-child(8).btn-down-active{
+    background: url('../../../static/img/ingame_btn_down2.png')no-repeat 3px 1px ;
+    background-size: 100% 100%;
+} 
 .doll-machine{
     perspective: 600px;
 }
@@ -927,7 +909,7 @@ export default {
 .user-info {
     width: 2.9rem;
     height: 1.9rem;
-    position: absolute;
+    position: absolute; 
     right: 0;
     top: .19rem;
     z-index: 8;
@@ -948,7 +930,7 @@ export default {
 </style>
 <style>
 .in-game .mint-tabbar .mint-tab-item-icon {
-    width: 70% !important;;
+    width: 50% !important;;
     height: 100%;
 }
 

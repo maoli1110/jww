@@ -35,6 +35,13 @@ html {
 *:after {
 	box-sizing: inherit;
 }
+*{
+    -webkit-touch-callout:none;
+    -moz-touch-callout:none;
+    -ms-touch-callout:none;
+      touch-callout:none;
+ }
+/**{ pointer-events: none; }*/
 
 /* consider resetting the default cursor: https://gist.github.com/murtaugh/5247154 */
 
@@ -390,4 +397,17 @@ footer,header,nav,section {
 /* ipad pro横屏 */
 @media only screen and (min-device-width : 1024px)and (max-device-width : 1366px) and (orientation : landscape){
     /* style */
+}
+@media only screen and (min-device-width: 375px)and (-webkit-min-device-pixel-ratio: 2) {
+/*针对大多数iPhone6的标准模式*/
+    html {
+        font-size: 58px!important
+    }
+}
+  
+@media only screen and (min-device-width: 375px)and (-webkit-min-device-pixel-ratio: 3) {
+/*针对所有iPhone6+的放大模式*/
+  html {
+        font-size: 58px!important
+    }
 }

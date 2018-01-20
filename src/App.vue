@@ -9,6 +9,9 @@
 #app {
     height: 100%;
 }
+.wrapper, .content, .in-game{
+	height: 100%;
+}
 </style>
 <script>
     export default {
