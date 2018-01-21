@@ -165,6 +165,11 @@ export default {
         console.log(this.$route.params.num)
         let packetNum = this.$route.params.num + 1 ;
         let moveBottom = $('#doll-list2').offset().top-$("#machine-clip").height()/3;
+
+        var m = 0;
+        var n = 0;
+        var isCatch = false;
+
         this.packetUrl = './static/img/'+packetNum+'.png';
         $(".doll-img_name__goods").css("background",'url(./static/img/'+this.$route.params.num+'.png) 47% 0 no-repeat');
         $(".doll-img_name__goods").css("background-size",'150%');
@@ -209,7 +214,7 @@ export default {
             return b.substring(0, b.indexOf("T"))
         }
 
-        function restTransition(domName,type) {
+        function restTransition(domName,type,moveBottom) {
             
             if(domName == 'xy'){
                 $('#machine-clip').css('transform', 'translateX(' + m + 'px)');
@@ -241,7 +246,7 @@ export default {
             }
         }
 
-        function getLevel() {
+        function getLevel(n) {
             var level;
             if(n>=-10 && n<=10 ){ //第二层
                 level=2;
@@ -252,41 +257,7 @@ export default {
             }
             return level;
         }
-        
-        function changeTitle(a) {
-            if (document.title = a, navigator.userAgent.toLowerCase().indexOf("iphone") >= 0) {
-                var b = $("body"),
-                    c = $('<iframe src="/favicon.ico"></iframe>');
-                c.on("load",
-                    function() {
-                        setTimeout(function() {
-                                c.off("load").remove()
-                            },
-                            0)
-                    }).appendTo(b)
-            }
-        }
 
-        function alertUI(a, b, c) {
-            var d = document.getElementById("alertUI");
-            if (b = b ? b : "温馨提示", a = a ? a : "", null == d) {
-                var e = '<div id="alertUI" style="width:100%;height:100%; background:rgba(0,0,0,0.5);position: fixed; left:0px; top: 0px; z-index: 999999999;display:none;"><div  style="width:85%; background: #FFF; margin: 220px auto;border: 1px solid #CFCFCF;border-radius:3px;max-width:500px;"><h1 class="alertUI_title" style="margin:0px; padding: 15px 0 5px; font-family:\'arial\';font-size: 22px;line-height:30px;font-weight: normal;color:#000;text-align:center;">温馨提示</h1><div class="alertUI_content" style="padding:5px 20px;font-size: 17px;font-family:\'arial\'; color: #676767;"></div><p style="margin:0px; border-top:1px solid #cfcfcf; text-align:center; margin-top:20px"><a class="alertUI_button" style="font-family:\'arial\'; font-size:18px;color:#3cc51f;cursor: pointer;display:block;line-height:50px;text-align:center;">确定</a></p></div></div>';
-                document.body.insertAdjacentHTML("beforeEnd", e)
-            }
-            var d = document.getElementById("alertUI");
-            return d.querySelectorAll(".alertUI_title")[0].innerHTML = b,
-                d.querySelectorAll(".alertUI_content")[0].innerHTML = a,
-                d.querySelectorAll(".alertUI_button")[0].onclick = function() {
-                    d.style.display = "none",
-                        "function" == typeof c && c()
-                },
-                d.style.display = "block", !1
-        }
-
-
-        var m = 0;
-        var n = 0;
-        var isCatch = false;
 
         /*games对象*/
         function Games() {
@@ -386,6 +357,22 @@ export default {
             }
         }
 
+
+        function initDollItems(a) {
+            var b = {
+                dolls: a.concat(a)
+            };
+            $("#doll-list,#doll-list__small").html(""),
+            $("#doll-items-tmpl").tmpl(b).appendTo("#doll-list"),
+            $("#small-doll-items-tmpl").tmpl(b).appendTo("#doll-list__small")
+        }
+
+
+        var games = new Games,
+            record = {},
+            App = {};
+        var timeOutEvent,timer;
+
         function ClampDoll() { /*钩子*/
 
             games.isRun = !1,
@@ -399,7 +386,7 @@ export default {
                 this.setTime.fallingToRising = this.setTime.falling,
                 this.setTime.risingEnd = this.setTime.falling + this.setTime.rising,
                 this.getHeight = function() {
-                    var level = getLevel();
+                    var level = getLevel(n);
                     var a = $(document).height(),
                         b = $("#machine-clip").height(),
                         c = $(document.getElementById("doll-list"+level)).offset().top,
@@ -446,7 +433,7 @@ export default {
                     var b = 1;
                     return setTimeout(function() {
                         var a = -1;
-                        var level = getLevel();
+                        var level = getLevel(n);
                         b = this.$clip.offset().left;
                         $('#doll-list'+level+' >li').map(function(c, d) {
                             var e = Math.abs($(d).offset().left);
@@ -486,94 +473,42 @@ export default {
                         this.clipEnd()
                 }
         }
-
-        function initDollItems(a) {
-            var b = {
-                dolls: a.concat(a)
-            };
-            $("#doll-list,#doll-list__small").html(""),
-            $("#doll-items-tmpl").tmpl(b).appendTo("#doll-list"),
-            $("#small-doll-items-tmpl").tmpl(b).appendTo("#doll-list__small")
-        }
-
-
-        var games = new Games,
-            record = {},
-            App = {};
-        var timeOutEvent,timer;
         function moveDirection(directionObj,direction) {
-            // body...
-            if(!isIos()){
-                // alert('ios')
-                $(directionObj).on({
-                    mousedown: function(e){
-                        // alert('dwon')
-                        // debugger
-                        $(".btn-"+direction).addClass('btn-'+direction+'-active')
-                        console.log(games.isRun)
-                        if(!games.isRun){
-                            timeOutEvent = setTimeout(function() {
-                                timeOutEvent = 0;   
-                                console.log("长按事件触发发"); 
-                                App.longPlayMove(direction);
-                            },200); 
-                            e.preventDefault();
-                        }
-                    },  
-                    mousemove: function(){  
-                        clearTimeout(timeOutEvent);   
-                        timeOutEvent = 0;
-                    },  
-                    mouseup: function(){  
+            var timeout;
+            //鼠标按下 或 手指触摸屏幕时触发
+            $(directionObj).bind('touchstart mousedown', function (event) {
+                event.stopPropagation();
+                event.preventDefault();
+                $(this).addClass('bghover');
+                if(!games.isRun){
+                    App.playMove(direction);
 
-                        clearTimeout(timeOutEvent);      
-                        console.log('mouseup')
-                        if(timeOutEvent!=0){  
-                            if(!games.isRun){
-                                App.playMove(direction);
-                                console.log("你这是点击，不是长按");
-                            } 
-                        } else {
-                            clearInterval(timer);
-                        }
-                        $(".btn-"+direction).removeClass('btn-'+direction+'-active')
+                    timeout = setTimeout(function () {                                 
+                        // $('#editDiv').show(); $('#newDiv').show();
+                         App.longPlayMove(direction);
+                    }, 100);  
+                }
+                $(".btn-"+direction).addClass('btn-'+direction+'-active')   
+                console.log('start')                       
+            });
+            //鼠标松开 或 手指从屏幕上离开时触发
+            $(directionObj).bind('touchend mouseup', function (event) {                            
+                clearTimeout(timeout);
+                // $(this).removeClass('bghover'); 
+                 $(".btn-"+direction).removeClass('btn-'+direction+'-active') 
+                 clearInterval(timer)                         
+                 console.log('end')
 
-                        return false;   
-                    }  
-                });
-            } else {
-                $(directionObj).on({
-                    touchstart: function(e){
-                        // $(".btn-"+direction).addClass('btn-'+direction+'-active')
-                        console.log(games.isRun)
-                        if(!games.isRun){
-                            timeOutEvent = setTimeout(function() {
-                                timeOutEvent = 0;   
-                                console.log("长按事件触发发"); 
-                                App.longPlayMove(direction);
-                            },200); 
-                            e.preventDefault();
-                        }
-                    },  
-                    touchmove: function(){  
-                        clearTimeout(timeOutEvent);   
-                        timeOutEvent = 0;
-                    },  
-                    touchend: function(){  
-                        // $(".btn-"+direction).removeClass('btn-'+direction+'-active')
-                        clearTimeout(timeOutEvent);  
-                        if(timeOutEvent!=0){  
-                            if(!games.isRun){
-                                App.playMove(direction);
-                                console.log("你这是点击，不是长按");
-                            } 
-                        } else {
-                            clearInterval(timer);
-                        }
-                        return false;   
-                    }  
-                });  
-            }
+            });
+            //鼠标移出、手指停止触摸屏幕时触发
+            $(directionObj).bind('touchcancel mouseout', function (event) {                            
+                clearTimeout(timeout);
+                // $(this).removeClass('bghover');  
+                 $(".btn-"+direction).removeClass('btn-'+direction+'-active')                          
+                 clearInterval(timer)                         
+
+            });
+                
         }
         /**爪子左右移动**/
         App.move = function() {
@@ -617,7 +552,7 @@ export default {
                             m = min;
                         }
                         if(m<0) return; 
-                        restTransition('xy');
+                        restTransition('xy','',moveBottom);
                     } else {
                         n = n + speed;
                         if (n > 30) {
@@ -625,7 +560,7 @@ export default {
                         } else if (n < -30) {
                             n = -30;
                         }
-                        restTransition('z',dir);
+                        restTransition('z',dir,moveBottom);
                     }
                 }, 50);
             };
@@ -653,7 +588,7 @@ export default {
                         m = min;
                     }
                     if(m<0) return; 
-                    restTransition('xy');
+                    restTransition('xy','',moveBottom);
                 } else {
                     n = n + speed;
                     if (n > 30) {
@@ -661,7 +596,7 @@ export default {
                     } else if (n < -30) {
                         n = -30;
                     }
-                    restTransition('z',dir);
+                    restTransition('z',dir,moveBottom);
                 }
             };
         };
