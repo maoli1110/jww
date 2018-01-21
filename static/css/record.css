@@ -5,8 +5,8 @@
     top:0;
 }
 .recode-bg .recode-close {
-    width: 0.4rem;
-    height: 0.5rem;
+    width: 0.88rem;
+    height: 0.84rem;
     background: url("../../static/img/my_btn_cancel1.png") center no-repeat;
     background-size: 100%;
     right: 3%;
@@ -71,6 +71,10 @@
 .mint-tab-item-label{width:70%;margin:0}
 .mint-tab-item:nth-child(1) .mint-tab-item-label{width:70%;margin:0;margin-left:0.5rem}
 /*提取娃娃*/
-.extract-pro{width:1.4rem;bottom:15%;left: 50%;
-    margin-left: -0.75rem;}
+.extract-pro{
+    width: 3rem;
+    bottom: 1rem;
+    left: 50%;
+    margin-left: -1.5rem;
+}
 .record-content .mint-cell{border-bottom:2px dashed #fff;}

@@ -398,14 +398,17 @@ export default {
                 this.screen_h = $(document).height(),
                 this.falling = function() { /*钩子开始下落*/
                     this.running = !0;
-                    var a = "translate3d(" + m + "px," + this.getHeight() + "px,"+n+"px)";
-
+                    let tempM;
+                    tempM = m<0?0:m;
+                    console.log(tempM)
+                    var a = "translate3d(" + tempM + "px," + this.getHeight() + "px,"+n+"px)";
                     move(this.clip).set("transform", a).duration(this.setTime.falling).ease("linear").end()
                 },
 
                 this.rising = function() { /*钩子触碰到*/
-
-                    var a = "translate(" + m + "px," + 0 + "px)";
+                    let tempM;
+                    tempM = m<0?0:m;
+                    var a = "translate(" + tempM + "px," + 0 + "px)";
                     var b = "translate(" + 0 + "px," + 0 + "px)";
                     var _clip = this.clip;
                     var _this = this;
@@ -568,13 +571,13 @@ export default {
                 var speed ;
                 switch (dir) {
                     case 'left':
-                    speed = -30;
+                    speed = -15;
                     break;
                     case 'up':
                     speed = -10;
                     break;
                     case 'right':
-                    speed = 30;
+                    speed = 15;
                     break;
                     case 'down':
                     speed = 10;
@@ -609,13 +612,13 @@ export default {
                         // if($("#machine-clip").offset().left < 20) return;
                         let shadowLeft = $(".machine-shadow").offset().left;
                         let shadowTop = $(".machine-shadow").offset().top;
-                        $(".machine-shadow").css('display','none');
-                        //保持影子不动
-                        $(".machine-shadow-fixed").show();
-                        $('.machine-shadow-fixed').css({'left':shadowLeft,'top':shadowTop})
-                        console.log(games.isRun);
-                        if(games.isRun===1) return;
-                        console.log(games.isRun,'games.isRun');
+                        //游戏过程中不重复操作影子
+                        if(!games.isRun){
+                            $(".machine-shadow").css('display','none');
+                            $(".machine-shadow-fixed").show();
+                            $('.machine-shadow-fixed').css({'left':shadowLeft,'top':shadowTop})
+                        }
+                        if(games.isRun===1) return; //游戏过程中，go按键不可以按下
                         b.init();
                         games.isRun = 1;
                     });
@@ -676,7 +679,7 @@ export default {
     z-index: 3;
     width: 100%;
     height: 17%;
-    bottom: 13.2%;
+    bottom: 12.6%;
     width: 100%;
     display: flex;
     display: -webkit-flex;
@@ -685,15 +688,15 @@ export default {
     flex:1;
 }
 .op-btn > .doll-bets-btn {
-    flex:0 0 40%;
+    flex:0 0 34%;
     vertical-align: middle;
     -webkit-tap-highlight-color:rgba(255,255,255,0);
 }
 .op-btn > .doll-bets-btn .btn-go {
     background: url('../../../static/img/ingame_btn_go1.png') no-repeat;
     background-size: 100%;
-    width: 2rem;
-    height: 1.5rem;
+    width: 1.86rem;
+    height: 1.46rem;
     display: inline-block;
     margin-top: 0.3rem;
     -webkit-tap-highlight-color:rgba(255,255,255,0);
@@ -713,8 +716,8 @@ export default {
     margin-left: .6rem;
 }
 .operation-btn > div {
-    height: .65rem; 
-    width: 28%;
+    height: .56rem; 
+    width: .96rem;
 }
 
 .doll-bets-btn{
@@ -842,14 +845,14 @@ export default {
     width: 18%
 } 
 .user-info {
-    width: 2.9rem;
+    width: 3.2rem; 
     height: 1.9rem;
     position: absolute; 
     right: 0;
     top: .19rem;
     z-index: 8;
     background: url('../../../static/img/ingame_table_information.png') no-repeat;
-    background-size: 2.69rem 1.1rem;
+    background-size: 3rem 1.1rem;
 }
 .message {
     position: absolute;

@@ -10,7 +10,7 @@
             </div>
             <div class="absol recode-list">
                 <!--table选项卡-->
-                <mt-navbar v-model="selected" class="absol" style="top:22.8%;z-index:100">
+                <mt-navbar v-model="selected" class="absol" style="top:22.%;z-index:100">
                     <mt-tab-item id="list" style=" ">
                         <img :src="tableSwitch.mineUrl" alt="">
                     </mt-tab-item>
@@ -20,7 +20,7 @@
                 </mt-navbar>
                 <!-- tab-container -->
                 <mt-tab-container v-model="selected" class="record-content">
-                    <mt-tab-container-item id="list">
+                    <mt-tab-container-item id="history">
                         <div class="record-list-wrapper">
                             <mt-cell class="relat item-infos" v-for="item in payInfo" :key="item.price">
                                 <div class="record-type" @click="panelClose">
@@ -35,7 +35,7 @@
                             </mt-cell>
                         </div>
                     </mt-tab-container-item>
-                    <mt-tab-container-item id="history">
+                    <mt-tab-container-item id="list">
                         <div class="history-list" >
                             <div class="history-list-item" v-for="item in 12" >
                                 <img slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="66">
@@ -76,7 +76,7 @@
                 ],
                 hidePanel: false,
                 tableSwitch:{
-                    mineUrl:'./static/img//my_btn_mine1.png',
+                    mineUrl:'./static/img/my_btn_mine1.png',
                     historyUrl:'./static/img/my_btn_record1.png',
                 }
             }
@@ -88,7 +88,7 @@
             },
             //初始化tab选项卡的状态
             restUrl(){
-                this.tableSwitch.mineUrl = './static/img//my_btn_mine1.png';
+                this.tableSwitch.mineUrl = './static/img/my_btn_mine1.png';
                 this.tableSwitch.historyUrl = './static/img/my_btn_record1.png';
             },
             //提取娃娃

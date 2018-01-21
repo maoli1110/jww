@@ -269,6 +269,7 @@ footer,header,nav,section {
 }
 .mint-cell-wrapper{
     padding:0 4px !important;
+    background-image: none !important;
 }
 /* flex */
 .Grid{
