@@ -168,8 +168,8 @@ export default {
 
         var m = 0;
         var n = 0;
-        var isCatch = false;
-
+        var isCatch = false;  
+        var isVisibleGo = true;
         this.packetUrl = './static/img/'+packetNum+'.png';
         $(".doll-img_name__goods").css("background",'url(./static/img/'+this.$route.params.num+'.png) 47% 0 no-repeat');
         $(".doll-img_name__goods").css("background-size",'150%');
@@ -480,6 +480,7 @@ export default {
             var timeout;
             //鼠标按下 或 手指触摸屏幕时触发
             $(directionObj).bind('touchstart mousedown', function (event) {
+                isVisibleGo = false;
                 event.stopPropagation();
                 event.preventDefault();
                 $(this).addClass('bghover');
@@ -495,7 +496,8 @@ export default {
                 console.log('start')                       
             });
             //鼠标松开 或 手指从屏幕上离开时触发
-            $(directionObj).bind('touchend mouseup', function (event) {                            
+            $(directionObj).bind('touchend mouseup', function (event) {     
+                isVisibleGo = true;                       
                 clearTimeout(timeout);
                 // $(this).removeClass('bghover'); 
                  $(".btn-"+direction).removeClass('btn-'+direction+'-active') 
@@ -607,7 +609,8 @@ export default {
             var a = document.querySelectorAll(".btn-go")[0];
             if ("undefined" != typeof a ) {
                     var b = new ClampDoll;
-                    a.addEventListener("touchstart",function(e){
+                    $(a).bind("touchstart mousedown",function(e){
+                        if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
                         isCatch = false;
                         // if($("#machine-clip").offset().left < 20) return;
                         let shadowLeft = $(".machine-shadow").offset().left;
@@ -618,7 +621,6 @@ export default {
                             $(".machine-shadow-fixed").show();
                             $('.machine-shadow-fixed').css({'left':shadowLeft,'top':shadowTop})
                         }
-                        if(games.isRun===1) return; //游戏过程中，go按键不可以按下
                         b.init();
                         games.isRun = 1;
                     });
