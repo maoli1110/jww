@@ -164,8 +164,8 @@ export default {
         document.body.addEventListener('touchstart', function () {});  
         console.log(this.$route.params.num)
         let packetNum = this.$route.params.num + 1 ;
-        let moveBottom = $('#doll-list2').offset().top-$("#machine-clip").height()/3;
-
+        let moveBottom = $('#doll-list2').offset().top+$('#doll-list2').height()-$("#machine-clip").height();
+console.log(moveBottom)
         var m = 0;
         var n = 0;
         var isCatch = false;  
@@ -214,7 +214,7 @@ export default {
             return b.substring(0, b.indexOf("T"))
         }
 
-        function restTransition(domName,type,moveBottom) {
+        function restTransition(domName,type) {
             
             if(domName == 'xy'){
                 $('#machine-clip').css('transform', 'translateX(' + m + 'px)');
@@ -229,18 +229,21 @@ export default {
                 if(n== -30 || n== 30 ){
                     return; 
                 } else {
-                    // console.log(n)
+                    console.log(n)
+                    debugger
                     moveBottom = -Math.abs(moveBottom);
                     if(type == 'up'){
-                        // console.log('up')
                         moveBottom = moveBottom + 25;
+                        let tempMoveBottom = moveBottom;
+                        console.log('up')
                         console.log(moveBottom)
-                        $('.machine-shadow').animate({bottom:moveBottom});
+                        $('.machine-shadow').animate({bottom:tempMoveBottom,speed:1000,easing:'linear'});
                     } else {
                         moveBottom = moveBottom - 25;
-                        // console.log('down')
-                        // console.log(moveBottom)
-                        $('.machine-shadow').animate({bottom:moveBottom,speed:1000,easing:'linear'});
+                        let tempMoveBottom = moveBottom;
+                        console.log('down')
+                        console.log(moveBottom)
+                        $('.machine-shadow').animate({bottom:tempMoveBottom,speed:1000,easing:'linear'});
                     }
                 }
             }
@@ -391,8 +394,6 @@ export default {
                         b = $("#machine-clip").height(),
                         c = $(document.getElementById("doll-list"+level)).offset().top,
                         d = c-b/2;
-                        console.log(a,c) 
-                    console.log('ddd')
                     return d
                 },
                 this.screen_h = $(document).height(),
@@ -557,7 +558,7 @@ export default {
                             m = min;
                         }
                         if(m<0) return; 
-                        restTransition('xy','',moveBottom);
+                        restTransition('xy','');
                     } else {
                         n = n + speed;
                         if (n > 30) {
@@ -565,7 +566,7 @@ export default {
                         } else if (n < -30) {
                             n = -30;
                         }
-                        restTransition('z',dir,moveBottom);
+                        restTransition('z',dir);
                     }
                 }, 50);
             };
@@ -593,7 +594,7 @@ export default {
                         m = min;
                     }
                     if(m<0) return; 
-                    restTransition('xy','',moveBottom);
+                    restTransition('xy','');
                 } else {
                     n = n + speed;
                     if (n > 30) {
@@ -601,7 +602,7 @@ export default {
                     } else if (n < -30) {
                         n = -30;
                     }
-                    restTransition('z',dir,moveBottom);
+                    restTransition('z',dir);
                 }
             };
         };
@@ -706,8 +707,8 @@ export default {
 .op-btn > .doll-bets-btn .btn-go:active {
     background: url('../../../static/img/ingame_btn_go2.png') no-repeat;
     background-size: 100%;
-    width: 2rem;
-    height: 1.5rem;
+    width: 1.86rem;
+    height: 1.46rem;
     display: inline-block;
     margin-top: 0.3rem;
 }
