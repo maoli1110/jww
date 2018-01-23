@@ -257,10 +257,30 @@ footer,header,nav,section {
 /*公用弹窗样式*/
 /*遮罩*/
 .mask{background:#000;opacity:0.6;z-index:10;width:100%;height:100%;top:0;}
+.mask1{background:#000;opacity:0.6;z-index:12;width:100%;height:100%;top:0;}
 /*绝对定位*/
 .absol{position:absolute;}
+.fix{position: fixed;}
 /*相对定位*/
-.relat{position:relative}
+.relat{position:relative;}
+.rela{position:relative;}
+/*左右对齐*/
+.align-r{text-align: right;}
+.align-l{text-align: left;}
+/*字体颜色*/
+.grey{
+    color: #989898;
+}
+.grey1{
+    color: #979797;
+}
+/**/
+.font-16{
+    font-size: .16rem;
+}
+.font-26{
+    font-size: .26rem;
+}
 .pull-left{
 	float: left;
 }
@@ -278,20 +298,33 @@ footer,header,nav,section {
 .Grid-cell{
     flex: 1;        
 }
+
+.Grid-cell.u-lof12{ 
+    flex: 0 0 12%;
+}
+.Grid-cell.u-lof3{
+    flex: 0 0 30%;
+}
+.Grid-cell.u-lof40{
+    flex: 0 0 40%;
+}
+.Grid-cell.u-lof50{
+    flex: 0 0 50%;
+}
+.Grid-cell.u-lof60{
+    flex: 0 0 60%;
+}
+.Grid-cell.u-lof25{ 
+    flex: 0 0 25%;
+}
 .Grid-cell.u-full{
     flex: 0 0 100%;
 }
-.Grid-cell.u-lof2{
-    flex: 0 0 50%;
-}
-.Grid-cell.u-lof3{
-    flex: 0 0 33.3333%;
-}
-.Grid-cell.u-lof4{ 
-    flex: 0 0 25%;
-}
-.Grid-cell.u-lof6{ 
-    flex: 0 0 12%;
+
+.cloumn-center{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 /*substr*/
 .mint-cell-value .substr{
@@ -336,8 +369,8 @@ footer,header,nav,section {
     float:left;
 }
 .dialog-close {
-    width: 0.4rem;
-    height: 0.5rem;
+    width: .82rem;
+    height: .82rem;
     background: url("../../static/img/my_btn_cancel1.png") center no-repeat;
     background-size: 100%;
     right: 3%;

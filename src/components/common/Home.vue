@@ -4,10 +4,10 @@
             <transition name="move" mode="out-in">
                     <router-view></router-view>
             </transition>
-            <!-- <audio controls="controls" autoplay="autoplay" style="display:none" loop="loop">
+            <audio controls="controls" autoplay="autoplay" style="display:none" loop="loop">
               <source :src="audioUrl" type="audio/mpeg" />
             Your browser does not support the audio element.
-            </audio> -->
+            </audio>
         </div>
     </div>
 </template>
