@@ -374,7 +374,7 @@ footer,header,nav,section {
     background: url("../../static/img/my_btn_cancel1.png") center no-repeat;
     background-size: 100%;
     right: 3%;
-    top: 1.8rem;
+    top: 1.3rem;
     z-index: 12;
 }
 .common-list-wrapper {
