@@ -803,6 +803,7 @@ console.log(moveBottom)
     z-index: 1;
     top: 0;
     left: 10px;
+    width: 97%;
 }
 #doll-list2{
     position: absolute;
