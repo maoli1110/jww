@@ -4,7 +4,7 @@
             <transition name="move" mode="out-in">
                     <router-view></router-view>
             </transition>
-            <audio controls="controls" autoplay="autoplay" style="display:none" loop="loop">
+            <audio id="bg-music" controls="controls" autoplay="autoplay" style="display:none" loop="loop">
               <source :src="audioUrl" type="audio/mpeg" />
             Your browser does not support the audio element.
             </audio>
@@ -13,6 +13,18 @@
 </template>
 
 <script>
+function audioAutoPlay(id){ 
+    let audio = document.getElementById(id),
+        play = function(){
+        audio.play();
+        document.removeEventListener("touchstart",play, false);
+    };
+    audio.play();
+    document.addEventListener("WeixinJSBridgeReady", function (){
+       play(); 
+    }, false);
+    document.addEventListener("touchstart",play, false);
+}
 export default {
     data(){
         return{
@@ -23,6 +35,9 @@ export default {
         setAuthority(){
             this.$refs.navbar.selectMenu()
         }
+    },
+    mounted() {
+        audioAutoPlay('bg-music');
     }
 }
 </script>

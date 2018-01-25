@@ -17,7 +17,7 @@
     width:90%;
     height:100%;
     font-size:12px;
-    background:url(/static/img/my_frame_bg.png) center 25% no-repeat;
+    background:url("../../static/img/my_frame_bg.png") center 25% no-repeat;
     z-index:10;
     left:5%;
     background-size: 100%;

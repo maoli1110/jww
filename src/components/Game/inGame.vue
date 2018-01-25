@@ -162,10 +162,12 @@ export default {
     mounted() {
 
         document.body.addEventListener('touchstart', function () {});  
-        console.log(this.$route.params.num)
+        // console.log(this.$route.params.num)
         let packetNum = this.$route.params.num + 1 ;
         let moveBottom = $('#doll-list2').offset().top+$('#doll-list2').height()-$("#machine-clip").height();
-console.log(moveBottom)
+        let documentWidth = $(document).width(); //document width
+        let keyCodeArry=[];
+        // console.log(moveBottom)
         var m = 0;
         var n = 0;
         var isCatch = false;  
@@ -215,7 +217,6 @@ console.log(moveBottom)
         }
 
         function restTransition(domName,type) {
-            
             if(domName == 'xy'){
                 $('#machine-clip').css('transform', 'translateX(' + m + 'px)');
                 $('#machine-clip').css('-webkit-transform', 'translateX(' + m + 'px)');
@@ -229,20 +230,18 @@ console.log(moveBottom)
                 if(n== -30 || n== 30 ){
                     return; 
                 } else {
-                    console.log(n)
-                    debugger
                     moveBottom = -Math.abs(moveBottom);
                     if(type == 'up'){
                         moveBottom = moveBottom + 25;
                         let tempMoveBottom = moveBottom;
-                        console.log('up')
-                        console.log(moveBottom)
+                        // console.log('up')
+                        // console.log(moveBottom)
                         $('.machine-shadow').animate({bottom:tempMoveBottom,speed:1000,easing:'linear'});
                     } else {
                         moveBottom = moveBottom - 25;
                         let tempMoveBottom = moveBottom;
-                        console.log('down')
-                        console.log(moveBottom)
+                        // console.log('down')
+                        // console.log(moveBottom)
                         $('.machine-shadow').animate({bottom:tempMoveBottom,speed:1000,easing:'linear'});
                     }
                 }
@@ -259,6 +258,50 @@ console.log(moveBottom)
                 level=3;
             }
             return level;
+        }
+
+        /**
+         * 同时按住按钮
+         * @param {[type]} num 按键名称
+         * @param {[type]} arr [description]
+         */
+        function addKeyCodeArry(num,arr){
+            var check=0;
+            for (var i=0;i<arr.length;i++) {
+                if (arr[i]==num) {
+                    check=1;
+                }
+            }
+            if (check==0) {
+                arr.push(num);
+            }
+            return arr;
+        }
+        /**
+         * 手指松开清除按键
+         * @param  {[type]} num 按键名称
+         * @param  {[type]} arr [description]
+         */
+        function deletKeyCodeArry(num,arr){
+            for (var i=0;i<arr.length;i++) {
+                if (arr[i]==num) {
+                    arr.splice(i,1);
+                }
+            }
+            return arr;
+        }
+
+        function audioAutoPlay(id){
+            var audio = document.getElementById(id),
+            play = function(){
+                audio.play();
+                document.removeEventListener("touchstart",play, false);
+            };
+            audio.play();
+            document.addEventListener("WeixinJSBridgeReady", function (){
+               play();
+            }, false);
+            document.addEventListener("touchstart",play, false);
         }
 
 
@@ -401,7 +444,7 @@ console.log(moveBottom)
                     this.running = !0;
                     let tempM;
                     tempM = m<0?0:m;
-                    console.log(tempM)
+                    // console.log(tempM)
                     var a = "translate3d(" + tempM + "px," + this.getHeight() + "px,"+n+"px)";
                     move(this.clip).set("transform", a).duration(this.setTime.falling).ease("linear").end()
                 },
@@ -484,35 +527,34 @@ console.log(moveBottom)
                 isVisibleGo = false;
                 event.stopPropagation();
                 event.preventDefault();
-                $(this).addClass('bghover');
+                keyCodeArry=addKeyCodeArry(direction,keyCodeArry);
+                if(keyCodeArry.length>1) return;
+                // console.log(keyCodeArry,'keyCodeArry');
                 if(!games.isRun){
                     App.playMove(direction);
-
                     timeout = setTimeout(function () {                                 
-                        // $('#editDiv').show(); $('#newDiv').show();
                          App.longPlayMove(direction);
                     }, 100);  
+
                 }
                 $(".btn-"+direction).addClass('btn-'+direction+'-active')   
-                console.log('start')                       
             });
             //鼠标松开 或 手指从屏幕上离开时触发
             $(directionObj).bind('touchend mouseup', function (event) {     
                 isVisibleGo = true;                       
                 clearTimeout(timeout);
-                // $(this).removeClass('bghover'); 
-                 $(".btn-"+direction).removeClass('btn-'+direction+'-active') 
-                 clearInterval(timer)                         
-                 console.log('end')
-
+                keyCodeArry=deletKeyCodeArry(direction,keyCodeArry);
+                $(".btn-"+direction).removeClass('btn-'+direction+'-active') 
+                clearInterval(timer)                         
+                // console.log('end')
             });
             //鼠标移出、手指停止触摸屏幕时触发
             $(directionObj).bind('touchcancel mouseout', function (event) {                            
                 clearTimeout(timeout);
                 // $(this).removeClass('bghover');  
+                keyCodeArry=deletKeyCodeArry(direction,keyCodeArry);
                  $(".btn-"+direction).removeClass('btn-'+direction+'-active')                          
-                 clearInterval(timer)                         
-
+                 clearInterval(timer)                  
             });
                 
         }
@@ -549,7 +591,7 @@ console.log(moveBottom)
                 }
                 // hidden timer temp
                 timer = setInterval(function() {
-                    console.log("timer....")
+                    // console.log("timer....")
                     if ((dir == 'left') || (dir == 'right')) {
                         m = m + speed;
                         if (m > max) {
@@ -557,7 +599,8 @@ console.log(moveBottom)
                         } else if (m < min) {
                             m = min;
                         }
-                        if(m<0) return; 
+                        if(m<0 || m>313) return;
+                        // console.log('left',m)
                         restTransition('xy','');
                     } else {
                         n = n + speed;
