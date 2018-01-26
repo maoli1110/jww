@@ -11,7 +11,7 @@
 <script>
 import axios from "axios";
 import md5 from "js-md5";
-import {casLogin,getCompanyList,centerRealLogin,getMenusList} from "../../api/getData-mll.js";
+import { login } from "../../api/getData.js";
 export default {
     data() {
         return {
@@ -30,6 +30,7 @@ export default {
     },
     methods: {
         wxLogin() {
+            login().then();
             this.$router.push("/main/home");
         }
     },
