@@ -865,7 +865,7 @@ export default {
 
 #doll-list3 > li{
     background: url('../../../static/img/toy_01.png') 0 0 no-repeat;
-    background-size: 90%;
+    background-size: 180%;
     width: 18%
 }
 
