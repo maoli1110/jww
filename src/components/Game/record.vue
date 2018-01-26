@@ -94,7 +94,6 @@
             //提取娃娃
             extract(){
                 console.log('提取成功');
-                 console.log('提取成功')
             }
         },
         created(){
