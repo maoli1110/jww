@@ -10,43 +10,29 @@
  {palace}       'http://192.168.13.195:8989/palace/';
  */
 import axios from "axios";
-export const tests = params=> axios.get(`${params.url}` + "payment/alipay/alipayCloseTradeNotify");
-export const getWorksetingList = params => axios.get(`${base}`);
-export const getCitys = params => axios.get('../../static/js/citys.json')
-export const cloudTree = params=> axios.get("../../static/datasource.json");
-// GET /order/manage/getEnterpriseServiceList/{currentPage}/{pageSize} 分页获取企业服务列表
-export const getOrderManagementList = params=> axios.get(`${params.url}/order/manage/getEnterpriseServiceList/${params.currentPage}/${params.pageSize}`);
-// POST /order/manage/getBindingList 获取服务与硬件绑定列表
-export const getBindingList=params=>axios.post(`${params.url}/order/manage/getBindingList`)
-/**
- * bim库
- */
-//Bim筛选条件->专业
-export const getMajorsByCreate = params =>axios.get(`${params.url}rs/bimParamRest/getMajorsByCreate`);
-//Bim筛选条件->专业
-export const getProjGenre = params =>axios.get(`${params.url}rs/bimParamRest/getProjGenre/${params.isDelete}/${params.packageType}`);
-//Bim筛选条件->专业
-export const getProjType = params =>axios.get(`${params.url}rs/bimParamRest/getProjType/${params.isDelete}/${params.packageType}`);
+let serverUrl = 'http://wwj.gamesoul.com.cn/back';
 
-
-//bim库列表
-export const getProjects = params =>axios.post(`${params.url}rs/bimRest/getProjects`,params.param)
-//bim创建工程
+//bim创建工程 example
 export const createProject = params=>axios.post(`${params.url}rs/bimRest/createProject`,params.param);
-//bim创建->授权人员列表
-export const getProjAuthUserInfos = params =>axios.get(`${params.url}rs/bimParamRest/getProjAuthUserInfos/${params.deptId}`);
-//bim创建 项目部树结构
-export const zTreeNodes = params =>axios.get(`${params.url}org/admin/nodes`);
-/**
- * 云构件库
- * */
-//构件树列表
-export const treeList = params=> axios.get(`${params.url}component/tree/list/${params.version}/${params.productId}`);
 
 
-/**
- * 组织结构
- */
-export const getOrgTreeList = params=> axios.get(`${params.url}org/nodes`);
-
-
+//1.登录 app/login
+export const login = params =>axios.get(`${serverUrl}/app/login`);
+//2.获取娃娃机列表 app/getWlist/$page
+export const getWlist = params =>axios.get(`${serverUrl}/app/getWlist/1`);
+//3.娃娃机点击(get)：app/hit/$id
+//4.获取当前用户信息(get): app/getUserInfo
+export const getUserInfo = params =>axios.get(`${serverUrl}/app/getUserInfo`);
+//5.抓娃娃是否成功(get): app/getWawaStatus/$wawa_id/$status   //$wawa_id 娃娃机ID $status 是否抓取成功
+export const getWawaStatus = params =>axios.get(`${serverUrl}/app/getWawaStatus/$wawa_id/$statuso`);
+//6.我的娃娃(get): app/getBackpack/$page //$page 当前页
+export const getBackpack = params =>axios.get(`${serverUrl}/app/getBackpack/1`);
+//7.申请提取 (post): app/applyWawa
+//7.提取纪录 (get): app/getExtractLog/$page //$page 当前页
+export const getExtractLog = params =>axios.get(`${serverUrl}/app/getBackpack/1`);
+//8.站内信列表(get): app/getMailList/$page //$page 当前页
+export const getMailList = params =>axios.get(`${serverUrl}/app/getMailList/1`);
+//9.站内信详细内容(get): app/getMail/$id 
+export const getMail = params =>axios.get(`${serverUrl}/app/getMail/1`);
+//10.删除站内信(get): app/hideMail/$id 
+export const hideMail = params =>axios.get(`${serverUrl}/app/hideMail/1`);
