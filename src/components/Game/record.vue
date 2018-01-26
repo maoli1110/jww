@@ -67,7 +67,7 @@
                         imgUrl: "./static/img/ingame_toy.png",
                         them: '这是一只大娃娃',
                         time: '2017年12月31日 17:42'
-                    }, {
+                    // }, {
                         imgUrl: "./static/img/ingame_toy.png",
                         them: '这是一只大娃娃',
                         time: '2017年12月31日 17:42'
@@ -93,7 +93,8 @@
             },
             //提取娃娃
             extract(){
-                console.log('提取成功')
+                console.log('提取成功');
+                 console.log('提取成功')
             }
         },
         created(){
