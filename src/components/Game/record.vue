@@ -19,34 +19,35 @@
                     </mt-tab-item>
                 </mt-navbar>
                 <!-- tab-container -->
-                <mt-tab-container v-model="selected" class="record-content">
-                    <mt-tab-container-item id="history">
-                        <div class="record-list-wrapper">
-                            <mt-cell class="relat item-infos" v-for="item in payInfo" :key="item.price">
-                                <div class="record-type" @click="panelClose">
-                                    <img slot="icon" :src="item.imgUrl" alt="" width="46">
-                                </div>
-                                <div class=" relat record-list-them ">
-                                    {{item.them}}
-                                </div>
-                                <div class="record-list-time absol substr" >
-                                    {{item.time}}
-                                </div>
-                            </mt-cell>
-                        </div>
-                    </mt-tab-container-item>
-                    <mt-tab-container-item id="list">
-                        <div class="history-list" >
-                            <div class="history-list-item" v-for="item in 12" >
-                                <img slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="66">
-                                <p>这是一只哇哇哇哇哇哇哇</p>
+                    <mt-tab-container v-model="selected" class="record-content relat">
+                        <mt-tab-container-item id="history">
+                            <div class="record-list-wrapper">
+                                <mt-cell class="relat item-infos" v-for="item in payInfo" :key="item.price">
+                                    <div class="record-type" @click="panelClose">
+                                        <img slot="icon" :src="item.imgUrl" alt="" width="46">
+                                    </div>
+                                    <div class=" relat record-list-them ">
+                                        {{item.them}}
+                                    </div>
+                                    <div class="record-list-time absol substr" >
+                                        {{item.time}}
+                                    </div>
+                                </mt-cell>
                             </div>
-                        </div>
-                    </mt-tab-container-item>
-                </mt-tab-container>
-                <div class="extract-pro absol" @click="extract">
-                    <img src="../../../static/img/my_btn_pickup1.png" alt="">
-                </div>
+                        </mt-tab-container-item>
+                        <mt-tab-container-item id="list">
+                            <div class="history-list" >
+                                <div class="history-list-item" v-for="item in 12" >
+                                    <img slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="66">
+                                    <p>这是一只哇哇哇哇哇哇哇</p>
+                                </div>
+                            </div>
+                        </mt-tab-container-item>
+                                    
+                    </mt-tab-container>
+                     <div class="extract-pro absol" @click="extract">
+                        <img src="../../../static/img/my_btn_pickup1.png" alt="">
+                    </div>                      
             </div>
         </div>
     </div>
@@ -93,7 +94,7 @@
             },
             //提取娃娃
             extract(){
-                console.log('提取成功')
+                console.log('提取成功');
             }
         },
         created(){

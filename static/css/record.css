@@ -5,8 +5,8 @@
     top:0;
 }
 .recode-bg .recode-close {
-    width: 0.88rem;
-    height: 0.84rem;
+    width: 11%;
+    height: 7%;
     background: url("../../static/img/my_btn_cancel1.png") center no-repeat;
     background-size: 100%;
     right: 3%;
@@ -23,7 +23,7 @@
     background-size: 100%;
 }
 /*列表信息*/
-.record-content{padding:4.2rem .2rem 0;height:calc(100vh - 23%)}
+.record-content{padding:4.2rem .2rem 0;height:calc(100vh - 23%);}
 .record-list-wrapper{overflow:auto; margin: 0% 9% 0;}
 .item-infos{
 
@@ -58,13 +58,16 @@
     padding: 0rem 0.12rem 0;
 }
 .history-list .history-list-item{
-    width: 27%;
-    float:left;
-    background: #fff;
-    text-align:center;
+    width:32%;    
+    height: 40%;
+    float: left;
+    text-align: center;
     border-radius: 0.1rem;
-    margin:0.1rem;
-    color:#AF7300;
+     margin: 0.1rem; 
+    color: #AF7300;
+    background:url('../../static/img/my_mine_info_bg.png') no-repeat 0 0;
+    background-size: 110%;
+
 }
 .record-list-them{width:33%;color:#AF7300;font-weight:bold;line-height:20px;}
 .record-list-time{right:0;width:0.8rem;color:#AF7300;font-weight:bold;}
