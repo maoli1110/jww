@@ -48,27 +48,27 @@ ingm<template>
             </div>
         </div>
         <div class="doll-box">
-            <ul class="doll-list" id="doll-list3">
-                <li class="doll-item" data-index="1"></li>
-                <li class="doll-item" data-index="2"></li>
-                <li class="doll-item" data-index="3"></li>
-                <li class="doll-item" data-index="4"></li>
-                <li class="doll-item" data-index="5"></li>
-            </ul>
-            <ul class="doll-list" id="doll-list2">
-                <li class="doll-item" data-index="6"></li>
-                <li class="doll-item" data-index="7"></li>
-                <li class="doll-item" data-index="8"></li>
-                <li class="doll-item" data-index="9"></li>
-                <li class="doll-item" data-index="10"></li>
-            </ul>
-            <ul class="doll-list" id="doll-list1">
-                <li class="doll-item" data-index="11"></li>
-                <li class="doll-item" data-index="12"></li>
-                <li class="doll-item" data-index="13"></li>
-                <li class="doll-item" data-index="14"></li>
-                <li class="doll-item" data-index="15"></li>
-            </ul>
+                <ul class="doll-list" id="doll-list3">
+                    <li class="doll-item" data-index="1"></li>
+                    <li class="doll-item" data-index="2"></li>
+                    <li class="doll-item" data-index="3"></li>
+                    <li class="doll-item" data-index="4"></li>
+                    <li class="doll-item" data-index="5"></li>
+                </ul>
+                <ul class="doll-list" id="doll-list2">
+                    <li class="doll-item" data-index="6"></li>
+                    <li class="doll-item" data-index="7"></li>
+                    <li class="doll-item" data-index="8"></li>
+                    <li class="doll-item" data-index="9"></li>
+                    <li class="doll-item" data-index="10"></li>
+                </ul>
+                <ul class="doll-list" id="doll-list1">
+                    <li class="doll-item" data-index="11"></li>
+                    <li class="doll-item" data-index="12"></li>
+                    <li class="doll-item" data-index="13"></li>
+                    <li class="doll-item" data-index="14"></li>
+                    <li class="doll-item" data-index="15"></li>
+                </ul>
         </div>
         <div class="toys">
         </div>
@@ -911,6 +911,11 @@ export default {
     height: .68rem;
     background-size: 100% 100%;
 
+}
+.doll-list-wrap {
+    position: relative;
+    height: 300px;
+    width: 100%;
 }
 </style>
 <style>

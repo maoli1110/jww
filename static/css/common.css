@@ -382,10 +382,10 @@ footer,header,nav,section {
     height: 100%;
     padding-top: 1.4rem;
 }
-/*ipad*/
+/* ipad竖屏 */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
     html{
-        font-size: 100px!important;
+        font-size: 96px!important;
     }
     .pay-list-wrapper .mint-cell{
         background-size:75% !important;
@@ -411,9 +411,12 @@ footer,header,nav,section {
     /* style */
 }
 
-/* ipad竖屏 */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait){
+/* 判断iphone6 *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px){
     /* style */
+    html{
+        font-size: 58px !important;
+    }
 }
 /* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
 @media only screen and (min-device-width : 320px) and (max-device-width : 568px){
@@ -426,6 +429,9 @@ footer,header,nav,section {
 /* 判断ipad pro */
 @media only screen and (min-device-width : 1024px) and (max-device-width : 1366px){
     /* style */
+    html{
+        font-size: 96px!important;
+    }
 }
 
 /* ipad pro横屏 */
