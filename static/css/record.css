@@ -58,8 +58,8 @@
     padding: 0rem 0.12rem 0;
 }
 .history-list .history-list-item{
+    position: relative;
     width:32%;    
-    height: 40%;
     float: left;
     text-align: center;
     border-radius: 0.1rem;
@@ -67,7 +67,6 @@
     color: #AF7300;
     background:url('../../static/img/my_mine_info_bg.png') no-repeat 0 0;
     background-size: 110%;
-
 }
 .record-list-them{width:33%;color:#AF7300;font-weight:bold;line-height:20px;}
 .record-list-time{right:0;width:0.8rem;color:#AF7300;font-weight:bold;}

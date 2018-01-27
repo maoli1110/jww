@@ -382,6 +382,29 @@ footer,header,nav,section {
     height: 100%;
     padding-top: 1.4rem;
 }
+/*checkbox select*/
+.checkbox-select { 
+    position: absolute;
+    top: 0;
+    right: 0;
+ }
+.checkbox-input:checked+.checkbox-core {
+    background: url('../../static/img/my_mine_btn_choose2.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.checkbox-core {
+    display: inline-block;
+    background: url('../../static/img/my_mine_btn_choose1.png') no-repeat;
+    background-size: 100% 100%;
+    /*background-color: #fff;*/
+    /*border-radius: 100%;*/
+    /*border: 1px solid #ccc;*/
+    position: relative;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
 /* ipad竖屏 */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
     html{

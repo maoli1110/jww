@@ -9,7 +9,8 @@
                 <span></span>
             </div>
             <div class="absol recode-list">
-                <!--table选项卡-->
+            
+                <!--table选项卡--> 
                 <mt-navbar v-model="selected" class="absol" style="top:22.%;z-index:100">
                     <mt-tab-item id="list" style=" ">
                         <img :src="tableSwitch.mineUrl" alt="">
@@ -38,6 +39,7 @@
                         <mt-tab-container-item id="list">
                             <div class="history-list" >
                                 <div class="history-list-item" v-for="item in 12" >
+                                    <label class="checkbox-select"><input type="checkbox" class="checkbox-input" value="选项A"> <span class="checkbox-core"></span></label>
                                     <img slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="66">
                                     <p>这是一只哇哇哇哇哇哇哇</p>
                                 </div>
@@ -58,6 +60,7 @@
         props: {isShow: Boolean},
         data(){
             return {
+                value:[1],
                 selected: "",
                 payInfo: [
                     {
