@@ -1,8 +1,10 @@
-ingm<template>
+<template>
     <div class="in-game">
         <div class="ingame-1"></div>
         <div class="ingame-2"></div>
         <div class="ingame-3"></div>
+        <img class="light-left" :src="lightUrl" alt="">
+        <img class="light-right" :src="lightUrl" alt="">
         <div class="user-info">
         </div>
         <i class="machine-shadow-fixed"></i>
@@ -48,27 +50,27 @@ ingm<template>
             </div>
         </div>
         <div class="doll-box">
-            <ul class="doll-list" id="doll-list3">
-                <li class="doll-item" data-index="1"></li>
-                <li class="doll-item" data-index="2"></li>
-                <li class="doll-item" data-index="3"></li>
-                <li class="doll-item" data-index="4"></li>
-                <li class="doll-item" data-index="5"></li>
-            </ul>
-            <ul class="doll-list" id="doll-list2">
-                <li class="doll-item" data-index="6"></li>
-                <li class="doll-item" data-index="7"></li>
-                <li class="doll-item" data-index="8"></li>
-                <li class="doll-item" data-index="9"></li>
-                <li class="doll-item" data-index="10"></li>
-            </ul>
-            <ul class="doll-list" id="doll-list1">
-                <li class="doll-item" data-index="11"></li>
-                <li class="doll-item" data-index="12"></li>
-                <li class="doll-item" data-index="13"></li>
-                <li class="doll-item" data-index="14"></li>
-                <li class="doll-item" data-index="15"></li>
-            </ul>
+                <ul class="doll-list" id="doll-list3">
+                    <li class="doll-item" data-index="1"></li>
+                    <li class="doll-item" data-index="2"></li>
+                    <li class="doll-item" data-index="3"></li>
+                    <li class="doll-item" data-index="4"></li>
+                    <li class="doll-item" data-index="5"></li>
+                </ul>
+                <ul class="doll-list" id="doll-list2">
+                    <li class="doll-item" data-index="6"></li>
+                    <li class="doll-item" data-index="7"></li>
+                    <li class="doll-item" data-index="8"></li>
+                    <li class="doll-item" data-index="9"></li>
+                    <li class="doll-item" data-index="10"></li>
+                </ul>
+                <ul class="doll-list" id="doll-list1">
+                    <li class="doll-item" data-index="11"></li>
+                    <li class="doll-item" data-index="12"></li>
+                    <li class="doll-item" data-index="13"></li>
+                    <li class="doll-item" data-index="14"></li>
+                    <li class="doll-item" data-index="15"></li>
+                </ul>
         </div>
         <div class="toys">
         </div>
@@ -122,6 +124,7 @@ export default {
     data() {
         return {
             packetUrl:'',
+            lightUrl:'./static/img/ingame_gif.gif',
             btGo1Img:'./static/img/ingame_btn_go1.png',
             btGo2Img:'./static/img/ingame_btn_go2.png',
             btLeft1Img:'./static/img/ingame_btn_left1.png',
@@ -911,6 +914,25 @@ export default {
     height: .68rem;
     background-size: 100% 100%;
 
+}
+.doll-list-wrap {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+.light-left{
+    position: absolute;
+    top: 14%;
+    left: 2px;
+    z-index: 3;
+    height: 56%;
+}
+.light-right{
+    position: absolute;
+    top: 14%;
+    right: 2px;
+    z-index: 3;
+    height: 56%;
 }
 </style>
 <style>

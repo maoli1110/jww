@@ -38,18 +38,14 @@
 <!-- <script src="static/js/web.min.js" defer></script> -->
 <script src="static/js/move.min.js" defer></script>
 <script>
-
 (function (doc, win) {
-        if(navigator.userAgent.indexOf("iPad") == -1 && navigator.userAgent.indexOf("iphone")){  
-            doc.documentElement.style.maxWidth = '414px';
-        }  
         var docEl = doc.documentElement,
             resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
             recalc = function () {
                 var clientWidth = docEl.clientWidth;
                 if (!clientWidth) return;
-                if(clientWidth>=540){
-                    docEl.style.fontSize = '70px';
+                if(clientWidth>640){
+                    docEl.style.fontSize = '84px';
                 }else{
                     docEl.style.fontSize = 100 * (clientWidth / 690) + 'px';
                 }

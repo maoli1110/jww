@@ -42,6 +42,7 @@
 import vPaylist from "../Game/pay.vue";
 import vRecord from '../Game/record.vue';
 import  '../../../static/css/home.css';             //主页样式
+import { getWlist,getUserInfo } from "../../api/getData.js"
 export default {
     data() {
         return {
@@ -102,6 +103,8 @@ export default {
     },
     created(){
         this.selected = 'home'; //默认选中home页
+        getWlist().then();
+        getUserInfo().then();
     },
     watch:{
         selected:function(newVal,oldVal){//tab索引值监听

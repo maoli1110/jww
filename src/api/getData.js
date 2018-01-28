@@ -15,7 +15,6 @@ let serverUrl = 'http://wwj.gamesoul.com.cn/back';
 //bim创建工程 example
 export const createProject = params=>axios.post(`${params.url}rs/bimRest/createProject`,params.param);
 
-
 //1.登录 app/login
 export const login = params =>axios.get(`${serverUrl}/app/login`);
 //2.获取娃娃机列表 app/getWlist/$page

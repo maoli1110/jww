@@ -23,7 +23,7 @@
     background-size: 100%;
 }
 /*列表信息*/
-.record-content{padding:4.2rem .2rem 0;height:calc(100vh - 23%);}
+.record-content{padding:3.6rem .2rem 0;height:calc(100vh - 23%);}
 .record-list-wrapper{overflow:auto; margin: 0% 9% 0;}
 .item-infos{
 
@@ -50,7 +50,7 @@
     border-radius: 8px;
     margin-right: 0.1rem;
 }
- .item-infos  .payaway{ right:0.1rem;  }
+.item-infos  .payaway{ right:0.1rem;  }
 .history-list{
     width: 100%;
     height: 100%;
@@ -58,6 +58,7 @@
     padding: 0rem 0.12rem 0;
 }
 .history-list .history-list-item{
+<<<<<<< HEAD
     width: 30%;
     height: 26%;
     float: left;
@@ -71,6 +72,21 @@
 .history-list .history-list-item img{
         margin-top: 0.1rem;
     width: 41%;
+=======
+    position: relative;
+    width:29.4%;    
+    float: left;
+    text-align: center;
+    border-radius: 0.2rem;
+    padding: 0.1rem 0.1rem; 
+    margin: 0.1rem 0.1rem; 
+    color: #AF7300;
+    background: #fff;
+    background-size: 110%;
+}
+.history-list .history-list-item .toy-list{
+    margin: 5px ;
+>>>>>>> 497de739f0ef4d16245ad48440e055fabe4cb793
 }
 .record-list-them{width:33%;color:#AF7300;font-weight:bold;line-height:20px;}
 .record-list-time{right:0;width:0.8rem;color:#AF7300;font-weight:bold;}
