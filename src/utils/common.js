@@ -236,7 +236,13 @@ function setSessionstorage(name,obj){
     let string = sessionStorage.setItem(name,JSON.stringify(obj));
 }
 function getSessionstorage(name){
-    let obj = JSON.parse(sessionStorage.getItem(name));
+    let tempObj = sessionStorage.getItem(name);
+    let obj;
+    if(tempObj){
+        obj = JSON.parse(sessionStorage.getItem(name));
+    } else {
+        obj = '';
+    }
     return obj;
 }
 export {
