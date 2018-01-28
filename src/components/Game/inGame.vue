@@ -1,8 +1,10 @@
-ingm<template>
+<template>
     <div class="in-game">
         <div class="ingame-1"></div>
         <div class="ingame-2"></div>
         <div class="ingame-3"></div>
+        <img class="light-left" :src="lightUrl" alt="">
+        <img class="light-right" :src="lightUrl" alt="">
         <div class="user-info">
         </div>
         <i class="machine-shadow-fixed"></i>
@@ -122,6 +124,7 @@ export default {
     data() {
         return {
             packetUrl:'',
+            lightUrl:'./static/img/ingame_gif.gif',
             btGo1Img:'./static/img/ingame_btn_go1.png',
             btGo2Img:'./static/img/ingame_btn_go2.png',
             btLeft1Img:'./static/img/ingame_btn_left1.png',
@@ -916,6 +919,20 @@ export default {
     position: relative;
     height: 300px;
     width: 100%;
+}
+.light-left{
+    position: absolute;
+    top: 14%;
+    left: 2px;
+    z-index: 3;
+    height: 56%;
+}
+.light-right{
+    position: absolute;
+    top: 14%;
+    right: 2px;
+    z-index: 3;
+    height: 56%;
 }
 </style>
 <style>

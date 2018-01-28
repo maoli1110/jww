@@ -11,7 +11,7 @@
             <div class="absol recode-list">
             
                 <!--table选项卡--> 
-                <mt-navbar v-model="selected" class="absol" style="top:22.%;z-index:100">
+                <mt-navbar v-model="selected" class="absol" style="top:23%;z-index:100">
                     <mt-tab-item id="list" style=" ">
                         <img :src="tableSwitch.mineUrl" alt="">
                     </mt-tab-item>
@@ -39,9 +39,9 @@
                         <mt-tab-container-item id="list">
                             <div class="history-list" >
                                 <div class="history-list-item" v-for="item in 12" >
-                                    <label class="checkbox-select"><input type="checkbox" class="checkbox-input" value="选项A"> <span class="checkbox-core"></span></label>
-                                    <img slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="66">
-                                    <p>这是一只哇哇哇哇哇哇哇</p>
+                                    <label class="checkbox-select"><input type="checkbox" class="checkbox-input" value="选项A" style="display:none"> <span class="checkbox-core"></span></label>
+                                    <img class="toy-list" slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="40">
+                                    <p>这是一只大娃这是一只大娃</p>
                                 </div>
                             </div>
                         </mt-tab-container-item>
