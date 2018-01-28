@@ -37,26 +37,16 @@
                             </div>
                         </mt-tab-container-item>
                         <mt-tab-container-item id="list">
-                            <div class="history-list" >
-<<<<<<< HEAD
-                                <div class="history-list-item relat" v-for="(item,index) in 12" >
-                                    <mt-checklist class="absol" style="right:0;"
-                                      title=""
-                                      v-model="value"
-                                      :options='option' @change="checked">
-                                    </mt-checklist>
+                            <div class="history-list" >                        
+                               <div class="history-list-item relat" v-for="(item,index) in 18" >
+                                   <input type="checkbox"/>
+                                    <div style="width:100%">
                                     <img slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="66">
-                                    <p>这是一只哇哇哇哇哇哇哇</p>
-=======
-                                <div class="history-list-item" v-for="item in 12" >
-                                    <label class="checkbox-select"><input type="checkbox" class="checkbox-input" value="选项A" style="display:none"> <span class="checkbox-core"></span></label>
-                                    <img class="toy-list" slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="40">
-                                    <p>这是一只大娃这是一只大娃</p>
->>>>>>> 497de739f0ef4d16245ad48440e055fabe4cb793
+                                    </div>
+                                    <p style="display:block;">这是一只哇哇哇哇哇哇哇</p>
                                 </div>
                             </div>
-                        </mt-tab-container-item>
-                                    
+                        </mt-tab-container-item>       
                     </mt-tab-container>
                      <div class="extract-pro absol" @click="extract">
                         <img src="../../../static/img/my_btn_pickup1.png" alt="">
@@ -71,23 +61,24 @@
         props: {isShow: Boolean},
         data(){
             return {
-                value:[1],
                 selected: "",
                 payInfo: [
                     {
+                        ppid:1,
                         imgUrl: "./static/img/ingame_toy.png",
                         them: '这是一只大娃娃',
                         time: '2017年12月31日 17:42'
                     }, {
+                        ppid:2,
                         imgUrl: "./static/img/ingame_toy.png",
                         them: '这是一只大娃娃',
                         time: '2017年12月31日 17:42'
                     }, {
+                        ppid:3,
                         imgUrl: "./static/img/ingame_toy.png",
                         them: '这是一只大娃娃',
                         time: '2017年12月31日 17:42'
                     },
-
                 ],
                 hidePanel: false,
                 tableSwitch:{
@@ -95,13 +86,8 @@
                     historyUrl:'./static/img/my_btn_record1.png',
                 },
                 value:[],
-                option:[
-                      
-                      {
-                        label: 'optionB',
-                        value: 'valueB'
-                      }
-                    ]
+                optionList:[],
+            
             }
         },
         methods: {
@@ -117,14 +103,19 @@
             //提取娃娃
             extract(){
                 console.log('提取成功');
-            }
+            },
             //选中要提取的娃娃
             checked(){
                 console.log(this.value,'value')
             }
         },
         created(){
+            let count = [];
             this.selected = 'list';
+            this.payInfo.forEach((val,key)=>{
+                count.push(val.ppid)
+            })
+            this.optionList = count;
         },
 
         watch:{
@@ -138,6 +129,9 @@
                     }
                 }
             },
+            value:function(newVal,oldVal){
+                 console.log(newVal);
+            }
         
         }
     }
