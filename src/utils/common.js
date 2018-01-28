@@ -238,7 +238,7 @@ function setSessionstorage(name,obj){
 function getSessionstorage(name){
     let tempObj = sessionStorage.getItem(name);
     let obj;
-    if(tempObj){
+    if(tempObj && tempObj!="undefined"){
         obj = JSON.parse(sessionStorage.getItem(name));
     } else {
         obj = '';

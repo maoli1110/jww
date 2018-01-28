@@ -62,6 +62,7 @@
 </template>
 <script>
     import "../../../static/css/record.css";
+    import {getBackpack} from '../../api/getData.js';
     let exportedList = [];
     export default{
         props: {isShow: Boolean},
@@ -106,6 +107,15 @@
                 this.tableSwitch.mineUrl = './static/img/my_btn_mine1.png';
                 this.tableSwitch.historyUrl = './static/img/my_btn_record1.png';
             },
+            //获取娃娃列表
+            getBackpackList(params){
+                getBackpack(params).then((res)=>{
+                    console.log(res.data,'res')
+                })
+            },
+            getData(){
+                this.getBackpackList()
+            },
             //提取娃娃
             extract(){
                 console.log('提取成功');
@@ -121,6 +131,7 @@
                 console.log(exportedList,'提取娃娃的id数组')
             }
         },
+
         created(){
             let count = [];
             this.selected = 'list';

@@ -7,12 +7,13 @@
         <div class="relat xuanze">
             <p class="absol add-coin font-16 yellow1">{{userInfo.goldCounts}}</p>
         </div>
+
        <div class="select-list">
            <ul>
                <li class="raduis-1 relat" v-for="(item,key) in list">
                   <p>{{item.title}}</p>
                   <div><img :src="item.imgUrl" alt=""></div>
-                  <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>{{item.timeMoney}}&nbsp;/次</span><span class="go raduis-1" @click="inGame(key)">GO</span></div>
+                  <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>99&nbsp;/次</span><span class="go raduis-1" @click="inGame(key)">GO</span></div>
                    <div class="absol switch text-color"><span class="block switch-text" >碎片合成</span></div>
                </li>
            </ul>
@@ -41,12 +42,12 @@
 import vPaylist from "../Game/pay.vue";
 import vRecord from '../Game/record.vue';
 import  '../../../static/css/home.css';             //主页样式
-import { getWlist,getUserInfo } from "../../api/getData.js";
+import { getWlist,getUserInfo } from "../../api/getData.js"
 import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
-export default {
+export default { 
     data() {
         return {
-            selected:"",              //tab选中状态
+            selected:"",                    //tab选中状态
             defalultWW:'./static/img/ingame_toy.png',
             homeNavImg:'./static/img/home_btn_home1.png',
             bagNavImg:'./static/img/home_btn_bag1.png',
@@ -79,6 +80,7 @@ export default {
         inGame(index){
             index = index +1;
             this.$router.push('/main/ingame/'+index);
+
             // if(index==0){
             //     this.$router.push('/main/ingame');
             // }else if(index==1){
