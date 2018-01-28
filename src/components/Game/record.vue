@@ -67,6 +67,8 @@
         setApplyWawa,//申请提取
         getExtractLog,//提取纪录
     } from '../../api/getData.js';
+    import { dateFormat } from "../../utils/common.js";
+
     let exportedList = [];
     export default{
         props: {isShow: Boolean},
@@ -125,6 +127,9 @@
                 getExtractLog(params).then((res)=>{
                    if(res.data.data!=null){
                         this.payInfo = res.data.data.content;
+                        this.payInfo.forEach((value,key)=>{
+                            value.sendTime = dateFormat(value.sendTime);
+                        })
                    }
                 })
             },

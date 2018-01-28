@@ -242,6 +242,9 @@ footer,header,nav,section {
 .align-center {
 	text-align: center;
 }
+.align-right {
+    text-align: right;
+}
 /*mint组件化tab样式*/
 .mint-tabbar{
     height:10.4%;background:transparent !important;z-index: 3;

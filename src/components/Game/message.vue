@@ -29,8 +29,7 @@
                     <div class="main-content"> 
                         <div class="Grid header">
                             <div class="Grid-cell u-lof40 grey1 align-v-h">发件人：{{detailMessageInfo.sendName}}</div>
-                            <div class="Grid-cell"></div>    
-                            <div class="Grid-cell grey1">{{detailMessageInfo.sendTime}}</div>
+                            <div class="Grid-cell grey1 align-right">{{detailMessageInfo.sendTime}}</div>
                         </div>
                         <p class="align-center title red font-26">{{detailMessageInfo.contentTitle}}</p>
                         <p class="grey1">{{detailMessageInfo.content}}</p>
@@ -58,6 +57,7 @@
 <script>
     import "../../../static/css/message.css";
     import { getMailList,getMail,hideMail } from "../../api/getData.js";
+    import { dateFormat } from "../../utils/common.js";
     export default{
         props:{isShow:Boolean},
         data(){
@@ -89,7 +89,7 @@
                 getMail(id).then((res)=>{
                     console.log('success')
                     this.detailMessageInfo =res.data.data;
-
+                    this.detailMessageInfo.sendTime = dateFormat(this.detailMessageInfo.sendTime);
                 });
 
             },
@@ -110,6 +110,9 @@
         created() {
             getMailList().then((res)=>{
                 this.messageInfo = res.data.data.content;
+                this.messageInfo.forEach((value,key)=>{
+                    value.sendTime = dateFormat(value.sendTime);
+                })
                 console.log(this.messageInfo)
             });
         }

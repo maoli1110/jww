@@ -46,10 +46,10 @@ function transformToObjFormat(param, simpleOrgNodes) {
     }
 }
 
-function dateFormat(date){
+function dateFormat(date,type){
     date = new Date(date);
     let getYear = date.getFullYear();
-    let getMonth = date.getMonth();
+    let getMonth = date.getMonth()<10?'0'+(date.getMonth()+1):date.getMonth()+1;
     let getdate = date.getDate();
     let getHou = date.getHours();
     let getMin = date.getMinutes();
