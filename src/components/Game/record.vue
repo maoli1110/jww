@@ -22,7 +22,11 @@
                 <!-- tab-container -->
                     <mt-tab-container v-model="selected" class="record-content relat">
                         <mt-tab-container-item id="history">
-                            <div class="record-list-wrapper">
+                            <div class="extract-info">
+                                <span>提取内容</span> 
+                                <span>提取时间</span> 
+                            </div>
+                            <div class="record-list-wrapper" style=".2rem">
                                 <mt-cell class="relat item-infos" v-for="item in payInfo" :key="item.price">
                                     <div class="record-type" @click="panelClose">
                                         <img slot="icon" :src="item.imgUrl" alt="" width="46">
@@ -39,13 +43,7 @@
                         <mt-tab-container-item id="list">
                             <div class="history-list" >                        
                                <div class="history-list-item relat" v-for="(item,index) in 18" >
-                                  <!--  <label class="checkbox-select">
-                                      <input type="checkbox">
-                                       <div style="width:100%">
-                                       <img slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="66">
-                                       </div>
-                                   </label> -->
-                                    <label class="checkbox-select"><input type="checkbox" class="checkbox-input" value=""> <span class="checkbox-core"></span>
+                                    <label class="checkbox-select"><input type="checkbox" :data-list="index" class="checkbox-input"  @change="checkedList"> <span class="checkbox-core"></span>
                                     </label>
                                     <div style="width:100%">
                                        <img slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="66">
@@ -64,6 +62,7 @@
 </template>
 <script>
     import "../../../static/css/record.css";
+    let exportedList = [];
     export default{
         props: {isShow: Boolean},
         data(){
@@ -112,8 +111,14 @@
                 console.log('提取成功');
             },
             //选中要提取的娃娃
-            checked(){
-                console.log(this.value,'value')
+            checkedList(event){
+                if($(event.target)[0].checked && exportedList.indexOf($(event.target).attr('data-list'))==-1){
+                    exportedList.push($(event.target).attr('data-list'));
+                }else if(!$(event.target)[0].checked){
+                    let index = exportedList.indexOf($(event.target).attr('data-list'));
+                    exportedList.splice(index,1)
+                }
+                console.log(exportedList,'提取娃娃的id数组')
             }
         },
         created(){

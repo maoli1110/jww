@@ -19,7 +19,7 @@
        </div>
        <div class="main-nav">
            <mt-tabbar v-model="selected" :value="selected">
-               <mt-tab-item id="home">
+               <mt-tab-item id="home" @click="selectItem('home')">
                    <img slot="icon" :src="homeNavImg">
                </mt-tab-item>
                <mt-tab-item id="bag">
@@ -33,7 +33,7 @@
        <div class="goBack"><img src="" alt=""></div>
     </div>
      <v-paylist v-show="payVisbile" :is-show="payVisbile" @panelHide="panelHide"></v-paylist>
-     <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHide"></v-record>
+     <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHideRecord"></v-record>
 </div>
 </template>
 
@@ -64,7 +64,10 @@ export default {
         //组件关窗通信
         panelHide(visible){
             this.payVisbile =visible;
-            this.recordVisible = visible;
+            
+        },
+        panelHideRecord(visible){
+          this.recordVisible = visible;
         },
         //tab 背景重置
         restNavBg() {
@@ -83,6 +86,9 @@ export default {
             // }else if(index==2){
             //     window.location.href='http://h.mashangzhua.com/pages/index.html?appId=ba82de9ff96248569eef2ccc796000f3';
             // }
+        },
+        selectItem(type){
+          console.log(type,'type')
         }
     },
     created(){
@@ -123,11 +129,13 @@ export default {
         },
         recordVisible:function(newVal,oldVal){
             if(newVal!=oldVal && !newVal){
+                this.selected = '';//关闭弹窗的选种路径清空
                 this.restNavBg();
             }
         },
         payVisbile:function(newVal,oldVal){
             if(newVal!=oldVal && !newVal){
+                this.selected = '';//关闭弹窗的选种路径清空
                 this.restNavBg();
             }
         }
