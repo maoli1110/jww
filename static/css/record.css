@@ -53,21 +53,24 @@
  .item-infos  .payaway{ right:0.1rem;  }
 .history-list{
     width: 100%;
-    height: 50%;
+    height: 100%;
     overflow: auto;
     padding: 0rem 0.12rem 0;
 }
 .history-list .history-list-item{
-    width:32%;    
-    height: 40%;
+    width: 30%;
+    height: 26%;
     float: left;
     text-align: center;
     border-radius: 0.1rem;
-     margin: 0.1rem; 
+    margin: 0.1rem .05rem;
     color: #AF7300;
     background:url('../../static/img/my_mine_info_bg.png') no-repeat 0 0;
-    background-size: 110%;
-
+    background-size: 98%;
+}
+.history-list .history-list-item img{
+        margin-top: 0.1rem;
+    width: 41%;
 }
 .record-list-them{width:33%;color:#AF7300;font-weight:bold;line-height:20px;}
 .record-list-time{right:0;width:0.8rem;color:#AF7300;font-weight:bold;}
@@ -76,7 +79,7 @@
 /*提取娃娃*/
 .extract-pro{
     width: 3rem;
-    bottom: 1rem;
+    /*bottom: 1rem;*/
     left: 50%;
     margin-left: -1.5rem;
 }

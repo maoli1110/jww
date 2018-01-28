@@ -37,7 +37,12 @@
                         </mt-tab-container-item>
                         <mt-tab-container-item id="list">
                             <div class="history-list" >
-                                <div class="history-list-item" v-for="item in 12" >
+                                <div class="history-list-item relat" v-for="(item,index) in 12" >
+                                    <mt-checklist class="absol" style="right:0;"
+                                      title=""
+                                      v-model="value"
+                                      :options='option' @change="checked">
+                                    </mt-checklist>
                                     <img slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="66">
                                     <p>这是一只哇哇哇哇哇哇哇</p>
                                 </div>
@@ -79,7 +84,15 @@
                 tableSwitch:{
                     mineUrl:'./static/img/my_btn_mine1.png',
                     historyUrl:'./static/img/my_btn_record1.png',
-                }
+                },
+                value:[],
+                option:[
+                      
+                      {
+                        label: 'optionB',
+                        value: 'valueB'
+                      }
+                    ]
             }
         },
         methods: {
@@ -96,6 +109,10 @@
             extract(){
                 console.log('提取成功');
             }
+            //选中要提取的娃娃
+            checked(){
+                console.log(this.value,'value')
+            }
         },
         created(){
             this.selected = 'list';
@@ -111,7 +128,8 @@
                         this.tableSwitch.historyUrl = './static/img//my_btn_record2.png'
                     }
                 }
-            }
+            },
+        
         }
     }
 </script>
