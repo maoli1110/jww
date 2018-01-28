@@ -27,8 +27,9 @@ export const getWawaStatus = params =>axios.get(`${serverUrl}/app/getWawaStatus/
 //6.我的娃娃(get): app/getBackpack/$page //$page 当前页
 export const getBackpack = params =>axios.get(`${serverUrl}/app/getBackpack/1`);
 //7.申请提取 (post): app/applyWawa
+export const setApplyWawa = params=>axios.post(`${serverUrl}/app/applyWawa`,params);
 //7.提取纪录 (get): app/getExtractLog/$page //$page 当前页
-export const getExtractLog = params =>axios.get(`${serverUrl}/app/getBackpack/1`);
+export const getExtractLog = params =>axios.get(`${serverUrl}/app/getExtractLog/1`);
 //8.站内信列表(get): app/getMailList/$page //$page 当前页
 export const getMailList = params =>axios.get(`${serverUrl}/app/getMailList/1`);
 //9.站内信详细内容(get): app/getMail/$id 

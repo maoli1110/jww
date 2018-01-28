@@ -34,7 +34,7 @@
        <div class="goBack"><img src="" alt=""></div>
     </div>
      <v-paylist v-show="payVisbile" :is-show="payVisbile" @panelHide="panelHide"></v-paylist>
-     <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHideRecord"></v-record>
+     <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHideRecord" ref="recordList"></v-record>
 </div>
 </template>
 
@@ -119,9 +119,11 @@ export default {
             this.restNavBg();
             if(newVal !=oldVal){
                if(newVal=='bag'){
+                 this.$refs.recordList.getBackpackList();
                    this.recordVisible = true;
                    this.bagNavImg = './static/img/home_btn_bag2.png';
                }else if(newVal=='mine'){
+                 this.$refs.recordList.getBackpackList();
                    this.mineNavImg = './static/img/home_btn_my2.png';
                    this.recordVisible = true;
                }else if(newVal=='home'){

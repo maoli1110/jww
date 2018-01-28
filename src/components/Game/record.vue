@@ -32,23 +32,23 @@
                                         <img slot="icon" :src="item.imgUrl" alt="" width="46">
                                     </div>
                                     <div class=" relat record-list-them ">
-                                        {{item.them}}
+                                        {{item.name}}
                                     </div>
                                     <div class="record-list-time absol substr" >
-                                        {{item.time}}
+                                        {{item.sendTime}}
                                     </div>
                                 </mt-cell>
                             </div>
                         </mt-tab-container-item>
                         <mt-tab-container-item id="list">
                             <div class="history-list" >                        
-                               <div class="history-list-item relat" v-for="(item,index) in 18" >
-                                    <label class="checkbox-select"><input type="checkbox" :data-list="index" class="checkbox-input"  @change="checkedList"> <span class="checkbox-core"></span>
+                               <div class="history-list-item relat" v-for="(item,index) in extractList" >
+                                    <label class="checkbox-select"><input type="checkbox" :data-list="item.bId" class="checkbox-input"  @change="checkedList"> <span class="checkbox-core"></span>
                                     </label>
                                     <div style="width:100%">
-                                       <img slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="66">
+                                       <img slot="icon" :src="item.imgUrl" alt="" width="66">
                                        </div>
-                                    <p style="display:block;">这是一只哇哇哇哇哇哇哇</p>
+                                    <p style="display:block;">{{item.name}}</p>
                                 </div>
                             </div>
                         </mt-tab-container-item>       
@@ -62,39 +62,24 @@
 </template>
 <script>
     import "../../../static/css/record.css";
-    import {getBackpack} from '../../api/getData.js';
+    import {
+        getBackpack,//抓娃娃列表
+        setApplyWawa,//申请提取
+        getExtractLog,//提取纪录
+    } from '../../api/getData.js';
     let exportedList = [];
     export default{
         props: {isShow: Boolean},
         data(){
             return {
-                selected: "",
-                payInfo: [
-                    {
-                        ppid:1,
-                        imgUrl: "./static/img/ingame_toy.png",
-                        them: '这是一只大娃娃',
-                        time: '2017年12月31日 17:42'
-                    }, {
-                        ppid:2,
-                        imgUrl: "./static/img/ingame_toy.png",
-                        them: '这是一只大娃娃',
-                        time: '2017年12月31日 17:42'
-                    }, {
-                        ppid:3,
-                        imgUrl: "./static/img/ingame_toy.png",
-                        them: '这是一只大娃娃',
-                        time: '2017年12月31日 17:42'
-                    },
-                ],
+                selected: "",   //tab索引
+                payInfo: [],    //提取记录
+                extractList:[], //我的娃娃导出记录
                 hidePanel: false,
                 tableSwitch:{
                     mineUrl:'./static/img/my_btn_mine1.png',
                     historyUrl:'./static/img/my_btn_record1.png',
-                },
-                value:[],
-                optionList:[],
-            
+                },        
             }
         },
         methods: {
@@ -108,17 +93,40 @@
                 this.tableSwitch.historyUrl = './static/img/my_btn_record1.png';
             },
             //获取娃娃列表
-            getBackpackList(params){
-                getBackpack(params).then((res)=>{
-                    console.log(res.data,'res')
+            getBackpackList(){
+                getBackpack().then((res)=>{
+                    this.extractList = res.data.data.content;
+                })
+            },
+            //申请提取
+            setApplyWawaInfos(params){
+                setApplyWawa(params).then((res)=>{
+                    if(res.data.data){
+                        console.log('提取成功');
+                    }else{
+                        console.log('提取失败');
+                    }
                 })
             },
             getData(){
-                this.getBackpackList()
+                // this.getBackpackList();
             },
             //提取娃娃
             extract(){
-                console.log('提取成功');
+                if(exportedList.length){
+                    this.setApplyWawaInfos({bId:exportedList,sendAddress:"",sendPhone:""})
+                }else{
+                    alert('请选择要提取的娃娃信息');
+                }
+                
+            },
+            //提取纪录
+            getExtractLogs(params){
+                getExtractLog(params).then((res)=>{
+                   if(res.data.data!=null){
+                        this.payInfo = res.data.data.content;
+                   }
+                })
             },
             //选中要提取的娃娃
             checkedList(event){
@@ -133,12 +141,8 @@
         },
 
         created(){
-            let count = [];
             this.selected = 'list';
-            this.payInfo.forEach((val,key)=>{
-                count.push(val.ppid)
-            })
-            this.optionList = count;
+            this.getData();
         },
 
         watch:{
@@ -146,8 +150,12 @@
                 if(newVal!=oldVal){
                     this.restUrl();
                     if(newVal=='list'){
+                        this.getBackpackList();
                         this.tableSwitch.mineUrl = './static/img/my_btn_mine2.png'
                     }else if(newVal=='history'){
+                        console.log(newVal)
+                        let param = {};
+                        this.getExtractLogs(param);
                         this.tableSwitch.historyUrl = './static/img//my_btn_record2.png'
                     }
                 }
