@@ -305,6 +305,9 @@ footer,header,nav,section {
 .Grid-cell.u-lof3{
     flex: 0 0 30%;
 }
+.Grid-cell.u-lof4{
+    flex: 0 0 23%;
+}
 .Grid-cell.u-lof40{
     flex: 0 0 40%;
 }

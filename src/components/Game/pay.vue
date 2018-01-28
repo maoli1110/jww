@@ -9,7 +9,7 @@
             <!--充值身体部分-->
             <div class="absol pay-list">
                <div class="pay-list-wrapper common-list-wrapper">
-                   <!-- <mt-cell class="relat item-infos" v-for="item in payInfo" :key="item.price">
+                  <!--  <mt-cell class="relat item-infos" v-for="item in payInfo" :key="item.price">
                        <div class="pay-type" @click="panelClose">
                            <img slot="icon" v-show ="item.count==50" :src="item.imgUrl" alt="" width="80" >
                            <img slot="icon" v-show ="item.count==100" :src="item.imgUrl" alt="" width="80" >
@@ -31,7 +31,7 @@
                         </div>
                         <div class="Grid-cell count">
                             <div class="substr">X{{item.count}}</div>
-                            <div class="substr">${{item.price}}</div> 
+                            <div class="substr price">${{item.price}}</div> 
                         </div>
                         <div class="Grid-cell u-lof3 buy">
                              <img :src="item.btnBg" alt="" width="70">
