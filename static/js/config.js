@@ -3,4 +3,10 @@ window.serverPath = {
 	builderUrl:"",
 	cloudUrl:"",
 	civilUrl:""
-} 
+}
+window.userInfo = {
+	
+}
+window.wlist = {
+
+}

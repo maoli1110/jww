@@ -274,6 +274,12 @@ footer,header,nav,section {
 .grey1{
     color: #979797;
 }
+.yellow{
+    color: #f6fbab;
+}
+.yellow1{
+    color: #af6c00
+}
 /**/
 .font-16{
     font-size: .16rem;

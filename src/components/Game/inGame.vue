@@ -5,7 +5,12 @@
         <div class="ingame-3"></div>
         <img class="light-left" :src="lightUrl" alt="">
         <img class="light-right" :src="lightUrl" alt="">
-        <div class="user-info">
+        <div class="user-wrap">
+            <div class="user-info">
+            </div>
+            <img :src="headImg" alt="">
+            <p class="user-name substr yellow">{{userInfo.username}}</p>
+            <p class="money yellow">{{userInfo.goldCounts}}</p>
         </div>
         <i class="machine-shadow-fixed"></i>
         <div class="message" @click="messageVisbile=true;">
@@ -123,6 +128,7 @@ import vMessage from '../Game/message.vue';
 export default {
     data() {
         return {
+            headImg:'./static/img/head-img.jpg',
             packetUrl:'',
             lightUrl:'./static/img/ingame_gif.gif',
             btGo1Img:'./static/img/ingame_btn_go1.png',
@@ -145,7 +151,11 @@ export default {
             allToysImg:'./static/img/ingame-all.png',
             payVisbile:false,
             recordVisible:false,
-            messageVisbile:false
+            messageVisbile:false,
+            userInfo:{
+                username:'',
+                goldCounts:''
+            }
         }
     },
     methods: {
@@ -160,7 +170,7 @@ export default {
     },
     components: {vPaylist,vRecord,vMessage},
     created(){
-         
+        this.userInfo = window.userInfo;
     },
     mounted() {
 
@@ -894,15 +904,52 @@ export default {
     background-size: 100%;
     width: 18%
 } 
-.user-info {
+.user-info,.user-wrap {
     width: 3.2rem; 
     height: 1.9rem;
     position: absolute; 
     right: 0;
     top: .19rem;
     z-index: 8;
+    font-size: .2rem;
+    font-weight: 800;
+}
+.user-info {
+    top: 0;
     background: url('../../../static/img/ingame_table_information.png') no-repeat;
     background-size: 3rem 1.1rem;
+}
+.user-wrap >img {
+    position: absolute;
+    width: .8rem;
+    height: .7rem;
+    z-index: 1;
+    top: .2rem;
+    left: .2rem;
+}
+.user-wrap .user-name {
+    max-width: 1.7rem;
+    position: absolute;
+    top: .1rem;
+    right: .3rem;
+    z-index: 9;
+}
+.user-wrap .money {
+    max-width: 1.7rem;
+    position: absolute;
+    top: .62rem;
+    right: .56rem;
+    z-index: 9;
+    height: .32rem;
+    line-height: .32rem;
+}
+.user-wrap .money:after{
+    content: '';
+    background:url('../../../static/img/ingame_btn_pay3.png');
+    background-size: 100% 100%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
 }
 .message {
     position: absolute;
@@ -934,6 +981,7 @@ export default {
     z-index: 3;
     height: 56%;
 }
+
 </style>
 <style>
 .in-game .mint-tabbar .mint-tab-item-icon {
