@@ -39,10 +39,17 @@
                         <mt-tab-container-item id="list">
                             <div class="history-list" >                        
                                <div class="history-list-item relat" v-for="(item,index) in 18" >
-                                   <input type="checkbox"/>
+                                  <!--  <label class="checkbox-select">
+                                      <input type="checkbox">
+                                       <div style="width:100%">
+                                       <img slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="66">
+                                       </div>
+                                   </label> -->
+                                    <label class="checkbox-select"><input type="checkbox" class="checkbox-input" value=""> <span class="checkbox-core"></span>
+                                    </label>
                                     <div style="width:100%">
-                                    <img slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="66">
-                                    </div>
+                                       <img slot="icon" src="../../../static/img/ingame_toy.png" alt="" width="66">
+                                       </div>
                                     <p style="display:block;">这是一只哇哇哇哇哇哇哇</p>
                                 </div>
                             </div>
