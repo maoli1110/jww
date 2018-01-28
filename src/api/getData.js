@@ -32,6 +32,6 @@ export const getExtractLog = params =>axios.get(`${serverUrl}/app/getBackpack/1`
 //8.站内信列表(get): app/getMailList/$page //$page 当前页
 export const getMailList = params =>axios.get(`${serverUrl}/app/getMailList/1`);
 //9.站内信详细内容(get): app/getMail/$id 
-export const getMail = params =>axios.get(`${serverUrl}/app/getMail/1`);
+export const getMail = params =>axios.get(`${serverUrl}/app/getMail/${params}`);
 //10.删除站内信(get): app/hideMail/$id 
 export const hideMail = params =>axios.get(`${serverUrl}/app/hideMail/1`);
