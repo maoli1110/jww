@@ -4,7 +4,7 @@
         <div class="back">
             <img :src="back1Img" alt="">
         </div>
-        <div class="relat xuanze">
+        <div class="relat xuanze" @click="recharge">
             <p class="absol add-coin font-16 yellow1">{{userInfo.goldCounts}}</p>
         </div>
 
@@ -91,6 +91,9 @@ export default {
         },
         selectItem(type){
           console.log(type,'type')
+        },
+        recharge() {
+          this.payVisbile = true;
         }
     },
     created(){

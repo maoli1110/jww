@@ -10,7 +10,7 @@
             </div>
             <img :src="headImg" alt="">
             <p class="user-name substr yellow">{{userInfo.username}}</p>
-            <p class="money yellow">{{userInfo.goldCounts}}</p>
+            <p class="money yellow" @click="recharge">{{userInfo.goldCounts}}</p>
         </div>
         <i class="machine-shadow-fixed"></i>
         <div class="message" @click="messageVisbile=true;">
@@ -166,6 +166,9 @@ export default {
         },
         back(){
             this.$router.push('/main/home');
+        },
+        recharge() {
+          this.payVisbile = true;
         }
     },
     components: {vPaylist,vRecord,vMessage},
