@@ -331,7 +331,7 @@ footer,header,nav,section {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    word-break: break-all;
+    word-break: break-all;font-size:12px;
 }
 .align-h-v{
 	display:flex;
@@ -382,17 +382,15 @@ footer,header,nav,section {
     height: 100%;
     padding-top: 1.4rem;
 }
-<<<<<<< HEAD
 .mint-checklist-label{
     padding:0 !important;
 }
 .mint-cell-wrapper{
-    width:66%!important;
+    width:100%!important;
     margin:0;padding:0 !important;
 
 }
 /*ipad*/
-=======
 /*checkbox select*/
 .checkbox-select { 
     position: absolute;
@@ -417,7 +415,6 @@ footer,header,nav,section {
     vertical-align: middle;
 }
 /* ipad竖屏 */
->>>>>>> 497de739f0ef4d16245ad48440e055fabe4cb793
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
     html{
         font-size: 96px!important;
