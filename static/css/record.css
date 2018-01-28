@@ -56,7 +56,7 @@
     height: 1.3rem;
 }
 .item-infos .record-type img{
-    width:48%;
+    width:81%;
     margin-top:0.15rem;
 }
 .item-infos  .payaway{ right:0.1rem;  }
@@ -68,7 +68,7 @@
 }
 .history-list .history-list-item{
     width: 30%;
-    height: 15%;
+    height: 43%;
     float: left;
     text-align: center;
     border-radius: 0.1rem;
@@ -79,12 +79,11 @@
 }
 .history-list .history-list-item img{
         margin-top: 0.1rem;
-    width: 48% !important;  
+    width: 87% !important;  
     text-align: center;
     border-radius: 0.2rem;
     margin: 0.1rem 0.1rem; 
     color: #AF7300;
-    background: #fff;
     background-size: 110%;
 }
 .history-list .history-list-item .toy-list{
