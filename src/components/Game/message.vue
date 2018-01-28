@@ -28,7 +28,7 @@
                    <div class="message-detail" v-show="detailVisible">
                     <div class="main-content"> 
                         <div class="Grid header">
-                            <div class="Grid-cell grey1">发件人：{{detailMessageInfo.sendName}}</div>
+                            <div class="Grid-cell u-lof40 grey1 align-v-h">发件人：{{detailMessageInfo.sendName}}</div>
                             <div class="Grid-cell"></div>    
                             <div class="Grid-cell grey1">{{detailMessageInfo.sendTime}}</div>
                         </div>
@@ -47,7 +47,7 @@
             </div>
             <div class="delete-dialog" v-show="deleteDialogVisible">
                 <div  class="op-btn Grid">
-                    <mt-button type="default" class="Grid-cell">确定</mt-button>
+                    <mt-button type="default" class="Grid-cell" @click="deleteMsg(detailMessageInfo.id)">确定</mt-button>
                     <div class="Grid-cell"></div>
                     <mt-button type="primary" class="Grid-cell" @click="deleteDialogVisible=false">取消</mt-button>
                 </div>
@@ -57,7 +57,7 @@
 </template>
 <script>
     import "../../../static/css/message.css";
-    import { getMailList,getMail } from "../../api/getData.js";
+    import { getMailList,getMail,hideMail } from "../../api/getData.js";
     export default{
         props:{isShow:Boolean},
         data(){
@@ -93,8 +93,18 @@
                 });
 
             },
-            deleteMessage() {
+            deleteMessage(id) {
                 this.deleteDialogVisible = true;
+            },
+            deleteMsg(id) {
+                hideMail(id).then((res)=>{
+                    console.log('delete success')
+                    this.reset();
+                    getMailList().then((res)=>{
+                        this.messageInfo = res.data.data.content;
+                        console.log(this.messageInfo)
+                    });
+                });
             }
         },
         created() {
