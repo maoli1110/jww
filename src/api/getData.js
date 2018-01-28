@@ -15,12 +15,12 @@ let serverUrl = 'http://wwj.gamesoul.com.cn/back';
 //bim创建工程 example
 export const createProject = params=>axios.post(`${params.url}rs/bimRest/createProject`,params.param);
 
-//1.登录 app/login
+//1.登录 app/login ok
 export const login = params =>axios.get(`${serverUrl}/app/login`);
-//2.获取娃娃机列表 app/getWlist/$page
+//2.获取娃娃机列表 app/getWlist/$page ok
 export const getWlist = params =>axios.get(`${serverUrl}/app/getWlist/1`);
 //3.娃娃机点击(get)：app/hit/$id
-//4.获取当前用户信息(get): app/getUserInfo
+//4.获取当前用户信息(get): app/getUserInfo ok
 export const getUserInfo = params =>axios.get(`${serverUrl}/app/getUserInfo`);
 //5.抓娃娃是否成功(get): app/getWawaStatus/$wawa_id/$status   //$wawa_id 娃娃机ID $status 是否抓取成功
 export const getWawaStatus = params =>axios.get(`${serverUrl}/app/getWawaStatus/$wawa_id/$statuso`);

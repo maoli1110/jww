@@ -134,12 +134,22 @@
     width: 97%;
     margin-top: 1.12rem;
 }
+.home .xuanze > p:after {
+    content: '';
+    background:url('../../static/img/ingame_btn_pay3.png');
+    background-size: 100% 100%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
 /*them*/
 .game-them{font-size:0.25rem;color:#FFFEAE;text-align:center;height:0.6rem;line-height:0.6rem;font-weight:bold;}
 .add-coin{    
-    right: .03rem;
+    max-width: 2rem;
+    right: .4rem;
     top: .01rem;
-    height: 37%;
+    height: .4rem;
+    font-weight: 800;
 }
 .add-coin>img{
     width: .4rem;
