@@ -53,7 +53,7 @@ function dateFormat(date,type){
     let getdate = date.getDate();
     let getHou = date.getHours();
     let getMin = date.getMinutes();
-    date = `${getYear}.${getMonth}.${getdate}  ${getHou}:${getMin}`;
+    date = `${getYear}/${getMonth}/${getdate}`;
     return date;
 }
 function setSessionstorage(name,obj){
