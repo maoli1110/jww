@@ -6,7 +6,6 @@
         <img class="light-left" :src="lightUrl" alt="">
         <img class="light-right" :src="lightUrl" alt="">
         <div class="user-wrap">
-            <div>2017.10.15</div>
             <div class="user-info">
             </div>
             <img :src="headImg" alt="">
