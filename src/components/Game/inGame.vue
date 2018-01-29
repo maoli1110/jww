@@ -20,7 +20,7 @@
                 <div class="doll-machine">
                     <div class="machine" id="machine">
                         <div class="machine-clip" id="machine-clip"
-                         style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);-webkit-transform: translateY(0px)"> 
+                         style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);-webkit-transform: translateY(0px)">
                         <i class="machine-bar"></i>
                         <i class="machine-clip-line" id="machine-clip-line" style="height: 433px;"></i>
                         <i class="machine-clip-origin"></i>
@@ -177,7 +177,7 @@ export default {
     },
     mounted() {
 
-        document.body.addEventListener('touchstart', function () {});  
+        document.body.addEventListener('touchstart', function () {});
         // console.log(this.$route.params.num)
         let packetNum = this.$route.params.num + 1 ;
         let moveBottom = $('#doll-list2').offset().top+$('#doll-list2').height()-$("#machine-clip").height();
@@ -186,7 +186,7 @@ export default {
         // console.log(moveBottom)
         var m = 0;
         var n = 0;
-        var isCatch = false;  
+        var isCatch = false;
         var isVisibleGo = true;
         this.packetUrl = './static/img/'+packetNum+'.png';
         $(".doll-img_name__goods").css("background",'url(./static/img/'+this.$route.params.num+'.png) 47% 0 no-repeat');
@@ -237,14 +237,14 @@ export default {
                 $('#machine-clip').css('transform', 'translateX(' + m + 'px)');
                 $('#machine-clip').css('-webkit-transform', 'translateX(' + m + 'px)');
                 $('#machine-clip').css('transition-duration', '0.5s');
-                $('#machine-clip').css('-webkit-transition-duration', '0.5s'); 
+                $('#machine-clip').css('-webkit-transition-duration', '0.5s');
             } else {
                 $('.machine').css('transform', 'translateZ(' + n + 'px)');
                 $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
                 $('.machine').css('transition-duration', '0.5s');
                 $('.machine').css('-webkit-transition-duration', '0.5s');
                 if(n== -30 || n== 30 ){
-                    return; 
+                    return;
                 } else {
                     moveBottom = -Math.abs(moveBottom);
                     if(type == 'up'){
@@ -268,7 +268,7 @@ export default {
             var level;
             if(n>=-10 && n<=10 ){ //第二层
                 level=2;
-            } else if(n>10 && n<=30){ //第一层 
+            } else if(n>10 && n<=30){ //第一层
                 level=1;
             } else if(n>=-30 && n<10){ //第三层
                 level=3;
@@ -475,7 +475,7 @@ export default {
                     if(isCatch){
                         $(".doll-item-single").removeAttr("style").addClass('doll-rise');
                     }
-                    
+
 
                     move(this.clip).set("transform", a).duration(this.setTime.rising).ease("linear").end();
                     setTimeout(function() {
@@ -548,31 +548,31 @@ export default {
                 // console.log(keyCodeArry,'keyCodeArry');
                 if(!games.isRun){
                     App.playMove(direction);
-                    timeout = setTimeout(function () {                                 
+                    timeout = setTimeout(function () {
                          App.longPlayMove(direction);
-                    }, 100);  
+                    }, 100);
 
                 }
-                $(".btn-"+direction).addClass('btn-'+direction+'-active')   
+                $(".btn-"+direction).addClass('btn-'+direction+'-active')
             });
             //鼠标松开 或 手指从屏幕上离开时触发
-            $(directionObj).bind('touchend mouseup', function (event) {     
-                isVisibleGo = true;                       
+            $(directionObj).bind('touchend mouseup', function (event) {
+                isVisibleGo = true;
                 clearTimeout(timeout);
                 keyCodeArry=deletKeyCodeArry(direction,keyCodeArry);
-                $(".btn-"+direction).removeClass('btn-'+direction+'-active') 
-                clearInterval(timer)                         
+                $(".btn-"+direction).removeClass('btn-'+direction+'-active')
+                clearInterval(timer)
                 // console.log('end')
             });
             //鼠标移出、手指停止触摸屏幕时触发
-            $(directionObj).bind('touchcancel mouseout', function (event) {                            
+            $(directionObj).bind('touchcancel mouseout', function (event) {
                 clearTimeout(timeout);
-                // $(this).removeClass('bghover');  
+                // $(this).removeClass('bghover');
                 keyCodeArry=deletKeyCodeArry(direction,keyCodeArry);
-                 $(".btn-"+direction).removeClass('btn-'+direction+'-active')                          
-                 clearInterval(timer)                  
+                 $(".btn-"+direction).removeClass('btn-'+direction+'-active')
+                 clearInterval(timer)
             });
-                
+
         }
         /**爪子左右移动**/
         App.move = function() {
@@ -652,7 +652,7 @@ export default {
                     } else if (m < min) {
                         m = min;
                     }
-                    if(m<0) return; 
+                    if(m<0) return;
                     restTransition('xy','');
                 } else {
                     n = n + speed;
@@ -778,12 +778,12 @@ export default {
     margin-left: .6rem;
 }
 .operation-btn > div {
-    height: .56rem; 
+    height: .56rem;
     width: .96rem;
 }
 
 .doll-bets-btn{
-    width: 28%; 
+    width: 28%;
     margin-right: 10%;
     text-align: right;
 }
@@ -844,7 +844,7 @@ export default {
 .operation-btn > div:nth-child(8).btn-down-active{
     background: url('../../../static/img/ingame_btn_down2.png')no-repeat 3px 1px ;
     background-size: 100% 100%;
-} 
+}
 .doll-machine{
     perspective: 600px;
 }
@@ -903,14 +903,14 @@ export default {
     background-size: 100%;
 }
 #doll-list1 > li{
-    background: url('../../../static/img/toy_01.png') 0 0 no-repeat; 
+    background: url('../../../static/img/toy_01.png') 0 0 no-repeat;
     background-size: 100%;
     width: 18%
-} 
+}
 .user-info,.user-wrap {
-    width: 3.2rem; 
+    width: 3.2rem;
     height: 1.9rem;
-    position: absolute; 
+    position: absolute;
     right: 0;
     top: .19rem;
     z-index: 8;

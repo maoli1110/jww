@@ -4,8 +4,8 @@
         <div class="back">
             <img :src="back1Img" alt="">
         </div>
-        <div class="relat xuanze" @click="recharge">
-            <p class="absol add-coin font-16 yellow1">{{userInfo.goldCounts}}</p>
+        <div class="relat xuanze relat" @click="recharge" style="height:4%">
+            <p class="absol add-coin font-16 yellow1">1{{userInfo.goldCounts}}</p>
         </div>
 
        <div class="select-list">
@@ -44,7 +44,7 @@ import vRecord from '../Game/record.vue';
 import  '../../../static/css/home.css';             //主页样式
 import { getWlist,getUserInfo } from "../../api/getData.js"
 import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
-export default { 
+export default {
     data() {
         return {
             selected:"",                    //tab选中状态
@@ -65,7 +65,7 @@ export default {
         //组件关窗通信
         panelHide(visible){
             this.payVisbile =visible;
-            
+
         },
         panelHideRecord(visible){
           this.recordVisible = visible;
@@ -98,14 +98,14 @@ export default {
     },
     created(){
         this.selected = 'home'; //默认选中home页
-        
+
     },
     mounted(){
         //获取列表
         this.list = getSessionstorage('wlist');
         if(!this.list){
            getWlist().then((res)=>{
-              this.list = res.data.data.content; 
+              this.list = res.data.data.content;
               setSessionstorage('wlist',res.data.data.content);
             });
         }

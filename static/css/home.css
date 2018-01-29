@@ -130,9 +130,9 @@
 
 }
 .home .xuanze {
-    position: absolute;
+    /*position: absolute;*/
     width: 97%;
-    margin-top: 1.12rem;
+    margin-top: 18.5%;
 }
 .home .xuanze > p:after {
     content: '';
@@ -144,11 +144,12 @@
 }
 /*them*/
 .game-them{font-size:0.25rem;color:#FFFEAE;text-align:center;height:0.6rem;line-height:0.6rem;font-weight:bold;}
-.add-coin{    
+.add-coin{
     max-width: 2rem;
     right: .4rem;
-    top: .01rem;
+    /*top: 13%;*/
     height: .4rem;
+    line-height: .4rem;
     font-weight: 800;
 }
 .add-coin>img{
