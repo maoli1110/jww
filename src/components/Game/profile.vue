@@ -98,6 +98,9 @@ export default {
     },
     created(){
         this.selected = 'home'; //默认选中home页
+        
+    },
+    mounted(){
         //获取列表
         this.list = getSessionstorage('wlist');
         if(!this.list){
