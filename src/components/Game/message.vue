@@ -10,6 +10,7 @@
             <div class="absol message-list" >
                 <div class="message-list-wrapper common-list-wrapper">
                     <!--站内信list-->
+                    <div>{{time}}</div>
                    <div class="message-list-item Grid" v-for="item in messageInfo" v-show="listVisible">
                         <div class="Grid-cell u-lof25 icon align-h-v">
                             <img :src="defaultHeaderImg" alt="">
@@ -113,7 +114,6 @@
                 this.messageInfo.forEach((value,key)=>{
                     value.sendTime = dateFormat(value.sendTime);
                 })
-                console.log(this.messageInfo)
             });
         }
     }

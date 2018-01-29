@@ -46,14 +46,16 @@ function transformToObjFormat(param, simpleOrgNodes) {
     }
 }
 
-function dateFormat(date,type){
+function dateFormat(date){
+    // date = date+'';
+    date = date.replace(/-/g,"/");
     date = new Date(date);
     let getYear = date.getFullYear();
     let getMonth = date.getMonth()<10?'0'+(date.getMonth()+1):date.getMonth()+1;
     let getdate = date.getDate();
     let getHou = date.getHours();
     let getMin = date.getMinutes();
-    date = `${getYear}/${getMonth}/${getdate}`;
+    date = `${getYear}.${getMonth}.${getdate}  ${getHou}:${getMin}`;
     return date;
 }
 function setSessionstorage(name,obj){
