@@ -4,8 +4,8 @@
         <div class="back">
             <img :src="back1Img" alt="">
         </div>
-        <div class="relat xuanze relat" @click="recharge" style="height:4%">
-            <p class="absol add-coin font-16 yellow1">1{{userInfo.goldCounts}}</p>
+        <div class="relat xuanze relat"  style="height:4%">
+            <p class="absol add-coin font-16 yellow1" @click="recharge">1{{userInfo.goldCounts}}</p>
         </div>
 
        <div class="select-list">
