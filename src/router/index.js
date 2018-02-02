@@ -25,6 +25,11 @@ export default new Router({
                     //  ingame
                     path: 'ingame/:num',
                     component: resolve => require(['../components/Game/ingame.vue'], resolve)
+                },
+                {
+                    //  ingame
+                    path: 'address',
+                    component: resolve => require(['../components/Game/address.vue'], resolve)
                 }
             ],
         },

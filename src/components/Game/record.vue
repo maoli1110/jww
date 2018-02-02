@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="absol mask">
-
         </div>
         <div v-show="isShow" class="absol recode-bg">
             <!--关闭按钮-->
@@ -58,6 +57,7 @@
                     </div>                      
             </div>
         </div>
+        
     </div>
 </template>
 <script>
@@ -81,7 +81,16 @@
                 tableSwitch:{
                     mineUrl:'./static/img/my_btn_mine1.png',
                     historyUrl:'./static/img/my_btn_record1.png',
-                },        
+                },
+                slots: [
+                {
+                  flex: 1,
+                  values: ['2015-01', '2015-02', '2015-03', '2015-04', '2015-05', '2015-06'],
+                  className: 'slot1',
+                  textAlign: 'center'
+                }
+              ], 
+                back1Img:'./static/img/ingame_btn_back1.png'
             }
         },
         methods: {
@@ -120,6 +129,8 @@
                 }else{
                     alert('请选择要提取的娃娃信息');
                 }
+
+                this.$router.push('address');
                 
             },
             //提取纪录

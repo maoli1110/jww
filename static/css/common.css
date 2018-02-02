@@ -87,7 +87,7 @@ table {border-collapse: separate; border-spacing: 0;}
 th {font-weight: bold; vertical-align: bottom;}
 td {font-weight: normal; vertical-align: top;}
 
-hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}
+hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: .2em 0; padding: 0;}
 
 input, select {vertical-align: middle;}
 
@@ -245,6 +245,8 @@ footer,header,nav,section {
 .align-right {
     text-align: right;
 }
+.f_l {float: left}
+.f_r {float: right;}
 /*mint组件化tab样式*/
 .mint-tabbar{
     height:10.4%;background:transparent !important;z-index: 3;
@@ -287,8 +289,14 @@ footer,header,nav,section {
 .font-16{
     font-size: .16rem;
 }
+.font-20{
+    font-size: .16rem;
+}
 .font-26{
     font-size: .26rem;
+}
+.font-32{
+    font-size: .32rem;
 }
 .pull-left{
 	float: left;
@@ -308,6 +316,9 @@ footer,header,nav,section {
     flex: 1;        
 }
 
+.Grid-cell.u-lof10{ 
+    flex: 0 0 10%;
+}
 .Grid-cell.u-lof12{ 
     flex: 0 0 12%;
 }
@@ -328,6 +339,9 @@ footer,header,nav,section {
 }
 .Grid-cell.u-lof25{ 
     flex: 0 0 25%;
+}
+.Grid-cell.u-lof90{
+    flex: 0 0 90%;
 }
 .Grid-cell.u-full{
     flex: 0 0 100%;
