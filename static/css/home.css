@@ -148,9 +148,10 @@
     max-width: 2rem;
     right: .4rem;
     /*top: 13%;*/
-    height: .4rem;
-    line-height: .4rem;
+    height: .32rem;
+    line-height: .32rem;
     font-weight: 800;
+    font-size: .32rem;
 }
 .add-coin>img{
     width: .4rem;

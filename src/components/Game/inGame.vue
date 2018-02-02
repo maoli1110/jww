@@ -1,5 +1,16 @@
 <template>
     <div class="in-game">
+        <div class="absol mask" style="display:none" >
+            
+        </div>
+        <div class="success align-v-h" @click="closeMask">
+            <img :src="successImg1" alt="" v-show="isSuccess1">
+            <img :src="successImg2" alt="" v-show="!isSuccess1">
+        </div>
+        <div class="fail align-v-h" @click="closeMask">
+            <img :src="failImg1" alt="" v-show="isfail1">
+            <img :src="failImg2" alt="" v-show="!isfail1">
+        </div>
         <div class="ingame-1"></div>
         <div class="ingame-2"></div>
         <div class="ingame-3"></div>
@@ -125,6 +136,8 @@
 import vPaylist from "../Game/pay.vue";
 import vRecord from '../Game/record.vue';
 import vMessage from '../Game/message.vue';
+import { getWawaStatus } from '../../api/getData.js';
+var setIntervalIndex;
 export default {
     data() {
         return {
@@ -149,13 +162,19 @@ export default {
             back1Img:'./static/img/ingame_btn_back1.png',
             back2Img:'./static/img/ingame_btn_back2.png',
             allToysImg:'./static/img/ingame-all.png',
+            successImg1:'./static/img/success_1.png',
+            successImg2:'./static/img/success_2.png',
+            failImg1:'./static/img/fail_1.png',
+            failImg2:'./static/img/fail_2.png',
             payVisbile:false,
             recordVisible:false,
             messageVisbile:false,
             userInfo:{
                 username:'',
                 goldCounts:''
-            }
+            },
+            isSuccess1:false,
+            isfail1:false
         }
     },
     methods: {
@@ -169,6 +188,12 @@ export default {
         },
         recharge() {
           this.payVisbile = true;
+        },
+        closeMask() {
+            clearInterval(setIntervalIndex);
+            $('.success').hide();
+            $('.fail').hide();
+            $('.mask').hide();
         }
     },
     components: {vPaylist,vRecord,vMessage},
@@ -176,7 +201,7 @@ export default {
         this.userInfo = window.userInfo;
     },
     mounted() {
-
+        self = this;
         document.body.addEventListener('touchstart', function () {});
         // console.log(this.$route.params.num)
         let packetNum = this.$route.params.num + 1 ;
@@ -186,8 +211,9 @@ export default {
         // console.log(moveBottom)
         var m = 0;
         var n = 0;
-        var isCatch = false;
+        var isCatch = false,realCatch = false;
         var isVisibleGo = true;
+        var currentCatch;//当前抓娃娃index
         this.packetUrl = './static/img/'+packetNum+'.png';
         $(".doll-img_name__goods").css("background",'url(./static/img/'+this.$route.params.num+'.png) 47% 0 no-repeat');
         $(".doll-img_name__goods").css("background-size",'150%');
@@ -320,7 +346,6 @@ export default {
             document.addEventListener("touchstart",play, false);
         }
 
-
         /*games对象*/
         function Games() {
             var a = this;
@@ -330,12 +355,12 @@ export default {
             this.clip = document.getElementById("machine-clip"), /*钩子*/
             this.$clip = $(this.clip),
             this.getDoll = function(b) {
-                var c = $(".doll-box").find("[data-index=" + b + "]");
+                currentCatch = $(".doll-box").find("[data-index=" + b + "]");
                 window.xuanze = b;
-                if (a.dollSerial = b, c.length) {
+                if (a.dollSerial = b, currentCatch.length) {
                     // var d = $(c).eq(0).clone();
                     // var d = $(c).eq(0).addClass("doll-rise");
-                    $(c).addClass("v-hidden")
+                    $(currentCatch).addClass("v-hidden")
                     // $("#machine-clip").append(d)
                 } else this.$clip && this.$clip.removeClass("catch")
 
@@ -402,23 +427,27 @@ export default {
 
             this.machineTips = function(a) {
                 if (a) {
-                    switch ($(".machine-tips-box").removeClass("cpm-hide"), $(".machine-tips-box .machine-tips").addClass("machine-tips__" + a), a) {
+                    switch ($(".machine-tips-box").removeClass("cpm-hide"), a) {
                         case "error":
-                            var b = ["换个姿势再来一次！"];
-                            $(".machine-tips-box .machine-tips .machine-tips_txt").html(b[Math.floor(Math.random() * b.length)]);
+                            $(".fail").css('display','flex');
+                            $(".mask").show();
+                            setIntervalIndex = setInterval(()=>{
+                                self.isfail1 = !self.isfail1;
+                            },300)
                             break;
                         case "success":
-                            $(".machine-tips-box .machine-tips .machine-tips_txt").html("恭喜你夹中了！")
+                            $(".success").css('display','flex');
+                            $(".mask").show();
+                            setIntervalIndex = setInterval(()=>{
+                                self.isSuccess1 = !self.isSuccess1;
+                            },300)
                     }
                     setTimeout(function() {
-                            $(".machine-tips-box").addClass("cpm-hide"),
-                                $(".machine-tips-box .machine-tips").removeClass("machine-tips__" + a)
-                        },
-                        1500)
+                        $(".machine-tips-box").addClass("cpm-hide");
+                    },1500)
                 }
             }
         }
-
 
         function initDollItems(a) {
             var b = {
@@ -475,13 +504,14 @@ export default {
                     if(isCatch){
                         $(".doll-item-single").removeAttr("style").addClass('doll-rise');
                     }
-
-
                     move(this.clip).set("transform", a).duration(this.setTime.rising).ease("linear").end();
-                    setTimeout(function() {
+                    
+                    setTimeout(()=> {
                         move(_clip).set("transform", b).duration(1700).ease("linear").end();
-                        games.offDoll.call(_this, _this.screen_h, _this.setTime.rising)
+                        // self.$router.go(0);
+
                     }, 2e3);
+                    
                     m = 0;
                 },
 
@@ -493,6 +523,7 @@ export default {
                 },
 
                 this.catchDoll = function(a) {
+                    var _this = this;
                     var b = 1;
                     return setTimeout(function() {
                         var a = -1;
@@ -503,9 +534,31 @@ export default {
                             if(Math.abs(e-b) <= 20 && ($(d).css('visibility')!='hidden')){
                                 a = $(d).attr("data-index");
                                 isCatch = true;
+                                /**
+                                * 1.接口判断时候抓成功
+                                * 2.不成功则娃娃掉下 重新洗牌页面
+                                */
+                                let params = {id:1,status:1}
+                                getWawaStatus(params).then((res)=>{
+                                    res = true
+                                    if(res!==false){
+                                        realCatch = true;
+                                        setTimeout(()=> {
+                                            games.offDoll.call(_this, _this.screen_h, 2000)
+                                        }, 2e3);
+                                    } else {
+                                        realCatch = false;
+                                        setTimeout(()=> {
+                                            games.offDoll.call(_this, _this.screen_h, 10)
+                                        }, 2e3);
+                                    }
+                                    
+                                });
+                            } else {
+                               realCatch = false;
+                                games.isRun = 0;
                             }
-                        }),
-                        games.getDoll.call(this, a);
+                        }),games.getDoll.call(this, a);
                     }.bind(this), this.setTime.fallingToRising),
                     b
                 },
@@ -517,14 +570,22 @@ export default {
                 },
                 this.clipEnd = function(a) {
                     setTimeout(function() {
-                        if(isCatch){
-                            games.machineTips("success");
+                        if(isCatch && realCatch){
+                            setTimeout(()=>{
+                                games.machineTips("success");
+                            },1500);
                         } else {
-                            games.machineTips("error");
+                            setTimeout(()=>{
+                                games.machineTips("error");
+                            },1500)
                         }
                         //保持影子不动
                         $(".machine-shadow-fixed").css({'left':-100,'top':-100});
                         $(".machine-shadow").css('display','block');
+                        setTimeout(()=>{
+                            $(currentCatch).removeClass('v-hidden').fadeIn();
+                        },2000)
+
                     }.bind(this), this.setTime.risingEnd)
                 },
 
@@ -539,13 +600,14 @@ export default {
         function moveDirection(directionObj,direction) {
             var timeout;
             //鼠标按下 或 手指触摸屏幕时触发
+            debugger
             $(directionObj).bind('touchstart mousedown', function (event) {
                 isVisibleGo = false;
                 event.stopPropagation();
                 event.preventDefault();
                 keyCodeArry=addKeyCodeArry(direction,keyCodeArry);
                 if(keyCodeArry.length>1) return;
-                // console.log(keyCodeArry,'keyCodeArry');
+                console.log(keyCodeArry,'keyCodeArry');
                 if(!games.isRun){
                     App.playMove(direction);
                     timeout = setTimeout(function () {
@@ -672,6 +734,7 @@ export default {
                     $(a).bind("touchstart mousedown",function(e){
                         if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
                         isCatch = false;
+                        realCatch = false;
                         // if($("#machine-clip").offset().left < 20) return;
                         let shadowLeft = $(".machine-shadow").offset().left;
                         let shadowTop = $(".machine-shadow").offset().top;
@@ -914,7 +977,7 @@ export default {
     right: 0;
     top: .19rem;
     z-index: 8;
-    font-size: .2rem;
+    font-size: .24rem;
     font-weight: 800;
 }
 .user-info {
@@ -933,7 +996,7 @@ export default {
 .user-wrap .user-name {
     max-width: 1.7rem;
     position: absolute;
-    top: .1rem;
+    top: .15rem;
     right: .3rem;
     z-index: 9;
 }
@@ -984,7 +1047,16 @@ export default {
     z-index: 3;
     height: 56%;
 }
-
+.success>img, .fail>img{
+    width: 5rem;
+    height: 4rem;
+    display: block
+}
+.success, .fail {
+    position: absolute;
+    z-index: 11;
+    display: none;
+}
 </style>
 <style>
 .in-game .mint-tabbar .mint-tab-item-icon {

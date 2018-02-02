@@ -93,6 +93,7 @@
 .record-list-time{right:0;color:#AF7300;font-weight:bold;}
 .mint-tab-item-label{width:70%;margin:0}
 .mint-tab-item:nth-child(1) .mint-tab-item-label{width:70%;margin:0;margin-left:0.5rem}
+.mint-tab-container-item input {display: none;}
 /*提取娃娃*/
 .extract-pro{
     width: 3rem;

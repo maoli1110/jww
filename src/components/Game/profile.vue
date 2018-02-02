@@ -5,7 +5,7 @@
             <img :src="back1Img" alt="">
         </div>
         <div class="relat xuanze relat"  style="height:4%">
-            <p class="absol add-coin font-16 yellow1" @click="recharge">1{{userInfo.goldCounts}}</p>
+            <p class="absol add-coin yellow1" @click="recharge">1{{userInfo.goldCounts}}</p>
         </div>
 
        <div class="select-list">

@@ -24,7 +24,7 @@ export const getWlist = params =>axios.get(`${serverUrl}/app/getWlist/1`);
 //4.获取当前用户信息(get): app/getUserInfo ok
 export const getUserInfo = params =>axios.get(`${serverUrl}/app/getUserInfo`);
 //5.抓娃娃是否成功(get): app/getWawaStatus/$wawa_id/$status   //$wawa_id 娃娃机ID $status 是否抓取成功
-export const getWawaStatus = params =>axios.get(`${serverUrl}/app/getWawaStatus/$wawa_id/$statuso`);
+export const getWawaStatus = params =>axios.get(`${serverUrl}/app/getWawaStatus/${params.id}/${params.status}`);
 //6.我的娃娃(get): app/getBackpack/$page //$page 当前页
 export const getBackpack = params =>axios.get(`${serverUrl}/app/getBackpack/1`);
 //7.申请提取 (post): app/applyWawa
