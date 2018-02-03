@@ -172,6 +172,9 @@ img {
 	border: none
 }
 
+label {
+    display: inline-block;
+}
 a {
 	color: #1a76cc;
 	text-decoration: none
@@ -298,6 +301,9 @@ footer,header,nav,section {
 .font-32{
     font-size: .32rem;
 }
+.font-16x {
+    font-size: 16px;
+}
 .pull-left{
 	float: left;
 }
@@ -391,7 +397,7 @@ footer,header,nav,section {
     height: 10%;
 }
 .back>img{
-    width: .85rem;
+    width: .8rem;
     float:left;
 }
 .dialog-close {

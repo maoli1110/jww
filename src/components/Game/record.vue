@@ -8,7 +8,6 @@
                 <span></span>
             </div>
             <div class="absol recode-list">
-            
                 <!--table选项卡--> 
                 <mt-navbar v-model="selected" class="absol" style="top:23%;z-index:100">
                     <mt-tab-item id="list" style=" ">
@@ -66,6 +65,7 @@
         getBackpack,//抓娃娃列表
         setApplyWawa,//申请提取
         getExtractLog,//提取纪录
+        getLocation//省市
     } from '../../api/getData.js';
     import { dateFormat } from "../../utils/common.js";
 
@@ -120,7 +120,7 @@
                 })
             },
             getData(){
-                // this.getBackpackList();
+                this.getBackpackList();
             },
             //提取娃娃
             extract(){

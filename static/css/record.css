@@ -147,10 +147,13 @@
     background-size: 100% 100%;
 }
 .address_content {
+    left: 0;
     top: 12%;
-    bottom: 14%;
+    bottom: 12%;
+    right: 0;
     position: absolute;
     overflow: auto;
+    margin: 0 auto;
 }
 .new_address {
     margin: 0px 10px 10px 10px;
@@ -161,15 +164,24 @@
 .address .mint-field-core {
     background: #ededed;
     padding: 2px 10px;
+    border-radius: 3px;
 }
-.address .mint-cell-value:after {
+.new_address .username:after,.new_address .phone:after {
     content: '';
     background:url('../../static/img/address_btn_write.png');
     background-size: 100% 100%;
     width: 20px;
     height: 20px;
     position: absolute;
-    right: 0;
+    right: 1px;
+    top: 14px;
+}
+.new_address .select-input {
+    width: 3.6rem;
+    border: none;
+    background: #ededed;
+    outline: none;
+    border-radius: 3px;
 }
 .save_address .mint-button {
     position: absolute;
@@ -178,7 +190,7 @@
     right: 0;
     left: 0;
     bottom: .2rem;
-    height: 2.2em;
+    height: 2.4em;
     background: url('../../static/img/address_btn_save1.png');
     background-size: 100% 100%
 }
@@ -223,3 +235,84 @@
     height: 16px;
     vertical-align: middle;
 }
+.address_content .location {
+    position: relative;
+}
+.address_content .location .select {
+    background: #ededed;
+    width: 100px;
+    height: 25px;
+    line-height: 26px;
+    padding: 0 10px;
+    border-radius: 3px;
+}
+.address_content .location {
+    font-size: 16px;
+    padding: 10px 0;
+}
+.address_content .location >span {
+    display: inline-block;
+}
+.history_address .f_l >p {
+    padding-bottom: 2px;
+}
+.history_address .f_l >label {
+    padding-top: 11px;
+}
+.new_address .location .icon {
+    background: url('../../static/img/address_btn_choose.png');
+    background-size: 100% 100%;
+    width: 20px;
+    height: 20px;
+    vertical-align: top;
+    margin-top: 2px;
+}
+.new_address label >input {
+    display: none;
+}
+.address .location-select {
+    position: fixed;
+    /*height: 400px;*/
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 4;
+}
+.address .location-select .title {
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+    margin: 0 10px;
+    padding: 10px 0;
+}
+.address .location-select .title .icon {
+    position: absolute;
+    display: inline-block;
+    background: url('../../static/img/address_btn_sure.png');
+    background-size: 100% 100%;
+    right: 20px;
+    width: 40px;
+    height: 20px;
+}
+.address .mint-field.is-textarea:after {
+    content: '';
+    background:url('../../static/img/address_btn_write.png');
+    background-size: 100% 100%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 1px;
+    top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

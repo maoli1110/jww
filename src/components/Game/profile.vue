@@ -42,7 +42,7 @@
 import vPaylist from "../Game/pay.vue";
 import vRecord from '../Game/record.vue';
 import  '../../../static/css/home.css';             //主页样式
-import { getWlist,getUserInfo } from "../../api/getData.js"
+import { getWlist,getUserInfo,getLocation } from "../../api/getData.js"
 import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
 export default {
     data() {
@@ -98,6 +98,10 @@ export default {
     },
     created(){
         this.selected = 'home'; //默认选中home页
+        getLocation().then((res)=>{
+            localStorage.setItem('locationObj', JSON.stringify(res.data));
+            console.log(localStorage.getItem('locationObj'))
+        });
 
     },
     mounted(){
