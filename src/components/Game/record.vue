@@ -125,13 +125,11 @@
             //提取娃娃
             extract(){
                 if(exportedList.length){
-                    this.setApplyWawaInfos({bId:exportedList,sendAddress:"",sendPhone:""})
+                   
+                    this.$router.push('/main/address');
                 }else{
                     alert('请选择要提取的娃娃信息');
                 }
-
-                this.$router.push('address');
-                
             },
             //提取纪录
             getExtractLogs(params){
@@ -148,10 +146,11 @@
             checkedList(event){
                 if($(event.target)[0].checked && exportedList.indexOf($(event.target).attr('data-list'))==-1){
                     exportedList.push($(event.target).attr('data-list'));
-                }else if(!$(event.target)[0].checked){
+                } else if(!$(event.target)[0].checked){
                     let index = exportedList.indexOf($(event.target).attr('data-list'));
                     exportedList.splice(index,1)
                 }
+                sessionStorage.setItem('currentExtractObj',JSON.stringify(exportedList));//存储当前的提取娃娃的id list
                 console.log(exportedList,'提取娃娃的id数组')
             }
         },

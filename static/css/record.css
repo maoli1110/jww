@@ -176,12 +176,18 @@
     right: 1px;
     top: 14px;
 }
+.new_address .location label {
+    position: absolute;
+    width: 101px;
+}
 .new_address .select-input {
-    width: 3.6rem;
+    width: calc(100% - 101px);
+    margin-left: 101px;
     border: none;
     background: #ededed;
     outline: none;
     border-radius: 3px;
+    display: inline-block;
 }
 .save_address .mint-button {
     position: absolute;
@@ -239,6 +245,7 @@
     position: relative;
 }
 .address_content .location .select {
+    margin-left: 101px;
     background: #ededed;
     width: 100px;
     height: 25px;

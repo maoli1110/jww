@@ -555,8 +555,10 @@ export default {
                                     
                                 });
                             } else {
-                               realCatch = false;
-                                games.isRun = 0;
+                                realCatch = false;
+                                setTimeout(()=> {
+                                    games.isRun = 0;
+                                }, 3000); 
                             }
                         }),games.getDoll.call(this, a);
                     }.bind(this), this.setTime.fallingToRising),
