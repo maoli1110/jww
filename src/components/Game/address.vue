@@ -138,7 +138,6 @@ export default {
                     return false;
                 } 
                 return true
-            
             }
         },
         
@@ -195,7 +194,7 @@ export default {
             //2.判断是否填写新地址
             if(this.historyAddressId) {
                 //给后端传值为历史地址的值
-                 this.setApplyWawa({bId:exportedList,sendAddressId:""})
+                 this.setApplyWawa({bId:exportedList,sendAddressId:"",isDefault:true})
             } else {
                 //默认为新增的地址
                 if(this.valiDataAddress(this.address)){

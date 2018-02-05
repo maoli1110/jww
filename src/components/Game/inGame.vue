@@ -538,7 +538,8 @@ export default {
                                 * 1.接口判断时候抓成功
                                 * 2.不成功则娃娃掉下 重新洗牌页面
                                 */
-                                let params = {id:1,status:1}
+                                let params = {id:1,status:"1"}
+                                debugger
                                 getWawaStatus(params).then((res)=>{
                                     res = true
                                     if(res!==false){
