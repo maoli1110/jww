@@ -12,38 +12,38 @@
             <div class="font-16x title algin align-center"><span>请选择城市</span><span class="icon" @click="ok"></span></div>
             <mt-picker :slots="slots1" @change="onValuesChange1"></mt-picker>
         </div>
-        <div class="address_content">
-            <div class="new_address" v-show="isNewAddress">
+        <div class="address_content" v-show="isNewAddress">
+            <div class="new_address" >
                 <div style="font-size:16px;" class="location username">
                     <label for="">收货人姓名</label>
-                    <input class="select-input" placeholder="请输入收货人姓名" type="text" v-model="address.username">
+                    <input class="select-input" placeholder="请输入收货人姓名" type="text" v-model="address.reciveName">
                 </div>
                 <div style="font-size:16px;" class="location phone">
                     <label for="">手机号码</label> 
-                    <input class="select-input"  placeholder="请输入11位手机号码" type="number" name="" v-model="address.phoneNumer"></span>
+                    <input class="select-input"  placeholder="请输入11位手机号码" type="number" name="" v-model="address.phoneNumber"></span>
                 </div>
                 <div style="font-size:16px;" class="location">
                     <label for="">请选择省份</label>
-                    <span class="select" @click="selectProvince">{{province}}</span>
+                    <span class="select" @click="selectProvince">{{address.province}}</span>
                     <span class="icon" @click="selectProvince"></span>
                 </div>
                 <div class="" style="font-size:16px;" class="location">
                     <label for="">请选择城市</label>
-                    <span class="select" @click="selectCity">{{city}}</span>
+                    <span class="select" @click="selectCity">{{address.city}}</span>
                     <span class="icon" @click="selectCity"></span>
                 </div>
                 <mt-field label="详细地址" placeholder="xx区9999弄99号999室" type="textarea" rows="2" v-model="address.detailAddress"></mt-field>
                 <hr>
                 <label class="address-checkbox-select" @click="setDefaultAddress('new')"><input type="checkbox" class="checkbox-input"><span class="address-checkbox-core"></span>
                 </label>
-                <!-- <div class="save_address">
-                    <mt-button type="default" class="Grid-cell" @click="saveAddress"></mt-button>
-                </div> -->
                 <div class="save_address">
                     <mt-button type="default" class="Grid-cell" @click="saveAddress">保存</mt-button>
                 </div>
             </div> 
-            <div class="new_address history_address" v-show="isAddressList">
+
+        </div>
+        <div class="address_content_history" v-show="isAddressList">
+            <div class="new_address history_address" >
                 <p class="font-32 title">地址列表</p>
                 <div>
                     <div class="clearfix address_list" v-for="(item,index) in addressList">
@@ -52,36 +52,19 @@
                             <p class="font-20"><span style="margin-right:20px">{{item.reciveName}}</span><span>{{item.phoneNumber}}</span></p>
                             <p class="font-20">{{item.detailAddress}}</p>
                             <label class="address-checkbox-select" @click="setDefaultAddress('history')"><input type="checkbox" class="checkbox-input"> <span class="address-checkbox-core"></span>  
-                            </label>
-                        </div>
-                        <div class="f_r">
-                            <label class="address1-checkbox-select" ><input type="checkbox" class="checkbox-input" value="this.historyAddressId" @click="setHistoryAddress('1',$event)"> <span class="address1-checkbox-core"></span>  
                             </label> 
                         </div>
-                    </div>
-                    <div class="clearfix address_list" v-for="(item,index) in addressList">
-                        <div class="f_l">
-                            <p class="font-20">地址{{index+1}}</p>
-                            <p class="font-20"><span style="margin-right:20px">{{item.reciveName}}</span><span>{{item.phoneNumber}}</span></p>
-                            <p class="font-20">{{item.detailAddress}}</p>
-                            <label class="address-checkbox-select" @click="setDefaultAddress('history')"><input type="checkbox" class="checkbox-input"> <span class="address-checkbox-core"></span>  
-                            </label>
-                        </div>
                         <div class="f_r">
-                            <label class="address1-checkbox-select" ><input type="checkbox" class="checkbox-input" value="this.historyAddressId" @click="setHistoryAddress('1',$event)"> <span class="address1-checkbox-core"></span>  
+                            <label class="address1-checkbox-select" ><input type="checkbox" class="checkbox-input" :id="'selected'+index" value="this.historyAddressId" @click="setHistoryAddress(index,$event)"> <span class="address1-checkbox-core"></span>  
                             </label> 
                         </div>
                     </div>
                 </div>
                 <div class="save_address">
-                    <mt-button type="default" class="Grid-cell" @click="saveAddress">添加新地址</mt-button>
+                    <mt-button type="default" class="Grid-cell" @click="toAddNew">添加新地址</mt-button>
                 </div>
-                    
-
             </div>
-        </div>
-        
-        
+        </div>       
     </div>
     <div class="main-nav">
            <mt-tabbar v-model="selected" :value="selected">
@@ -126,12 +109,13 @@ export default {
             userInfo:{},
             historyAddressId:'',
             address:{
-                username:'',
-                phoneNumer:'',
-                detailAddress:''
+                reciveName:'',
+                phoneNumber:'',
+                province:'请选择',
+                city:'请选择',
+                detailAddress:'',
+                isDefault:"0"
             },
-            province:'请选择',
-            city:'请选择',
             proviceList:[],
             cityList:[],
             slots:[{
@@ -196,13 +180,13 @@ export default {
         },
         onValuesChange(index,value) {
             console.log(value.name)
-            this.province = value[0].name;
+            this.address.province = value[0].name;
             this.citysList = value[0].citys;
             this.slots1[0].values = this.citysList;
         },
         onValuesChange1 (index,value) {
             console.log(value.name)
-            this.city = value[0];
+            this.address.city = value[0];
         },
         ok() {
             this.isSlectCity = false;
@@ -213,14 +197,21 @@ export default {
         },
         saveAddress() {
             if(this.valiDataAddress(this.address)){
-                this.isAddressList = true; //显示列表页面
-                this.isNewAddress = false; //显示新增地址页面
+                let params = this.address;
+                console.log(params,'params');
+                //调用新增地址接口
+                addNewAddress(params).then((res)=>{
+                    this.isAddressList = true; //显示列表页面
+                    this.isNewAddress = false; //显示新增地址页面
+                });
             }
-            // if(true){
-            //     this.isAddressList = true;
-            //     this.isNewAddress = false;
-            // }
+            
                
+        },
+        toAddNew() {
+            this.isNewAddress = true;
+            this.isAddressList = false;
+
         },
         // 设置默认地址
         setDefaultAddress(type,id) {
@@ -230,7 +221,16 @@ export default {
         },
         // 设置历史地址
         setHistoryAddress(id,event) {
+            debugger
             let isSelected = $('.address1-checkbox-select .checkbox-input').prop('checked');
+            console.log($('.address_content_history .address_list .address1-checkbox-select> input'),"ioio")
+            $('.address_content_history .address_list .address1-checkbox-select> input').each(function(){
+                debugger 
+                console.log(id)
+                if($(this).attr("id")!=="selected"+id){
+                    $(this).prop('checked',false);
+                }
+            })
             if(isSelected){
                 this.historyAddressId = id;
             } else {

@@ -149,6 +149,19 @@
 .address_content {
     left: 0;
     top: 12%;
+    /*bottom: 12%;*/
+    right: 0;
+    position: absolute;
+    overflow: auto;
+    margin: 0 auto;
+    border-raduis: 12px;
+    background: #fff;
+    border-radius: 16px;
+    margin: 0 10px;
+}
+.address_content_history {
+    left: 0;
+    top: 12%;
     bottom: 12%;
     right: 0;
     position: absolute;
