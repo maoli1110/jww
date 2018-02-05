@@ -1,0 +1,140 @@
+
+根目录：http://wwj.gamesoul.com.cn/back/
+
+通用返回框架
+{
+	"status":"", //succsess成功  nologin未登录 noTime//超时
+	"data":""  
+}
+
+1.登录(get):app/login
+
+2.获取娃娃机列表(get): app/getWlist/$page //$page 当前页
+Response：
+{
+	"content":[
+		"id":1,
+		"title":"这是一只大娃娃",
+		"imgUrl":"http:abc.cn",
+		"timeMoney":99
+	],
+	"totalElements": 0, //全部条数
+  	"page": 0,	//当前页
+  	"size":6	//每页条数
+}
+
+3.娃娃机点击(get)：app/hit/$id
+
+4.获取当前用户信息(get): app/getUserInfo
+Response:
+{
+	"goldCounts":"999",//金币数量
+	"username":"kylee" //用户名
+}
+
+5.抓娃娃是否成功(get): app/getWawaStatus/$wawa_id/$status   //$wawa_id 娃娃机ID $status 是否抓取成功
+Response:
+false/true 
+
+6.我的娃娃(get): app/getBackpack/$page //$page 当前页
+Response:
+{
+	"content":[{
+		"bId":"", //娃娃id
+		"imgUrl":"", //图片
+		"name":"",   //名称
+		"createTime":"" //抓取时间
+	}],
+	"totalElements": 0, //全部条数
+  	"page": 0,	//当前页
+  	"size":6	//每页条数
+}
+
+7.申请提取 (post): app/applyWawa
+Request:
+{
+	'bId':'', //娃娃ID
+	'sendAddressId':'', //收货地址
+}
+Response:
+{
+	"content":[{
+		"imgUrl":"", //图片
+		"name":"",   //名称
+		"createTime":"", //抓取时间
+		"sendTime":"", //提取时间
+		"sendAddress":"" //收货地址
+		"sendPhone":"", //收货电话
+	}],
+	"totalElements": 0, //全部条数
+  	"page": 0,	//当前页
+  	"size":6	//每页条数
+}
+
+7.提取纪录 (get): app/getExtractLog/$page //$page 当前页
+Response:
+{
+	"content":[{
+		"imgUrl":"", //图片
+		"name":"",   //名称
+		"createTime":"", //抓取时间
+		"sendTime":"", //提取时间
+		"sendAddress":"" //收货地址
+		"sendPhone":"", //收货电话
+	}],
+	"totalElements": 0, //全部条数
+  	"page": 0,	//当前页
+  	"size":6	//每页条数
+}
+
+8.站内信列表(get): app/getMailList/$page //$page 当前页
+[{
+	"content":[{
+		"id":""  //id
+		"imgUrl":"", //默认图片
+		"from":"",  //来自谁
+		"sendTime":"", //发送时间
+		"theme":""  //主题
+	}],
+	"totalElements": 0, //全部条数
+  	"page": 0,	//当前页
+  	"size":6	//每页条数
+}]
+
+9.站内信详细内容(get): app/getMail/$id 
+{
+	"id":"1",  //id
+	"sendName":"管理员",  //发件人
+	"sendTime":"2017年12月12日 12:55",//发送时间
+	"contentTitle":"送你一娃娃",		//标题
+	"content":"巴拉小魔仙"		//内容
+}
+
+10.删除站内信(get): app/hideMail/$id 
+Response:
+false/true
+
+11.新增地址(post): app/addAddress
+request
+{
+	"reciveName":"xx",
+	"phoneNumber":"18721545858",
+	"province":"上海",
+	"city":"上海",
+	"detailAddress":"xx小区xx路",
+	"isDefault":"0" //0不默认 1默认
+}
+Response
+false/true
+12.设为默认地址(get): app/setDefaultAddress/$id
+
+13.历史地址列表(get): app/getOldAddress
+Response
+{	
+	"id":"",
+	"addressName":"地址1",
+	"reciveName":"xx",
+	"phoneNumber":"18754545458",
+	"detailAddress":"xx小区xx路",
+	"isDefault":"0", //0不默认 1默认
+}

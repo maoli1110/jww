@@ -154,12 +154,16 @@
     position: absolute;
     overflow: auto;
     margin: 0 auto;
+    border-raduis: 12px;
+    background: #fff;
+    border-radius: 16px;
+    margin: 0 10px;
 }
 .new_address {
     margin: 0px 10px 10px 10px;
-    padding:20px;
+    padding:40px 20px;
     background:#fff;
-    border-radius: 16px;
+    border-radius: 6px;
 }
 .address .mint-field-core {
     background: #ededed;
@@ -190,15 +194,16 @@
     display: inline-block;
 }
 .save_address .mint-button {
-    position: absolute;
+    color: #fff;
+    position: fixed;
     width: 5.4rem;
     margin: 0 auto;
     right: 0;
     left: 0;
-    bottom: .2rem;
+    bottom: 1.6rem;
     height: 2.4em;
-    background: url('../../static/img/address_btn_save1.png');
-    background-size: 100% 100%
+    background: #ff5653;
+    background-size: 100% 100%;
 }
 
 .address .mint-cell {
@@ -263,8 +268,15 @@
 .history_address .f_l >p {
     padding-bottom: 2px;
 }
+.history_address .address_list {
+    padding:35px 0;
+    border-top: 1px solid #ccc;
+}
 .history_address .f_l >label {
     padding-top: 11px;
+}
+.history_address .title {
+    padding-bottom: 35px;
 }
 .new_address .location .icon {
     background: url('../../static/img/address_btn_choose.png');

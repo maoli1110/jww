@@ -13,7 +13,7 @@
             <mt-picker :slots="slots1" @change="onValuesChange1"></mt-picker>
         </div>
         <div class="address_content">
-            <div class="new_address">
+            <div class="new_address" v-show="isNewAddress">
                 <div style="font-size:16px;" class="location username">
                     <label for="">收货人姓名</label>
                     <input class="select-input" placeholder="请输入收货人姓名" type="text" v-model="address.username">
@@ -36,16 +36,21 @@
                 <hr>
                 <label class="address-checkbox-select" @click="setDefaultAddress('new')"><input type="checkbox" class="checkbox-input"><span class="address-checkbox-core"></span>
                 </label>
+                <!-- <div class="save_address">
+                    <mt-button type="default" class="Grid-cell" @click="saveAddress"></mt-button>
+                </div> -->
+                <div class="save_address">
+                    <mt-button type="default" class="Grid-cell" @click="saveAddress">保存</mt-button>
+                </div>
             </div> 
-            <div class="new_address history_address" v-show="isHistoryAddress">
-                <p class="font-32">使用历史地址</p>
+            <div class="new_address history_address" v-show="isAddressList">
+                <p class="font-32 title">地址列表</p>
                 <div>
-                    <hr>
-                    <div class="clearfix">
+                    <div class="clearfix address_list" v-for="(item,index) in addressList">
                         <div class="f_l">
-                            <p class="font-20">地址1</p>
-                            <p class="font-20"><span>我我我</span><span>1878787878</span></p>
-                            <p class="font-20">地址1</p>
+                            <p class="font-20">地址{{index+1}}</p>
+                            <p class="font-20"><span style="margin-right:20px">{{item.reciveName}}</span><span>{{item.phoneNumber}}</span></p>
+                            <p class="font-20">{{item.detailAddress}}</p>
                             <label class="address-checkbox-select" @click="setDefaultAddress('history')"><input type="checkbox" class="checkbox-input"> <span class="address-checkbox-core"></span>  
                             </label>
                         </div>
@@ -54,14 +59,29 @@
                             </label> 
                         </div>
                     </div>
-                    
+                    <div class="clearfix address_list" v-for="(item,index) in addressList">
+                        <div class="f_l">
+                            <p class="font-20">地址{{index+1}}</p>
+                            <p class="font-20"><span style="margin-right:20px">{{item.reciveName}}</span><span>{{item.phoneNumber}}</span></p>
+                            <p class="font-20">{{item.detailAddress}}</p>
+                            <label class="address-checkbox-select" @click="setDefaultAddress('history')"><input type="checkbox" class="checkbox-input"> <span class="address-checkbox-core"></span>  
+                            </label>
+                        </div>
+                        <div class="f_r">
+                            <label class="address1-checkbox-select" ><input type="checkbox" class="checkbox-input" value="this.historyAddressId" @click="setHistoryAddress('1',$event)"> <span class="address1-checkbox-core"></span>  
+                            </label> 
+                        </div>
+                    </div>
                 </div>
+                <div class="save_address">
+                    <mt-button type="default" class="Grid-cell" @click="saveAddress">添加新地址</mt-button>
+                </div>
+                    
+
             </div>
         </div>
         
-        <div class="save_address">
-            <mt-button type="default" class="Grid-cell" @click="saveAddress"></mt-button>
-        </div>
+        
     </div>
     <div class="main-nav">
            <mt-tabbar v-model="selected" :value="selected">
@@ -84,12 +104,13 @@
 import vPaylist from "../Game/pay.vue";
 import vRecord from '../Game/record.vue';
 import  '../../../static/css/home.css';             //主页样式
-import { getWlist,getUserInfo,setApplyWawa} from "../../api/getData.js"
+import { getWlist,getUserInfo,setApplyWawa,addNewAddress,setDefaultAddress,getOldAddress} from "../../api/getData.js"
 import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
 export default {
     data() {
         return {
-            isHistoryAddress:true,
+            isNewAddress:true,
+            isAddressList:false,
             selected:"",                    //tab选中状态
             isSlectProvince:false,
             isSlectCity:false,
@@ -124,7 +145,8 @@ export default {
               values:[],
               className: 'slot1',
               textAlign: 'center'
-            }]
+            }],
+            addressList:[]
         }
     },
     components: {vPaylist,vRecord},
@@ -190,17 +212,15 @@ export default {
             this.$router.push('/main/home');
         },
         saveAddress() {
-            //1.判断历史地址是否勾选 (优先)
-            //2.判断是否填写新地址
-            if(this.historyAddressId) {
-                //给后端传值为历史地址的值
-                 this.setApplyWawa({bId:exportedList,sendAddressId:"",isDefault:true})
-            } else {
-                //默认为新增的地址
-                if(this.valiDataAddress(this.address)){
-                    //对接接口，获取新增地址的id，同时传递给提取娃娃接口
-                }
+            if(this.valiDataAddress(this.address)){
+                this.isAddressList = true; //显示列表页面
+                this.isNewAddress = false; //显示新增地址页面
             }
+            // if(true){
+            //     this.isAddressList = true;
+            //     this.isNewAddress = false;
+            // }
+               
         },
         // 设置默认地址
         setDefaultAddress(type,id) {
@@ -220,6 +240,16 @@ export default {
     },
     created(){
         // this.selected = 'home'; //默认选中home页
+        // 获取地址列表
+        getOldAddress().then((res)=>{
+            console.log(res)
+            if(res.data.data.length){
+                this.isAddressList = true;
+                this.isNewAddress = false;
+                this.addressList = res.data.data;
+                console.log(this.addressList)
+            }
+        })
 
     },
     mounted(){
