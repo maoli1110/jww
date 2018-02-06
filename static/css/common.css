@@ -474,6 +474,12 @@ footer,header,nav,section {
 /* ipad横屏 */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape){
     /* style */
+    .mint-navbar{
+        top:23.5% !important;
+    }
+    .recode-bg .recode-list{
+        background-size: 93% !important;
+    }
 }
 
 /* 判断iphone6 *//* 横屏竖屏判断方法与ipad一样 */
@@ -481,6 +487,9 @@ footer,header,nav,section {
     /* style */
     html{
         font-size: 58px !important;
+    }
+    .record-content{
+        height: calc(100vh - 57%);
     }
 }
 /* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
@@ -496,6 +505,29 @@ footer,header,nav,section {
     /* style */
     html{
         font-size: 96px!important;
+    }
+    .mint-navbar{
+        top: 24% !important;
+        z-index: 100;
+        width: 88%;
+        left: 6%;
+    }
+    .recode-bg .recode-close{
+        background-size: 85% !important;
+        right: 6% !important;
+        top: 11% !important;
+    }
+    .recode-bg .recode-list{
+        background-size: 92% !important;
+    }
+    .record-content{
+        margin: 4.9rem .4rem 0 !important;
+        height: calc(100vh - 46%) !important;
+        overflow: auto;
+        padding: 0 46px;
+    }
+    .mint-tab-item-label{
+        width:100% !important;
     }
 }
 

@@ -21,10 +21,14 @@
     z-index:10;
     left:5%;
     background-size: 100%;
+    text-align:center;
+}
+.mint-navbar{
+    top:23%;z-index:100;width:88%
 }
 /*列表信息*/
 .record-content{    margin: 4.1rem .4rem 0;
-    height: calc(100vh - 57%);
+    height: calc(100vh - 61%);
     overflow: auto;}
 .record-list-wrapper{overflow:auto; margin: 0.3rem 2% 0;display:block;}
 .item-infos{
@@ -64,10 +68,10 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    padding: 0rem 0.12rem 0;
+    padding: 0rem 0.08rem 0;
 }
 .history-list .history-list-item{
-    width: 30%;
+    width: 31%;
     height: 15%;
     float: left;
     text-align: center;
@@ -75,14 +79,13 @@
     margin: 0.1rem .05rem;
     color: #AF7300;
     background:url('../../static/img/my_mine_info_bg.png') no-repeat 0 0;
-    background-size: 98%;
+    background-size: 101% 94%;
 }
 .history-list .history-list-item img{
-        margin-top: 0.1rem;
+    margin: 0.1rem 0.1rem 0rem 0.1rem;
     width: 87% !important;
     text-align: center;
     border-radius: 0.2rem;
-    margin: 0.1rem 0.1rem;
     color: #AF7300;
     background-size: 110%;
 }
@@ -125,16 +128,17 @@
     vertical-align: middle;
 }
 .extract-info{
-    text-align:center;color:#fff;line-height:0.35rem;
+    text-align:center;color:#fff;line-height:0.5rem;margin:0.2rem 0
 }
 .extract-info>span{
     width:30%;background:#F9D829;
     display:inline-block;
     border-radius: 0.3rem;
     font-size:0.16rem;font-weight:bold;
+    height:100%;
 }
 .extract-info>span:last-child{
-     float:right;
+     float:right;margin:0rem 0.5rem 0rem 0rem;
 }
 /* 地址 */
 .address {
