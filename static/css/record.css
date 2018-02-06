@@ -23,7 +23,7 @@
     background-size: 100%;
 }
 /*列表信息*/
-.record-content{    margin: 4.2rem .4rem 0;
+.record-content{    margin: 4.1rem .4rem 0;
     height: calc(100vh - 57%);
     overflow: auto;}
 .record-list-wrapper{overflow:auto; margin: 0.3rem 2% 0;display:block;}

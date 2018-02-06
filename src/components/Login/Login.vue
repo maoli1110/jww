@@ -26,7 +26,6 @@ export default {
         }
     },
     created() {
-      
     },
     methods: {
         wxLogin() {
@@ -35,7 +34,7 @@ export default {
         }
     },
     watch:{
-        
+
     }
 }
 </script>
@@ -43,21 +42,23 @@ export default {
 .login-bg > img {
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     z-index: 0;
+    user-select: none;
 }
 .login-wx > img {
-    position: absolute;
+    position: fixed;
     width: 3rem;
     margin: 0 auto;
     right: 0;
     left: 0;
     bottom: 1.5rem;
     height: .6em;
+    user-select: none;
 }
 .login-ali-qq {
     display: flex;
-    position: absolute;
+    position: fixed;
     right: 0;
     left: 0;
     bottom: 0.2rem;

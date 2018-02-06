@@ -34,7 +34,7 @@
     height: 100%;
     background: url(../../static/img/home_bg1.jpg) no-repeat;
     background-size: 100% 100%;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
 }
@@ -43,7 +43,7 @@
     height: 100%;
     background: url(../../static/img/home_bg2.png) no-repeat;
     background-size: 100% 100%;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
 }
@@ -139,7 +139,7 @@
 .home .xuanze {
     width: 3.8rem;
     background: url('../../static/img/pay_icon.png') 0 0 no-repeat;
-    background-size: 100%; 
+    background-size: 100%;
     margin-left: 4.4rem;
     margin-top: 1.3rem;
 }
