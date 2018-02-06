@@ -190,7 +190,7 @@ body,html {
 	overflow-scrolling: touch
 }
 
-html { 
+html {
 	background: #ddd;
 	max-width: 600px;
 	margin: 0 auto;
@@ -255,6 +255,7 @@ footer,header,nav,section {
     height:10.4%;background:transparent !important;z-index: 3;
 }
 .mint-tabbar .mint-tab-item-icon{width:100%;height:100%;}
+.mint-tab-item-icon{margin:0 !important;}
 .mint-tabbar > .mint-tab-item.is-selected{background:transparent !important;}
 /*cell*/
 .mint-cell{background:transparent !important;margin-bottom:0.1rem;padding-bottom:0.1rem}
@@ -319,13 +320,13 @@ footer,header,nav,section {
     display: flex;
 }
 .Grid-cell{
-    flex: 1;        
+    flex: 1;
 }
 
-.Grid-cell.u-lof10{ 
+.Grid-cell.u-lof10{
     flex: 0 0 10%;
 }
-.Grid-cell.u-lof12{ 
+.Grid-cell.u-lof12{
     flex: 0 0 12%;
 }
 .Grid-cell.u-lof3{
@@ -343,7 +344,7 @@ footer,header,nav,section {
 .Grid-cell.u-lof60{
     flex: 0 0 60%;
 }
-.Grid-cell.u-lof25{ 
+.Grid-cell.u-lof25{
     flex: 0 0 25%;
 }
 .Grid-cell.u-lof90{
@@ -424,7 +425,7 @@ footer,header,nav,section {
 }
 /*ipad*/
 /*checkbox select*/
-.checkbox-select { 
+.checkbox-select {
     position: absolute;
     top: 0;
     right: 0;

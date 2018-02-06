@@ -13,7 +13,7 @@
     top: 12%;
     z-index: 12;
 }
-.recode-bg .recode-list {
+.recode-bg .recode-list{
     width:90%;
     height:100%;
     font-size:12px;
@@ -23,11 +23,9 @@
     background-size: 100%;
 }
 /*列表信息*/
-.record-content {
-    margin: 4rem .4rem 0;
+.record-content{    margin: 4.1rem .4rem 0;
     height: calc(100vh - 57%);
-    overflow: auto;
-}
+    overflow: auto;}
 .record-list-wrapper{overflow:auto; margin: 0.3rem 2% 0;display:block;}
 .item-infos{
 
@@ -70,20 +68,21 @@
 }
 .history-list .history-list-item{
     width: 30%;
+    height: 15%;
     float: left;
     text-align: center;
     border-radius: 0.1rem;
     margin: 0.1rem .05rem;
     color: #AF7300;
     background:url('../../static/img/my_mine_info_bg.png') no-repeat 0 0;
-    background-size: 100% 100%;
+    background-size: 98%;
 }
 .history-list .history-list-item img{
-    margin-top: 0.1rem;
+        margin-top: 0.1rem;
     width: 87% !important;
     text-align: center;
     border-radius: 0.2rem;
-    margin: 0.1rem 0.1rem; 
+    margin: 0.1rem 0.1rem;
     color: #AF7300;
     background-size: 110%;
 }
@@ -103,7 +102,7 @@
     margin-left: -1.5rem;
 }
 .record-content .mint-cell{border-bottom:2px dashed #fff;}
-.checkbox-select { 
+.checkbox-select {
     position: absolute;
     top: 6px;
     right: 4px;
@@ -135,7 +134,7 @@
     font-size:0.16rem;font-weight:bold;
 }
 .extract-info>span:last-child{
-     float:right; 
+     float:right;
 }
 /* 地址 */
 .address {
@@ -221,10 +220,10 @@
 }
 
 .address .mint-cell {
-     margin-bottom: 0rem; 
-     padding-bottom: 0rem; 
+     margin-bottom: 0rem;
+     padding-bottom: 0rem;
 }
-.address-checkbox-select { 
+.address-checkbox-select {
     font-size: .2rem;
     display: block;
  }
@@ -242,7 +241,7 @@
     height: 16px;
     vertical-align: middle;
 }
-.address-checkbox-select { 
+.address-checkbox-select {
     font-size: .2rem;
     display: block;
  }
@@ -283,14 +282,14 @@
     padding-bottom: 2px;
 }
 .history_address .address_list {
-    padding:.35rem 0;
+    padding:35px 0;
     border-top: 1px solid #ccc;
 }
 .history_address .f_l >label {
     padding-top: 11px;
 }
 .history_address .title {
-    padding-bottom: .35rem;
+    padding-bottom: 35px;
 }
 .new_address .location .icon {
     background: url('../../static/img/address_btn_choose.png');
