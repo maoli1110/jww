@@ -539,10 +539,8 @@ export default {
                                 * 2.不成功则娃娃掉下 重新洗牌页面
                                 */
                                 let params = {id:1,status:"1"}
-                                debugger
                                 getWawaStatus(params).then((res)=>{
-                                    res = true
-                                    if(res!==false){
+                                    if(res.data==="success"){
                                         realCatch = true;
                                         setTimeout(()=> {
                                             games.offDoll.call(_this, _this.screen_h, 2000)
