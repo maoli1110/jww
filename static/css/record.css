@@ -167,14 +167,11 @@
     position: absolute;
     overflow: auto;
     margin: 0 auto;
-    border-raduis: 12px;
-    background: #fff;
-    border-radius: 16px;
     margin: 0 10px;
 }
 .new_address {
     margin: 0px 10px 10px 10px;
-    padding:40px 20px;
+    padding:20px 20px;
     background:#fff;
     border-radius: 6px;
 }
@@ -206,7 +203,8 @@
     border-radius: 3px;
     display: inline-block;
 }
-.save_address .mint-button {
+
+.new-address .mint-button { 
     color: #fff;
     position: fixed;
     width: 5.4rem;
@@ -215,7 +213,20 @@
     left: 0;
     bottom: 1.6rem;
     height: 2.4em;
-    background: #ff5653;
+    background:url('../../static/img/btn_new.png');
+    background-size: 100% 100%;
+}
+
+.save_address .mint-button {
+    color: #fff;
+    position: fixed;
+    width: 5.4rem;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    bottom: 2.6rem;
+    height: 2.4em;
+    background:url('../../static/img/address_btn_save1.png');
     background-size: 100% 100%;
 }
 
@@ -228,7 +239,7 @@
     display: block;
  }
 .address .checkbox-input:checked+.address-checkbox-core {
-    background: url('../../static/img/address_btn_default2.png') no-repeat;
+    background: url('../../static/img/address_btn_default2.png') 0 0 no-repeat;
     background-size: 100% 100%;
 }
 
@@ -240,6 +251,7 @@
     width: 126px;
     height: 16px;
     vertical-align: middle;
+    margin-left: -5px;
 }
 .address-checkbox-select {
     font-size: .2rem;
@@ -284,6 +296,10 @@
 .history_address .address_list {
     padding:35px 0;
     border-top: 1px solid #ccc;
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 36px;
+    margin-bottom: 10px;
 }
 .history_address .f_l >label {
     padding-top: 11px;

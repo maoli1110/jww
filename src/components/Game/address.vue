@@ -34,16 +34,15 @@
                 </div>
                 <mt-field label="详细地址" placeholder="xx区9999弄99号999室" type="textarea" rows="2" v-model="address.detailAddress"></mt-field>
                 <hr>
-                <label class="address-checkbox-select"><input id="new_set_default" type="checkbox" class="checkbox-input" @click="setDefaultAddress('new')"><span class="address-checkbox-core"></span>
+                <label class="address-checkbox-select"><input id="new_set_default" type="checkbox" class="checkbox-input"><span class="address-checkbox-core"></span>
                 </label>
-                <div class="save_address">
-                    <mt-button type="default" class="Grid-cell" @click="saveAddress">保存</mt-button>
-                </div>
+            </div>
+            <div class="save_address">
+                <mt-button type="default" class="Grid-cell" @click="saveAddress"></mt-button>
             </div>
         </div>
         <div class="address_content_history" v-show="isAddressList">
-            <div class="new_address history_address" >
-                <p class="font-32 title">地址列表</p>
+            <div class="history_address" >
                 <div>
                     <div class="clearfix address_list" v-for="(item,index) in addressList">
                         <div class="f_l">
@@ -59,8 +58,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="save_address">
-                    <mt-button type="default" class="Grid-cell" @click="toAddNew">添加新地址</mt-button>
+                <div class="new-address">
+                    <mt-button type="default" class="Grid-cell" @click="toAddNew"></mt-button>
                 </div>
             </div>
         </div>       
@@ -138,10 +137,17 @@ export default {
         //字段处理验证
         valiDataAddress(addressObj) {
             for(var key in addressObj){
-                console.log("属性：" + key + ",值：" + addressObj[key]);
                 if(!addressObj[key]){
-                    alert("请填写"+key);
+                    alert("请填写完整收货信息！");
                     return false;
+                }
+                //手机号正则 
+                var phoneReg = /(^1[3|4|5|6|7|8]\d{9}$)|(^09\d{8}$)/;  
+                //电话  
+                var phone = $.trim(addressObj.phoneNumber);  
+                if (!phoneReg.test(phone)) {  
+                    alert('请输入有效的手机号码！');  
+                    return false;  
                 } 
                 return true
             }
@@ -176,16 +182,20 @@ export default {
             this.isSlectProvince = true;
         },
         selectCity() {
-            this.isSlectCity = true;
+            if(this.address.province==="请选择" || !this.address.province){
+                alert('请先选择省份！')
+            } else {
+                this.isSlectCity = true;
+            }
         },
         onValuesChange(index,value) {
-            console.log(value.name)
+            // console.log(value.name)
             this.address.province = value[0].name;
             this.citysList = value[0].citys;
             this.slots1[0].values = this.citysList;
         },
         onValuesChange1 (index,value) {
-            console.log(value.name)
+            // console.log(value.name)
             this.address.city = value[0];
         },
         ok() {
@@ -207,12 +217,11 @@ export default {
             if(this.valiDataAddress(this.address)){
                 //判断新增地址是否选中
                 if($("#new_set_default").prop('checked')){
-                    this.address.isDefault="0";
-                } else {
                     this.address.isDefault="1";
+                } else {
+                    this.address.isDefault="0";
                 }
                 let params = this.address;
-                console.log(params,'params');
                 //调用新增地址接口
                 addNewAddress(params).then((res)=>{
                    // showAddressList();
@@ -225,7 +234,7 @@ export default {
         },
         // 设置默认地址
         setDefaultAddress(type,id,index) {
-            console.log(id,'id')
+            // console.log(id,'id')
             if(type==='new'){
                 let isSelected = $('#new_set_default').prop('checked');
                 if(isSelected){
@@ -278,7 +287,7 @@ export default {
         // 获取地址列表
         getOldAddress() {
              getOldAddress().then((res)=>{
-                console.log(res)
+                // console.log(res)
                 if(res.data.data.length){
                     this.showAddressList();
                     this.addressList = res.data.data;
