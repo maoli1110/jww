@@ -13,7 +13,7 @@
             <mt-picker :slots="slots1" @change="onValuesChange1"></mt-picker>
         </div>
         <div class="address_content" v-show="isNewAddress">
-            <div class="new_address" >
+            <div class="new_address">
                 <div style="font-size:16px;" class="location username">
                     <label for="">收货人姓名</label>
                     <input class="select-input" placeholder="请输入收货人姓名" type="text" v-model="address.reciveName">
@@ -34,13 +34,12 @@
                 </div>
                 <mt-field label="详细地址" placeholder="xx区9999弄99号999室" type="textarea" rows="2" v-model="address.detailAddress"></mt-field>
                 <hr>
-                <label class="address-checkbox-select" @click="setDefaultAddress('new')"><input type="checkbox" class="checkbox-input"><span class="address-checkbox-core"></span>
+                <label class="address-checkbox-select"><input id="new_set_default" type="checkbox" class="checkbox-input" @click="setDefaultAddress('new')"><span class="address-checkbox-core"></span>
                 </label>
                 <div class="save_address">
                     <mt-button type="default" class="Grid-cell" @click="saveAddress">保存</mt-button>
                 </div>
-            </div> 
-
+            </div>
         </div>
         <div class="address_content_history" v-show="isAddressList">
             <div class="new_address history_address" >
@@ -51,12 +50,12 @@
                             <p class="font-20">地址{{index+1}}</p>
                             <p class="font-20"><span style="margin-right:20px">{{item.reciveName}}</span><span>{{item.phoneNumber}}</span></p>
                             <p class="font-20">{{item.detailAddress}}</p>
-                            <label class="address-checkbox-select" @click="setDefaultAddress('history')"><input type="checkbox" class="checkbox-input"> <span class="address-checkbox-core"></span>  
-                            </label> 
+                            <label class="address-checkbox-select"><input type="checkbox" class="checkbox-input" v-model="item.isDefault" :class="'defaultSelected'+index" @click="setDefaultAddress('history',item.id,index)" :data-id="'defaultSelected'+index"> <span class="address-checkbox-core"></span>
+                            </label>
                         </div>
                         <div class="f_r">
-                            <label class="address1-checkbox-select" ><input type="checkbox" class="checkbox-input" :id="'selected'+index" value="this.historyAddressId" @click="setHistoryAddress(index,$event)"> <span class="address1-checkbox-core"></span>  
-                            </label> 
+                            <label class="address1-checkbox-select" ><input type="checkbox" class="checkbox-input" :class="'addressSelected'+index" :data-id="'addressSelected'+index" value="this.historyAddressId" @click="setAddress(index,$event)"> <span class="address1-checkbox-core"></span>  
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -92,6 +91,7 @@ import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
 export default {
     data() {
         return {
+            istest:0,
             isNewAddress:true,
             isAddressList:false,
             selected:"",                    //tab选中状态
@@ -195,62 +195,104 @@ export default {
         back(){
             this.$router.push('/main/home');
         },
+        showAddressList() {
+            this.isNewAddress = false;
+            this.isAddressList = true;
+        },
+        showNewAddress() {
+            this.isNewAddress = true;//显示列表页面
+            this.isAddressList = false;//显示新增地址页面
+        },
         saveAddress() {
             if(this.valiDataAddress(this.address)){
+                //判断新增地址是否选中
+                if($("#new_set_default").prop('checked')){
+                    this.address.isDefault="0";
+                } else {
+                    this.address.isDefault="1";
+                }
                 let params = this.address;
                 console.log(params,'params');
                 //调用新增地址接口
                 addNewAddress(params).then((res)=>{
-                    this.isAddressList = true; //显示列表页面
-                    this.isNewAddress = false; //显示新增地址页面
+                   // showAddressList();
+                   this.getOldAddress();
                 });
             }
-            
-               
         },
         toAddNew() {
-            this.isNewAddress = true;
-            this.isAddressList = false;
-
+            this.showNewAddress();
         },
         // 设置默认地址
-        setDefaultAddress(type,id) {
-            // if(type==='new'){
-            //     this.valiDataAddress(this.address);
-            // }
+        setDefaultAddress(type,id,index) {
+            console.log(id,'id')
+            if(type==='new'){
+                let isSelected = $('#new_set_default').prop('checked');
+                if(isSelected){
+                    this.address.isDefault = 1;
+                } else {
+                    this.address.isDefault = 0;
+                }
+                this.valiDataAddress(this.address);
+                let params = {id:id};
+                //调用新增地址接口
+                addNewAddress(params).then((res)=>{
+                    this.showAddressList;
+                });
+            } else {
+                //1.选择历史地址
+                let isSelected = $('.defaultSelected'+index).prop('checked');
+                console.log(isSelected);
+                if(!isSelected) {
+                    $('.defaultSelected'+index).prop('checked',true)
+                    return false;
+                } else {
+                    $('.address_content_history .address-checkbox-select .checkbox-input').each(function(){
+                        if($(this).attr("data-id")!=="defaultSelected"+index){
+                            $(this).prop('checked',false);
+                        }
+                    })
+                    //调用设置默认地址接口
+                    let params = {id:id}
+                    setDefaultAddress(params).then((res)=>{
+                        console.log('setDefaultAddress success')
+                        this.getOldAddress();
+                    })
+                    
+                }
+            }
         },
-        // 设置历史地址
-        setHistoryAddress(id,event) {
-            debugger
-            let isSelected = $('.address1-checkbox-select .checkbox-input').prop('checked');
-            console.log($('.address_content_history .address_list .address1-checkbox-select> input'),"ioio")
-            $('.address_content_history .address_list .address1-checkbox-select> input').each(function(){
-                debugger 
-                console.log(id)
-                if($(this).attr("id")!=="selected"+id){
-                    $(this).prop('checked',false);
+        // 选择收货地址并调用提取娃娃接口,完成提取娃娃最后一步
+        setAddress(index,event) {
+            let isSelected = $('.addressSelected'+index).prop('checked');
+            if(!isSelected) {
+                return false;
+            } else {
+                $('.address_content_history .address1-checkbox-select .checkbox-input').each(function(){
+                    if($(this).attr("data-id")!=="addressSelected"+index){
+                        $(this).prop('checked',false);
+                    }
+                })
+            }
+        },
+        // 获取地址列表
+        getOldAddress() {
+             getOldAddress().then((res)=>{
+                console.log(res)
+                if(res.data.data.length){
+                    this.showAddressList();
+                    this.addressList = res.data.data;
+                    res.data.data.forEach((value,key)=>{
+                        value.isDefault = parseInt(value.isDefault)
+                    })
+                    this.addressList = res.data.data;
                 }
             })
-            if(isSelected){
-                this.historyAddressId = id;
-            } else {
-                this.historyAddressId = '';
-            }
         }
     },
     created(){
-        // this.selected = 'home'; //默认选中home页
         // 获取地址列表
-        getOldAddress().then((res)=>{
-            console.log(res)
-            if(res.data.data.length){
-                this.isAddressList = true;
-                this.isNewAddress = false;
-                this.addressList = res.data.data;
-                console.log(this.addressList)
-            }
-        })
-
+        this.getOldAddress();
     },
     mounted(){
     

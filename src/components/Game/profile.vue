@@ -5,7 +5,7 @@
             <img :src="back1Img" alt="">
         </div>
         <div class="relat xuanze relat"  style="height:4%">
-            <p class="absol add-coin yellow1" @click="recharge">1{{userInfo.goldCounts}}</p>
+            <p class="substr absol add-coin yellow1" @click="recharge">1{{userInfo.goldCounts}}</p>
         </div>
 
        <div class="select-list">
@@ -14,7 +14,7 @@
                   <p>{{item.title}}</p>
                   <div><img :src="item.imgUrl" alt=""></div>
                   <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>99&nbsp;/次</span><span class="go raduis-1" @click="inGame(key)">GO</span></div>
-                   <div class="absol switch text-color"><span class="block switch-text" >碎片合成</span></div>
+                   <div class="absol switch text-color"><span class="block switch-text">碎片合成</span></div>
                </li>
            </ul>
        </div>

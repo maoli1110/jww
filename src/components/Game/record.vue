@@ -44,8 +44,8 @@
                                     <label class="checkbox-select"><input type="checkbox" :data-list="item.bId" class="checkbox-input"  @change="checkedList"> <span class="checkbox-core"></span>
                                     </label>
                                     <div style="width:100%">
-                                       <img slot="icon" :src="item.imgUrl" alt="" width="66">
-                                       </div>
+                                        <img slot="icon" :src="item.imgUrl" alt="" width="66">
+                                    </div>
                                     <p style="display:block;">{{item.name}}</p>
                                 </div>
                             </div>

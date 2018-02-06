@@ -134,24 +134,24 @@
     width: 97%;
     margin-top: 18.5%;
 }
-.home .xuanze > p:after {
-    content: '';
-    background:url('../../static/img/ingame_btn_pay3.png');
-    background-size: 100% 100%;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-}
 /*them*/
 .game-them{font-size:0.25rem;color:#FFFEAE;text-align:center;height:0.6rem;line-height:0.6rem;font-weight:bold;}
-.add-coin{
-    max-width: 2rem;
-    right: .4rem;
-    /*top: 13%;*/
-    height: .32rem;
-    line-height: .32rem;
+.home .xuanze {
+    width: 3.8rem;
+    background: url('../../static/img/pay_icon.png') 0 0 no-repeat;
+    background-size: 100%; 
+    margin-left: 4.4rem;
+    margin-top: 1.3rem;
+}
+.add-coin {
+    width: 2rem;
+    right: 2.3rem;
+    height: .44rem;
+    line-height: .44rem;
     font-weight: 800;
     font-size: .32rem;
+    background-size: 100%;
+    text-align: right;
 }
 .add-coin>img{
     width: .4rem;

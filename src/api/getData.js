@@ -41,6 +41,6 @@ export const hideMail = params =>axios.get(`${serverUrl}/app/hideMail/${params}`
 //11.新增地址界面
 export const addNewAddress = params =>axios.post(`${serverUrl}/app/addAddress`,params);
 //12.设为默认地址
-export const setDefaultAddress = params =>axios.get(`${serverUrl}/app/setDefaultAddress/$id`);
+export const setDefaultAddress = params =>axios.get(`${serverUrl}/app/setDefaultAddress/${params.id}`);
 //13.历史地址列表
 export const getOldAddress = params =>axios.get(`${serverUrl}/app/getOldAddress`);
