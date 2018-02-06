@@ -137,15 +137,15 @@
 /*them*/
 .game-them{font-size:0.25rem;color:#FFFEAE;text-align:center;height:0.6rem;line-height:0.6rem;font-weight:bold;}
 .home .xuanze {
-    width: 3.8rem;
+    width: 1.8rem;
     background: url('../../static/img/pay_icon.png') 0 0 no-repeat;
-    background-size: 100%; 
+    background-size: 200%; 
     margin-left: 4.4rem;
     margin-top: 1.3rem;
 }
 .add-coin {
     width: 2rem;
-    right: 2.3rem;
+    right: .4rem;
     height: .44rem;
     line-height: .44rem;
     font-weight: 800;

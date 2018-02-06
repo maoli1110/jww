@@ -540,7 +540,7 @@ export default {
                                 */
                                 let params = {id:1,status:"1"}
                                 getWawaStatus(params).then((res)=>{
-                                    if(res.data==="success"){
+                                    if(res.data.data==="success"){
                                         realCatch = true;
                                         setTimeout(()=> {
                                             games.offDoll.call(_this, _this.screen_h, 2000)
