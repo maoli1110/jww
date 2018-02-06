@@ -129,17 +129,12 @@
     background:url('../../static/img/ingame_btn_back1.png') center no-repeat;background-size: 0.4rem;
 
 }
-.home .xuanze {
-    /*position: absolute;*/
-    width: 97%;
-    margin-top: 18.5%;
-}
 /*them*/
 .game-them{font-size:0.25rem;color:#FFFEAE;text-align:center;height:0.6rem;line-height:0.6rem;font-weight:bold;}
 .home .xuanze {
     width: 1.8rem;
     background: url('../../static/img/pay_icon.png') 0 0 no-repeat;
-    background-size: 200%; 
+    background-size: 196%; 
     margin-left: 4.4rem;
     margin-top: 1.3rem;
 }
