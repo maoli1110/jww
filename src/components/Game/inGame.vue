@@ -1,7 +1,7 @@
 <template>
     <div class="in-game">
         <div class="absol mask" style="display:none" >
-            
+
         </div>
         <div class="success align-v-h" @click="closeMask">
             <img :src="successImg1" alt="" v-show="isSuccess1">
@@ -505,13 +505,13 @@ export default {
                         $(".doll-item-single").removeAttr("style").addClass('doll-rise');
                     }
                     move(this.clip).set("transform", a).duration(this.setTime.rising).ease("linear").end();
-                    
+
                     setTimeout(()=> {
                         move(_clip).set("transform", b).duration(1700).ease("linear").end();
                         // self.$router.go(0);
 
                     }, 2e3);
-                    
+
                     m = 0;
                 },
 
@@ -551,13 +551,13 @@ export default {
                                             games.offDoll.call(_this, _this.screen_h, 10)
                                         }, 2e3);
                                     }
-                                    
+
                                 });
                             } else {
                                 realCatch = false;
                                 setTimeout(()=> {
                                     games.isRun = 0;
-                                }, 3000); 
+                                }, 3000);
                             }
                         }),games.getDoll.call(this, a);
                     }.bind(this), this.setTime.fallingToRising),
@@ -601,7 +601,6 @@ export default {
         function moveDirection(directionObj,direction) {
             var timeout;
             //鼠标按下 或 手指触摸屏幕时触发
-            debugger
             $(directionObj).bind('touchstart mousedown', function (event) {
                 isVisibleGo = false;
                 event.stopPropagation();

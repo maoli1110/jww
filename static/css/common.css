@@ -260,7 +260,7 @@ footer,header,nav,section {
 /*cell*/
 .mint-cell{background:transparent !important;margin-bottom:0.1rem;padding-bottom:0.1rem}
 .mint-cell-value{width:100%}
-.mint-navbar{background:transparent !important;}
+.mint-navbar{background:transparent !important;left:9%}
 .mint-navbar .mint-tab-item{padding: 12px 0 0px;}
 .mint-navbar .mint-tab-item.is-selected{border-color:transparent !important;}
 /*公用弹窗样式*/
@@ -447,6 +447,12 @@ footer,header,nav,section {
     height: 20px;
     vertical-align: middle;
 }
+.in-game .mint-tab-item{
+    margin:0 .1rem;
+}
+.in-game .mint-tab-item:nth-child(2) div{
+    float:right;
+}
 /* ipad竖屏 */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
     html{
@@ -456,7 +462,22 @@ footer,header,nav,section {
         background-size:75% !important;
         height:1.2rem !important;
     }
-    /*背景*/
+    .recode-bg .recode-close{
+        background-size: 85% !important;
+        right: 6% !important;
+        top: 11% !important;
+    }
+    .mint-navbar{
+        top:23.5% !important;
+    }
+    .recode-bg .recode-list{
+        background-size: 94% !important;
+    }
+    .record-content{
+        margin: 3.7rem .4rem 0 !important;
+        padding:0 .3rem;
+        height: calc(100vh - 49%) !important;
+    }    /*背景*/
     .pay-bg  .item-infos .pay-type{
         width:30%;
     }
@@ -474,12 +495,8 @@ footer,header,nav,section {
 /* ipad横屏 */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape){
     /* style */
-    .mint-navbar{
-        top:23.5% !important;
-    }
-    .recode-bg .recode-list{
-        background-size: 93% !important;
-    }
+
+
 }
 
 /* 判断iphone6 *//* 横屏竖屏判断方法与ipad一样 */
@@ -489,7 +506,11 @@ footer,header,nav,section {
         font-size: 58px !important;
     }
     .record-content{
-        height: calc(100vh - 57%);
+        height: calc(100vh - 60%) !important;
+    }
+    .extract-pro{
+        width: 2.5rem !important;
+        margin-left: -1.25rem !important;
     }
 }
 /* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
