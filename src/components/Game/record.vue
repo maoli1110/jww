@@ -8,8 +8,8 @@
                 <span></span>
             </div>
             <div class="absol recode-list">
-                <!--table选项卡--> 
-                <mt-navbar v-model="selected" class="absol" style="top:23%;z-index:100">
+                <!--table选项卡-->
+                <mt-navbar v-model="selected" class="absol" style="">
                     <mt-tab-item id="list" style=" ">
                         <img :src="tableSwitch.mineUrl" alt="">
                     </mt-tab-item>
@@ -21,10 +21,10 @@
                     <mt-tab-container v-model="selected" class="record-content relat">
                         <mt-tab-container-item id="history">
                             <div class="extract-info">
-                                <span>提取内容</span> 
-                                <span>提取时间</span> 
+                                <span>提取内容</span>
+                                <span>提取时间</span>
                             </div>
-                            <div class="record-list-wrapper" style=".2rem">
+                            <div class="record-list-wrapper" style="width:.2rem">
                                 <mt-cell class="relat item-infos" v-for="item in payInfo" :key="item.price">
                                     <div class="record-type" @click="panelClose">
                                         <img slot="icon" :src="item.imgUrl" alt="" width="46">
@@ -39,24 +39,24 @@
                             </div>
                         </mt-tab-container-item>
                         <mt-tab-container-item id="list">
-                            <div class="history-list" >                        
+                            <div class="history-list" >
                                <div class="history-list-item relat" v-for="(item,index) in extractList" >
                                     <label class="checkbox-select"><input type="checkbox" :data-list="item.bId" class="checkbox-input"  @change="checkedList"> <span class="checkbox-core"></span>
                                     </label>
                                     <div style="width:100%">
                                         <img slot="icon" :src="item.imgUrl" alt="" width="66">
                                     </div>
-                                    <p style="display:block;">{{item.name}}</p>
+                                    <p class="descr-info">{{item.name}}</p>
                                 </div>
                             </div>
-                        </mt-tab-container-item>       
+                        </mt-tab-container-item>
                     </mt-tab-container>
                      <div class="extract-pro absol" @click="extract">
                         <img src="../../../static/img/my_btn_pickup1.png" alt="">
-                    </div>                      
+                    </div>
             </div>
         </div>
-        
+
     </div>
 </template>
 <script>
@@ -89,7 +89,7 @@
                   className: 'slot1',
                   textAlign: 'center'
                 }
-              ], 
+              ],
                 back1Img:'./static/img/ingame_btn_back1.png'
             }
         },
@@ -125,7 +125,7 @@
             //提取娃娃
             extract(){
                 if(exportedList.length){
-                   
+
                     this.$router.push('/main/address');
                 }else{
                     alert('请选择要提取的娃娃信息');
@@ -178,10 +178,17 @@
             value:function(newVal,oldVal){
                  console.log(newVal);
             }
-        
+
         }
     }
 </script>
 <style scoped>
-
+/*我的娃娃描述信息*/
+.descr-info{
+    display: block;
+    padding: 0 10px;
+    text-align: left;
+    font-size: 0.12rem;
+    font-weight: bold;
+}
 </style>
