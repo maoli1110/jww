@@ -394,7 +394,7 @@ footer,header,nav,section {
     position: absolute;
     z-index: 4;
     top: 0.25rem;
-    left: .3rem;
+    left: .24rem;
     height: 10%;
 }
 .back>img{
