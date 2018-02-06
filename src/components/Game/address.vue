@@ -32,7 +32,7 @@
                     <span class="select" @click="selectCity">{{address.city}}</span>
                     <span class="icon" @click="selectCity"></span>
                 </div>
-                <mt-field label="详细地址" placeholder="xx区9999弄99号999室" type="textarea" rows="2" v-model="address.detailAddress"></mt-field>
+                <mt-field label="详细地址" style="color:#8c8c8c;" placeholder="xx区9999弄99号999室" type="textarea" rows="2" v-model="address.detailAddress"></mt-field>
                 <hr>
                 <label class="address-checkbox-select"><input id="new_set_default" type="checkbox" class="checkbox-input"><span class="address-checkbox-core"></span>
                 </label>
@@ -267,7 +267,6 @@ export default {
                         console.log('setDefaultAddress success')
                         this.getOldAddress();
                     })
-                    
                 }
             }
         },

@@ -27,7 +27,8 @@
     top:23%;z-index:100;width:88%
 }
 /*列表信息*/
-.record-content{    margin: 4.1rem .4rem 0;
+.record-content{    
+    margin: 3.8rem .4rem 0;
     height: calc(100vh - 61%);
     overflow: auto;}
 .record-list-wrapper{overflow:auto; margin: 0.3rem 2% 0;display:block;}
@@ -172,6 +173,7 @@
     overflow: auto;
     margin: 0 auto;
     margin: 0 14px;
+    color: #a4a4a4;
 }
 .new_address {
     margin: 0px 10px 10px 10px;
@@ -228,7 +230,7 @@
     margin: 0 auto;
     right: 0;
     left: 0;
-    bottom: 2.6rem;
+    bottom: 2rem;
     height: 2.4em;
     background:url('../../static/img/address_btn_save1.png');
     background-size: 100% 100%;
@@ -355,7 +357,18 @@
     right: 1px;
     top: 10px;
 }
-
+.address_content_history input {
+    display: none;
+}
+.address_content .mint-field .mint-cell-title {
+    width: 101px;
+}
+.location label {
+    color: #8c8c8c;
+}
+.location > input,.location .select {
+    color: #5b5b5b;
+}
 
 
 
