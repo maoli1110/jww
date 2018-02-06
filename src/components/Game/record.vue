@@ -125,7 +125,7 @@
             //提取娃娃
             extract(){
                 if(exportedList.length){
-
+                    sessionStorage.setItem('extractIdList',JSON.stringify(exportedList));
                     this.$router.push('/main/address');
                 }else{
                     alert('请选择要提取的娃娃信息');

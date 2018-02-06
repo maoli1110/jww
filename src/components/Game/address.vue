@@ -53,7 +53,7 @@
                             </label>
                         </div>
                         <div class="f_r">
-                            <label class="address1-checkbox-select" ><input type="checkbox" class="checkbox-input" :class="'addressSelected'+index" :data-id="'addressSelected'+index" value="this.historyAddressId" @click="setAddress(index,$event)"> <span class="address1-checkbox-core"></span>  
+                            <label class="address1-checkbox-select" ><input type="checkbox" class="checkbox-input" :class="'addressSelected'+index" :data-id="'addressSelected'+index" value="this.historyAddressId" @click="setAddress(index,item.id)"> <span class="address1-checkbox-core"></span>  
                             </label>
                         </div>
                     </div>
@@ -272,7 +272,7 @@ export default {
             }
         },
         // 选择收货地址并调用提取娃娃接口,完成提取娃娃最后一步
-        setAddress(index,event) {
+        setAddress(index,id) {
             let isSelected = $('.addressSelected'+index).prop('checked');
             if(!isSelected) {
                 return false;
@@ -280,6 +280,17 @@ export default {
                 $('.address_content_history .address1-checkbox-select .checkbox-input').each(function(){
                     if($(this).attr("data-id")!=="addressSelected"+index){
                         $(this).prop('checked',false);
+                    }
+                })
+                let params = {
+                    bId:JSON.parse(sessionStorage.getItem('extractIdList')), //娃娃ID
+                    sendAddressId:id, //收货地址 
+                }
+                setApplyWawa(params).then((res)=>{
+                    if(res.data.data){
+                        alert('提取成功');
+                    }else{
+                        alert('提取失败');
                     }
                 })
             }
