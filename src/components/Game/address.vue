@@ -330,9 +330,9 @@ export default {
         defaultPicture(){
             console.log(this.isAddressList,'log');
             if(this.isAddressList){
-                this.bgUrl = "../../static/img/address_bg.jpg";
+                this.bgUrl = "./static/img/address_bg.jpg";
             }else{
-                this.bgUrl = "../../static/img/address2.jpg";
+                this.bgUrl = "./static/img/address2.jpg";
             }
         }
     },
