@@ -199,6 +199,9 @@ export default {
     components: {vPaylist,vRecord,vMessage},
     created(){
         this.userInfo = window.userInfo;
+        if(this.userInfo.headimgurl){
+            this.headImg = this.userInfo.headimgurl;
+        }
     },
     mounted() {
         self = this;
