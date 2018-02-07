@@ -161,8 +161,8 @@
     overflow: auto;
     margin: 0 auto;
     border-raduis: 12px;
-    background: #fff;
-    border-radius: 16px;
+    /*background: #fff;*/
+    border-radius: 10px;
     margin: 0 10px;
 }
 .address_content_history {
@@ -186,29 +186,35 @@
     background: #ededed;
     padding: 2px 10px;
     border-radius: 3px;
+    font-size:.14rem;
 }
 .new_address .username:after,.new_address .phone:after {
     content: '';
-    background:url('../../static/img/address_btn_write.png');
-    background-size: 100% 100%;
-    width: 20px;
-    height: 20px;
+    background:url('../../static/img/address_btn_write.png') no-repeat;
+    background-size: 81%;
+    width: 17px;
+    height: 16px;
     position: absolute;
-    right: 1px;
-    top: 14px;
+    right: -7px;
+    top: 35%;
+    margin-left: -19px;
+    background-color: #ededed;
 }
 .new_address .location label {
     position: absolute;
-    width: 101px;
+    width: 1.33rem;
+    font-size:.23rem;
 }
 .new_address .select-input {
-    width: calc(100% - 101px);
-    margin-left: 101px;
+    width: calc(100% - 1.33rem);
+    margin-left: 1.5rem;
     border: none;
     background: #ededed;
     outline: none;
     border-radius: 3px;
     display: inline-block;
+    padding:4px 6px;
+    font-size:0.14rem;
 }
 
 .new-address .mint-button {
@@ -223,15 +229,17 @@
     background:url('../../static/img/btn_new.png');
     background-size: 100% 100%;
 }
-
+.save_address{
+    text-align:center;padding:0 10px;
+}
 .save_address .mint-button {
     color: #fff;
-    position: fixed;
-    width: 5.4rem;
+    /*position: fixed;*/
+    width: 100%;
     margin: 0 auto;
-    right: 0;
+    /*right: 0;
     left: 0;
-    bottom: 2rem;
+    bottom: 2rem;*/
     height: 2.4em;
     background:url('../../static/img/address_btn_save1.png');
     background-size: 100% 100%;
@@ -258,7 +266,7 @@
     width: 126px;
     height: 16px;
     vertical-align: middle;
-    margin-left: -5px;
+    margin-left: -1px;
 }
 .address-checkbox-select {
     font-size: .2rem;
@@ -275,20 +283,21 @@
     background-size: 100% 100%;
     position: relative;
     width: 18px;
-    height: 16px;
+    height: 18px;
     vertical-align: middle;
 }
 .address_content .location {
     position: relative;
 }
 .address_content .location .select {
-    margin-left: 101px;
+    margin-left: 1.5rem;
     background: #ededed;
     width: 100px;
     height: 25px;
     line-height: 26px;
     padding: 0 10px;
     border-radius: 3px;
+    font-size:0.14rem;
 }
 .address_content .location {
     font-size: 16px;
@@ -302,21 +311,21 @@
 }
 .history_address .address_list {
     padding:35px 0;
-    border-top: 1px solid #ccc;
+    /*border-top: 1px solid #ccc;*/
     background: #fff;
-    border-radius: 16px;
+    border-radius: 10px;
     padding: 20px 36px;
     margin-bottom: 10px;
 }
 .history_address .f_l >label {
-    padding-top: 11px;
+    padding-top: 4px;
 }
 .history_address .title {
     padding-bottom: 35px;
 }
 .new_address .location .icon {
-    background: url('../../static/img/address_btn_choose.png');
-    background-size: 100% 100%;
+    background: url('../../static/img/address_btn_choose.png') no-repeat center;
+    background-size: 80%;
     width: 20px;
     height: 20px;
     vertical-align: top;
@@ -332,6 +341,10 @@
     width: 100%;
     background: #fff;
     z-index: 4;
+    box-shadow: 1px 0px 7px #ccc;
+}
+.picker-item.picker-selected{
+    background: #ededed;
 }
 .address .location-select .title {
     font-size: 18px;
@@ -347,22 +360,24 @@
     right: 20px;
     width: 40px;
     height: 20px;
+    top:5.8%;
 }
 .address .mint-field.is-textarea:after {
     content: '';
-    background:url('../../static/img/address_btn_write.png');
-    background-size: 100% 100%;
-    width: 20px;
-    height: 20px;
+    background:url('../../static/img/address_btn_write.png') no-repeat;
+    background-size: 80%;
+    width: 17px;
+    height: 16px;
     position: absolute;
     right: 1px;
     top: 10px;
+    background-color:#ededed;
 }
 .address_content_history input {
     display: none;
 }
 .address_content .mint-field .mint-cell-title {
-    width: 101px;
+    width: 1.5rem;font-size:.23rem;
 }
 .location label {
     color: #8c8c8c;

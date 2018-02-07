@@ -5,11 +5,11 @@
             <img :src="back1Img" alt="" @click="back">
         </div>
         <div class="location-select rela" v-if="isSlectProvince">
-            <div class="font-16x title algin align-center"><span>请选择省份</span><span class="icon" @click="ok"></span></div>
+            <div class="font-16x title algin align-center"><span class="font-20">请选择省份</span><span class="icon" @click="ok"></span></div>
             <mt-picker :slots="slots" valueKey="name" @change="onValuesChange"></mt-picker>
         </div>
         <div class="location-select rela" v-if="isSlectCity">
-            <div class="font-16x title algin align-center"><span>请选择城市</span><span class="icon" @click="ok"></span></div>
+            <div class="font-16x title algin align-center"><span class="font-20">请选择城市</span><span class="icon" @click="ok"></span></div>
             <mt-picker :slots="slots1" @change="onValuesChange1"></mt-picker>
         </div>
         <div class="address_content" v-show="isNewAddress">
@@ -19,7 +19,7 @@
                     <input class="select-input" placeholder="请输入收货人姓名" type="text" v-model="address.reciveName">
                 </div>
                 <div style="font-size:16px;" class="location phone">
-                    <label for="">手机号码</label> 
+                    <label for="">手机号码</label>
                     <input class="select-input"  placeholder="请输入11位手机号码" type="number" name="" v-model="address.phoneNumber"></span>
                 </div>
                 <div style="font-size:16px;" class="location">
@@ -46,14 +46,14 @@
                 <div>
                     <div class="clearfix address_list" v-for="(item,index) in addressList">
                         <div class="f_l">
-                            <p class="font-20">地址{{index+1}}</p>
-                            <p class="font-20"><span style="margin-right:20px">{{item.reciveName}}</span><span>{{item.phoneNumber}}</span></p>
-                            <p class="font-20">{{item.detailAddress}}</p>
+                            <p class="font-26">地址{{index+1}}</p>
+                            <p class="font-26"><span style="margin-right:20px">{{item.reciveName}}</span><span>{{item.phoneNumber}}</span></p>
+                            <p class="font-26">{{item.detailAddress}}</p>
                             <label class="address-checkbox-select"><input type="checkbox" class="checkbox-input" v-model="item.isDefault" :class="'defaultSelected'+index" @click="setDefaultAddress('history',item.id,index)" :data-id="'defaultSelected'+index"> <span class="address-checkbox-core"></span>
                             </label>
                         </div>
                         <div class="f_r">
-                            <label class="address1-checkbox-select" ><input type="checkbox" class="checkbox-input" :class="'addressSelected'+index" :data-id="'addressSelected'+index" value="this.historyAddressId" @click="setAddress(index,item.id)"> <span class="address1-checkbox-core"></span>  
+                            <label class="address1-checkbox-select" ><input type="checkbox" class="checkbox-input" :class="'addressSelected'+index" :data-id="'addressSelected'+index" value="this.historyAddressId" @click="setAddress(index,item.id)"> <span class="address1-checkbox-core"></span>
                             </label>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                     <mt-button type="default" class="Grid-cell" @click="toAddNew"></mt-button>
                 </div>
             </div>
-        </div>       
+        </div>
     </div>
     <div class="main-nav">
            <mt-tabbar v-model="selected" :value="selected">
@@ -141,18 +141,18 @@ export default {
                     alert("请填写完整收货信息！");
                     return false;
                 }
-                //手机号正则 
-                var phoneReg = /(^1[3|4|5|6|7|8]\d{9}$)|(^09\d{8}$)/;  
-                //电话  
-                var phone = $.trim(addressObj.phoneNumber);  
-                if (!phoneReg.test(phone)) {  
-                    alert('请输入有效的手机号码！');  
-                    return false;  
-                } 
+                //手机号正则
+                var phoneReg = /(^1[3|4|5|6|7|8]\d{9}$)|(^09\d{8}$)/;
+                //电话
+                var phone = $.trim(addressObj.phoneNumber);
+                if (!phoneReg.test(phone)) {
+                    alert('请输入有效的手机号码！');
+                    return false;
+                }
                 return true
             }
         },
-        
+
         //组件关窗通信
         panelHide(visible){
             this.payVisbile =visible;
@@ -283,7 +283,7 @@ export default {
                 })
                 let params = {
                     bId:JSON.parse(sessionStorage.getItem('extractIdList')), //娃娃ID
-                    sendAddressId:id, //收货地址 
+                    sendAddressId:id, //收货地址
                 }
                 setApplyWawa(params).then((res)=>{
                     if(res.data.data){
@@ -314,7 +314,7 @@ export default {
         this.getOldAddress();
     },
     mounted(){
-    
+
     },
     watch:{
         selected:function(newVal,oldVal){//tab索引值监听

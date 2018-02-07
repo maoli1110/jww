@@ -4,7 +4,7 @@
 .block{display:block;}
 .switch-text{
     font-size: 0.15rem;
-    line-height: 0.18rem;
+    /*line-height: 0.18rem;*/
     width:0.2rem;
     font-weight:bold;
     padding:0.25rem 0 0.05rem 0.08rem;
@@ -15,7 +15,7 @@
     top: 0.45rem;
     left: -0rem;
     background:url('../../static/img/home_bg_info.png') center no-repeat;
-    background-size:0.35rem;
+    background-size:cover;
 
 }
 .pay-coin{
@@ -134,7 +134,7 @@
 .home .xuanze {
     width: 1.8rem;
     background: url('../../static/img/pay_icon.png') 0 0 no-repeat;
-    background-size: 196%; 
+    background-size: 196%;
     margin-left: 4.4rem;
     margin-top: 1.3rem;
 }

@@ -306,9 +306,11 @@ footer,header,nav,section {
 }
 .font-20{
     font-size: .16rem;
+    line-height:.3rem;
 }
 .font-26{
     font-size: .26rem;
+    line-height:.4rem;
 }
 .font-32{
     font-size: .32rem;
@@ -364,7 +366,7 @@ footer,header,nav,section {
 .Grid-cell.u-full{
     flex: 0 0 100%;
 }
-
+.picker-items .picker-item{font-size:.14rem;}
 .cloumn-center{
     display: flex;
     justify-content: center;
@@ -418,7 +420,7 @@ footer,header,nav,section {
     background: url("../../static/img/my_btn_cancel1.png") center no-repeat;
     background-size: 100%;
     right: 3%;
-    top: 1.3rem;
+    top: 1.7rem;
     z-index: 12;
 }
 .common-list-wrapper {
@@ -577,6 +579,10 @@ footer,header,nav,section {
     }
     .mint-tab-item-label{
         width:100% !important;
+    }
+    /*支付页面*/
+    .pay-list-wrapper{
+        margin: 3.9rem 3% 0 !important;
     }
 }
 

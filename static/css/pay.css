@@ -15,25 +15,27 @@
     background: url("../../static/img/my_btn_cancel1.png") center no-repeat;
     background-size: 100%;
     right: 3%;
-    top: 10%;
+    top:1.7rem !important;
     z-index: 12;
 }
 /*重置弹窗列表*/
 .pay-bg .pay-list{
-    width:100% !important;
+    width:90% !important;
     height:100%;
     font-size:12px;
     background:url('../../static/img/pay_table_bg.png') center 45% no-repeat;
     position:absolute;
     z-index:10;
     /*top:15%;*/
+    left:50%;
+    margin-left:-45%;
     background-size: 100%;
     padding: 9% 5% 0;
 }
 /*列表信息*/
-.pay-list-wrapper{height:80%;overflow:auto; padding: 42% 3% 0;}
-.item-infos{
-
+.pay-list-wrapper{height:47%;overflow:auto;margin: 2.8rem 3% 0;}
+.common-list-wrapper{
+     padding-top: 0rem !important;
 }
 .item-infos .order-price{width:1rem;height:.7rem}
 .item-infos .order-price div:first-child{
@@ -72,7 +74,7 @@
     text-align: left;padding:0 0.1rem;height:88%;
 }
 .pay-list-item .Grid-cell.buy>img{
-    float:left;margin-top:0.28rem;
+    float:left;margin-top:0.28rem;width:1.1rem;
 }
 .pay-list-item  .Grid-cell.icon {
     background:url('../../static/img/pay_coin_bg01.png') no-repeat 0 0;
@@ -86,13 +88,13 @@
 }
 .pay-list-item  .Grid-cell.count div:nth-child(2){
     color:#fff;
-    line-height: 32px;
-    margin:0.2rem 0 0;
-    padding:0rem 0.1rem 0;
+    /*line-height: 32px;*/
+    margin:0.13rem 0 0;
+    padding:0rem 0.1rem 0.1rem;
 }
 .pay-list-item  .Grid-cell.count .price{
     background:url('../../static/img/pay_coin_num.png') no-repeat 0 0;background-size:69%;
-} 
+}
 
 
 
