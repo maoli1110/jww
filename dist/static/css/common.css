@@ -1,0 +1,570 @@
+/*
+	HTML5 Reset :: style.css
+	----------------------------------------------------------
+	We have learned much from/been inspired by/taken code where offered from:
+
+	Eric Meyer					:: http://meyerweb.com
+	HTML5 Doctor				:: http://html5doctor.com
+	and the HTML5 Boilerplate	:: http://html5boilerplate.com
+
+-------------------------------------------------------------------------------*/
+
+/* Let's default this puppy out
+-------------------------------------------------------------------------------*/
+
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	/*font-size: 100%;*/
+	font-weight: normal;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+main, article, aside, figure, footer, header, nav, section, details, summary {display: block;}
+
+/* Handle box-sizing while better addressing child elements:
+   http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+*{
+    -webkit-touch-callout:none;
+    -moz-touch-callout:none;
+    -ms-touch-callout:none;
+      touch-callout:none;
+ }
+/**{ pointer-events: none; }*/
+
+/* consider resetting the default cursor: https://gist.github.com/murtaugh/5247154 */
+
+/* Responsive images and other embedded objects */
+/* if you don't have full control over `img` tags (if you have to overcome attributes), consider adding height: auto */
+img,
+object,
+embed {max-width: 100%;}
+
+/*
+   Note: keeping IMG here will cause problems if you're using foreground images as sprites.
+	In fact, it *will* cause problems with Google Maps' controls at small size.
+	If this is the case for you, try uncommenting the following:
+
+#map img {
+		max-width: none;
+}
+*/
+
+/* force a vertical scrollbar to prevent a jumpy page */
+html {overflow-y: scroll;}
+
+/* we use a lot of ULs that aren't bulleted.
+	you'll have to restore the bullets within content,
+	which is fine because they're probably customized anyway */
+ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {content: ''; content: none;}
+
+a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+
+del {text-decoration: line-through;}
+
+abbr[title], dfn[title] {border-bottom: 1px dotted #000; cursor: help;}
+
+/* tables still need cellspacing="0" in the markup */
+table {border-collapse: separate; border-spacing: 0;}
+th {font-weight: bold; vertical-align: bottom;}
+td {font-weight: normal; vertical-align: top;}
+
+hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: .2em 0; padding: 0;}
+
+input, select {vertical-align: middle;}
+
+pre {
+    white-space: pre; /* CSS2 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+    word-wrap: break-word; /* IE */
+}
+
+input[type="radio"] {vertical-align: text-bottom;}
+input[type="checkbox"] {vertical-align: bottom;}
+.ie7 input[type="checkbox"] {vertical-align: baseline;}
+.ie6 input {vertical-align: text-bottom;}
+
+select, input, textarea {font: 99% sans-serif;}
+
+table {font-size: inherit; font: 100%;}
+
+small {font-size: 85%;}
+
+strong {font-weight: bold;}
+
+td, td img {vertical-align: top;}
+
+/* Make sure sup and sub don't mess with your line-heights http://gist.github.com/413930 */
+sub, sup {font-size: 75%; line-height: 0; position: relative;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+
+/* standardize any monospaced elements */
+pre, code, kbd, samp {font-family: monospace, sans-serif;}
+
+/* hand cursor on clickable elements */
+.clickable,
+label,
+input[type=button],
+input[type=submit],
+input[type=file],
+button {cursor: pointer;}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea {margin: 0;}
+
+/* make buttons play nice in IE */
+button,
+input[type=button] {width: auto; overflow: visible;}
+
+/* scale images in IE7 more attractively */
+.ie7 img {-ms-interpolation-mode: bicubic;}
+
+/* prevent BG image flicker upon hover
+   (commented out as usage is rare, and the filter syntax messes with some pre-processors)
+.ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
+*/
+
+/* let's clear some floats */
+.clearfix:after { content: " "; display: block; clear: both; }
+
+
+/*start*/
+html {
+	width: 100%;
+	height: 100%;
+	font-size: 100px;
+	font-family: "Microsoft YaHei",Helvetica,sans-serif;
+
+}
+body {
+	-webkit-text-size-adjust: 100%!important
+}
+
+button,input,select,textarea {
+	font-size: 100%;
+	font-family: inherit;
+	color: inherit;
+	-webkit-appearance: none;
+	appearance: none
+}
+
+img {
+	border: none
+}
+
+label {
+    display: inline-block;
+}
+a {
+	color: #1a76cc;
+	text-decoration: none
+}
+div,a,img {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select:none;
+}
+body,html {
+	min-height: 100%;
+	-webkit-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	overflow-scrolling: touch
+}
+
+html {
+	background: #ddd;
+	max-width: 600px;
+	margin: 0 auto;
+	height: 100%
+}
+
+body {
+	background-color: #f9f9f9;
+	color: #333;
+	/*max-width: 600px;*/
+	min-height: 100%;
+	position: relative
+}
+
+a,img,label {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	-ms-tap-highlight-color: transparent;
+	-moz-tap-highlight-color: transparent;
+	-o-tap-highlight-color: transparent;
+	tap-highlight-color: transparent
+}
+
+ul {
+	list-style: none
+}
+
+footer,header,nav,section {
+	display: block
+}
+
+.raduis-1 {
+	border-radius: 0.15rem;
+}
+.raduis-2 {
+	border-radius: 0.08rem;
+}
+.raduis-0 {
+	border-radius: 0.4rem;
+}
+.green {
+	color:#3bcd96
+}
+.align-v-h {
+    display:flex;
+    align-items:center;/*垂直居中*/
+    justify-content: center;/*水平居中*/
+    width:100%;
+    height:100%;
+}
+.align-center {
+	text-align: center;
+}
+.align-right {
+    text-align: right;
+}
+.f_l {float: left}
+.f_r {float: right;}
+/*mint组件化tab样式*/
+.mint-tabbar{
+    height:10.4%;background:transparent !important;z-index: 3;
+}
+.mint-tabbar .mint-tab-item-icon{width:100%;height:100%;}
+.mint-tab-item-icon{margin:0 !important;}
+.mint-tabbar > .mint-tab-item.is-selected{background:transparent !important;}
+/*cell*/
+.mint-cell{background:transparent !important;margin-bottom:0.1rem;padding-bottom:0.1rem}
+.mint-cell-value{width:100%}
+.mint-navbar{background:transparent !important;left:9%}
+.mint-navbar .mint-tab-item{padding: 12px 0 0px;}
+.mint-navbar .mint-tab-item.is-selected{border-color:transparent !important;}
+/*公用弹窗样式*/
+/*遮罩*/
+.mask{background:#000;opacity:0.6;z-index:10;width:100%;height:100%;top:0;}
+.mask1{background:#000;opacity:0.6;z-index:12;width:100%;height:100%;top:0;}
+/*绝对定位*/
+.absol{position:absolute;}
+.fix{position: fixed;}
+/*相对定位*/
+.relat{position:relative;}
+.rela{position:relative;}
+/*左右对齐*/
+.align-r{text-align: right;}
+.align-l{text-align: left;}
+/*字体颜色*/
+.grey{
+    color: #989898;
+}
+.grey1{
+    color: #979797;
+}
+.yellow{
+    color: #f6fbab;
+}
+.yellow1{
+    color: #af6c00
+}
+.font-color1 {
+    color: #8c8c8c;
+}
+.font-color2 {
+    color: #5b5b5b;
+}
+/**/
+.font-16{
+    font-size: .16rem;
+}
+.font-20{
+    font-size: .16rem;
+}
+.font-26{
+    font-size: .26rem;
+}
+.font-32{
+    font-size: .32rem;
+}
+.font-16x {
+    font-size: 16px;
+}
+.pull-left{
+	float: left;
+}
+.pull-right{
+	float: right;
+}
+.mint-cell-wrapper{
+    padding:0 4px !important;
+    background-image: none !important;
+}
+/* flex */
+.Grid{
+    display: flex;
+}
+.Grid-cell{
+    flex: 1;
+}
+
+.Grid-cell.u-lof10{
+    flex: 0 0 10%;
+}
+.Grid-cell.u-lof12{
+    flex: 0 0 12%;
+}
+.Grid-cell.u-lof3{
+    flex: 0 0 30%;
+}
+.Grid-cell.u-lof4{
+    flex: 0 0 23%;
+}
+.Grid-cell.u-lof40{
+    flex: 0 0 40%;
+}
+.Grid-cell.u-lof50{
+    flex: 0 0 50%;
+}
+.Grid-cell.u-lof60{
+    flex: 0 0 60%;
+}
+.Grid-cell.u-lof25{
+    flex: 0 0 25%;
+}
+.Grid-cell.u-lof90{
+    flex: 0 0 90%;
+}
+.Grid-cell.u-full{
+    flex: 0 0 100%;
+}
+
+.cloumn-center{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+/*substr*/
+.mint-cell-value .substr{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;font-size:12px;
+}
+.align-h-v{
+	display:flex;
+    align-items:center;/*垂直居中*/
+    justify-content: center;/*水平居中*/
+    width:100%;
+    height:100%;
+}
+.red {
+	color: #fd7068;
+}
+.green {
+	color: #51db6d;
+}
+/* 重写mintcss */
+.message-bg .mint-button--default {
+    color: #fff;
+    background-color: #fd7068;
+    box-shadow: 0 0 1px #fd7068;
+}
+.message-bg .mint-button--primary {
+    color: #fff;
+    background-color: #51db6d;
+    box-shadow: 0 0 1px #51db6d;
+}
+.back{
+    position: absolute;
+    z-index: 4;
+    top: 0.25rem;
+    left: .24rem;
+    height: 10%;
+}
+.back>img{
+    width: .8rem;
+    float:left;
+}
+.dialog-close {
+    width: .82rem;
+    height: .82rem;
+    background: url("../../static/img/my_btn_cancel1.png") center no-repeat;
+    background-size: 100%;
+    right: 3%;
+    top: 1.3rem;
+    z-index: 12;
+}
+.common-list-wrapper {
+    width: 100%;
+    height: 100%;
+    padding-top: 1.4rem;
+}
+.mint-checklist-label{
+    padding:0 !important;
+}
+.mint-cell-wrapper{
+    width:100%!important;
+    margin:0;padding:0 !important;
+
+}
+/*ipad*/
+/*checkbox select*/
+.checkbox-select {
+    position: absolute;
+    top: 0;
+    right: 0;
+ }
+.checkbox-input:checked+.checkbox-core {
+    background: url('../../static/img/my_mine_btn_choose2.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.checkbox-core {
+    display: inline-block;
+    background: url('../../static/img/my_mine_btn_choose1.png') no-repeat;
+    background-size: 100% 100%;
+    /*background-color: #fff;*/
+    /*border-radius: 100%;*/
+    /*border: 1px solid #ccc;*/
+    position: relative;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    float:right;
+}
+.in-game .mint-tab-item{
+    margin:0 .1rem;
+}
+.in-game .mint-tabbar .mint-tab-item:nth-child(2) div{
+    float:right;
+}
+/* ipad竖屏 */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
+    html{
+        font-size: 96px!important;
+    }
+    .pay-list-wrapper .mint-cell{
+        background-size:75% !important;
+        height:1.2rem !important;
+    }
+    .recode-bg .recode-close{
+        background-size: 85% !important;
+        right: 6% !important;
+        top: 11% !important;
+    }
+    .mint-navbar{
+        top:23.5% !important;
+    }
+    .recode-bg .recode-list{
+        background-size: 94% !important;
+    }
+    .record-content{
+        margin: 3.7rem .4rem 0 !important;
+        padding:0 .3rem;
+        height: calc(100vh - 49%) !important;
+    }    /*背景*/
+    .pay-bg  .item-infos .pay-type{
+        width:30%;
+    }
+    /*价格相关的*/
+    .item-infos .order-price{
+        height:1.2rem !important;
+    }
+    .item-infos .order-price div{
+        height:50%;
+    }
+    .item-infos .order-price div:last-child{
+        top:68% !important;
+    }
+}
+/* ipad横屏 */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape){
+    /* style */
+
+
+}
+
+/* 判断iphone6 *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px){
+    /* style */
+    html{
+        font-size: 58px !important;
+    }
+    .record-content{
+        height: calc(100vh - 60%) !important;
+    }
+    .extract-pro{
+        width: 2.5rem !important;
+        margin-left: -1.25rem !important;
+    }
+}
+/* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px){
+    /* style */
+}
+/* 判断iphone4-iphone4s *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){
+    /* style */
+}
+/* 判断ipad pro */
+@media only screen and (min-device-width : 1024px) and (max-device-width : 1366px){
+    /* style */
+    html{
+        font-size: 96px!important;
+    }
+    .mint-navbar{
+        top: 24% !important;
+        z-index: 100;
+        width: 88%;
+        left: 6%;
+    }
+    .recode-bg .recode-close{
+        background-size: 85% !important;
+        right: 6% !important;
+        top: 11% !important;
+    }
+    .recode-bg .recode-list{
+        background-size: 92% !important;
+    }
+    .record-content{
+        margin: 4.9rem .4rem 0 !important;
+        height: calc(100vh - 46%) !important;
+        overflow: auto;
+        padding: 0 46px;
+    }
+    .mint-tab-item-label{
+        width:100% !important;
+    }
+}
+
+/* ipad pro横屏 */
+@media only screen and (min-device-width : 1024px)and (max-device-width : 1366px) and (orientation : landscape){
+    /* style */
+}
