@@ -4,10 +4,9 @@
 .block{display:block;}
 .switch-text{
     font-size: 0.15rem;
-    /*line-height: 0.18rem;*/
     width:0.2rem;
     font-weight:bold;
-    padding:0.25rem 0 0.05rem 0.08rem;
+    padding:0.05rem 0 0.05rem 0.08rem;
 }
 .switch{
     width: 0.35rem;
@@ -135,12 +134,13 @@
     width: 1.8rem;
     background: url('../../static/img/pay_icon.png') 0 0 no-repeat;
     background-size: 196%;
-    margin-left: 4.4rem;
+    margin-right: 0.1rem;
     margin-top: 1.3rem;
+    float:right;
 }
 .add-coin {
     width: 2rem;
-    right: .4rem;
+    right: .5rem;
     height: .44rem;
     line-height: .44rem;
     font-weight: 800;
