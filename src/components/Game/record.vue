@@ -187,7 +187,7 @@
 /*我的娃娃描述信息*/
 .descr-info{
     display: block;
-    padding: 0 10px;
+    padding: 0 8px;
     text-align: left;
     font-size: 0.12rem;
     font-weight: bold;

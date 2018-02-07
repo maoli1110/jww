@@ -28,10 +28,10 @@
 }
 /*列表信息*/
 .record-content{
-    margin: 3.8rem .4rem 0;
+    margin: 4.2rem .4rem 0;
     height: calc(100vh - 61%);
     overflow: auto;}
-.record-list-wrapper{overflow:auto; margin: 0.3rem 2% 0;display:block;}
+.record-list-wrapper{overflow:auto; margin: 0.2rem 2% 0;display:block;}
 .item-infos{
 
 }
@@ -73,14 +73,14 @@
 }
 .history-list .history-list-item{
     width: 31%;
-    height: 2.5rem;
+    height: 2.8rem;
     float: left;
     text-align: center;
     border-radius: 0.1rem;
     margin: 0.1rem .05rem;
     color: #AF7300;
     background:url('../../static/img/my_mine_info_bg.png') no-repeat 0 0;
-    background-size: 101% 94%;
+    background-size: 101% 100%;
 
 }
 .history-list .history-list-item img{
@@ -94,7 +94,7 @@
 .history-list .history-list-item .toy-list{
     margin: 5px ;
 }
-.record-list-them{width:33%;color:#AF7300;font-weight:bold;line-height:20px;font-size:13px;}
+.record-list-them{width:33%;color:#AF7300;font-weight:bold;line-height:20px;font-size:13px;text-align:left;}
 .record-list-time{right:0;color:#AF7300;font-weight:bold;}
 .mint-tab-item-label{width:70%;margin:0}
 .mint-tab-item:nth-child(1) .mint-tab-item-label{width:70%;margin:0;margin-left:0.5rem}
