@@ -462,7 +462,7 @@ footer,header,nav,section {
 .in-game .mint-tab-item{
     margin:0 .1rem;
 }
-.in-game .mint-tab-item:nth-child(2) div{
+.in-game .mint-tabbar .mint-tab-item:nth-child(2) div{
     float:right;
 }
 /* ipad竖屏 */

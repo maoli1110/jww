@@ -24,7 +24,7 @@
                                 <span>提取内容</span>
                                 <span>提取时间</span>
                             </div>
-                            <div class="record-list-wrapper" style="width:.2rem">
+                            <div class="record-list-wrapper" >
                                 <mt-cell class="relat item-infos" v-for="item in payInfo" :key="item.price">
                                     <div class="record-type" @click="panelClose">
                                         <img slot="icon" :src="item.imgUrl" alt="" width="46">
