@@ -42,11 +42,12 @@
                             <div class="history-list" >
                                <div class="history-list-item relat" v-for="(item,index) in extractList" >
                                     <label class="checkbox-select"><input type="checkbox" :data-list="item.bId" class="checkbox-input"  @change="checkedList"> <span class="checkbox-core"></span>
+
+                                        <div style="width:100%;height:100%">
+                                            <img slot="icon" :src="item.imgUrl" alt="" width="66">
+                                        </div>
+                                        <p class="descr-info">{{item.name}}</p>
                                     </label>
-                                    <div style="width:100%">
-                                        <img slot="icon" :src="item.imgUrl" alt="" width="66">
-                                    </div>
-                                    <p class="descr-info">{{item.name}}</p>
                                 </div>
                             </div>
                         </mt-tab-container-item>

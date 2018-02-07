@@ -179,7 +179,12 @@ a {
 	color: #1a76cc;
 	text-decoration: none
 }
-
+div,a,img {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select:none;
+}
 body,html {
 	min-height: 100%;
 	-webkit-box-sizing: border-box;
@@ -452,6 +457,7 @@ footer,header,nav,section {
     width: 20px;
     height: 20px;
     vertical-align: middle;
+    float:right;
 }
 .in-game .mint-tab-item{
     margin:0 .1rem;

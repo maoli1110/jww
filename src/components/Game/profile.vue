@@ -10,10 +10,10 @@
 
        <div class="select-list">
            <ul>
-               <li class="raduis-1 relat" v-for="(item,key) in list">
+               <li class="raduis-1 relat" v-for="(item,key) in list" @click="inGame(key)">
                   <p>{{item.title}}</p>
                   <div><img :src="item.imgUrl" alt=""></div>
-                  <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>99&nbsp;/次</span><span class="go raduis-1" @click="inGame(key)">GO</span></div>
+                  <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>99&nbsp;/次</span><span class="go raduis-1" >GO</span></div>
                    <div class="absol switch text-color"><span class="block switch-text">碎片合成</span></div>
                </li>
            </ul>
