@@ -73,7 +73,7 @@
 }
 .history-list .history-list-item{
     width: 31%;
-    height: 2.8rem;
+    height: 2.4rem;
     float: left;
     text-align: center;
     border-radius: 0.1rem;
@@ -149,7 +149,7 @@
     left: 0;
     right: 0;
     bottom: 12%;
-    background: url('../../static/img/address_bg.jpg');
+    /*background: url('../../static/img/address_bg.jpg');*/
     background-size: 100% 100%;
 }
 .address_content {

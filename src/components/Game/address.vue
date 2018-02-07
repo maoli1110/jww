@@ -1,6 +1,6 @@
 <template>
 <div class="home">
-    <div class="address">
+    <div class="address" :style="{backgroundImage:`url(${bgUrl})`}">
         <div class="back">
             <img :src="back1Img" alt="" @click="back">
         </div>
@@ -49,7 +49,7 @@
                             <p class="font-26">地址{{index+1}}</p>
                             <p class="font-26"><span style="margin-right:20px">{{item.reciveName}}</span><span>{{item.phoneNumber}}</span></p>
                             <p class="font-26">{{item.detailAddress}}</p>
-                            <label class="address-checkbox-select"><input type="checkbox" class="checkbox-input" v-model="item.isDefault" :class="'defaultSelected'+index" @click="setDefaultAddress('history',item.id,index)" :data-id="'defaultSelected'+index"> <span class="address-checkbox-core"></span>
+                            <label class="address-checkbox-select"><input type="checkbox" class="checkbox-input"  :class="'defaultSelected'+index" @click="setDefaultAddress('history',item.id,index)" :data-id="'defaultSelected'+index"> <span class="address-checkbox-core"></span>
                             </label>
                         </div>
                         <div class="f_r">
@@ -129,7 +129,8 @@ export default {
               className: 'slot1',
               textAlign: 'center'
             }],
-            addressList:[]
+            addressList:[],
+            bgUrl:""
         }
     },
     components: {vPaylist,vRecord},
@@ -228,8 +229,10 @@ export default {
                    this.getOldAddress();
                 });
             }
+            this.defaultPicture();
         },
         toAddNew() {
+            this.defaultPicture();
             this.showNewAddress();
         },
         // 设置默认地址
@@ -251,13 +254,15 @@ export default {
             } else {
                 //1.选择历史地址
                 let isSelected = $('.defaultSelected'+index).prop('checked');
-                console.log(isSelected);
                 if(!isSelected) {
                     $('.defaultSelected'+index).prop('checked',true)
                     return false;
                 } else {
                     $('.address_content_history .address-checkbox-select .checkbox-input').each(function(){
-                        if($(this).attr("data-id")!=="defaultSelected"+index){
+                        console.log($(this).attr("data-id")!=("defaultSelected"+index));
+                        if($(this).attr("data-id")==("defaultSelected"+index)){
+                            $(this).prop('checked',true);
+                        }else{
                             $(this).prop('checked',false);
                         }
                     })
@@ -265,7 +270,7 @@ export default {
                     let params = {id:id}
                     setDefaultAddress(params).then((res)=>{
                         console.log('setDefaultAddress success')
-                        this.getOldAddress();
+//                        this.getOldAddress();
                     })
                 }
             }
@@ -298,19 +303,42 @@ export default {
         getOldAddress() {
              getOldAddress().then((res)=>{
                 // console.log(res)
+                 let index = '';
                 if(res.data.data.length){
                     this.showAddressList();
                     this.addressList = res.data.data;
                     res.data.data.forEach((value,key)=>{
-                        value.isDefault = parseInt(value.isDefault)
+                        value.isDefault = parseInt(value.isDefault);
+                        if(value.isDefault==1){
+                            index = key;
+                        }
                     })
-                    this.addressList = res.data.data;
+                   setTimeout(()=>{
+                       $('.address_content_history .address-checkbox-select .checkbox-input').each(function(){
+                           console.log($(this).attr("data-id")!=("defaultSelected"+index));
+                           if($(this).attr("data-id")==("defaultSelected"+index)){
+                               $(this).prop('checked',true);
+                           }else{
+                               $(this).prop('checked',false);
+                           }
+                       })
+                   },100)
+
                 }
             })
+        },
+        defaultPicture(){
+            console.log(this.isAddressList,'log');
+            if(this.isAddressList){
+                this.bgUrl = "../../static/img/address_bg.jpg";
+            }else{
+                this.bgUrl = "../../static/img/address2.jpg";
+            }
         }
     },
     created(){
         // 获取地址列表
+        this.defaultPicture();
         this.getOldAddress();
     },
     mounted(){
