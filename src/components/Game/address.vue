@@ -343,7 +343,7 @@ export default {
     beforeRouteEnter (to, from, next) {
         console.log(to.path,'122');
         if(from.path=='/'){
-            this.refreashPage();
+//            this.refreashPage();
         }
         next();
     },
