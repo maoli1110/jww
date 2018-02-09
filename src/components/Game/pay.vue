@@ -88,7 +88,7 @@
              jsApiCall(coin)
                 {
                     let self = this;
-                    coin = !coin?50:coin;
+                    coin = !coin?1:coin;
                     $.get("http://game.yocatch.com/back/wxpay/pay/jsapi.php",{gold:coin}, function(result){
                         WeixinJSBridge.invoke(
                             'getBrandWCPayRequest',

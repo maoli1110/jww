@@ -201,15 +201,6 @@ export default {
             this.headImg = this.userInfo.headimgurl;
         }
     },
-/*    beforeRouteEnter(to, from, next) {
-        if(!from.path){
-            next(()=>{
-                this.$router.push('/main/home');
-            })
-        }
-        console.log(to.path)
-
-    },*/
     mounted() {
         self = this;
         document.body.addEventListener('touchstart', function () {});
@@ -608,7 +599,7 @@ export default {
                             setTimeout(()=>{
                                 games.machineTips("error");
                             },1500)
-                            games.isRun =0;                            
+                            games.isRun =0;
                         }
                         //保持影子不动
                         $(".machine-shadow-fixed").css({'left':-100,'top':-100});

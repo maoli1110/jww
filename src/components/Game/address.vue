@@ -335,7 +335,17 @@ export default {
             }else{
                 this.bgUrl = "./static/img/address2.jpg";
             }
+        },
+        refreashPage(){
+            this.$router.push('/main/home');
+        },
+    },
+    beforeRouteEnter (to, from, next) {
+        console.log(to.path,'122');
+        if(from.path=='/'){
+            this.refreashPage();
         }
+        next();
     },
     created(){
         // 获取地址列表

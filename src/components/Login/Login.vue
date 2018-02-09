@@ -2,7 +2,7 @@
     <div class="login-wrap">
         <div class="login-bg"><img :src="bgImg" alt=""></div>
         <div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div>
-        <a :href=`https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxeee9fa8365ffb733&redirect_uri=http://game.yocatch.com/back/app/login&response_type=code&scope=snsapi_userinfo&state=${device}#wechat_redirec`><div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div></a>
+        <!--<a :href=`https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxeee9fa8365ffb733&redirect_uri=http://game.yocatch.com/back/app/login&response_type=code&scope=snsapi_userinfo&state=${device}#wechat_redirec`><div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div></a>-->
         <div class="login-button login-ali-qq">
             <img :src="aliLoginImg" alt="" @click="wxLogin">
             <img :src="qqLoginImg" alt="" @click="wxLogin">
