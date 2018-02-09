@@ -13,7 +13,7 @@
                <li class="raduis-1 relat" v-for="(item,key) in list" @click="inGame(key)">
                   <p>{{item.title}}</p>
                   <div><img :src="item.imgUrl" alt=""></div>
-                  <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>99&nbsp;/次</span><span class="go raduis-1" >GO</span></div>
+                  <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>{{item.timeMoney?item.timeMoney:0}}&nbsp;/次</span><span class="go raduis-1" >GO</span></div>
                    <div class="absol switch text-color"><span class="block switch-text">碎片合成</span></div>
                </li>
            </ul>
@@ -41,8 +41,12 @@
        </div>
        <div class="goBack"><img src="" alt=""></div>
     </div>
-     <v-paylist v-show="payVisbile" :is-show="payVisbile" @panelHide="panelHide"></v-paylist>
-     <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHideRecord" ref="recordList"></v-record>
+    <v-paylist v-show="payVisbile" :is-show="payVisbile" @panelHide="panelHide"></v-paylist>
+    <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHideRecord" ref="recordList"></v-record>
+    <audio id="bg-music" controls="controls" autoplay="autoplay" style="display:none" loop="loop">
+      <source :src="audioUrl" type="audio/mpeg" />
+    Your browser does not support the audio element.
+    </audio>
 </div>
 </template>
 
@@ -56,7 +60,8 @@ export default {
     data() {
         this.$router.replace('/main/home')
         return {
-            selected:"",                    //tab选中状态
+            audioUrl:"./static/happy.mp3",
+            selected:"", //tab选中状态
             defalultWW:'./static/img/ingame_toy.png',
             homeNavImg:'./static/img/home_btn_home1.png',
             bagNavImg:'./static/img/home_btn_bag1.png',
@@ -126,6 +131,7 @@ export default {
         this.list = getSessionstorage('wlist');
         if(!this.list){
            getWlist().then((res)=>{
+            console.log(res.data.data.content,'res.data.data.content')
               this.list = res.data.data.content;
               setSessionstorage('wlist',res.data.data.content);
             });

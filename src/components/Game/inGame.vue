@@ -126,6 +126,10 @@
         <v-paylist v-show="payVisbile" :is-show="payVisbile" @panelHide="panelHide"></v-paylist>
         <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHide"></v-record>
         <v-message v-show="messageVisbile" :is-show="messageVisbile" @panelHide="panelHide"></v-message>
+        <audio id="bg-music" controls="controls" autoplay="autoplay" style="display:none" loop="loop">
+          <source :src="audioUrl" type="audio/mpeg" />
+        Your browser does not support the audio element.
+        </audio>
     </div>
 </template>
 <script>
@@ -139,6 +143,7 @@ var setIntervalIndex;
 export default {
     data() {
         return {
+            audioUrl:'./static/win.mp3',
             headImg:'./static/img/head-img.jpg',
             packetUrl:'',
             lightUrl:'./static/img/ingame_gif.gif',

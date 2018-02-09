@@ -4,10 +4,6 @@
             <transition name="move" mode="out-in">
                     <router-view></router-view>
             </transition>
-            <audio id="bg-music" controls="controls" autoplay="autoplay" style="display:none" loop="loop">
-              <source :src="audioUrl" type="audio/mpeg" />
-            Your browser does not support the audio element.
-            </audio>
         </div>
     </div>
 </template>
