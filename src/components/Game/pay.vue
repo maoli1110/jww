@@ -79,6 +79,7 @@
             //调用微信JS api 支付
              jsApiCall()
                 {
+                    let self = this;
                     $.get("http://game.yocatch.com/back/wxpay/pay/jsapi.php",{gold:'1'}, function(result){
                         WeixinJSBridge.invoke(
                             'getBrandWCPayRequest',
@@ -87,17 +88,17 @@
                                 WeixinJSBridge.log(res.err_msg);
                                 if(res.err_msg=='pay_request:ok'){
                                     //执行外面ajax刷新
-                                    this.$alert(message, '提示', {
+                                    self.$alert(message, '提示', {
                                         confirmButtonText: '确定',
                                         callback: action => {
                                             getUserInfo().then((res)=>{
                                                 setSessionstorage('userInfo',res.data.data); //sessionStorage存用户信息
                                                 window.userInfo = getSessionstorage('userInfo'); //window全局存用户信息
-                                                this.userInfo = window.userInfo; //当前页面赋值用户信息
-                                                this.userInfo.goldCounts= this.userInfo.goldCounts.toFixed(0);
+                                                self.userInfo = window.userInfo; //当前页面赋值用户信息
+                                                self.userInfo.goldCounts= self.userInfo.goldCounts.toFixed(0);
                                             });
-                                            this.hidePanel = false;
-                                            this.$emit('panelHide',this.hidePanel);
+                                            self.hidePanel = false;
+                                            self.$emit('panelHide',self.hidePanel);
                                         }
                                     })
                                 }
