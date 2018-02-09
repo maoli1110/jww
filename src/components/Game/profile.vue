@@ -9,22 +9,22 @@
         </div>
 
        <div class="select-list">
-           <ul>
+           <!--<ul>
                <li class="raduis-1 relat" v-for="(item,key) in list" @click="inGame(key)">
                   <p>{{item.title}}</p>
                   <div><img :src="item.imgUrl" alt=""></div>
                   <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>99&nbsp;/次</span><span class="go raduis-1" >GO</span></div>
                    <div class="absol switch text-color"><span class="block switch-text">碎片合成</span></div>
                </li>
-           </ul>
-           <!--<ul>
+           </ul>-->
+           <ul>
                <li class="raduis-1 relat" v-for="(item,key) in 10" @click="inGame(key)">
                    <p>123</p>
 
                    <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>99&nbsp;/次</span><span class="go raduis-1" >GO</span></div>
                    <div class="absol switch text-color"><span class="block switch-text">碎片合成</span></div>
                </li>
-           </ul>-->
+           </ul>
        </div>
        <div class="main-nav">
            <mt-tabbar v-model="selected" :value="selected">
@@ -54,6 +54,7 @@ import { getWlist,getUserInfo,getLocation } from "../../api/getData.js"
 import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
 export default {
     data() {
+        this.$router.replace('/main/home')
         return {
             selected:"",                    //tab选中状态
             defalultWW:'./static/img/ingame_toy.png',
@@ -107,6 +108,10 @@ export default {
         loginOut(){
             this.$router.push('/login');
             //此处执行退登接口
+        },
+        //刷新
+        refreshPage(){
+            this.$router.push('/main/home')
         }
     },
     created(){
@@ -129,13 +134,16 @@ export default {
         //获取用户信息并保存至sessionStorage
         window.userInfo = getSessionstorage('userInfo');
         this.userInfo = window.userInfo; //当前页面赋值用户信息
+        this.userInfo.goldCounts= this.userInfo.goldCounts.toFixed(0);
         if(!window.userInfo){
             getUserInfo().then((res)=>{
                setSessionstorage('userInfo',res.data.data); //sessionStorage存用户信息
                window.userInfo = getSessionstorage('userInfo'); //window全局存用户信息
                this.userInfo = window.userInfo; //当前页面赋值用户信息
+               this.userInfo.goldCounts= this.userInfo.goldCounts.toFixed(0);
             });
         }
+
     },
     watch:{
         selected:function(newVal,oldVal){//tab索引值监听

@@ -44,7 +44,7 @@
 </template>
 <script>
     import "../../../static/css/pay.css";
-    import {} from '../../api/getData';
+    import {getUserInfo} from '../../api/getData';
     export default{
         props:{isShow:Boolean},
         data(){
@@ -85,6 +85,22 @@
                             result,
                             function(res){
                                 WeixinJSBridge.log(res.err_msg);
+                                if(res.err_msg=='pay_request:ok'){
+                                    //执行外面ajax刷新
+                                    this.$alert(message, '提示', {
+                                        confirmButtonText: '确定',
+                                        callback: action => {
+                                            getUserInfo().then((res)=>{
+                                                setSessionstorage('userInfo',res.data.data); //sessionStorage存用户信息
+                                                window.userInfo = getSessionstorage('userInfo'); //window全局存用户信息
+                                                this.userInfo = window.userInfo; //当前页面赋值用户信息
+                                                this.userInfo.goldCounts= this.userInfo.goldCounts.toFixed(0);
+                                            });
+                                            this.hidePanel = false;
+                                            this.$emit('panelHide',this.hidePanel);
+                                        }
+                                    })
+                                }
                                 alert(res.err_code+res.err_desc+res.err_msg+'哈哈***');
                             }
                         );
@@ -94,7 +110,6 @@
 
              callpay()
                 {
-                    alert(1);
                     if (typeof WeixinJSBridge == "undefined"){
                         if( document.addEventListener ){
                             document.addEventListener('WeixinJSBridgeReady', this.jsApiCall, false);

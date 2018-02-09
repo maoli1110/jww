@@ -107,7 +107,12 @@
             //获取娃娃列表
             getBackpackList(){
                 getBackpack().then((res)=>{
-                    this.extractList = res.data.data.content;
+                    if(res.data.status=='nologin'){
+
+                    }else{
+                        this.extractList = res.data.data.content;
+                    }
+
                 })
             },
             //申请提取
