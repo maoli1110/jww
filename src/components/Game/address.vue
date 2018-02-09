@@ -4,6 +4,7 @@
         <div class="back">
             <img :src="back1Img" alt="" @click="back">
         </div>
+        <div class="absol address-mask" style="" v-if="isSlectProvince || isSlectCity "></div>
         <div class="location-select rela" v-if="isSlectProvince">
             <div class="font-16x title algin align-center"><span class="font-20">请选择省份</span><span class="icon" @click="ok"></span></div>
             <mt-picker :slots="slots" valueKey="name" @change="onValuesChange"></mt-picker>
@@ -383,5 +384,8 @@ export default {
     }
     .mint-tab-item-icon > *{
         height:84%;
+    }
+    .address-mask{
+        width:100%;height:100%;background:#000;opacity:0.5;z-index:4
     }
 </style>
