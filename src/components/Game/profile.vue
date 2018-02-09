@@ -134,13 +134,13 @@ export default {
         //获取用户信息并保存至sessionStorage
         window.userInfo = getSessionstorage('userInfo');
         this.userInfo = window.userInfo; //当前页面赋值用户信息
-        this.userInfo.goldCounts= this.userInfo.goldCounts.toFixed(0);
+//        this.userInfo.goldCounts= this.userInfo.goldCounts.toFixed(0);
         if(!window.userInfo){
             getUserInfo().then((res)=>{
                setSessionstorage('userInfo',res.data.data); //sessionStorage存用户信息
                window.userInfo = getSessionstorage('userInfo'); //window全局存用户信息
                this.userInfo = window.userInfo; //当前页面赋值用户信息
-               this.userInfo.goldCounts= this.userInfo.goldCounts.toFixed(0);
+//               this.userInfo.goldCounts= this.userInfo.goldCounts.toFixed(0);
             });
         }
 
