@@ -28,12 +28,13 @@
                             <img slot="icon" v-show ="item.count==50" :src="item.imgUrl" alt="" width="80" >
                             <img slot="icon" v-show ="item.count==100" :src="item.imgUrl" alt="" width="80" >
                             <img slot="icon" v-show ="item.count==200" :src="item.imgUrl" alt="" width="80" >
+                            <img slot="icon" v-show ="item.count==400" :src="item.imgUrl" alt="" width="80" >
                         </div>
                         <div class="Grid-cell count">
-                            <div class="substr">X{{item.count}}</div>
-                            <div class="substr price">${{item.price}}</div>
+                            <div class="substr">X {{item.count}}</div>
+                            <div class="substr price">￥ {{item.price}}</div>
                         </div>
-                        <div class="Grid-cell u-lof3 buy" @click="callpay">
+                        <div class="Grid-cell u-lof3 buy" @click="callpay(item.count)">
                              <img :src="item.btnBg" alt="" width="70">
                         </div>
                    </div>
@@ -46,6 +47,7 @@
     import "../../../static/css/pay.css";
     import {getUserInfo} from '../../api/getData';
     import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
+    let coin = {"coin50":50,"coin100":100,"coin200":200,'coin400':400}
     export default{
         props:{isShow:Boolean},
         data(){
@@ -55,18 +57,23 @@
                     {
                         imgUrl:"./static/img/pay_icon_coin50.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
-                        price:50,
+                        price:"0.50",
                         count:50
-                    },{
-                        imgUrl:"./static/img/pay_icon_coin400.png",
-                        btnBg:"./static/img/pay_btn_buy1.png",
-                        price:60,
-                        count:100
                     },{
                         imgUrl:"./static/img/pay_icon_coin100.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
-                        price:70,
+                        price:"1.00",
+                        count:100
+                    },{
+                        imgUrl:"./static/img/pay_icon_coin400.png",
+                        btnBg:"./static/img/pay_btn_buy1.png",
+                        price:"2.00",
                         count:200
+                    },{
+                        imgUrl:"./static/img/pay_icon_coin400.png",
+                        btnBg:"./static/img/pay_btn_buy1.png",
+                        price:"4.00",
+                        count:400
                     }
                 ],
                 hidePanel:false,
@@ -78,10 +85,11 @@
                 this.$emit('panelHide',this.hidePanel);
             },
             //调用微信JS api 支付
-             jsApiCall()
+             jsApiCall(coin)
                 {
                     let self = this;
-                    $.get("http://game.yocatch.com/back/wxpay/pay/jsapi.php",{gold:'1'}, function(result){
+                    coin = !coin?50:coin;
+                    $.get("http://game.yocatch.com/back/wxpay/pay/jsapi.php",{gold:coin}, function(result){
                         WeixinJSBridge.invoke(
                             'getBrandWCPayRequest',
                             result,
@@ -111,7 +119,7 @@
 
                 },
 
-             callpay()
+             callpay(coin)
                 {
                     if (typeof WeixinJSBridge == "undefined"){
                         if( document.addEventListener ){
@@ -121,7 +129,7 @@
                             document.attachEvent('onWeixinJSBridgeReady', this.jsApiCall);
                         }
                     }else{
-                        this.jsApiCall();
+                        this.jsApiCall(coin);
                     }
                 }
             }

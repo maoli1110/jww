@@ -85,7 +85,7 @@
     margin-right:.14rem;
 }
 .pay-list-item  .Grid-cell.count div:nth-child(1){
-    color:#AB7201;    margin: 6% 0 3%;
+    color:#AB7201;    margin: 6% 0 3% 6%;
 }
 .pay-list-item  .Grid-cell.count div:nth-child(2){
     color:#fff;
