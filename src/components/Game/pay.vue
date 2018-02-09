@@ -101,11 +101,16 @@
                                             self.$emit('panelHide',self.hidePanel);
                                         }
                                     })*/
-                                    alert(res.err_msg+123)
-                                    Toast({
+                                    this.$toast({
                                         message: '充值成功',
                                         iconClass: 'icon icon-success',
                                         duration: 5000
+                                    });
+                                    getUserInfo().then((res)=>{
+                                        setSessionstorage('userInfo',res.data.data); //sessionStorage存用户信息
+                                        window.userInfo = getSessionstorage('userInfo'); //window全局存用户信息
+                                        self.userInfo = window.userInfo; //当前页面赋值用户信息
+                                        self.userInfo.goldCounts= self.userInfo.goldCounts.toFixed(0);
                                     });
                                     self.hidePanel = false;
                                     self.$emit('panelHide',self.hidePanel);
@@ -120,11 +125,6 @@
 
              callpay()
                 {
-                    this.$toast({
-                        message: '充值成功',
-                        iconClass: 'icon icon-success',
-                        duration: 5000
-                    });
                     if (typeof WeixinJSBridge == "undefined"){
                         if( document.addEventListener ){
                             document.addEventListener('WeixinJSBridgeReady', this.jsApiCall, false);
