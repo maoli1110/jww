@@ -1,7 +1,7 @@
  <template>
  <div class="home-wrap">
     <div class="home">
-        <div class="back">
+        <div class="back" @click="loginOut">
             <img :src="back1Img" alt="">
         </div>
         <div class="relat xuanze relat"  style="height:4%">
@@ -102,6 +102,11 @@ export default {
         },
         recharge() {
           this.payVisbile = true;
+        },
+        //切换账号 退登
+        loginOut(){
+            this.$router.push('/login');
+            //此处执行退登接口
         }
     },
     created(){
