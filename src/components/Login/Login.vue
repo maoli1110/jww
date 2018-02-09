@@ -2,7 +2,7 @@
     <div class="login-wrap">
         <div class="login-bg"><img :src="bgImg" alt=""></div>
         <div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div>
-        <!--<a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxeee9fa8365ffb733&redirect_uri=http://game.yocatch.com/back/app/login&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirec"><div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div></a>-->
+        <a :href=`https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxeee9fa8365ffb733&redirect_uri=http://game.yocatch.com/back/app/login&response_type=code&scope=snsapi_userinfo&state=${device}#wechat_redirec`><div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div></a>
         <div class="login-button login-ali-qq">
             <img :src="aliLoginImg" alt="" @click="wxLogin">
             <img :src="qqLoginImg" alt="" @click="wxLogin">
@@ -23,10 +23,24 @@ export default {
             loginForm: {
                 username: "",
                 password: ""
-            }
+            },
+            device:""
         }
     },
     created() {
+        //判断是从哪里跳过来的
+        let params  = window.location.href.split('?')[1];
+        let item = {},name;
+        params = params.split('&');
+        params.forEach((val,key)=>{
+            name = val.split('=')[0];
+            val = val.split('=')[1];
+            item[name] = val;
+        })
+        this.device = item.code;
+        if(isNaN(this.device) && this.device){
+            this.device ='1';
+        }
     },
     methods: {
         wxLogin() {

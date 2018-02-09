@@ -4,8 +4,8 @@
 
 import axios from "axios";
 // let serverUrl = 'http://wwj.gamesoul.com.cn/back';
-let serverUrl = 'http://wwj.test.gamesoul.com.cn/back';
-// let serverUrl = 'http://game.yocatch.com/back';
+// let serverUrl = 'http://wwj.test.gamesoul.com.cn/back';
+let serverUrl = 'http://game.yocatch.com/back';
 
 //bim创建工程 example
 export const createProject = params=>axios.post(`${params.url}rs/bimRest/createProject`,params.param);

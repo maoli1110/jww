@@ -201,6 +201,15 @@ export default {
             this.headImg = this.userInfo.headimgurl;
         }
     },
+/*    beforeRouteEnter(to, from, next) {
+        if(!from.path){
+            next(()=>{
+                this.$router.push('/main/home');
+            })
+        }
+        console.log(to.path)
+
+    },*/
     mounted() {
         self = this;
         document.body.addEventListener('touchstart', function () {});

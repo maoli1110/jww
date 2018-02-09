@@ -73,7 +73,6 @@ function getSessionstorage(name){
 }
 export {
     FormIndex,
-    basePath,
     transformToObjFormat,
     dateFormat,
     setSessionstorage,
