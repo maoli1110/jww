@@ -31,7 +31,7 @@
                         </div>
                         <div class="Grid-cell count">
                             <div class="substr">X{{item.count}}</div>
-                            <div class="substr price">${{item.price}}</div> 
+                            <div class="substr price">${{item.price}}</div>
                         </div>
                         <div class="Grid-cell u-lof3 buy">
                              <img :src="item.btnBg" alt="" width="70">
@@ -78,6 +78,11 @@
         }
     }
 </script>
-<style>
-
+<style scope>
+    .mask{
+        z-index:9;
+    }
+    .dialog-close{
+        z-index:11
+    }
 </style>
