@@ -1,5 +1,5 @@
 window.serverPath = {
-	url:"http://wwj.test.gamesoul.com.cn/back"
+	url:"http://game.yocatch.com/back"
 }
 window.userInfo = {
 	
