@@ -86,21 +86,29 @@
                             result,
                             function(res){
                                 WeixinJSBridge.log(res.err_msg);
+                                alert(res.err_msg)
                                 if(res.err_msg=='get_brand_wcpay_request:ok'){
                                     //执行外面ajax刷新
-                                    self.$alert('支付成功', '提示', {
+                                   /* self.$alert('支付成功', '提示', {
                                         confirmButtonText: '确定',
                                         callback: action => {
-                                            getUserInfo().then((res)=>{
+                                           /!* getUserInfo().then((res)=>{
                                                 setSessionstorage('userInfo',res.data.data); //sessionStorage存用户信息
                                                 window.userInfo = getSessionstorage('userInfo'); //window全局存用户信息
                                                 self.userInfo = window.userInfo; //当前页面赋值用户信息
                                                 self.userInfo.goldCounts= self.userInfo.goldCounts.toFixed(0);
-                                            });
+                                            });*!/
                                             self.hidePanel = false;
                                             self.$emit('panelHide',self.hidePanel);
                                         }
-                                    })
+                                    })*/
+                                    Toast({
+                                        message: '充值成功',
+                                        iconClass: 'icon icon-success',
+                                        duration: 5000
+                                    });
+                                    self.hidePanel = false;
+                                    self.$emit('panelHide',self.hidePanel);
                                 }
                                 alert(res.err_msg)
 //                                alert(res.err_code+res.err_desc+res.err_msg+'哈哈***');
