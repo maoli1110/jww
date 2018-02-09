@@ -419,8 +419,8 @@ footer,header,nav,section {
     height: .82rem;
     background: url("../../static/img/my_btn_cancel1.png") center no-repeat;
     background-size: 100%;
-    right: 3%;
-    top: 1.7rem;
+    right: 2%;
+    top: 12%;
     z-index: 12;
 }
 .common-list-wrapper {

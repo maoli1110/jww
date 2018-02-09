@@ -2,13 +2,6 @@
  * Created by yhj on 2017/11/7.
  */
 
-/*   后端server五大模块
- {builder}      'http://192.168.13.195:8989/builder/';
- {cloud}        'http://192.168.13.195:8989/cloud/';
- {builderCiVil} 'http://192.168.13.195:8989/builderCiVil/';
- {cas}          'http://192.168.13.195:8989/cas/';
- {palace}       'http://192.168.13.195:8989/palace/';
- */
 import axios from "axios";
 // let serverUrl = 'http://wwj.gamesoul.com.cn/back';
 let serverUrl = 'http://wwj.test.gamesoul.com.cn/back';
@@ -35,9 +28,9 @@ export const setApplyWawa = params=>axios.post(`${serverUrl}/app/applyWawa`,para
 export const getExtractLog = params =>axios.get(`${serverUrl}/app/getExtractLog/1`);
 //8.站内信列表(get): app/getMailList/$page //$page 当前页
 export const getMailList = params =>axios.get(`${serverUrl}/app/getMailList/1`);
-//9.站内信详细内容(get): app/getMail/$id 
+//9.站内信详细内容(get): app/getMail/$id
 export const getMail = params =>axios.get(`${serverUrl}/app/getMail/${params}`);
-//10.删除站内信(get): app/hideMail/$id 
+//10.删除站内信(get): app/hideMail/$id
 export const hideMail = params =>axios.get(`${serverUrl}/app/hideMail/${params}`);
 //11.新增地址界面
 export const addNewAddress = params =>axios.post(`${serverUrl}/app/addAddress`,params);
@@ -45,3 +38,4 @@ export const addNewAddress = params =>axios.post(`${serverUrl}/app/addAddress`,p
 export const setDefaultAddress = params =>axios.get(`${serverUrl}/app/setDefaultAddress/${params.id}`);
 //13.历史地址列表
 export const getOldAddress = params =>axios.get(`${serverUrl}/app/getOldAddress`);
+//游戏币充值

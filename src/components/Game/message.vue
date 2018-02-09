@@ -16,7 +16,7 @@
                         </div>
                         <div class="Grid-cell cloumn-center from">
                             <p class="grey font-16">From</p>
-                            <p class="raduis-1 manager grey">{{item.from}}</p>  
+                            <p class="raduis-1 manager grey">{{item.from}}</p>
                         </div>
                         <div class="Grid-cell u-lof40 cloumn-center align-r">
                             <p class="grey">{{item.sendTime}}</p>
@@ -26,7 +26,7 @@
                    </div>
                    <!-- 站内信详情 -->
                    <div class="message-detail" v-show="detailVisible">
-                    <div class="main-content"> 
+                    <div class="main-content">
                         <div class="Grid header">
                             <div class="Grid-cell u-lof40 grey1 align-v-h">发件人：{{detailMessageInfo.sendName}}</div>
                             <div class="Grid-cell grey1 align-right">{{detailMessageInfo.sendTime}}</div>
@@ -39,7 +39,7 @@
                         <div class="Grid-cell"></div>
                         <mt-button type="primary" class="Grid-cell" @click="panelClose">关闭</mt-button>
                     </div>
-                   
+
                    </div>
 
                 </div>
@@ -117,6 +117,10 @@
         }
     }
 </script>
-<style>
-
+<style scope>
+    .message-bg .dialog-close{
+        right: 4%;
+        top: 13.6%;
+        z-index: 12!important;
+    }
 </style>

@@ -74,22 +74,23 @@
     text-align: left;padding:0 0.1rem;height:88%;
 }
 .pay-list-item .Grid-cell.buy>img{
-    float:left;margin-top:0.28rem;width:1.1rem;
+   width:1.1rem;margin-top:12%;
 }
 .pay-list-item  .Grid-cell.icon {
     background:url('../../static/img/pay_coin_bg01.png') no-repeat 0 0;
     border-radius: 0.2rem;
-    width: 70%;
+    width: 80%;
     height: 90%;
-    background-size:93%;
+    background-size: 100%;
+    margin-right:.14rem;
 }
 .pay-list-item  .Grid-cell.count div:nth-child(1){
-    color:#AB7201;
+    color:#AB7201;    margin: 6% 0 3%;
 }
 .pay-list-item  .Grid-cell.count div:nth-child(2){
     color:#fff;
     /*line-height: 32px;*/
-    margin:0.13rem 0 0;
+    margin:0rem 0 0;
     padding:0rem 0.1rem 0.1rem;
 }
 .pay-list-item  .Grid-cell.count .price{

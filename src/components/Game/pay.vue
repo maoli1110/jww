@@ -33,7 +33,7 @@
                             <div class="substr">X{{item.count}}</div>
                             <div class="substr price">${{item.price}}</div>
                         </div>
-                        <div class="Grid-cell u-lof3 buy">
+                        <div class="Grid-cell u-lof3 buy" @click="callpay">
                              <img :src="item.btnBg" alt="" width="70">
                         </div>
                    </div>
@@ -44,6 +44,7 @@
 </template>
 <script>
     import "../../../static/css/pay.css";
+    import {} from '../../api/getData';
     export default{
         props:{isShow:Boolean},
         data(){
@@ -74,9 +75,39 @@
             panelClose(){
                 this.hidePanel = false;
                 this.$emit('panelHide',this.hidePanel)
+            },
+            //调用微信JS api 支付
+             jsApiCall()
+                {
+                    $.get("http://game.yocatch.com/back/wxpay/pay/jsapi.php",{gold:'1'}, function(result){
+                        WeixinJSBridge.invoke(
+                            'getBrandWCPayRequest',
+                            result,
+                            function(res){
+                                WeixinJSBridge.log(res.err_msg);
+                                alert(res.err_code+res.err_desc+res.err_msg+'哈哈***');
+                            }
+                        );
+                    },"json");
+
+                },
+
+             callpay()
+                {
+                    this.jsApiCall();
+                    if (typeof WeixinJSBridge == "undefined"){
+                        if( document.addEventListener ){
+                            document.addEventListener('WeixinJSBridgeReady', this.jsApiCall, false);
+                        }else if (document.attachEvent){
+                            document.attachEvent('WeixinJSBridgeReady', this.jsApiCall);
+                            document.attachEvent('onWeixinJSBridgeReady', this.jsApiCall);
+                        }
+                    }else{
+                        this.jsApiCall();
+                    }
+                }
             }
         }
-    }
 </script>
 <style scope>
     .mask{
