@@ -86,7 +86,7 @@
                             result,
                             function(res){
                                 WeixinJSBridge.log(res.err_msg);
-                                if(res.err_msg=='pay_request:ok'){
+                                if(res.err_msg=='get_brand_wcpay_request:ok'){
                                     //执行外面ajax刷新
                                     self.$alert('支付成功', '提示', {
                                         confirmButtonText: '确定',
