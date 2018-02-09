@@ -86,7 +86,6 @@
                             result,
                             function(res){
                                 WeixinJSBridge.log(res.err_msg);
-                                alert(res.err_msg)
                                 if(res.err_msg=='get_brand_wcpay_request:ok'){
                                     //执行外面ajax刷新
                                    /* self.$alert('支付成功', '提示', {
@@ -102,6 +101,7 @@
                                             self.$emit('panelHide',self.hidePanel);
                                         }
                                     })*/
+                                    alert(res.err_msg+123)
                                     Toast({
                                         message: '充值成功',
                                         iconClass: 'icon icon-success',
@@ -110,7 +110,7 @@
                                     self.hidePanel = false;
                                     self.$emit('panelHide',self.hidePanel);
                                 }
-                                alert(res.err_msg)
+//                                alert(res.err_msg)
 //                                alert(res.err_code+res.err_desc+res.err_msg+'哈哈***');
                             }
                         );
