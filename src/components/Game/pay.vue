@@ -101,7 +101,7 @@
                                             self.$emit('panelHide',self.hidePanel);
                                         }
                                     })*/
-                                    this.$toast({
+                                    self.$toast({
                                         message: '充值成功',
                                         iconClass: 'icon icon-success',
                                         duration: 5000
