@@ -74,7 +74,7 @@
         methods:{
             panelClose(){
                 this.hidePanel = false;
-                this.$emit('panelHide',this.hidePanel)
+                this.$emit('panelHide',this.hidePanel);
             },
             //调用微信JS api 支付
              jsApiCall()
@@ -120,6 +120,11 @@
 
              callpay()
                 {
+                    this.$toast({
+                        message: '充值成功',
+                        iconClass: 'icon icon-success',
+                        duration: 5000
+                    });
                     if (typeof WeixinJSBridge == "undefined"){
                         if( document.addEventListener ){
                             document.addEventListener('WeixinJSBridgeReady', this.jsApiCall, false);
