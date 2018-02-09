@@ -118,9 +118,8 @@ export default {
         this.selected = 'home'; //默认选中home页
         getLocation().then((res)=>{
             localStorage.setItem('locationObj', JSON.stringify(res.data));
-            console.log(localStorage.getItem('locationObj'))
+            // console.log(localStorage.getItem('locationObj'))
         });
-
     },
     mounted(){
         //获取列表
