@@ -54,8 +54,6 @@
                             </div>
                         </li>
                         </div>
-                        <div class="atm">
-                            <img :src="packetUrl" alt=""></div>
                     </div>
                     <div class="machine-tips-box cpm-hide">
                         <div class="machine-tips">
@@ -207,7 +205,8 @@ export default {
         self = this;
         document.body.addEventListener('touchstart', function () {});
         // console.log(this.$route.params.num)
-        let packetNum = this.$route.params.num + 1 ;
+        let toyNum = this.$route.params.num;
+        // let packetNum = parseInt(toyNum) + 1 ;
         let moveBottom = $('#doll-list2').offset().top+$('#doll-list2').height()-$("#machine-clip").height();
         let documentWidth = $(document).width(); //document width
         let keyCodeArry=[];
@@ -217,10 +216,10 @@ export default {
         var isCatch = false,realCatch = false;
         var isVisibleGo = true;
         var currentCatch;//当前抓娃娃index
-        this.packetUrl = './static/img/'+packetNum+'.png';
-        $(".doll-img_name__goods").css("background",'url(./static/img/'+this.$route.params.num+'.png) 47% 0 no-repeat');
+        // this.packetUrl = './static/img/'+packetNum+'.png';
+        $(".doll-img_name__goods").css("background",'url(./static/img/'+toyNum+'.png) 47% 0 no-repeat');
         $(".doll-img_name__goods").css("background-size",'150%');
-        $(".doll-item").css("background",'url(./static/img/'+this.$route.params.num+'.png) 36% 0 no-repeat');
+        $(".doll-item").css("background",'url(./static/img/'+toyNum+'.png) 36% 0 no-repeat');
         $(".doll-item").css("background-size","150%");
         function isInWechat() {
             var a = navigator.userAgent.toLowerCase();
@@ -360,7 +359,7 @@ export default {
             this.getDoll = function(b) {
                 currentCatch = $(".doll-box").find("[data-index=" + b + "]");
                 window.xuanze = b;
-                if (a.dollSerial = b, currentCatch.length) {
+                if (a.dollSerial = b, currentCatch.length, realCatch) {
                     // var d = $(c).eq(0).clone();
                     // var d = $(c).eq(0).addClass("doll-rise");
                     $(currentCatch).addClass("v-hidden")
@@ -504,15 +503,13 @@ export default {
                     var b = "translate(" + 0 + "px," + 0 + "px)";
                     var _clip = this.clip;
                     var _this = this;
-                    if(isCatch){
+                    if(isCatch && realCatch){
                         $(".doll-item-single").removeAttr("style").addClass('doll-rise');
                     }
                     move(this.clip).set("transform", a).duration(this.setTime.rising).ease("linear").end();
 
                     setTimeout(()=> {
                         move(_clip).set("transform", b).duration(1700).ease("linear").end();
-                        // self.$router.go(0);
-
                     }, 2e3);
 
                     m = 0;
@@ -534,33 +531,53 @@ export default {
                         b = this.$clip.offset().left;
                         $('#doll-list'+level+' >li').map(function(c, d) {
                             var e = Math.abs($(d).offset().left);
-                            if(Math.abs(e-b) <= 20 && ($(d).css('visibility')!='hidden')){
+                            if(Math.abs(e-b) <= 10 && ($(d).css('visibility')!='hidden')){
                                 a = $(d).attr("data-index");
                                 isCatch = true;
                                 /**
                                 * 1.接口判断时候抓成功
                                 * 2.不成功则娃娃掉下 重新洗牌页面
                                 */
-                                let params = {id:1,status:"1"}
-                                getWawaStatus(params).then((res)=>{
-                                    if(res.data.data==="success"){
-                                        realCatch = true;
-                                        setTimeout(()=> {
-                                            games.offDoll.call(_this, _this.screen_h, 2000)
-                                        }, 2e3);
-                                    } else {
-                                        realCatch = false;
-                                        setTimeout(()=> {
-                                            games.offDoll.call(_this, _this.screen_h, 10)
-                                        }, 2e3);
-                                    }
+                                $.ajax({
+                                    type: "GET",
+                                    async: false,
+                                    url: window.serverPath.url+'/app/getWawaStatus/'+toyNum+'/1',
+                                    success: function(res){
+                                        console.log(res)
+                                        res = JSON.parse(res)
+                                           if(res.data==="success"){
+                                                realCatch = true;
+                                                setTimeout(()=> {
+                                                    games.offDoll.call(_this, _this.screen_h, 2000)
+                                                }, 2e3);
+                                            } else {
+                                                realCatch = false;
+                                                setTimeout(()=> {
+                                                    games.offDoll.call(_this, _this.screen_h, 10)
+                                                }, 2e3);
+                                            }
+                                        }
+                                 })
+                                // getWawaStatus(params).then((res)=>{
+                                //     if(res.data.data==="success"){
+                                //         realCatch = true;
+                                //         setTimeout(()=> {
+                                //             games.offDoll.call(_this, _this.screen_h, 2000)
+                                //         }, 2e3);
+                                //     } else {
+                                //         realCatch = false;
+                                //         setTimeout(()=> {
+                                //             games.offDoll.call(_this, _this.screen_h, 10)
+                                //         }, 2e3);
+                                //     }
 
-                                });
-                            } else {
-                                realCatch = false;
-                                setTimeout(()=> {
-                                    games.isRun = 0;
-                                }, 3000);
+                                // });
+                                if(!realCatch){
+                                    realCatch = false;
+                                    setTimeout(()=> {
+                                        games.isRun = 0;
+                                    }, 3000);
+                                }
                             }
                         }),games.getDoll.call(this, a);
                     }.bind(this), this.setTime.fallingToRising),
@@ -582,6 +599,7 @@ export default {
                             setTimeout(()=>{
                                 games.machineTips("error");
                             },1500)
+                            games.isRun =0;                            
                         }
                         //保持影子不动
                         $(".machine-shadow-fixed").css({'left':-100,'top':-100});

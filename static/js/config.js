@@ -1,8 +1,5 @@
 window.serverPath = {
-	casUrl:"",
-	builderUrl:"",
-	cloudUrl:"",
-	civilUrl:""
+	url:"http://wwj.test.gamesoul.com.cn/back"
 }
 window.userInfo = {
 	
