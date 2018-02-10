@@ -154,6 +154,7 @@ var setIntervalIndex;
 export default {
     data() {
         return {
+            currentToyInfo:'',
             currentToyUrl:'',
             audioUrl:'./static/win.mp3',
             headImg:'./static/img/head-img.jpg',
@@ -227,7 +228,7 @@ export default {
     },
     components: {vPaylist,vRecord,vMessage},
     created(){
-        this.currentToyUrl = sessionStorage.getItem('currentToyUrl');
+        this.currentToyInfo = getSessionstorage('currentToyInfo');
         //获取用户信息
         getUserInfo().then((res)=>{
             console.log(res.data,'res.data')
@@ -252,9 +253,9 @@ export default {
         var isVisibleGo = true;
         var currentCatch;//当前抓娃娃index
         // this.packetUrl = './static/img/'+packetNum+'.png';
-        $(".doll-img_name__goods").css("background",'url('+this. +') 47% 0 no-repeat');
+        $(".doll-img_name__goods").css("background",'url('+this.currentToyInfo.imgUrl+') 47% 0 no-repeat');
         $(".doll-img_name__goods").css("background-size",'150%');
-        $(".doll-item").css("background",'url('+this.currentToyUrl+') 36% 0 no-repeat');
+        $(".doll-item").css("background",'url('+this.currentToyInfo.imgUrl +') 36% 0 no-repeat');
         $(".doll-item").css("background-size","150%");
         function isInWechat() {
             var a = navigator.userAgent.toLowerCase();
@@ -580,20 +581,6 @@ export default {
                                             }
                                         }
                                  })
-                                // getWawaStatus(params).then((res)=>{
-                                //     if(res.data.data==="success"){
-                                //         realCatch = true;
-                                //         setTimeout(()=> {
-                                //             games.offDoll.call(_this, _this.screen_h, 2000)
-                                //         }, 2e3);
-                                //     } else {
-                                //         realCatch = false;
-                                //         setTimeout(()=> {
-                                //             games.offDoll.call(_this, _this.screen_h, 10)
-                                //         }, 2e3);
-                                //     }
-
-                                // });
                                 if(!realCatch){
                                     realCatch = false;
                                     setTimeout(()=> {
@@ -614,13 +601,13 @@ export default {
                 this.clipEnd = function(a) {
                     setTimeout(function() {
                         if(isCatch && realCatch){
-                            getUser();
+                            self.getUser();
                             setTimeout(()=>{
                                 games.machineTips("success");
                             },1500);
                         } else {
                             getWawaStatus({id:self.toyNum,status:0}).then((res)=>{
-                                getUser();
+                                self.getUser();
                             });
                             setTimeout(()=>{
                                 games.machineTips("error");
@@ -777,46 +764,40 @@ export default {
         setTimeout(function(){
             var a = document.querySelectorAll(".btn-go")[0];
             if ("undefined" != typeof a ) {
-                    var b = new ClampDoll;
-                    $(a).bind("touchstart mousedown",function(e){
-                        //判断金币不足->提示->跳转到充值界面
-                        let unique = false;
-                        if(!unique){
-                            getWawaStatus({id:toyNum,status:0}).then((res)=>{
-                                if(res.data.status!=="noGold"){
-                                    //判断背包是否满15个,提示背包将满, 无法获得物品, 最多20个
-                                    getUserInfo().then((res)=>{
-                                        unique = true;
-                                        console.log(res)
-                                        // res.data.data.bagcounts=15;
-                                        // alert(res.data.data.bagcounts);
-                                        if(res.data.data.bagcounts<15){
-                                            if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
-                                            isCatch = false;
-                                            realCatch = false;
-                                            // if($("#machine-clip").offset().left < 20) return;
-                                            let shadowLeft = $(".machine-shadow").offset().left;
-                                            let shadowTop = $(".machine-shadow").offset().top;
-                                            //游戏过程中不重复操作影子
-                                            if(!games.isRun){
-                                                $(".machine-shadow").css('display','none');
-                                                $(".machine-shadow-fixed").show();
-                                                $('.machine-shadow-fixed').css({'left':shadowLeft,'top':shadowTop})
-                                            }
-                                            b.init();
-                                            games.isRun = 1;
-                                        } else {
-                                            alert('背包将满,无法获得物品！')
-                                        }
-                                    })
-                                } else {
-                                    alert("金币不足,请充值！")
-                                    self.payVisbile = true;
+                var b = new ClampDoll;
+                $(a).bind("touchstart mousedown",function(e){
+                    //判断金币不足->提示->跳转到充值界面
+                    if(self.currentToyInfo.timeMoney < self.userInfo.goldCounts){
+                        //判断背包是否满15个,提示背包将满, 无法获得物品, 最多20个
+                        getUserInfo().then((res)=>{
+                            unique = true;
+                            console.log(res)
+                            // res.data.data.bagcounts=15;
+                            // alert(res.data.data.bagcounts);
+                            if(res.data.data.bagcounts<15){
+                                if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
+                                isCatch = false;
+                                realCatch = false;
+                                // if($("#machine-clip").offset().left < 20) return;
+                                let shadowLeft = $(".machine-shadow").offset().left;
+                                let shadowTop = $(".machine-shadow").offset().top;
+                                //游戏过程中不重复操作影子
+                                if(!games.isRun){
+                                    $(".machine-shadow").css('display','none');
+                                    $(".machine-shadow-fixed").show();
+                                    $('.machine-shadow-fixed').css({'left':shadowLeft,'top':shadowTop})
                                 }
-                            });
-                        }
-                        
-                    });
+                                b.init();
+                                games.isRun = 1;
+                            } else {
+                                alert('背包将满,无法获得物品！')
+                            }
+                        })
+                    } else {
+                        alert("金币不足,请充值！")
+                        self.payVisbile = true;
+                    }
+                }
             }
             App.move();
         },0);

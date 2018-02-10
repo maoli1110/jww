@@ -114,7 +114,7 @@ export default {
         inGame(wid,item){
             setSessionstorage('currentToyInfo',item);
             this.$router.push('/main/ingame/'+wid);
-
+ 
             // if(index==0){
             //     this.$router.push('/main/ingame');
             // }else if(index==1){
