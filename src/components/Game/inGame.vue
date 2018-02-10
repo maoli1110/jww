@@ -123,26 +123,38 @@
         <div class="back" @click="back()">
             <img :src="back1Img" alt="">
         </div>
-        <v-paylist v-show="payVisbile" :is-show="payVisbile" @panelHide="panelHide"></v-paylist>
+        <v-paylist v-show="payVisbile" :is-show="payVisbile" @payPanelHide="payPanelHide"></v-paylist>
         <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHide"></v-record>
         <v-message v-show="messageVisbile" :is-show="messageVisbile" @panelHide="panelHide"></v-message>
-        <audio id="bg-music" controls="controls" autoplay="autoplay" style="display:none" loop="loop">
+        <audio id="bg-music1" controls="controls" autoplay="autoplay" style="display:none" loop="loop">
           <source :src="audioUrl" type="audio/mpeg" />
         Your browser does not support the audio element.
         </audio>
     </div>
 </template>
 <script>
-// import "../../../static/js/move.min.js";
-// import "../../../static/js/web.min.js";
+function audioAutoPlay(id){ 
+    let audio = document.getElementById(id),
+        play = function(){
+        audio.play();
+        document.removeEventListener("touchstart",play, false);
+    };
+    audio.play();
+    document.addEventListener("WeixinJSBridgeReady", function (){
+       play(); 
+    }, false);
+    document.addEventListener("touchstart",play, false);
+}
 import vPaylist from "../Game/pay.vue";
 import vRecord from '../Game/record.vue';
 import vMessage from '../Game/message.vue';
-import { getWawaStatus } from '../../api/getData.js';
+import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
+import { getWawaStatus, getUserInfo } from '../../api/getData.js';
 var setIntervalIndex;
 export default {
     data() {
         return {
+            currentToyUrl:'',
             audioUrl:'./static/win.mp3',
             headImg:'./static/img/head-img.jpg',
             packetUrl:'',
@@ -174,7 +186,8 @@ export default {
             messageVisbile:false,
             userInfo:{
                 username:'',
-                goldCounts:''
+                goldCounts:'',
+                bagCounts:''
             },
             isSuccess1:false,
             isfail1:false
@@ -185,6 +198,13 @@ export default {
             this.payVisbile =visible;
             this.recordVisible = visible;
             this.messageVisbile = visible;
+        },
+        payPanelHide(visible){
+            this.payVisbile =visible;
+            this.recordVisible = visible;
+            this.messageVisbile = visible;
+            //执行userinfo刷新
+            getUser();
         },
         back(){
             this.$router.push('/main/home');
@@ -197,16 +217,26 @@ export default {
             $('.success').hide();
             $('.fail').hide();
             $('.mask').hide();
+        },
+        getUser(){
+            getUserInfo().then((res)=>{
+                this.userInfo = res.data.data; //当前页面赋值用户信息
+                this.headImg = this.userInfo.headimgurl;
+            });
         }
     },
     components: {vPaylist,vRecord,vMessage},
     created(){
-        this.userInfo = window.userInfo;
-        if(this.userInfo.headimgurl){
+        this.currentToyUrl = sessionStorage.getItem('currentToyUrl');
+        //获取用户信息
+        getUserInfo().then((res)=>{
+            console.log(res.data,'res.data')
+            this.userInfo = res.data.data; //当前页面赋值用户信息
             this.headImg = this.userInfo.headimgurl;
-        }
+        });
     },
     mounted() {
+        audioAutoPlay('bg-music1');
         self = this;
         document.body.addEventListener('touchstart', function () {});
         // console.log(this.$route.params.num)
@@ -222,9 +252,9 @@ export default {
         var isVisibleGo = true;
         var currentCatch;//当前抓娃娃index
         // this.packetUrl = './static/img/'+packetNum+'.png';
-        $(".doll-img_name__goods").css("background",'url(./static/img/'+toyNum+'.png) 47% 0 no-repeat');
+        $(".doll-img_name__goods").css("background",'url('+this. +') 47% 0 no-repeat');
         $(".doll-img_name__goods").css("background-size",'150%');
-        $(".doll-item").css("background",'url(./static/img/'+toyNum+'.png) 36% 0 no-repeat');
+        $(".doll-item").css("background",'url('+this.currentToyUrl+') 36% 0 no-repeat');
         $(".doll-item").css("background-size","150%");
         function isInWechat() {
             var a = navigator.userAgent.toLowerCase();
@@ -338,19 +368,6 @@ export default {
                 }
             }
             return arr;
-        }
-
-        function audioAutoPlay(id){
-            var audio = document.getElementById(id),
-            play = function(){
-                audio.play();
-                document.removeEventListener("touchstart",play, false);
-            };
-            audio.play();
-            document.addEventListener("WeixinJSBridgeReady", function (){
-               play();
-            }, false);
-            document.addEventListener("touchstart",play, false);
         }
 
         /*games对象*/
@@ -597,10 +614,14 @@ export default {
                 this.clipEnd = function(a) {
                     setTimeout(function() {
                         if(isCatch && realCatch){
+                            getUser();
                             setTimeout(()=>{
                                 games.machineTips("success");
                             },1500);
                         } else {
+                            getWawaStatus({id:self.toyNum,status:0}).then((res)=>{
+                                getUser();
+                            });
                             setTimeout(()=>{
                                 games.machineTips("error");
                             },1500)
@@ -758,20 +779,43 @@ export default {
             if ("undefined" != typeof a ) {
                     var b = new ClampDoll;
                     $(a).bind("touchstart mousedown",function(e){
-                        if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
-                        isCatch = false;
-                        realCatch = false;
-                        // if($("#machine-clip").offset().left < 20) return;
-                        let shadowLeft = $(".machine-shadow").offset().left;
-                        let shadowTop = $(".machine-shadow").offset().top;
-                        //游戏过程中不重复操作影子
-                        if(!games.isRun){
-                            $(".machine-shadow").css('display','none');
-                            $(".machine-shadow-fixed").show();
-                            $('.machine-shadow-fixed').css({'left':shadowLeft,'top':shadowTop})
+                        //判断金币不足->提示->跳转到充值界面
+                        let unique = false;
+                        if(!unique){
+                            getWawaStatus({id:toyNum,status:0}).then((res)=>{
+                                if(res.data.status!=="noGold"){
+                                    //判断背包是否满15个,提示背包将满, 无法获得物品, 最多20个
+                                    getUserInfo().then((res)=>{
+                                        unique = true;
+                                        console.log(res)
+                                        // res.data.data.bagcounts=15;
+                                        // alert(res.data.data.bagcounts);
+                                        if(res.data.data.bagcounts<15){
+                                            if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
+                                            isCatch = false;
+                                            realCatch = false;
+                                            // if($("#machine-clip").offset().left < 20) return;
+                                            let shadowLeft = $(".machine-shadow").offset().left;
+                                            let shadowTop = $(".machine-shadow").offset().top;
+                                            //游戏过程中不重复操作影子
+                                            if(!games.isRun){
+                                                $(".machine-shadow").css('display','none');
+                                                $(".machine-shadow-fixed").show();
+                                                $('.machine-shadow-fixed').css({'left':shadowLeft,'top':shadowTop})
+                                            }
+                                            b.init();
+                                            games.isRun = 1;
+                                        } else {
+                                            alert('背包将满,无法获得物品！')
+                                        }
+                                    })
+                                } else {
+                                    alert("金币不足,请充值！")
+                                    self.payVisbile = true;
+                                }
+                            });
                         }
-                        b.init();
-                        games.isRun = 1;
+                        
                     });
             }
             App.move();

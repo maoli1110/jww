@@ -82,7 +82,7 @@
         methods:{
             panelClose(){
                 this.hidePanel = false;
-                this.$emit('panelHide',this.hidePanel);
+                this.$emit('payPanelHide',this.hidePanel);
             },
             //调用微信JS api 支付
              jsApiCall(coin)
@@ -98,10 +98,8 @@
                                 if(res.err_msg=='get_brand_wcpay_request:ok'){
                                     //执行外面ajax刷新
                                     getUserInfo().then((res)=>{
-                                        setSessionstorage('userInfo',res.data.data); //sessionStorage存用户信息
-                                        window.userInfo = getSessionstorage('userInfo'); //window全局存用户信息
-                                        self.userInfo = window.userInfo; //当前页面赋值用户信息
-                                        self.userInfo.goldCounts= self.userInfo.goldCounts.toFixed(0);
+                                        self.userInfo = res.data.data; //当前页面赋值用户信息
+                                        // self.userInfo.goldCounts= self.userInfo.goldCounts.toFixed(0);
                                     });
                                     self.$toast({
                                         message: '充值成功',
@@ -121,6 +119,7 @@
 
              callpay(coin)
                 {
+                    debugger
                     if (typeof WeixinJSBridge == "undefined"){
                         if( document.addEventListener ){
                             document.addEventListener('WeixinJSBridgeReady', this.jsApiCall, false);

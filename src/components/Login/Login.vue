@@ -1,12 +1,12 @@
 <template>
     <div class="login-wrap">
         <div class="login-bg"><img :src="bgImg" alt=""></div>
-        <div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div>
-        <!--<a :href=`https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxeee9fa8365ffb733&redirect_uri=http://game.yocatch.com/back/app/login&response_type=code&scope=snsapi_userinfo&state=${device}#wechat_redirec`><div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div></a>-->
-        <div class="login-button login-ali-qq">
+        <!-- <div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div> -->
+        <a :href="weixinUrl"><div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div></a>
+<!--         <div class="login-button login-ali-qq">
             <img :src="aliLoginImg" alt="" @click="wxLogin">
             <img :src="qqLoginImg" alt="" @click="wxLogin">
-        </div>
+        </div> -->
     </div>
 </template>
 <script>
@@ -16,6 +16,7 @@ import { login } from "../../api/getData.js";
 export default {
     data() {
         return {
+            weixinUrl:'',
             bgImg:'./static/img/login_bg.jpg',
             wxLoginImg:'./static/img/login_btn_wx1.png',
             aliLoginImg:'./static/img/login_btn_ali1.png',
@@ -28,8 +29,9 @@ export default {
         }
     },
     created() {
-        if(window.location.href.indexOf('?')!=-1){
-            let params  = window.location.href.split('?')[1];
+        //http://192.168.1.8:8889/#/login?code=1,从url获取参数塞到登录地址
+        let params  = window.location.href.split('?')[1];
+        if(params){
             let item = {},name;
             params = params.split('&');
             params.forEach((val,key)=>{
@@ -38,10 +40,13 @@ export default {
                 item[name] = val;
             })
             this.device = item.code;
-            if(isNaN(this.device) && this.device){
-                this.device ='1';
-            }
         }
+        
+        if(isNaN(this.device) && this.device){
+            this.device ='1';
+        }
+        this.weixinUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxeee9fa8365ffb733&redirect_uri=http://game.yocatch.com/back/app/login&response_type=code&scope=snsapi_userinfo&state='+this.device+'#wechat_redirec';
+        console.log(this.weixinUrl)
     },
     methods: {
         wxLogin() {

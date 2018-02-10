@@ -1,5 +1,5 @@
 <template>
-<div class="home">
+<div>
     <div class="address" :style="{backgroundImage:`url(${bgUrl})`}">
         <div class="back">
             <img :src="back1Img" alt="" @click="back">
@@ -65,21 +65,6 @@
             </div>
         </div>
     </div>
-    <div class="main-nav">
-           <mt-tabbar v-model="selected" :value="selected">
-               <mt-tab-item id="home">
-                   <img slot="icon" :src="homeNavImg" @click="selectItem('home')">
-               </mt-tab-item>
-               <mt-tab-item id="bag">
-                   <img slot="icon" :src="bagNavImg">
-               </mt-tab-item>
-               <mt-tab-item id="mine">
-                   <img slot="icon" :src="mineNavImg">
-               </mt-tab-item>
-           </mt-tabbar>
-    </div>
-    <v-paylist v-show="payVisbile" :is-show="payVisbile" @panelHide="panelHide"></v-paylist>
-    <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHideRecord" ref="recordList"></v-record>
 </div>
 </template>
 <script>
@@ -88,7 +73,6 @@ import vRecord from '../Game/record.vue';
 import  '../../../static/css/home.css';             //主页样式
 import { getWlist,getUserInfo,setApplyWawa,addNewAddress,setDefaultAddress,getOldAddress} from "../../api/getData.js"
 import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
-let isFresh = false;
 export default {
     data() {
         return {
@@ -132,8 +116,7 @@ export default {
               textAlign: 'center'
             }],
             addressList:[],
-            bgUrl:"",
-            isFresh:false
+            bgUrl:""
         }
     },
     components: {vPaylist,vRecord},
@@ -296,6 +279,8 @@ export default {
                 setApplyWawa(params).then((res)=>{
                     if(res.data.data){
                         alert('提取成功');
+                        //提取成功之后跳转到wwj列表页面
+                        this.$router.push('/main/home');
                     }else{
                         alert('提取失败');
                     }
@@ -345,9 +330,7 @@ export default {
     beforeRouteEnter (to, from, next) {
         console.log(to.path,'122');
         if(from.path=='/'){
-            isFresh = true;
-        }else{
-            isFresh = false;
+//            this.refreashPage();
         }
         next();
     },
@@ -355,28 +338,11 @@ export default {
         // 获取地址列表
         this.defaultPicture();
         this.getOldAddress();
-        this.isFresh = isFresh;
-//        console.log(isFresh,'刷新否')
     },
     mounted(){
 
     },
     watch:{
-        '$route'(to,from){
-            console.log(from.path,'from.path')
-            if(from.path=='/'){
-                this.refreashPage();
-                this.isFresh = true;
-            }else{
-                this.isFresh = false;
-            }
-        },
-        isFresh:function(newVal,oldVal){
-            if(newVal!=oldVal && newVal){
-                this.refreashPage();
-
-            }
-        },
         selected:function(newVal,oldVal){//tab索引值监听
             this.restNavBg();
             if(newVal !=oldVal){

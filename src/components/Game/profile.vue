@@ -10,7 +10,7 @@
 
        <div class="select-list">
            <ul>
-               <li class="raduis-1 relat" v-for="(item,key) in list" @click="inGame(key)">
+               <li class="raduis-1 relat" v-for="(item,key) in list" @click="inGame(item.wid,item)">
                   <p>{{item.title}}</p>
                   <div><img :src="item.imgUrl" alt=""></div>
                   <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>{{item.timeMoney?item.timeMoney:0}}&nbsp;/次</span><span class="go raduis-1" >GO</span></div>
@@ -41,7 +41,7 @@
        </div>
        <div class="goBack"><img src="" alt=""></div>
     </div>
-    <v-paylist v-show="payVisbile" :is-show="payVisbile" @panelHide="panelHide"></v-paylist>
+    <v-paylist v-show="payVisbile" :is-show="payVisbile" @payPanelHide="payPanelHide"></v-paylist>
     <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHideRecord" ref="recordList"></v-record>
     <audio id="bg-music" controls="controls" autoplay="autoplay" style="display:none" loop="loop">
       <source :src="audioUrl" type="audio/mpeg" />
@@ -51,6 +51,18 @@
 </template>
 
 <script>
+function audioAutoPlay(id){ 
+    let audio = document.getElementById(id),
+        play = function(){
+        audio.play();
+        document.removeEventListener("touchstart",play, false);
+    };
+    audio.play();
+    document.addEventListener("WeixinJSBridgeReady", function (){
+       play(); 
+    }, false);
+    document.addEventListener("touchstart",play, false);
+}
 import vPaylist from "../Game/pay.vue";
 import vRecord from '../Game/record.vue';
 import  '../../../static/css/home.css';             //主页样式
@@ -79,7 +91,15 @@ export default {
         //组件关窗通信
         panelHide(visible){
             this.payVisbile =visible;
-
+        },
+        payPanelHide(visible){
+            this.payVisbile =visible;
+            this.recordVisible = visible;
+            this.messageVisbile = visible;
+            //执行userinfo刷新
+            getUserInfo().then((res)=>{
+                this.userInfo = res.data.data; //当前页面赋值用户信息
+            });
         },
         panelHideRecord(visible){
           this.recordVisible = visible;
@@ -91,9 +111,9 @@ export default {
             this.bagNavImg = './static/img/home_btn_bag1.png'
         },
         //初始化跳链接
-        inGame(index){
-            index = index +1;
-            this.$router.push('/main/ingame/'+index);
+        inGame(wid,item){
+            setSessionstorage('currentToyInfo',item);
+            this.$router.push('/main/ingame/'+wid);
 
             // if(index==0){
             //     this.$router.push('/main/ingame');
@@ -128,27 +148,21 @@ export default {
     },
     mounted(){
         //获取列表
-        this.list = getSessionstorage('wlist');
-        if(!this.list){
+        // this.list = getSessionstorage('wlist');
+        // if(!this.list){
            getWlist().then((res)=>{
             console.log(res.data.data.content,'res.data.data.content')
               this.list = res.data.data.content;
+              debugger
               setSessionstorage('wlist',res.data.data.content);
             });
-        }
-        //获取用户信息并保存至sessionStorage
-        window.userInfo = getSessionstorage('userInfo');
-        this.userInfo = window.userInfo; //当前页面赋值用户信息
-//        this.userInfo.goldCounts= this.userInfo.goldCounts.toFixed(0);
-        if(!window.userInfo){
-            getUserInfo().then((res)=>{
-               setSessionstorage('userInfo',res.data.data); //sessionStorage存用户信息
-               window.userInfo = getSessionstorage('userInfo'); //window全局存用户信息
-               this.userInfo = window.userInfo; //当前页面赋值用户信息
-//               this.userInfo.goldCounts= this.userInfo.goldCounts.toFixed(0);
-            });
-        }
-
+        // }
+        //获取用户信息
+        getUserInfo().then((res)=>{
+            console.log(res.data,'res.data')
+            this.userInfo = res.data.data; //当前页面赋值用户信息
+        });
+        audioAutoPlay('bg-music');
     },
     watch:{
         selected:function(newVal,oldVal){//tab索引值监听
