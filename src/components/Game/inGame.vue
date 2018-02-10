@@ -770,10 +770,6 @@ export default {
                     if(self.currentToyInfo.timeMoney < self.userInfo.goldCounts){
                         //判断背包是否满15个,提示背包将满, 无法获得物品, 最多20个
                         getUserInfo().then((res)=>{
-                            unique = true;
-                            console.log(res)
-                            // res.data.data.bagcounts=15;
-                            // alert(res.data.data.bagcounts);
                             if(res.data.data.bagcounts<15){
                                 if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
                                 isCatch = false;
@@ -797,7 +793,7 @@ export default {
                         alert("金币不足,请充值！")
                         self.payVisbile = true;
                     }
-                }
+                });
             }
             App.move();
         },0);
