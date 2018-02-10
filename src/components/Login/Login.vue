@@ -28,18 +28,19 @@ export default {
         }
     },
     created() {
-        //http://192.168.1.8:8889/#/login?code=1,从url获取参数塞到登录地址
-        let params  = window.location.href.split('?')[1];
-        let item = {},name;
-        params = params.split('&');
-        params.forEach((val,key)=>{
-            name = val.split('=')[0];
-            val = val.split('=')[1];
-            item[name] = val;
-        })
-        this.device = item.code;
-        if(isNaN(this.device) && this.device){
-            this.device ='1';
+        if(window.location.href.indexOf('?')!=-1){
+            let params  = window.location.href.split('?')[1];
+            let item = {},name;
+            params = params.split('&');
+            params.forEach((val,key)=>{
+                name = val.split('=')[0];
+                val = val.split('=')[1];
+                item[name] = val;
+            })
+            this.device = item.code;
+            if(isNaN(this.device) && this.device){
+                this.device ='1';
+            }
         }
     },
     methods: {
