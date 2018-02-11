@@ -4,7 +4,7 @@ window.serverPath = {
 }
 window.userInfo = {
 	
-}
+} 
 window.wlist = {
 
 }

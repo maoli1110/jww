@@ -33,7 +33,11 @@
     padding: 9% 5% 0;
 }
 /*列表信息*/
-.pay-list-wrapper{height:47%;overflow:auto;margin: 2.8rem 3% 0;}
+.pay-list-wrapper{
+    height: 49%;
+    overflow: auto;
+    margin: 42% 3% 0;
+}
 .common-list-wrapper{
      padding-top: 0rem !important;
 }

@@ -2,7 +2,7 @@
     <div class="login-wrap">
         <div class="login-bg"><img :src="bgImg" alt=""></div>
          <!-- <div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div> -->
-        <a :href="weixinUrl"><div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div></a>
+        <a :href="weixinUrl"><div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div></a> 
 <!--         <div class="login-button login-ali-qq">
             <img :src="aliLoginImg" alt="" @click="wxLogin">
             <img :src="qqLoginImg" alt="" @click="wxLogin">

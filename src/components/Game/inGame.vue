@@ -106,10 +106,10 @@
         </div>
         <mt-tabbar>
             <mt-tab-item id="tab1" >
-                <img slot="icon" :src="pay1Img" @click="payVisbile=true;">
+                <img slot="icon" :src="pay1Img" @click="payClick()">
             </mt-tab-item>
             <mt-tab-item id="tab2" >
-                <img slot="icon" :src="bag1Img" @click="recordVisible=true;bagClick()">
+                <img slot="icon" :src="bag1Img" @click="bagClick()">
             </mt-tab-item>
         </mt-tabbar>
         <div class="back" @click="back()">
@@ -147,6 +147,7 @@ let initFresh = false;      //刷新状态
 export default {
     data() {
         return {
+            isRun:0,
             currentToyInfo:'',
             currentToyUrl:'',
             audioUrl:'./static/win.mp3',
@@ -220,8 +221,15 @@ export default {
             });
         },
         bagClick(){
-            this.$refs.recordList.getBackpackList();
-
+            if(!this.isRun){
+                this.recordVisible=true;
+                this.$refs.recordList.getBackpackList();
+            }
+        },
+        payClick(){
+            if(!this.isRun){
+                this.payVisbile = true;
+            }
         }
     },
     components: {vPaylist,vRecord,vMessage},
@@ -406,6 +414,7 @@ export default {
                 $(d).css('transformY', '0px');
                 setTimeout(()=>{
                     games.isRun = 0;
+                    self.isRun = 0;
                 },100)
             },
 
@@ -592,6 +601,7 @@ export default {
                                     realCatch = false;
                                     setTimeout(()=> {
                                         games.isRun = 0;
+                                        self.isRun = 0;
                                     }, 3000);
                                 }
                             }
@@ -618,8 +628,9 @@ export default {
                             });
                             setTimeout(()=>{
                                 games.machineTips("error");
+                                games.isRun = 0;
+                                self.isRun = 0;
                             },1500)
-                            games.isRun =0;
                         }
                         //保持影子不动
                         $(".machine-shadow-fixed").css({'left':-100,'top':-100});
@@ -770,9 +781,9 @@ export default {
         };
         setTimeout(function(){
             var a = document.querySelectorAll(".btn-go")[0];
-            if ("undefined" != typeof a ) {
+            if ("undefined" != typeof a ) { 
                 var b = new ClampDoll;
-                $(a).bind("touchstart mousedown",function(e){
+                $(a).bind("touchstart",function(e){
                     //判断金币不足->提示->跳转到充值界面
                     if(parseFloat(self.currentToyInfo.timeMoney) < parseFloat(self.userInfo.goldCounts)){
                         //判断背包是否满15个,提示背包将满, 无法获得物品, 最多20个
@@ -781,7 +792,6 @@ export default {
                                 if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
                                 isCatch = false;
                                 realCatch = false;
-                                // if($("#machine-clip").offset().left < 20) return;
                                 let shadowLeft = $(".machine-shadow").offset().left;
                                 let shadowTop = $(".machine-shadow").offset().top;
                                 //游戏过程中不重复操作影子
@@ -792,6 +802,7 @@ export default {
                                 }
                                 b.init();
                                 games.isRun = 1;
+                                self.isRun = 1;
                             } else {
                                 alert('背包将满,无法获得物品！')
                             }
