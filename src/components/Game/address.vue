@@ -73,6 +73,7 @@ import vRecord from '../Game/record.vue';
 import  '../../../static/css/home.css';             //主页样式
 import { getWlist,getUserInfo,setApplyWawa,addNewAddress,setDefaultAddress,getOldAddress} from "../../api/getData.js"
 import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
+let initFresh = false;      //刷新状态
 export default {
     data() {
         return {
@@ -116,7 +117,8 @@ export default {
               textAlign: 'center'
             }],
             addressList:[],
-            bgUrl:""
+            bgUrl:"",
+            reFresh:false       //刷新状态
         }
     },
     components: {vPaylist,vRecord},
@@ -327,10 +329,12 @@ export default {
             this.$router.push('/main/home');
         },
     },
-    beforeRouteEnter (to, from, next) {
+    beforeRouteEnter (to, from, next) {//判断是不是手动刷新
         console.log(to.path,'122');
         if(from.path=='/'){
-//            this.refreashPage();
+            initFresh = true;       //刷新状态
+        }else{
+            initFresh = false;
         }
         next();
     },
@@ -338,11 +342,24 @@ export default {
         // 获取地址列表
         this.defaultPicture();
         this.getOldAddress();
+        this.reFresh = initFresh;   //刷新状态
     },
     mounted(){
 
     },
     watch:{
+        reFresh:function(newVal,oldVal){//监听刷新状态
+            if(newVal!=oldVal && newVal){
+               this.refreashPage();
+            }
+        },
+        '$route' (to,from){             //监听路由 改变刷新状态
+            if(from.path){
+                this.reFresh = true;
+            }else{
+                this.reFresh = false;
+            }
+        },
         selected:function(newVal,oldVal){//tab索引值监听
             this.restNavBg();
             if(newVal !=oldVal){

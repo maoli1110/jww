@@ -1,7 +1,7 @@
 <template>
     <div class="login-wrap">
         <div class="login-bg"><img :src="bgImg" alt=""></div>
-        <!-- <div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div> -->
+         <!--<div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div>-->
         <a :href="weixinUrl"><div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div></a>
 <!--         <div class="login-button login-ali-qq">
             <img :src="aliLoginImg" alt="" @click="wxLogin">
@@ -41,7 +41,7 @@ export default {
             })
             this.device = item.code;
         }
-        
+
         if(isNaN(this.device) && this.device){
             this.device ='1';
         }
