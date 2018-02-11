@@ -100,7 +100,27 @@
 .pay-list-item  .Grid-cell.count .price{
     background:url('../../static/img/pay_coin_num.png') no-repeat 0 0;background-size:69%;
 }
-
+/* 判断iphonex */
+@media only screen and (min-device-width : 375px) and (max-device-width : 812px){
+    /* style */
+    html{
+        font-size: 60px !important;
+    }
+    .pay-list-wrapper {
+        height: 53%;
+        overflow: auto;
+        margin: 72% 3% 0;
+    }
+    .dialog-close {
+        width: .82rem;
+        height: .82rem;
+        background: url("../../static/img/my_btn_cancel1.png") center no-repeat;
+        background-size: 100%;
+        right: 2%;
+        top: 20%;
+        z-index: 12;
+    }
+}
 
 
 

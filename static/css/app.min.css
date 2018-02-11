@@ -1524,5 +1524,34 @@
 .machine-light {
 	bottom: .3rem
 }
+/* 判断iphonex */
+@media only screen and (min-device-width : 375px) and (max-device-width : 812px){
+    /* style */
+    .doll-box {
+	    height: 1rem;
+	    position: absolute;
+	    bottom: 6rem;
+	    right: 0;
+	    left: 0;
+	    -webkit-transform: translateZ(-110px);
+	    transform: translateZ(-110px);
+	    z-index: 1;
+	}
+	.machine-shadow {
+		width: 1.5rem;
+		height: .8rem;
+		position: absolute;
+		background: url(../img/ingame_pic_shadow.png) 0 0 no-repeat;
+		background-size: 100%;
+		-webkit-background-size: 100%;
+		right: 0;
+		left: 0;
+		bottom:  -7rem;
+		margin: auto;
+		z-index: 30;
+	/*	-webkit-transform: translateZ(130px);
+		transform: translateZ(130px)*/
+	}
+}
 
 

@@ -529,6 +529,15 @@ footer,header,nav,section {
         margin-left: -1.25rem !important;
     }
 }
+
+/* 判断iphonex */
+@media only screen and (min-device-width : 375px) and (max-device-width : 812px){
+    /* style */
+    .record-content{
+        margin: 3.8rem .4rem 0 !important;
+        height: calc(100vh - 60%) !important;
+    }
+}
 /* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
 @media only screen and (min-device-width : 320px) and (max-device-width : 568px){
     /* style */
@@ -536,8 +545,8 @@ footer,header,nav,section {
         /*padding:12px 0 !important;*/
     }
     .record-content{
-        /*margin: 4.0rem .4rem 0 !important;*/
-        height: calc(100vh - 56%) !important;
+        margin: 4.4rem .4rem 0 !important;
+        height: calc(100vh - 64%) !important;
     }
     .extract-pro{
         width: 2.5rem !important;
