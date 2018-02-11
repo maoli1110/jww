@@ -138,3 +138,10 @@ Response
 	"detailAddress":"xx小区xx路",
 	"isDefault":"0", //0不默认 1默认
 }
+14.战绩列表
+{	
+	"id":"",
+	"createTime":"2323232323000",
+	"status":"0", //1 抓取成功 0抓取失败
+}
+15.退出登录
