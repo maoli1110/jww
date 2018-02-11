@@ -532,6 +532,9 @@ footer,header,nav,section {
 
 /* 判断iphonex */
 @media only screen and (min-device-width : 375px) and (max-device-width : 812px){
+    
+}
+@media only screen and (device-width: 375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
     /* style */
     .record-content{
         margin: 3.8rem .4rem 0 !important;

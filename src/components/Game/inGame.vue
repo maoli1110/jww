@@ -597,15 +597,21 @@ export default {
                                             }
                                         }
                                  })
-                                if(!realCatch){
-                                    realCatch = false;
-                                    setTimeout(()=> {
-                                        games.isRun = 0;
-                                        self.isRun = 0;
-                                    }, 3000);
-                                }
                             }
-                        }),games.getDoll.call(this, a);
+
+                        })
+                        if(!realCatch){
+                            getWawaStatus({id:toyNum,status:0}).then((res)=>{
+                                self.getUser();
+                            });
+                            console.log("!realCatch")
+                            realCatch = false;
+                            setTimeout(()=> {
+                                games.isRun = 0;
+                                self.isRun = 0;
+                            }, 3000);
+                        }
+                        games.getDoll.call(this, a);
                     }.bind(this), this.setTime.fallingToRising),
                     b
                 },
@@ -623,9 +629,6 @@ export default {
                                 games.machineTips("success");
                             },1500);
                         } else {
-                            getWawaStatus({id:self.toyNum,status:0}).then((res)=>{
-                                self.getUser();
-                            });
                             setTimeout(()=>{
                                 games.machineTips("error");
                                 games.isRun = 0;

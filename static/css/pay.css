@@ -101,7 +101,7 @@
     background:url('../../static/img/pay_coin_num.png') no-repeat 0 0;background-size:69%;
 }
 /* 判断iphonex */
-@media only screen and (min-device-width : 375px) and (max-device-width : 812px){
+@media only screen and (device-width: 375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
     /* style */
     html{
         font-size: 60px !important;
