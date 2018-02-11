@@ -14,7 +14,7 @@
                   <p>{{item.title}}</p>
                   <div><img :src="item.imgUrl" alt=""></div>
                   <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>{{item.timeMoney?item.timeMoney:0}}&nbsp;/次</span><span class="go raduis-1" >GO</span></div>
-                   <div class="absol switch text-color"><span class="block switch-text">碎片合成</span></div>
+                   <!-- <div class="absol switch text-color"><span class="block switch-text">碎片合成</span></div> -->
                </li>
            </ul>
        </div>
