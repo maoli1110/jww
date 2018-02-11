@@ -165,9 +165,9 @@ export default {
                    this.bagNavImg = './static/img/home_btn_bag2.png';
                }else if(newVal=='mine'){
                    this.$router.push('/main/mine');
-                   this.$refs.recordList.getBackpackList();
-                   this.mineNavImg = './static/img/home_btn_my2.png';
-                   this.recordVisible = true;
+                   // this.$refs.recordList.getBackpackList();
+                   // this.mineNavImg = './static/img/home_btn_my2.png';
+                   // this.recordVisible = true;
                }else if(newVal=='home'){
                    this.homeNavImg = './static/img/home_btn_home2.png';
                }

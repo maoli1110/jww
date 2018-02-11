@@ -170,15 +170,15 @@
         width:44%;margin:0 0 6px 0;
     }
     .mine-log{
-        height: calc(100vh - 290px);
+        height: calc(100vh - 280px);
         overflow:auto;
     }
     .wawa-log{
-        width:24%;margin:0 0 6px 0;
+        width:28%;margin:0 0 6px 0;
     }
     .log-btn .mint-button{
         color: #fff;
-        position: fixed;
+        position: fixed;o
         width: 5.4rem;
         margin: 0 auto;
         right: 0;
@@ -187,5 +187,11 @@
         height: 3.4em;
         background:url('../../../static/img/mine_btn_exit1.png') no-repeat 0 0;
         background-size:100%;
+    }
+    .address_list {
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px 15px;
+        margin-bottom: 10px;
     }
 </style>
