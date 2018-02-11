@@ -30,6 +30,11 @@ export default new Router({
                     //  ingame
                     path: 'address',
                     component: resolve => require(['../components/Game/address.vue'], resolve)
+                },
+                {
+                    //  我的
+                    path: 'mine',
+                    component: resolve => require(['../components/Game/mine.vue'], resolve)
                 }
             ],
         },

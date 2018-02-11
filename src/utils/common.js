@@ -46,16 +46,22 @@ function transformToObjFormat(param, simpleOrgNodes) {
     }
 }
 
-function dateFormat(date){
+function dateFormat(date,mate){
     // date = date+'';
     date = date.replace(/-/g,"/");
     date = new Date(date);
     let getYear = date.getFullYear();
     let getMonth = date.getMonth()<10?'0'+(date.getMonth()+1):date.getMonth()+1;
-    let getdate = date.getDate();
-    let getHou = date.getHours();
-    let getMin = date.getMinutes();
-    date = `${getYear}.${getMonth}.${getdate}  ${getHou}:${getMin}`;
+    let getdate = date.getDate()<10?'0'+date.getDate():date.getDate();
+    // let getdate = date.getDate();
+    let getHou = date.getHours()<10?'0'+date.getHours():date.getHours();
+    let getMin = date.getMinutes()<10?'0'+date.getMinutes():date.getMinutes();;
+    if(mate){
+        date = `${getYear}年${getMonth}月${getdate}日     ${getHou}:${getMin}`;
+    }else{
+        date = `${getYear}.${getMonth}.${getdate}  ${getHou}:${getMin}`;
+    }
+
     return date;
 }
 function setSessionstorage(name,obj){
