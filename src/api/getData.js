@@ -40,3 +40,6 @@ export const setDefaultAddress = params =>axios.get(`${serverUrl}/app/setDefault
 //13.历史地址列表
 export const getOldAddress = params =>axios.get(`${serverUrl}/app/getOldAddress`);
 //游戏币充值
+//我的战绩
+export const myWawaLog = params=>axios.get(`${serverUrl}/app/myWawaLog`);
+// export const myWawaLog = params=>axios.get(`http://172.16.21.157/wwj/back/app/myWawaLog`);
