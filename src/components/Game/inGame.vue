@@ -109,22 +109,14 @@
                 <img slot="icon" :src="pay1Img" @click="payVisbile=true;">
             </mt-tab-item>
             <mt-tab-item id="tab2" >
-                <img slot="icon" :src="bag1Img" @click="recordVisible=true;">
+                <img slot="icon" :src="bag1Img" @click="recordVisible=true;bagClick()">
             </mt-tab-item>
         </mt-tabbar>
-        <!-- <div class="pay-bag-button">
-            <div class="pay" @click="payVisbile=true;">
-                <img :src="pay1Img" alt="">
-            </div>
-            <div class="bag" >
-                <img :src="bag1Img" alt="">
-            </div>
-        </div> -->
         <div class="back" @click="back()">
             <img :src="back1Img" alt="">
         </div>
         <v-paylist v-show="payVisbile" :is-show="payVisbile" @payPanelHide="payPanelHide"></v-paylist>
-        <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHide"></v-record>
+        <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHide" ref="recordList"></v-record>
         <v-message v-show="messageVisbile" :is-show="messageVisbile" @panelHide="panelHide"></v-message>
         <audio id="bg-music1" controls="controls" autoplay="autoplay" style="display:none" loop="loop">
           <source :src="audioUrl" type="audio/mpeg" />
@@ -207,7 +199,7 @@ export default {
             this.recordVisible = visible;
             this.messageVisbile = visible;
             //执行userinfo刷新
-            getUser();
+            this.getUser();
         },
         back(){
             this.$router.push('/main/home');
@@ -227,9 +219,10 @@ export default {
                 this.headImg = this.userInfo.headimgurl;
             });
         },
-        refreashPage(){
-            this.$router.push('/main/home');
-        },
+        bagClick(){
+            this.$refs.recordList.getBackpackList();
+
+        }
     },
     components: {vPaylist,vRecord,vMessage},
     created(){
@@ -781,7 +774,7 @@ export default {
                 var b = new ClampDoll;
                 $(a).bind("touchstart mousedown",function(e){
                     //判断金币不足->提示->跳转到充值界面
-                    if(self.currentToyInfo.timeMoney < self.userInfo.goldCounts){
+                    if(parseFloat(self.currentToyInfo.timeMoney) < parseFloat(self.userInfo.goldCounts)){
                         //判断背包是否满15个,提示背包将满, 无法获得物品, 最多20个
                         getUserInfo().then((res)=>{
                             if(res.data.data.bagcounts<15){
@@ -815,7 +808,7 @@ export default {
     watch:{
         reFresh:function(newVal,oldVal){//监听刷新状态
             if(newVal!=oldVal && newVal){
-                this.refreashPage();
+                this.back();
             }
         },
         '$route' (to,from){             //监听路由 改变刷新状态

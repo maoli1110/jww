@@ -165,7 +165,6 @@
             this.selected = 'list';
             this.getData();
         },
-
         watch:{
             selected:function(newVal,oldVal){
                 if(newVal!=oldVal){

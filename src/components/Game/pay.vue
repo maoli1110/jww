@@ -9,20 +9,6 @@
             <!--充值身体部分-->
             <div class="absol pay-list">
                <div class="pay-list-wrapper common-list-wrapper">
-                  <!--  <mt-cell class="relat item-infos" v-for="item in payInfo" :key="item.price">
-                       <div class="pay-type" @click="panelClose">
-                           <img slot="icon" v-show ="item.count==50" :src="item.imgUrl" alt="" width="80" >
-                           <img slot="icon" v-show ="item.count==100" :src="item.imgUrl" alt="" width="80" >
-                           <img slot="icon" v-show ="item.count==200" :src="item.imgUrl" alt="" width="80" >
-                       </div>
-                       <div class="order-price relat">
-                           <div class="absol substr">X{{item.count}}</div>
-                           <div class="absol substr">${{item.price}}</div>
-                       </div>
-                       <div class="payaway absol">
-                           <img :src="item.btnBg" alt="" width="70">
-                       </div>
-                   </mt-cell> -->
                    <div class="pay-list-item Grid" v-for="item in payInfo">
                         <div class="Grid-cell u-lof4 icon align-h-v">
                             <img slot="icon" v-show ="item.count==50" :src="item.imgUrl" alt="" width="80" >
@@ -58,7 +44,7 @@
                         imgUrl:"./static/img/pay_icon_coin50.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:"0.50",
-                        count:50
+                        count:1
                     },{
                         imgUrl:"./static/img/pay_icon_coin100.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
@@ -96,18 +82,13 @@
                             function(res){
                                 WeixinJSBridge.log(res.err_msg);
                                 if(res.err_msg=='get_brand_wcpay_request:ok'){
-                                    //执行外面ajax刷新
-                                    getUserInfo().then((res)=>{
-                                        self.userInfo = res.data.data; //当前页面赋值用户信息
-                                        // self.userInfo.goldCounts= self.userInfo.goldCounts.toFixed(0);
-                                    });
                                     self.$toast({
                                         message: '充值成功',
                                         iconClass: 'icon icon-success',
                                         duration: 5000
                                     });
                                     self.hidePanel = false;
-                                    self.$emit('panelHide',self.hidePanel);
+                                    self.$emit('payPanelHide',self.hidePanel);
                                 }
 //                                alert(res.err_msg)
 //                                alert(res.err_code+res.err_desc+res.err_msg+'哈哈***');
@@ -119,7 +100,6 @@
 
              callpay(coin)
                 {
-                    debugger
                     if (typeof WeixinJSBridge == "undefined"){
                         if( document.addEventListener ){
                             document.addEventListener('WeixinJSBridgeReady', this.jsApiCall, false);
