@@ -138,10 +138,15 @@ Response
 	"detailAddress":"xx小区xx路",
 	"isDefault":"0", //0不默认 1默认
 }
-14.战绩列表
-{	
-	"id":"",
-	"createTime":"2323232323000",
-	"status":"0", //1 抓取成功 0抓取失败
-}
+14.我的战绩(get): app/myWawaLog/$page //$page 当前页
+[{
+	"content":[{	
+		"id":"",
+		"createTime":"2323232323000",
+		"status":"0", //1 抓取成功 0抓取失败
+	}],
+	"totalElements": 0, //全部条数
+  	"page": 0,	//当前页
+  	"size":6	//每页条数
+}]
 15.退出登录
