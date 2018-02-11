@@ -164,7 +164,8 @@ export default {
                    this.recordVisible = true;
                    this.bagNavImg = './static/img/home_btn_bag2.png';
                }else if(newVal=='mine'){
-                 this.$refs.recordList.getBackpackList();
+                   this.$router.push('/main/mine');
+                   this.$refs.recordList.getBackpackList();
                    this.mineNavImg = './static/img/home_btn_my2.png';
                    this.recordVisible = true;
                }else if(newVal=='home'){
