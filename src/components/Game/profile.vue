@@ -51,7 +51,7 @@
 </template>
 
 <script>
-function audioAutoPlay(id){ 
+function audioAutoPlay(id){
     let audio = document.getElementById(id),
         play = function(){
         audio.play();
@@ -59,7 +59,7 @@ function audioAutoPlay(id){
     };
     audio.play();
     document.addEventListener("WeixinJSBridgeReady", function (){
-       play(); 
+       play();
     }, false);
     document.addEventListener("touchstart",play, false);
 }
@@ -114,7 +114,7 @@ export default {
         inGame(wid,item){
             setSessionstorage('currentToyInfo',item);
             this.$router.push('/main/ingame/'+wid);
- 
+
             // if(index==0){
             //     this.$router.push('/main/ingame');
             // }else if(index==1){
@@ -153,7 +153,6 @@ export default {
            getWlist().then((res)=>{
             console.log(res.data.data.content,'res.data.data.content')
               this.list = res.data.data.content;
-              debugger
               setSessionstorage('wlist',res.data.data.content);
             });
         // }

@@ -133,7 +133,7 @@
     </div>
 </template>
 <script>
-function audioAutoPlay(id){ 
+function audioAutoPlay(id){
     let audio = document.getElementById(id),
         play = function(){
         audio.play();
@@ -141,7 +141,7 @@ function audioAutoPlay(id){
     };
     audio.play();
     document.addEventListener("WeixinJSBridgeReady", function (){
-       play(); 
+       play();
     }, false);
     document.addEventListener("touchstart",play, false);
 }
@@ -151,6 +151,7 @@ import vMessage from '../Game/message.vue';
 import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
 import { getWawaStatus, getUserInfo } from '../../api/getData.js';
 var setIntervalIndex;
+let initFresh = false;      //刷新状态
 export default {
     data() {
         return {
@@ -191,7 +192,8 @@ export default {
                 bagCounts:''
             },
             isSuccess1:false,
-            isfail1:false
+            isfail1:false,
+            reFresh:false //刷新
         }
     },
     methods: {
@@ -224,7 +226,10 @@ export default {
                 this.userInfo = res.data.data; //当前页面赋值用户信息
                 this.headImg = this.userInfo.headimgurl;
             });
-        }
+        },
+        refreashPage(){
+            this.$router.push('/main/home');
+        },
     },
     components: {vPaylist,vRecord,vMessage},
     created(){
@@ -236,7 +241,16 @@ export default {
             this.headImg = this.userInfo.headimgurl;
         });
     },
+    beforeRouteEnter (to, from, next) {//判断是不是手动刷新
+        if(from.path=='/'){
+            initFresh = true;       //刷新状态
+        }else{
+            initFresh = false;
+        }
+        next();
+    },
     mounted() {
+        this.reFresh = initFresh;   //刷新状态
         audioAutoPlay('bg-music1');
         self = this;
         document.body.addEventListener('touchstart', function () {});
@@ -797,6 +811,20 @@ export default {
             }
             App.move();
         },0);
+    },
+    watch:{
+        reFresh:function(newVal,oldVal){//监听刷新状态
+            if(newVal!=oldVal && newVal){
+                this.refreashPage();
+            }
+        },
+        '$route' (to,from){             //监听路由 改变刷新状态
+            if(from.path){
+                this.reFresh = true;
+            }else{
+                this.reFresh = false;
+            }
+        },
     }
 }
 </script>

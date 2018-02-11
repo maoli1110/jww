@@ -330,7 +330,6 @@ export default {
         },
     },
     beforeRouteEnter (to, from, next) {//判断是不是手动刷新
-        console.log(to.path,'122');
         if(from.path=='/'){
             initFresh = true;       //刷新状态
         }else{
