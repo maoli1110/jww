@@ -1,8 +1,8 @@
 <template>
     <div class="login-wrap">
         <div class="login-bg"><img :src="bgImg" alt=""></div>
-         <!-- <div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div> -->
-        <a :href="weixinUrl"><div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div></a> 
+          <!--<div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div>-->
+        <a :href="weixinUrl"><div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div></a>
 <!--         <div class="login-button login-ali-qq">
             <img :src="aliLoginImg" alt="" @click="wxLogin">
             <img :src="qqLoginImg" alt="" @click="wxLogin">
@@ -74,7 +74,7 @@ export default {
     right: 0;
     left: 0;
     bottom: 1.5rem;
-    height: .6em;
+    /*height: .6em;*/
     user-select: none;
 }
 .login-ali-qq {
