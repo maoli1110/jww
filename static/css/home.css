@@ -152,6 +152,15 @@
     width: .4rem;
     float: left;
 }
+.vedio-show {
+    width: 1.8rem;
+    background: url('../../static/img/home_btn_point.png') 0 0 no-repeat;
+    background-size: 100%;
+    margin-left: 0.1rem;
+    margin-top: 1rem;
+    float: left;
+    height: 1.1rem;
+}
 
 
 

@@ -4,6 +4,9 @@
         <div class="back" @click="loginOut">
             <img :src="back1Img" alt="">
         </div>
+        <a :href="vedioUrl">
+          <div class="vedio-show" @click="vedioShow"></div>
+        </a>
         <div class="relat xuanze relat"  style="height:4%">
             <p class="substr absol add-coin yellow1" @click="recharge">{{userInfo.goldCounts}}</p>
         </div>
@@ -129,7 +132,11 @@ export default {
         //刷新
         refreshPage(){
             this.$router.push('/main/home')
+        },
+        vedioShow() {
+          //调用后端接口扣金币
         }
+
     },
     created(){
         this.selected = 'home'; //默认选中home页
@@ -137,6 +144,7 @@ export default {
             localStorage.setItem('locationObj', JSON.stringify(res.data));
             // console.log(localStorage.getItem('locationObj'))
         });
+        this.vedioUrl = "http://wwj.agoraio.cn/play.html?account=rNQszzDai4&machine=wawaji_machine_leidi";
     },
     mounted(){
         //获取列表
