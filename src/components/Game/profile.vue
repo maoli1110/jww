@@ -4,7 +4,7 @@
         <div class="back" @click="loginOut">
             <img :src="back1Img" alt="">
         </div>
-        <a :href="vedioUrl">
+        <a>
           <div class="vedio-show" @click="vedioShow"></div>
         </a>
         <div class="relat xuanze relat"  style="height:4%">
@@ -61,7 +61,7 @@ function audioAutoPlay(id){
 import vPaylist from "../Game/pay.vue";
 import vRecord from '../Game/record.vue';
 import  '../../../static/css/home.css';             //主页样式
-import { getWlist,getUserInfo,getLocation } from "../../api/getData.js"
+import { getWlist,getUserInfo,getLocation,getGotoUrl } from "../../api/getData.js"
 import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
 export default {
     data() {
@@ -135,6 +135,15 @@ export default {
         },
         vedioShow() {
           //调用后端接口扣金币
+          getGotoUrl().then((res)=>{
+            if(res.data.data === 'success'){
+              setTimeout(()=>{
+                window.location.href= "http://wwj.agoraio.cn/play.html?account=rNQszzDai4&machine=wawaji_machine_leidi";
+              },5)
+            } else if (res.data.data === "noGold"){
+              alert("金币不足,请充值！")
+            }
+          });
         }
 
     },
@@ -144,7 +153,7 @@ export default {
             localStorage.setItem('locationObj', JSON.stringify(res.data));
             // console.log(localStorage.getItem('locationObj'))
         });
-        this.vedioUrl = "http://wwj.agoraio.cn/play.html?account=rNQszzDai4&machine=wawaji_machine_leidi";
+        // this.vedioUrl = "http://wwj.agoraio.cn/play.html?account=rNQszzDai4&machine=wawaji_machine_leidi";
     },
     mounted(){
         //获取列表

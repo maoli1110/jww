@@ -43,3 +43,12 @@ export const getOldAddress = params =>axios.get(`${serverUrl}/app/getOldAddress`
 //我的战绩
 export const myWawaLog = params=>axios.get(`${serverUrl}/app/myWawaLog/1`);
 // export const myWawaLog = params=>axios.get(`http://172.16.21.157/wwj/back/app/myWawaLog`);
+//直播扣金币
+export const getGotoUrl = params=>axios.get(`${serverUrl}/app/getGotoUrl`);
+
+
+
+
+
+
+
