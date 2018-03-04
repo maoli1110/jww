@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="register-btn">
-                    <mt-button type="default" class="Grid-cell"></mt-button>
+                    <mt-button type="default" class="Grid-cell" @click="registerAccount"></mt-button>
                 </div>
             </div>
             <div class="register login" v-show="isLogin">
@@ -43,14 +43,12 @@
                     </div>
                 </div>
                 <div class="login-btn">
-                    <mt-button type="default" class="Grid-cell"></mt-button>
-                    <mt-button type="default" class="Grid-cell"></mt-button>
+                    <mt-button type="default" class="Grid-cell" @click="loginAccount"></mt-button>
                 </div>
                 <div class="register-go">
                     <mt-button type="default" class="Grid-cell" @click="registerGO"></mt-button>
                 </div>
             </div>
-            
        </div> 
     </div>
 </div>
@@ -123,6 +121,14 @@ export default {
             } else {
                 return false;
             }
+        },
+        //注册用户 =============接口=============
+        registerAccount() {
+
+        },
+        //登录用户 =============接口=============
+        loginAccount() {
+
         }
     },
     created(){
@@ -139,7 +145,7 @@ export default {
                 alert('用户名必须由3-10位的字母、数字和下划线组成！');
                 return;
             } else {
-                //验证是否重名,调用后端接口
+                //验证是否重名,调用后端接口 =============接口=============
                 self.usernameInvalid=true;
                 return;
             }
