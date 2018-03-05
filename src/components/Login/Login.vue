@@ -1,13 +1,15 @@
 <template>
     <div class="login-wrap">
         <div class="login-bg"><img :src="bgImg" alt=""></div>
-          <div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div>
-        <!-- <a :href="weixinUrl"><div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div></a> -->
-<!--         <div class="login-button login-ali-qq">
-            <img :src="aliLoginImg" alt="" @click="wxLogin">
-            <img :src="qqLoginImg" alt="" @click="wxLogin">
-        </div> -->
-    </div>
+            <!-- <div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div> -->
+            <a :href="weixinUrl"><div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div></a>
+            <div class="login-button login-account" @click="accountLogin"><img :src="accountLoginImg" alt=""></div>
+            <!-- 支付宝 qq登录 勿删 -->
+            <!-- <div class="login-button login-ali-qq">
+                <img :src="aliLoginImg" alt="" @click="wxLogin">
+                <img :src="qqLoginImg" alt="" @click="wxLogin">
+            </div> -->
+        </div>
 </template>
 <script>
 import axios from "axios";
@@ -19,6 +21,7 @@ export default {
             weixinUrl:'',
             bgImg:'./static/img/login_bg.jpg',
             wxLoginImg:'./static/img/login_btn_wx1.png',
+            accountLoginImg:'./static/img/login_btn_account1.png',
             aliLoginImg:'./static/img/login_btn_ali1.png',
             qqLoginImg:'./static/img/login_btn_qq1.png',
             loginForm: {
@@ -49,9 +52,14 @@ export default {
         console.log(this.weixinUrl)
     },
     methods: {
+        // wx登录
         wxLogin() {
             login().then();
             this.$router.push("/main/home");
+        },
+        // 账号登录
+        accountLogin() {
+            this.$router.push("/account");
         }
     },
     watch:{
@@ -74,6 +82,16 @@ export default {
     right: 0;
     left: 0;
     bottom: 1.5rem;
+    /*height: .6em;*/
+    user-select: none;
+}
+.login-account > img {
+    position: fixed;
+    width: 3rem;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    bottom: .5rem;
     /*height: .6em;*/
     user-select: none;
 }

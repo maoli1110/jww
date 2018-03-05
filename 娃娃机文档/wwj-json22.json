@@ -130,7 +130,7 @@ false/true
 
 13.历史地址列表(get): app/getOldAddress
 Response
-{	
+{	x
 	"id":"",
 	"addressName":"地址1",
 	"reciveName":"xx",
@@ -150,3 +150,27 @@ Response
   	"size":6	//每页条数
 }]
 15.退出登录
+=====2018======
+16.验证用户名是否重名
+
+17.注册
+
+18.登录
+
+19.分享（分享后得50金币，可多次分享，金币只得一次）
+=======999=======
+12. 微信JS-SDK(get): /back/wxshare/app.php
+Response:
+{
+	"appId": "wxeee9fa8365ffb733",
+	"nonceStr": "n10XsygOCSyiRg8i",
+	"timestamp": 1520214579,
+	"url": "http:\/\/game.yocatch.com \/back\/wxshare\/app.php",
+	"signature": "37ffb80a5e2a869d9f9e36c139158522eb038484",
+	"rawString": "jsapi_ticket=&noncestr=n10XsygOCSyiRg8i&timestamp=1520214579&url=http:\/\/game.yocatch.com\/back\/wxshare\/app.php"
+}
+
+13.微信分享每日+50金币(get): app/wxShareAddGolds
+Response:
+true //成功
+false //今日已分享

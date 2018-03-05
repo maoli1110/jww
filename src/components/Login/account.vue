@@ -39,7 +39,7 @@
                     </div>
                     <div style="font-size:16px;" class="password">
                         <label for="">密码</label>
-                        <input class="select-input"  placeholder="请输入密码" type="number" name="" ></span>
+                        <input class="select-input" type="password" placeholder="请输入密码" name="" ></span>
                     </div>
                 </div>
                 <div class="login-btn">
@@ -122,8 +122,9 @@ export default {
                 return false;
             }
         },
-        //注册用户 =============接口=============
+        //注册用户(成功之后跳转到登录) =============接口=============
         registerAccount() {
+            if(!usernameInvalid || !passwordInvalid ||!repasswordInvalid) return;
 
         },
         //登录用户 =============接口=============
@@ -141,7 +142,13 @@ export default {
              if(self.getFocusResult()) return false;
             //1.验证是否满足正则
             //2.验证是否重名
+            if(!self.username){
+                self.usernameInvalid=false;
+                alert('用户名不能为空！');
+                return false;
+            }
             if(!checkeusername(self.username)){
+                self.usernameInvalid=false;
                 alert('用户名必须由3-10位的字母、数字和下划线组成！');
                 return;
             } else {
@@ -153,8 +160,14 @@ export default {
         });
         $("#password").blur(function(){
             if(self.getFocusResult()) return false;
+            if(!self.password){
+                self.passwordInvalid = false;
+                alert('密码不能为空！')
+                return false;
+            }
             //1.验证是否满足正则
             if(!checkePWD(self.password)){
+                self.passwordInvalid = false;
                 alert('密码必须6-20位的字母、数字组成，必须以字母开头！');
                 return;
             } else {
@@ -168,9 +181,10 @@ export default {
             if(self.password === self.repassword && self.password!="" && self.repassword!=""){
                 self.repasswordInvalid = true;
                 return;
-            } else {
-                alert('请输入正确的密码！');
-                return;                
+            } else if (self.password !== self.repassword && self.password!="" && self.repassword!="") {
+                self.repasswordInvalid=false;
+                alert('两次密码不一致！');
+                return;
             }
         });
     },
