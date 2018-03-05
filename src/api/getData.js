@@ -40,11 +40,18 @@ export const setDefaultAddress = params =>axios.get(`${serverUrl}/app/setDefault
 //13.历史地址列表
 export const getOldAddress = params =>axios.get(`${serverUrl}/app/getOldAddress`);
 //游戏币充值
-//我的战绩
+//14.我的战绩
 export const myWawaLog = params=>axios.get(`${serverUrl}/app/myWawaLog/1`);
 // export const myWawaLog = params=>axios.get(`http://172.16.21.157/wwj/back/app/myWawaLog`);
-//直播扣金币
+//15.直播扣金币
 export const getGotoUrl = params=>axios.get(`${serverUrl}/app/getGotoUrl`);
+//16.验证重名
+export const verifyUserName = params =>axios.get(`${serverUrl}/app/isNameRepeat/${params.username}`);
+//17.注册
+export const userRegister = params =>axios.post(`${serverUrl}/app/userRegister`,params);
+//18.登录
+export const userLogin = params =>axios.post(`${serverUrl}/app/userLogin`,params);
+
 
 
 

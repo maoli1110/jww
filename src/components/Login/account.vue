@@ -1,6 +1,9 @@
  <template>
  <div class="home-wrap account">
     <div class="home">
+        <img :src="registerSuccessImg" alt="" class="registerSuccess" v-show="registerIconStatus">
+        <img :src="loginTitle" class="login-title" alt="" v-show="isLogin">
+        <img :src="registerTitle" class="register-title" alt="" v-show="isRegister">
         <div class="back" @click="goBack">
             <img :src="back1Img" alt="">
         </div>
@@ -11,8 +14,8 @@
                     <div style="font-size:16px;" class="username">
                         <label for="">用户名</label>
                         <input id="username" class="select-input" placeholder="请输入用户名" type="text" v-model="username">
-                        <span class="success" v-show="usernameInvalid"></span>
-                        <span class="error" v-show="!usernameInvalid"></span>
+                        <span class="success" v-show="usernameInvalid===1"></span>
+                        <span class="error" v-show="usernameInvalid===0"></span>
                     </div>
                     <div style="font-size:16px;" class="password">
                         <label for="">密码</label>
@@ -35,11 +38,11 @@
                 <div class="form">
                     <div style="font-size:16px;" class="username">
                         <label for="">用户名</label>
-                        <input class="select-input" placeholder="请输入用户名" type="text" >
+                        <input class="select-input" placeholder="请输入用户名" type="text" v-model="loginUsername">
                     </div>
                     <div style="font-size:16px;" class="password">
                         <label for="">密码</label>
-                        <input class="select-input" type="password" placeholder="请输入密码" name="" ></span>
+                        <input class="select-input" type="password" placeholder="请输入密码" name="" v-model="loginPassword"></span>
                     </div>
                 </div>
                 <div class="login-btn">
@@ -67,11 +70,23 @@ function checkeusername(username){
     return false;
     }
 }
-//验证密码是否由6-20位的字母、数字组成，必须以字母开头
+//验证密码是否由6-12位的字母、数字组成，必须以字母开头
+// function checkePWD(PWD){
+//     var str=PWD;
+//     //在JavaScript中，正则表达式只能使用"/"开头和结束，不能使用双引号
+//     var Expression=/^[A-Za-z]{1}([A-Za-z0-9]){5,12}$/; 
+//     var objExp=new RegExp(Expression); //创建正则表达式对象
+//     if(objExp.test(str)==true){ //通过正则表达式验证
+//     return true;
+//     }else{
+//     return false;
+//     }
+// }
+//验证密码是否由6-12位的字母、数字组成
 function checkePWD(PWD){
     var str=PWD;
     //在JavaScript中，正则表达式只能使用"/"开头和结束，不能使用双引号
-    var Expression=/^[A-Za-z]{1}([A-Za-z0-9]){5,19}$/; 
+    var Expression=/^([A-Za-z0-9]){5,12}$/; 
     var objExp=new RegExp(Expression); //创建正则表达式对象
     if(objExp.test(str)==true){ //通过正则表达式验证
     return true;
@@ -80,21 +95,27 @@ function checkePWD(PWD){
     }
 }
 import  '../../../static/css/home.css';             //主页样式
-import { getWlist,getUserInfo,getLocation,getGotoUrl } from "../../api/getData.js"
+import { verifyUserName,userRegister,userLogin} from "../../api/getData.js"
 import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
 export default {
     data() {
         return {
+            registerIconStatus:false,
             isRegister:false,
             isLogin:true,
-            usernameInvalid:false,
+            usernameInvalid:'',
             passwordInvalid:false,
             repasswordInvalid:false,
             back1Img:'./static/img/ingame_btn_back1.png',
             back2Img:'./static/img/ingame_btn_back2.png',
+            registerSuccessImg:'./static/img/icon_success.png',
+            registerTitle:'./static/img/register-title.png',
+            loginTitle:'./static/img/login-title.png',
             username:'',
             password:'',
-            repassword:''
+            repassword:'',
+            loginPassword:'',
+            loginUsername:''
         }
     },
     methods: {
@@ -124,12 +145,39 @@ export default {
         },
         //注册用户(成功之后跳转到登录) =============接口=============
         registerAccount() {
-            if(!usernameInvalid || !passwordInvalid ||!repasswordInvalid) return;
-
+            if(!this.usernameInvalid || !this.passwordInvalid ||!this.repasswordInvalid) return;
+            let params = {
+                name:this.username,
+                password:this.password,
+            }
+            userRegister(params).then((res)=>{
+                if(res.data.status==="true"){
+                    // alert("注册成功！")
+                    this.registerIconStatus = true;
+                    setTimeout(()=>{
+                        this.registerIconStatus = false;
+                        this.isLogin = true;
+                        this.isRegister = false;
+                    },1000)
+                }
+            })
         },
         //登录用户 =============接口=============
         loginAccount() {
-
+            let params = {
+                name:this.loginUsername,
+                password:this.loginPassword,
+                code:sessionStorage.getItem('deviceCode')?getSessionstorage.getItem('deviceCode'):'1'
+            }
+            userLogin(params).then((res)=>{
+                console.log(res,'res')
+                if(res.data.status==="true"){
+                    // alert("登录成功！")
+                    this.$router.push("/main/home");
+                } else {
+                    alert(res.data.message)
+                }
+            })
         }
     },
     created(){
@@ -137,23 +185,28 @@ export default {
     },
     mounted(){
         let self = this;
-       
         $("#username").blur(function(){
              if(self.getFocusResult()) return false;
             //1.验证是否满足正则
             //2.验证是否重名
             if(!self.username){
-                self.usernameInvalid=false;
+                self.usernameInvalid='';
                 alert('用户名不能为空！');
                 return false;
-            }
+            } 
             if(!checkeusername(self.username)){
-                self.usernameInvalid=false;
+                self.usernameInvalid='';
                 alert('用户名必须由3-10位的字母、数字和下划线组成！');
                 return;
             } else {
                 //验证是否重名,调用后端接口 =============接口=============
-                self.usernameInvalid=true;
+                verifyUserName({username:self.username}).then((res)=>{
+                    if(res.data.status==="false"){
+                        self.usernameInvalid=1;
+                    } else {
+                        self.usernameInvalid=0;
+                    }
+                })
                 return;
             }
             
@@ -168,7 +221,7 @@ export default {
             //1.验证是否满足正则
             if(!checkePWD(self.password)){
                 self.passwordInvalid = false;
-                alert('密码必须6-20位的字母、数字组成，必须以字母开头！');
+                alert('密码必须6-12位的字母、数字组成，必须以字母开头！');
                 return;
             } else {
                 self.passwordInvalid = true;
@@ -177,6 +230,15 @@ export default {
         });
         $("#repassword").blur(function(){
             if(self.getFocusResult()) return false;
+            //1.验证是否满足正则
+            if(!checkePWD(self.repassword)){
+                self.repasswordInvalid = false;
+                alert('密码必须6-12位的字母、数字组成，必须以字母开头！');
+                return;
+            } else {
+                self.repasswordInvalid = true;
+                return;
+            }
             //1.验证两次密码是否相同
             if(self.password === self.repassword && self.password!="" && self.repassword!=""){
                 self.repasswordInvalid = true;
@@ -195,6 +257,15 @@ export default {
 </script>
 
 <style scoped>
+.account .home{
+    width: 100%;
+    height: 100%;
+    background: url(/static/img/bg.jpg) no-repeat;
+    background-size: 100% 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+}
 .account .register .form {
     margin-top: 20%;
     margin-left: 3%;
@@ -275,6 +346,10 @@ export default {
     background:url('../../../static/img/icon_name1.png') no-repeat;
     background-size: 100% 100%;
 }
+.register .username .error {
+    background:url('../../../static/img/icon_name2.png') no-repeat;
+    background-size: 100% 100%;
+}
 .register .password .success,.register .repassword .success {
     background:url('../../../static/img/icon_right2.png') no-repeat;
     background-size: 100% 100%;
@@ -282,5 +357,20 @@ export default {
 .register .password .error,.register .repassword .error {
     background:url('../../../static/img/icon_right1.png') no-repeat;
     background-size: 100% 100%;
+}
+.registerSuccess {
+    width: 80px;
+    height: 90px;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin-top: -25px;
+    z-index: 1;
+}
+.login-title,.register-title {
+    position: absolute;
+    top: 1.2rem;
 }
 </style>

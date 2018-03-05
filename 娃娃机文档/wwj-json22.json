@@ -174,3 +174,38 @@ Response:
 Response:
 true //成功
 false //今日已分享
+
+14.验证用户名是否重名(get): app/isNameRepeat/$name
+Response:
+{
+	"status":true, //true 有重名    false 无重名
+	"message":""  
+}
+
+15.注册 (post): app/userRegister
+Request:
+{
+	'name':'', //用户名
+	'password':'', //密码
+}
+Response:
+{
+	"status":true, //true 注册成功    false 注册失败
+	"message":""  
+}
+
+15.登录 (post): app/userLogin
+Request:
+{
+	'name':'', //用户名
+	'password':'', //密码
+	'code':'' //   登录的时候传过来的code，类似 http://game.yocatch.com/#/login?code=2 
+
+ 
+}
+Response:
+{
+	"status":true, //true 登录成功    false 登录失败
+	"message":""  
+}
+
