@@ -263,7 +263,7 @@ export default {
     height: 100%;
     background: url(/static/img/bg.jpg) no-repeat;
     background-size: 100% 100%;
-    position: fixed;
+    position: absolute;
     left: 0;
     right: 0;
 }
