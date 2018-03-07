@@ -77,7 +77,18 @@ function getSessionstorage(name){
     }
     return obj;
 }
+function isWeixin() { 
+    var ua = window.navigator.userAgent.toLowerCase(); 
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') { 
+        // $("#rs").text("微信浏览器"); 
+        return true;
+    } else { 
+        // $("#rs").text("不是微信浏览器"); 
+        return false;
+    } 
+}
 export {
+    isWeixin,
     FormIndex,
     transformToObjFormat,
     dateFormat,

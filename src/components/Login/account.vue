@@ -164,6 +164,7 @@ export default {
         },
         //登录用户 =============接口=============
         loginAccount() {
+            // this.$router.push("/main/home");
             let params = {
                 name:this.loginUsername,
                 password:this.loginPassword,

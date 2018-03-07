@@ -20,7 +20,7 @@
                             <div class="substr">X {{item.count}}</div>
                             <div class="substr price">￥ {{item.price}}</div>
                         </div>
-                        <div class="Grid-cell u-lof3 buy" @click="callpay(item.count)">
+                        <div class="Grid-cell u-lof3 buy" @click="callpay(item.count,item.price)">
                              <img :src="item.btnBg" alt="" width="70">
                         </div>
                    </div>
@@ -32,7 +32,7 @@
 <script>
     import "../../../static/css/pay.css";
     import {getUserInfo} from '../../api/getData';
-    import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
+    import { setSessionstorage, getSessionstorage,isWeixin } from "../../utils/common.js";
     let coin = {"coin50":50,"coin100":100,"coin200":200,'coin400':400}
     export default{
         props:{isShow:Boolean},
@@ -71,7 +71,7 @@
                 this.$emit('payPanelHide',this.hidePanel);
             },
             //调用微信JS api 支付
-             jsApiCall(coin)
+            jsApiCall(coin,price)
                 {
                     let self = this;
                     coin = !coin?1:coin;
@@ -98,17 +98,29 @@
 
                 },
 
-             callpay(coin)
+             callpay(coin,price)
                 {
-                    if (typeof WeixinJSBridge == "undefined"){
-                        if( document.addEventListener ){
-                            document.addEventListener('WeixinJSBridgeReady', this.jsApiCall, false);
-                        }else if (document.attachEvent){
-                            document.attachEvent('WeixinJSBridgeReady', this.jsApiCall);
-                            document.attachEvent('onWeixinJSBridgeReady', this.jsApiCall);
+                    /**
+                     * 判断是否是微信客户端
+                     * 是：调用微信支付
+                     * 不是：调用支付宝支付
+                     */
+                    let isWeixinClient = isWeixin();
+                    if(isWeixinClient){
+                        if (typeof WeixinJSBridge == "undefined"){
+                            if( document.addEventListener ){
+                                document.addEventListener('WeixinJSBridgeReady', this.jsApiCall, false);
+                            }else if (document.attachEvent){
+                                document.attachEvent('WeixinJSBridgeReady', this.jsApiCall);
+                                document.attachEvent('onWeixinJSBridgeReady', this.jsApiCall);
+                            }
+                        }else{
+                            alert('inwx')
+                            this.jsApiCall(coin);
                         }
-                    }else{
-                        this.jsApiCall(coin);
+                    } else {
+                        console.log("http://game.yocatch.com/back/alipay/wap.php?gold="+price)
+                        window.location.href="http://game.yocatch.com/back/alipay/wap.php?gold="+price;
                     }
                 }
             }
