@@ -831,12 +831,13 @@
 	width: .72rem;
 	height: .72rem;
 	position: absolute;
-	background: url(../img/fly.png) 0em -2rem no-repeat;
+	background: url(../img/fly.png) -1px, -1.5rem no-repeat;
 	background-size: 2.8rem 3.76rem;
 	-webkit-background-size: 2.8rem 3.76rem;
 	right: 0;
 	left: 0;
-	top: -18px;
+	top: -.6static\img\fly.png
+rem;
 	margin: auto;
 	z-index: 30;
 	-webkit-transform: translateZ(130px);
