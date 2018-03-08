@@ -73,7 +73,7 @@ export default {
 </script>
 <style scoped>
 .login-bg > img {
-    height: 102%;
+    height: 110%;
     position: fixed;
     z-index: 0;
     user-select: none;

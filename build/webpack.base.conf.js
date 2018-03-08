@@ -45,7 +45,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                include: [resolve('src'), resolve('test'),resolve('node_modules/element-ui/packages/col/src/col.js'),]
+                include: [resolve('src'), resolve('test'),resolve('node_modules/element-ui/packages/col/src/col.js'),resolve('/static/js/wechat.js')]
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

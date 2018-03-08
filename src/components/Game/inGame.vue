@@ -151,7 +151,7 @@ export default {
             currentToyInfo:'',
             currentToyUrl:'',
             audioUrl:'./static/win.mp3',
-            headImg:'./static/img/head-img.jpg',
+            headImg:'./static/img/defalut.png',
             packetUrl:'',
             lightUrl:'./static/img/ingame_gif.gif',
             btGo1Img:'./static/img/ingame_btn_go1.png',
@@ -217,7 +217,7 @@ export default {
         getUser(){
             getUserInfo().then((res)=>{
                 this.userInfo = res.data.data; //当前页面赋值用户信息
-                this.headImg = this.userInfo.headimgurl;
+                this.headImg = this.userInfo.headimgurl?this.userInfo.headimgurl:this.headImg;
             });
         },
         bagClick(){
@@ -239,7 +239,7 @@ export default {
         getUserInfo().then((res)=>{
             console.log(res.data,'res.data')
             this.userInfo = res.data.data; //当前页面赋值用户信息
-            this.headImg = this.userInfo.headimgurl;
+            this.headImg = this.userInfo.headimgurl?this.userInfo.headimgurl:this.headImg;
         });
     },
     beforeRouteEnter (to, from, next) {//判断是不是手动刷新
