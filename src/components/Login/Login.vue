@@ -2,8 +2,8 @@
     <div class="login-wrap">
         <div class="login-bg"><img :src="bgImg" alt=""></div>
             <!-- <div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div> -->
-            <a :href="weixinUrl"><div class="login-button login-wx" @click="wxLogin"><img :src="wxLoginImg" alt=""></div></a>
-            <div class="login-button login-account" @click="accountLogin"><img :src="accountLoginImg" alt=""></div>
+            <a :href="weixinUrl"><div class="login-button login-common" @click="wxLogin"><img v-show="isWeixinClient" :src="wxLoginImg" alt=""></div></a>
+            <div class="login-button login-common" @click="accountLogin"><img v-show="!isWeixinClient" :src="accountLoginImg" alt=""></div>
             <!-- 支付宝 qq登录 勿删 -->
             <!-- <div class="login-button login-ali-qq">
                 <img :src="aliLoginImg" alt="" @click="wxLogin">
@@ -15,9 +15,11 @@
 import axios from "axios";
 import md5 from "js-md5";
 import { login } from "../../api/getData.js";
+import { isWeixin } from "../../utils/common.js";
 export default {
     data() {
         return {
+            isWeixinClient:false,
             weixinUrl:'',
             bgImg:'./static/img/login_bg.jpg',
             wxLoginImg:'./static/img/login_btn_wx1.png',
@@ -32,6 +34,8 @@ export default {
         }
     },
     created() {
+        this.isWeixinClient = isWeixin();
+        console.log(this.isWeixinClient)
         //http://192.168.1.8:8889/#/login?code=1,从url获取参数塞到登录地址
         let params  = window.location.href.split('?')[1];
         if(params){
@@ -78,23 +82,13 @@ export default {
     z-index: 0;
     user-select: none;
 }
-.login-wx > img {
+.login-common > img {
     position: fixed;
     width: 3rem;
     margin: 0 auto;
     right: 0;
     left: 0;
-    bottom: 1.5rem;
-    /*height: .6em;*/
-    user-select: none;
-}
-.login-account > img {
-    position: fixed;
-    width: 3rem;
-    margin: 0 auto;
-    right: 0;
-    left: 0;
-    bottom: .5rem;
+    bottom: 1.2rem;
     /*height: .6em;*/
     user-select: none;
 }
