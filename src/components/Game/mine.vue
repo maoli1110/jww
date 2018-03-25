@@ -1,31 +1,3 @@
-<!--
-<template>
-    <div>
-        &lt;!&ndash;<v-paylist v-show="payVisbile" :is-show="payVisbile" @panelHide="panelHide"></v-paylist>
-        <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHide"></v-record>&ndash;&gt;
-
-    </div>
-</template>
-<script>
-    import vPaylist from "../Game/pay.vue";
-    import vRecord from '../Game/record.vue';
-    export default{
-        data(){
-            return {
-                payVisbile:false,
-                recordVisible:true,
-            }
-        },
-        methods:{
-            panelHide(visible){
-                this.payVisbile =visible;
-                this.recordVisible = visible;
-            },
-        },
-        components: {vPaylist,vRecord},
-    }
-</script>
--->
 <template>
     <div>
         <div class="address" :style="{backgroundImage:`url(${bgUrl})`}">
@@ -45,7 +17,7 @@
                         </div>
                         <div class="mine-log clearfix address_list">
                             <p class="font-26">
-                                <img class="wawa-log" :src="mineInfo.logUrl" alt="" >
+                                <img class="wawa-log" :src="mineInfo.logUrl" alt="">
                             </p>
                             <div  v-for="(item,index) in mineInfo.logList">
                                 <div class="font-26" style="width:100%">

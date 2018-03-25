@@ -13,6 +13,9 @@
                     <mt-tab-item id="list" style=" ">
                         <img :src="tableSwitch.mineUrl" alt="">
                     </mt-tab-item>
+                    <mt-tab-item id="piece">
+                        <img :src="tableSwitch.pieceUrl" alt="">
+                    </mt-tab-item>
                     <mt-tab-item id="history">
                         <img :src="tableSwitch.historyUrl" alt="">
                     </mt-tab-item>
@@ -29,20 +32,33 @@
                                     <div class="record-type" @click="panelClose">
                                         <img slot="icon" :src="item.imgUrl" alt="" width="46">
                                     </div>
-                                    <div class=" relat record-list-them ">
+                                    <div class=" relat record-list-them">
                                         {{item.name}}
                                     </div>
-                                    <div class="record-list-time absol substr" >
+                                    <div class="record-list-time absol substr">
                                         {{item.sendTime}}
                                     </div>
                                 </mt-cell>
+                            </div>
+                        </mt-tab-container-item>
+                        <mt-tab-container-item id="piece">
+                            <div class="piece-list history-list">
+                               <div class="piece-list-item history-list-item relat" v-for="(item,index) in extractList" >
+                                    <label class="checkbox-select"><input type="checkbox" :data-list="item.bId" class="checkbox-input"  @change="checkedList"> 
+                                        <span class="checkbox-core"></span>
+                                        <span class="piece-count">11/22</span>
+                                        <div style="width:100%;height:100%">
+                                            <img slot="icon" :src="item.imgUrl" alt="" width="66">
+                                        </div>
+                                        <p class="descr-info">{{item.name}}</p>
+                                    </label>
+                                </div>
                             </div>
                         </mt-tab-container-item>
                         <mt-tab-container-item id="list">
                             <div class="history-list" >
                                <div class="history-list-item relat" v-for="(item,index) in extractList" >
                                     <label class="checkbox-select"><input type="checkbox" :data-list="item.bId" class="checkbox-input"  @change="checkedList"> <span class="checkbox-core"></span>
-
                                         <div style="width:100%;height:100%">
                                             <img slot="icon" :src="item.imgUrl" alt="" width="66">
                                         </div>
@@ -52,12 +68,29 @@
                             </div>
                         </mt-tab-container-item>
                     </mt-tab-container>
-                     <div class="extract-pro absol" @click="extract">
+                    <!-- 提取娃娃 -->
+                    <div class="extract-pro absol" @click="extract" v-show="selected=='list'">
                         <img src="../../../static/img/my_btn_pickup1.png" alt="">
+                    </div>
+                    <!-- 合成娃娃 -->
+                    <div class="extract-pro absol" @click="transCompound" v-show="selected=='piece'">
+                        <img src="../../../static/img/my_compose_btn_compose1.png" alt="">
                     </div>
             </div>
         </div>
-
+        <div class="compound-detail absol" v-show="isCompound">
+            <div class="compound-info Grid">
+                <div class="Grid-cell u-lof25 align-v-h">99</div>
+                <div class="Grid-cell align-v-h">这是一只碎片这是一只碎片</div>
+                <div class="Grid-cell u-lof25 align-v-h">99</div>
+            </div>
+            <div class="op-btn Grid">
+                <mt-button type="default" class="Grid-cell" @click="compound"></mt-button>
+                <div class="Grid-cell u-lof10"></div>
+                <mt-button type="primary" class="Grid-cell" @click="backPiece"></mt-button>
+            </div>
+                
+        </div>
     </div>
 </template>
 <script>
@@ -75,6 +108,7 @@
         props: {isShow: Boolean},
         data(){
             return {
+                isCompound:false,//是否合成的标志位
                 selected: "",   //tab索引
                 payInfo: [],    //提取记录
                 extractList:[], //我的娃娃导出记录
@@ -82,6 +116,7 @@
                 tableSwitch:{
                     mineUrl:'./static/img/my_btn_mine1.png',
                     historyUrl:'./static/img/my_btn_record1.png',
+                    pieceUrl:'./static/img/my_btn_piece1.png'
                 },
                 slots: [
                 {
@@ -103,6 +138,7 @@
             restUrl(){
                 this.tableSwitch.mineUrl = './static/img/my_btn_mine1.png';
                 this.tableSwitch.historyUrl = './static/img/my_btn_record1.png';
+                this.tableSwitch.pieceUrl = './static/img/my_btn_piece1.png';
             },
             //获取娃娃列表
             getBackpackList(){
@@ -137,6 +173,16 @@
                     alert('请选择要提取的娃娃信息');
                 }
             },
+            //合成娃娃
+            transCompound(){
+                if(exportedList.length){
+                    //1.不满足合成个数
+                    //2.满足合成个数
+                    this.isCompound = true;
+                }else{
+                    alert('请选择要合成的娃娃信息');
+                }
+            },
             //提取纪录
             getExtractLogs(params){
                 getExtractLog(params).then((res)=>{
@@ -147,6 +193,14 @@
                         })
                    }
                 })
+            },
+            //确认合成
+            compound(){
+
+            },
+            //返回碎片列表
+            backPiece(){
+                this.isCompound = false;
             },
             //选中要提取的娃娃
             checkedList(event){
@@ -176,7 +230,10 @@
                         console.log(newVal)
                         let param = {};
                         this.getExtractLogs(param);
-                        this.tableSwitch.historyUrl = './static/img//my_btn_record2.png'
+                        this.tableSwitch.historyUrl = './static/img/my_btn_record2.png'
+                    } else {
+                        this.getBackpackList();
+                        this.tableSwitch.pieceUrl = './static/img/my_btn_piece2.png'
                     }
                 }
             },

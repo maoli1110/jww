@@ -94,10 +94,20 @@
 .history-list .history-list-item .toy-list{
     margin: 5px ;
 }
+.piece-list .piece-count{
+    width: 60%;
+    background: #F9D829;
+    display: inline-block;
+    border-radius: 0.3rem;
+    font-size: 0.16rem;
+    font-weight: bold;
+    height: 100%;
+}
 .record-list-them{width:33%;color:#AF7300;font-weight:bold;line-height:20px;font-size:13px;text-align:left;}
 .record-list-time{right:0;color:#AF7300;font-weight:bold;}
 .mint-tab-item-label{width:70%;margin:0}
 .mint-tab-item:nth-child(1) .mint-tab-item-label{width:70%;margin:0;margin-left:0.5rem}
+.mint-tab-item:nth-child(2) .mint-tab-item-label{width:70%;margin:0;margin-left:0.25rem}
 .mint-tab-container-item input {display: none;}
 /*提取娃娃*/
 .extract-pro{
@@ -388,7 +398,39 @@
 .mint-tab-container-wrap{
     height:100%;
 }
-
+/*碎片合成*/
+.compound-detail{
+    width: 272px;
+    height: 396px;
+    font-size: 12px;
+    background: url(/static/img/compose_bg.png) center 25% no-repeat;
+    z-index: 12;
+    left: 0;
+    right: 0;
+    top: 56%;
+    background-size: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -250px;
+}
+.compound-detail .op-btn{
+    margin-top: 20px;
+}
+.compound-info{
+    color: #fff;
+    margin-top: 290px;
+    padding: 0 36px;
+}
+.compound-detail .op-btn .mint-button--default{
+    margin-left: 10px;
+    background:url('/static/img/compose_btn_compose1.png') no-repeat 0 0;
+    background-size: 100%;
+}
+.compound-detail .op-btn .mint-button--primary{
+    margin-right: 10px;
+    background:url('/static/img/compose_btn_back1.png') no-repeat 0 0;
+    background-size: 100%;
+}
 
 
 

@@ -39,9 +39,7 @@
                         <div class="Grid-cell"></div>
                         <mt-button type="primary" class="Grid-cell" @click="panelClose">关闭</mt-button>
                     </div>
-
                    </div>
-
                 </div>
             </div>
             <div class="delete-dialog" v-show="deleteDialogVisible">
