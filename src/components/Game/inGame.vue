@@ -788,7 +788,7 @@ export default {
                 var b = new ClampDoll;
                 $(a).bind("touchstart",function(e){
                     //判断金币不足->提示->跳转到充值界面
-                    if(parseFloat(self.currentToyInfo.timeMoney) < parseFloat(self.userInfo.goldCounts)){
+                    // if(parseFloat(self.currentToyInfo.timeMoney) < parseFloat(self.userInfo.goldCounts)){
                         //判断背包是否满15个,提示背包将满, 无法获得物品, 最多20个
                         getUserInfo().then((res)=>{
                             if(res.data.data.bagcounts<15){
@@ -810,10 +810,10 @@ export default {
                                 alert('背包将满,无法获得物品！')
                             }
                         })
-                    } else {
-                        alert("金币不足,请充值！")
-                        self.payVisbile = true;
-                    }
+                    // } else {
+                    //     alert("金币不足,请充值！")
+                    //     self.payVisbile = true;
+                    // }
                 });
             }
             App.move();

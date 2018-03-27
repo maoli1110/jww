@@ -265,7 +265,7 @@ footer,header,nav,section {
 /*cell*/
 .mint-cell{background:transparent !important;margin-bottom:0.1rem;padding-bottom:0.1rem}
 .mint-cell-value{width:100%}
-.mint-navbar{background:transparent !important;left:9%}
+.mint-navbar{background:transparent !important;left:4%}
 .mint-navbar .mint-tab-item{padding: 13px 0px !important;}
 .mint-navbar .mint-tab-item.is-selected{border-color:transparent !important;}
 /*公用弹窗样式*/

@@ -5,9 +5,11 @@
         <div v-show="isShow" class="absol recode-bg">
             <!--关闭按钮-->
             <div class="recode-close absol" @click="panelClose">
-                <span></span>
             </div>
-            <div class="absol recode-list">
+            <!-- 兑换碎片按钮 -->
+            <div class="piece-exchange absol" @click="exchange"></div>
+            <!-- 非兑换碎片界面 -->
+            <div class="absol recode-list" v-show="!isExchange">
                 <!--table选项卡-->
                 <mt-navbar v-model="selected" class="absol" style="">
                     <mt-tab-item id="list" style=" ">
@@ -43,10 +45,10 @@
                         </mt-tab-container-item>
                         <mt-tab-container-item id="piece">
                             <div class="piece-list history-list">
-                               <div class="piece-list-item history-list-item relat" v-for="(item,index) in extractList" >
+                               <div class="piece-list-item history-list-item relat" v-for="(item,index) in pieceInfo" >
                                     <label class="checkbox-select"><input type="checkbox" :data-list="item.bId" class="checkbox-input"  @change="checkedList"> 
                                         <span class="checkbox-core"></span>
-                                        <span class="piece-count">11/22</span>
+                                        <span class="piece-count">{{item.currentCounts}}/{{item.total}}</span>
                                         <div style="width:100%;height:100%">
                                             <img slot="icon" :src="item.imgUrl" alt="" width="66">
                                         </div>
@@ -77,6 +79,56 @@
                         <img src="../../../static/img/my_compose_btn_compose1.png" alt="">
                     </div>
             </div>
+            <!-- 兑换碎片界面 -->
+            <div class="absol recode-list" v-show="isExchange">
+                <!--table选项卡-->
+                <mt-navbar v-model="selected" class="absol" style="">
+                    <mt-tab-item id="exchangeList" style=" ">
+                        <img :src="tableSwitch.exchangeMineUrl" alt="">
+                    </mt-tab-item>
+                    <mt-tab-item id="exchangeHistory">
+                        <img :src="tableSwitch.exchangeHistoryUrl" alt="">
+                    </mt-tab-item>
+                </mt-navbar>
+                <!-- tab-container -->
+                <mt-tab-container v-model="selected" class="record-content relat">
+                    <mt-tab-container-item id="exchangeHistory">
+                        <div class="extract-info">
+                            <span>兑换内容</span>
+                            <span>兑换时间</span>
+                        </div>
+                        <div class="record-list-wrapper" >
+                            <mt-cell class="relat item-infos" v-for="item in exchangeInfo" :key="item.price">
+                                <div class="record-type" @click="panelClose">
+                                    <img slot="icon" :src="item.imgUrl" alt="" width="46">
+                                </div>
+                                <div class=" relat record-list-them">
+                                    {{item.name}}
+                                </div>
+                                <div class="record-list-time absol substr">
+                                    {{item.sendTime}}
+                                </div>
+                            </mt-cell>
+                        </div>
+                    </mt-tab-container-item>
+                    <mt-tab-container-item id="exchangeList">
+                        <div class="history-list" >
+                           <div class="history-list-item relat" v-for="(item,index) in extractList" >
+                                <label class="checkbox-select"><input type="checkbox" :data-list="item.bId" class="checkbox-input"  @change="checkedList"> <span class="checkbox-core"></span>
+                                    <div style="width:100%;height:100%">
+                                        <img slot="icon" :src="item.imgUrl" alt="" width="66">
+                                    </div>
+                                    <p class="descr-info">{{item.name}}</p>
+                                </label>
+                            </div>
+                        </div>
+                    </mt-tab-container-item>
+                </mt-tab-container>
+                <!-- 兑换娃娃 -->
+                <div class="extract-pro absol" @click="exchangeGold" v-show="selected=='exchangeList'">
+                    <img src="../../../static/img/exchange_btn_exchange1.png" alt="">
+                </div>
+            </div>
         </div>
         <div class="compound-detail absol" v-show="isCompound">
             <div class="compound-info Grid">
@@ -99,7 +151,11 @@
         getBackpack,//抓娃娃列表
         setApplyWawa,//申请提取
         getExtractLog,//提取纪录
-        getLocation//省市
+        getLocation,//省市
+        exchangeGold,//娃娃or虚拟物品兑换金币
+        getExchangeLog,//兑换记录
+        getPieceList,//我的碎片
+        pieceCompose//碎片合成
     } from '../../api/getData.js';
     import { dateFormat } from "../../utils/common.js";
 
@@ -108,15 +164,20 @@
         props: {isShow: Boolean},
         data(){
             return {
+                isExchange:false,//兑换界面标志位
                 isCompound:false,//是否合成的标志位
                 selected: "",   //tab索引
                 payInfo: [],    //提取记录
+                exchangeInfo:[], //兑换记录
+                pieceInfo:[],   //我的碎片
                 extractList:[], //我的娃娃导出记录
                 hidePanel: false,
                 tableSwitch:{
                     mineUrl:'./static/img/my_btn_mine1.png',
                     historyUrl:'./static/img/my_btn_record1.png',
-                    pieceUrl:'./static/img/my_btn_piece1.png'
+                    pieceUrl:'./static/img/my_btn_piece1.png',
+                    exchangeMineUrl:'./static/img/exchange_btn_mine1.png',
+                    exchangeHistoryUrl:'./static/img/exchange_btn_record1.png'
                 },
                 slots: [
                 {
@@ -132,6 +193,7 @@
         methods: {
             panelClose(){
                 this.hidePanel = false;
+                this.isExchange = false;
                 this.$emit('panelHide', this.hidePanel)
             },
             //初始化tab选项卡的状态
@@ -139,6 +201,8 @@
                 this.tableSwitch.mineUrl = './static/img/my_btn_mine1.png';
                 this.tableSwitch.historyUrl = './static/img/my_btn_record1.png';
                 this.tableSwitch.pieceUrl = './static/img/my_btn_piece1.png';
+                this.tableSwitch.exchangeMineUrl = './static/img/exchange_btn_mine1.png';
+                this.tableSwitch.exchangeHistoryUrl = './static/img/exchange_btn_record1.png';
             },
             //获取娃娃列表
             getBackpackList(){
@@ -166,18 +230,26 @@
             },
             //提取娃娃
             extract(){
+                /**
+                 * 1.娃娃提取->填写收货地址
+                 * 2.虚拟物品提取->弹框提示请在提取记录查看
+                 */
                 if(exportedList.length){
                     sessionStorage.setItem('extractIdList',JSON.stringify(exportedList));
                     this.$router.push('/main/address');
-                }else{
+                } else {
                     alert('请选择要提取的娃娃信息');
                 }
             },
             //合成娃娃
-            transCompound(){
+            transCompound(pid){
                 if(exportedList.length){
-                    //1.不满足合成个数
+                    //1.不满足合成个数无法选中
                     //2.满足合成个数
+                    let param = {pid:pid}
+                    pieceCompose(param).then((res)=>{
+
+                    });
                     this.isCompound = true;
                 }else{
                     alert('请选择要合成的娃娃信息');
@@ -193,6 +265,28 @@
                         })
                    }
                 })
+            },
+            //兑换记录
+            getExchangeLog(){
+                getExchangeLog().then((res)=>{
+                   if(res.data.data!=null){
+                        this.exchangeInfo = res.data.data.content;
+                        this.exchangeInfo.forEach((value,key)=>{
+                            value.sendTime = dateFormat(value.sendTime);
+                        })
+                   }
+                })
+            },
+            //我的碎片列表
+            getPieceList(){
+                getPieceList().then((res)=>{
+                    if(res.data.data!=null){
+                        this.pieceInfo = res.data.data.content;
+                        this.pieceInfo.forEach((value,key)=>{
+                            value.sendTime = dateFormat(value.sendTime);
+                        })
+                   }
+                });
             },
             //确认合成
             compound(){
@@ -212,6 +306,25 @@
                 }
                 sessionStorage.setItem('currentExtractObj',JSON.stringify(exportedList));//存储当前的提取娃娃的id list
                 console.log(exportedList,'提取娃娃的id数组')
+            },
+            //点击兑换跳转按钮
+            exchange(){
+                this.isExchange = true;
+            },
+            //点击内页兑换按钮
+            exchangeGold(){
+                if(exportedList.length){
+                    //兑换金币流程
+                    let param = {bIds:exportedList}
+                    // console.log(param,'exportedList')
+                    exchangeGold(param).then((res)=>{
+                        if(res.data.data.status){
+                            alert('兑换成功！')
+                        }
+                    })
+                }else{
+                    alert('请选择要兑换的娃娃信息');
+                }
             }
         },
 
@@ -231,9 +344,16 @@
                         let param = {};
                         this.getExtractLogs(param);
                         this.tableSwitch.historyUrl = './static/img/my_btn_record2.png'
+                    } else if(newVal=='exchangeHistory'){
+                        this.getExchangeLog();
+                        this.tableSwitch.exchangeHistoryUrl = './static/img/exchange_btn_record2.png'
+                    } else if(newVal=='piece') {
+                        debugger
+                        this.getPieceList();
+                        this.tableSwitch.pieceUrl = './static/img/my_btn_piece2.png'
                     } else {
                         this.getBackpackList();
-                        this.tableSwitch.pieceUrl = './static/img/my_btn_piece2.png'
+                        this.tableSwitch.exchangeMineUrl = './static/img/exchange_btn_mine2.png'
                     }
                 }
             },

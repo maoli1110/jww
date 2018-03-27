@@ -51,9 +51,14 @@ export const verifyUserName = params =>axios.get(`${serverUrl}/app/isNameRepeat/
 export const userRegister = params =>axios.post(`${serverUrl}/app/userRegister`,params);
 //18.登录
 export const userLogin = params =>axios.post(`${serverUrl}/app/userLogin`,params);
-
-
-
+//22.兑换功能：将已经抓到的娃娃或虚拟物品 兑换成金币 (post): app/exchange
+export const exchangeGold = params =>axios.post(`${serverUrl}/app/exchange`,params);
+//23.兑换记录 (get): app/getExchangeLog/$page //$page 当前页
+export const getExchangeLog = params =>axios.get(`${serverUrl}/app/getExchangeLog/1`);
+//24.我的碎片(get): app/getPieceList/$page //$page 当前页
+export const getPieceList = params =>axios.get(`${serverUrl}/app/getPieceList/1`);
+//25.碎片合成 (get): app/pieceCompose/$pid 
+export const pieceCompose = params =>axios.get(`${serverUrl}/app/pieceCompose/${params.pid}`);
 
 
 

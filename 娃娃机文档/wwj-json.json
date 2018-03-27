@@ -13,10 +13,12 @@
 Response：
 {
 	"content":[
-		"id":1,
-		"title":"这是一只大娃娃",
-		"imgUrl":"http:abc.cn",
-		"timeMoney":99
+		{
+			"id":1,
+			"title":"这是一只大娃娃",
+			"imgUrl":"http:abc.cn",
+			"timeMoney":99
+		}
 	],
 	"totalElements": 0, //全部条数
   	"page": 0,	//当前页
@@ -53,8 +55,8 @@ Response:
 7.申请提取 (post): app/applyWawa
 Request:
 {
-	'bId':'', //娃娃ID
-	'sendAddressId':'', //收货地址
+	"bId":"", //娃娃ID
+	"sendAddressId":"", //收货地址
 }
 Response:
 {
@@ -63,7 +65,7 @@ Response:
 		"name":"",   //名称
 		"createTime":"", //抓取时间
 		"sendTime":"", //提取时间
-		"sendAddress":"" //收货地址
+		"sendAddress":"", //收货地址
 		"sendPhone":"", //收货电话
 	}],
 	"totalElements": 0, //全部条数
@@ -79,7 +81,7 @@ Response:
 		"name":"",   //名称
 		"createTime":"", //抓取时间
 		"sendTime":"", //提取时间
-		"sendAddress":"" //收货地址
+		"sendAddress":"", //收货地址
 		"sendPhone":"", //收货电话
 	}],
 	"totalElements": 0, //全部条数
@@ -90,7 +92,7 @@ Response:
 8.站内信列表(get): app/getMailList/$page //$page 当前页
 [{
 	"content":[{
-		"id":""  //id
+		"id":"" , //id
 		"imgUrl":"", //默认图片
 		"from":"",  //来自谁
 		"sendTime":"", //发送时间
@@ -130,7 +132,7 @@ false/true
 
 13.历史地址列表(get): app/getOldAddress
 Response
-{	x
+{	
 	"id":"",
 	"addressName":"地址1",
 	"reciveName":"xx",
@@ -151,15 +153,7 @@ Response
 }]
 15.退出登录
 =====2018======
-16.验证用户名是否重名
-
-17.注册
-
-18.登录
-
-19.分享（分享后得50金币，可多次分享，金币只得一次）
-=======999=======
-12. 微信JS-SDK(get): /back/wxshare/app.php
+16. 微信JS-SDK(get): /back/wxshare/app.php
 Response:
 {
 	"appId": "wxeee9fa8365ffb733",
@@ -170,31 +164,31 @@ Response:
 	"rawString": "jsapi_ticket=&noncestr=n10XsygOCSyiRg8i&timestamp=1520214579&url=http:\/\/game.yocatch.com\/back\/wxshare\/app.php"
 }
 
-13.微信分享每日+50金币(get): app/wxShareAddGolds
+17.微信分享每日+50金币(get): app/wxShareAddGolds
 Response:
 true //成功
 false //今日已分享
 
-14.验证用户名是否重名(get): app/isNameRepeat/$name
+18.验证用户名是否重名(get): app/isNameRepeat/$name
 Response:
 {
 	"status":true, //true 有重名    false 无重名
 	"message":""  
 }
 
-15.注册 (post): app/userRegister
+19.注册 (post): app/userRegister
 Request:
 {
-	'name':'', //用户名
-	'password':'', //密码
+	"name":"", //用户名
+	"password":" //密码
 }
 Response:
 {
-	"status":true, //true 注册成功    false 注册失败
-	"message":""  
+	"status":true, //true 注册成功  false 注册失败
+	"message":"11"  
 }
 
-15.登录 (post): app/userLogin
+20.登录 (post): app/userLogin
 Request:
 {
 	'name':'', //用户名
@@ -208,4 +202,52 @@ Response:
 	"status":true, //true 登录成功    false 登录失败
 	"message":""  
 }
-
+==============第二期=================
+21.抓取成功或者失败掉落碎片（待定）
+22.兑换功能：将已经抓到的娃娃或虚拟物品 兑换成金币
+Request:
+{
+	'bIdid':'', //wawa_id
+}
+Response:
+{
+	"status":true, //true 兑换成功    false 兑换失败
+	"gold":""  //兑换成功返回金币个数
+}
+23.兑换记录 (get): app/getExtractLog/$page //$page 当前页
+Response:
+{
+	"content":"[{
+	"imgUrl":"", //图片
+	"name":"",   //兑换内容
+	"createTime":"", //兑换时间
+	}],
+	"totalElements": 0, //全部条数
+  	"page": 0,	//当前页
+  	"size":6	//每页条数
+}
+24.我的碎片(get): app/getBackpack/$page //$page 当前页
+Response:
+{
+	"content":[{
+		"bId":"", //娃娃碎片id
+		"imgUrl":"", //图片
+		"name":"",   //名称
+		"currentCounts":0,//当前用户持有的碎片个数
+		"totoal":88, 	  //总共需要碎片个数
+		"createTime":""  //抓取时间
+	}],
+	"totalElements": 0, //全部条数
+  	"page": 0,	//当前页
+  	"size":6	//每页条数
+}
+25.碎片合成
+Request:
+{
+	"bId":"", //娃娃碎片id
+}
+Response:
+{
+	"status":true, //true 兑换成功    false 兑换失败
+	"gold":""  //兑换成功返回金币个数
+}
