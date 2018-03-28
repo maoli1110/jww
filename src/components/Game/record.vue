@@ -46,9 +46,9 @@
                         <mt-tab-container-item id="piece">
                             <div class="piece-list history-list">
                                <div class="piece-list-item history-list-item relat" v-for="(item,index) in pieceInfo" >
-                                    <label class="checkbox-select"><input type="checkbox" :data-list="item.bId" class="checkbox-input"  @change="checkedList"> 
+                                    <label class="checkbox-select"><input type="checkbox" :data-list="item.bId" :name="item.name" :total="item.totoal" :current="item.currentCounts" :img="item.imgUrl" class="checkbox-input"  @change="checkedRadioList"> 
                                         <span class="checkbox-core"></span>
-                                        <span class="piece-count">{{item.currentCounts}}/{{item.total}}</span>
+                                        <span class="piece-count">{{item.currentCounts}}/{{item.totoal}}</span>
                                         <div style="width:100%;height:100%">
                                             <img slot="icon" :src="item.imgUrl" alt="" width="66">
                                         </div>
@@ -131,10 +131,11 @@
             </div>
         </div>
         <div class="compound-detail absol" v-show="isCompound">
+            <div class="compound-img"><img src="currentCompundInfo.imgUrl" alt=""></div>
             <div class="compound-info Grid">
-                <div class="Grid-cell u-lof25 align-v-h">99</div>
-                <div class="Grid-cell align-v-h">这是一只碎片这是一只碎片</div>
-                <div class="Grid-cell u-lof25 align-v-h">99</div>
+                <div class="Grid-cell u-lof25 align-v-h">{{currentCompundInfo.currentCounts}}</div>
+                <div class="Grid-cell align-v-h">{{currentCompundInfo.name}}</div>
+                <div class="Grid-cell u-lof25 align-v-h">{{currentCompundInfo.total}}</div>
             </div>
             <div class="op-btn Grid">
                 <mt-button type="default" class="Grid-cell" @click="compound"></mt-button>
@@ -187,13 +188,17 @@
                   textAlign: 'center'
                 }
               ],
-                back1Img:'./static/img/ingame_btn_back1.png'
+                back1Img:'./static/img/ingame_btn_back1.png',
+                compoundImg:'',
+                compoundId:'',
+                currentCompundInfo:[] //选中的合成碎片信息
             }
         },
         methods: {
             panelClose(){
                 this.hidePanel = false;
                 this.isExchange = false;
+                this.selected = 'list';
                 this.$emit('panelHide', this.hidePanel)
             },
             //初始化tab选项卡的状态
@@ -241,19 +246,9 @@
                     alert('请选择要提取的娃娃信息');
                 }
             },
-            //合成娃娃
-            transCompound(pid){
-                if(exportedList.length){
-                    //1.不满足合成个数无法选中
-                    //2.满足合成个数
-                    let param = {pid:pid}
-                    pieceCompose(param).then((res)=>{
-
-                    });
-                    this.isCompound = true;
-                }else{
-                    alert('请选择要合成的娃娃信息');
-                }
+            //合成碎片
+            transCompound(){
+                this.isCompound = true;
             },
             //提取纪录
             getExtractLogs(params){
@@ -272,7 +267,7 @@
                    if(res.data.data!=null){
                         this.exchangeInfo = res.data.data.content;
                         this.exchangeInfo.forEach((value,key)=>{
-                            value.sendTime = dateFormat(value.sendTime);
+                            value.sendTime = dateFormat(value.createTime);
                         })
                    }
                 })
@@ -280,17 +275,26 @@
             //我的碎片列表
             getPieceList(){
                 getPieceList().then((res)=>{
-                    if(res.data.data!=null){
-                        this.pieceInfo = res.data.data.content;
-                        this.pieceInfo.forEach((value,key)=>{
-                            value.sendTime = dateFormat(value.sendTime);
-                        })
-                   }
+                    this.pieceInfo = res.data.data.content;
                 });
+                // getBackpack().then((res)=>{
+                //     if(res.data.status=='nologin'){
+
+                //     }else{
+                //         this.pieceInfo = res.data.data.content;
+                //     }
+                // })
             },
             //确认合成
             compound(){
-
+                let params = {
+                    pid:this.compoundId
+                }
+                pieceCompose(params).then((res)=>{
+                    console.log(res)
+                    this.panelClose();
+                    alert('合成成功！')
+                })
             },
             //返回碎片列表
             backPiece(){
@@ -307,8 +311,26 @@
                 sessionStorage.setItem('currentExtractObj',JSON.stringify(exportedList));//存储当前的提取娃娃的id list
                 console.log(exportedList,'提取娃娃的id数组')
             },
+            //选中要合成的碎片
+            checkedRadioList(event){
+                debugger
+                // console.log($(event.target).parent().parent().siblings().find('checkbox-input'))
+                if($(event.target)[0].checked){
+                    this.compoundId = $(event.target).attr('data-list');
+                    $(event.target).parent().parent().siblings().find('.checkbox-input').prop('checked',false)
+                    this.currentCompundInfo = {
+                        total:$(event.target).attr('total'),
+                        currentCounts:$(event.target).attr('current'),
+                        name:$(event.target).attr('name'),
+                        imgUrl:$(event.target).attr('img')
+                    }
+                    debugger
+                    console.log(this.currentCompundInfo)
+                }
+            },
             //点击兑换跳转按钮
             exchange(){
+                this.selected = 'exchangeList';
                 this.isExchange = true;
             },
             //点击内页兑换按钮
@@ -319,7 +341,8 @@
                     // console.log(param,'exportedList')
                     exchangeGold(param).then((res)=>{
                         if(res.data.data.status){
-                            alert('兑换成功！')
+                            this.panelClose();
+                            alert('成功兑换'+res.data.data.gold+'个金币！')
                         }
                     })
                 }else{
@@ -331,6 +354,8 @@
         created(){
             this.selected = 'list';
             this.getData();
+        },
+        mounted(){
         },
         watch:{
             selected:function(newVal,oldVal){
