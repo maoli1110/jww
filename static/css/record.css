@@ -18,7 +18,7 @@
     height: 10%;
     background: url("../../static/img/btn_exchange.png") center no-repeat;
     background-size: 100%;
-    left: 7.8%;
+    left: 7.5%;
     top: 16%;
     z-index: 12;
 }
@@ -103,14 +103,18 @@
 .history-list .history-list-item .toy-list{
     margin: 5px ;
 }
-.piece-list .piece-count{
+
+.piece-list .piece-count-default{
     width: 60%;
-    background: #F9D829;
+    background: #ccc;
     display: inline-block;
     border-radius: 0.3rem;
     font-size: 0.16rem;
     font-weight: bold;
     height: 100%;
+}
+.piece-list .piece-count{
+    background: #F9D829;
 }
 .record-list-them{width:33%;color:#AF7300;font-weight:bold;line-height:20px;font-size:13px;text-align:left;}
 .record-list-time{right:0;color:#AF7300;font-weight:bold;}

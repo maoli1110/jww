@@ -548,8 +548,8 @@ footer,header,nav,section {
         /*padding:12px 0 !important;*/
     }
     .record-content{
-        margin: 4.4rem .4rem 0 !important;
-        height: calc(100vh - 64%) !important;
+        margin: 4.1rem .4rem 0 !important;
+        height: calc(100vh - 60%) !important;
     }
     .extract-pro{
         width: 2.5rem !important;

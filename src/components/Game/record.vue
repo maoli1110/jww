@@ -48,7 +48,8 @@
                                <div class="piece-list-item history-list-item relat" v-for="(item,index) in pieceInfo" >
                                     <label class="checkbox-select"><input type="checkbox" :data-list="item.bId" :name="item.name" :total="item.totoal" :current="item.currentCounts" :img="item.imgUrl" class="checkbox-input"  @change="checkedRadioList"> 
                                         <span class="checkbox-core"></span>
-                                        <span class="piece-count">{{item.currentCounts}}/{{item.totoal}}</span>
+                                        <span class="piece-count-default piece-count" v-show="item.currentCounts == item.totoal">{{item.currentCounts}}/{{item.totoal}}</span>
+                                        <span class="piece-count-default" v-show="item.currentCounts !== item.totoal">{{item.currentCounts}}/{{item.totoal}}</span>
                                         <div style="width:100%;height:100%">
                                             <img slot="icon" :src="item.imgUrl" alt="" width="66">
                                         </div>
@@ -131,7 +132,7 @@
             </div>
         </div>
         <div class="compound-detail absol" v-show="isCompound">
-            <div class="compound-img"><img src="currentCompundInfo.imgUrl" alt=""></div>
+            <div class="compound-img"><img :src="currentCompundInfo.imgUrl" alt=""></div>
             <div class="compound-info Grid">
                 <div class="Grid-cell u-lof25 align-v-h">{{currentCompundInfo.currentCounts}}</div>
                 <div class="Grid-cell align-v-h">{{currentCompundInfo.name}}</div>
@@ -161,6 +162,7 @@
     import { dateFormat } from "../../utils/common.js";
 
     let exportedList = [];
+    let exhangeExportedList = [];
     export default{
         props: {isShow: Boolean},
         data(){
@@ -172,6 +174,7 @@
                 exchangeInfo:[], //兑换记录
                 pieceInfo:[],   //我的碎片
                 extractList:[], //我的娃娃导出记录
+                exhangeExportedList:[],//我的娃娃兑换记录
                 hidePanel: false,
                 tableSwitch:{
                     mineUrl:'./static/img/my_btn_mine1.png',
@@ -248,7 +251,11 @@
             },
             //合成碎片
             transCompound(){
-                this.isCompound = true;
+                if(this.currentCompundInfo.total === this.currentCompundInfo.currentCounts){
+                    this.isCompound = true;
+                } else {
+                    alert('请选择已搜集完成的碎片！')
+                }
             },
             //提取纪录
             getExtractLogs(params){
@@ -302,18 +309,27 @@
             },
             //选中要提取的娃娃
             checkedList(event){
-                if($(event.target)[0].checked && exportedList.indexOf($(event.target).attr('data-list'))==-1){
-                    exportedList.push($(event.target).attr('data-list'));
-                } else if(!$(event.target)[0].checked){
-                    let index = exportedList.indexOf($(event.target).attr('data-list'));
-                    exportedList.splice(index,1)
+                if(!this.isExchange){
+                    if($(event.target)[0].checked && exportedList.indexOf($(event.target).attr('data-list'))==-1){
+                        exportedList.push($(event.target).attr('data-list'));
+                    } else if(!$(event.target)[0].checked){
+                        let index = exportedList.indexOf($(event.target).attr('data-list'));
+                        exportedList.splice(index,1)
+                    }
+                    sessionStorage.setItem('currentExtractObj',JSON.stringify(exportedList));//存储当前的提取娃娃的id list
+                    console.log(exportedList,'提取娃娃的id数组')
+                } else {
+                    if($(event.target)[0].checked && exhangeExportedList.indexOf($(event.target).attr('data-list'))==-1){
+                        exhangeExportedList.push($(event.target).attr('data-list'));
+                    } else if(!$(event.target)[0].checked){
+                        let index = exhangeExportedList.indexOf($(event.target).attr('data-list'));
+                        exhangeExportedList.splice(index,1)
+                    }
                 }
-                sessionStorage.setItem('currentExtractObj',JSON.stringify(exportedList));//存储当前的提取娃娃的id list
-                console.log(exportedList,'提取娃娃的id数组')
+                
             },
             //选中要合成的碎片
             checkedRadioList(event){
-                debugger
                 // console.log($(event.target).parent().parent().siblings().find('checkbox-input'))
                 if($(event.target)[0].checked){
                     this.compoundId = $(event.target).attr('data-list');
@@ -324,8 +340,6 @@
                         name:$(event.target).attr('name'),
                         imgUrl:$(event.target).attr('img')
                     }
-                    debugger
-                    console.log(this.currentCompundInfo)
                 }
             },
             //点击兑换跳转按钮
@@ -335,9 +349,9 @@
             },
             //点击内页兑换按钮
             exchangeGold(){
-                if(exportedList.length){
+                if(exhangeExportedList.length){
                     //兑换金币流程
-                    let param = {bIds:exportedList}
+                    let param = {bIds:exhangeExportedList}
                     // console.log(param,'exportedList')
                     exchangeGold(param).then((res)=>{
                         if(res.data.data.status){
@@ -373,7 +387,6 @@
                         this.getExchangeLog();
                         this.tableSwitch.exchangeHistoryUrl = './static/img/exchange_btn_record2.png'
                     } else if(newVal=='piece') {
-                        debugger
                         this.getPieceList();
                         this.tableSwitch.pieceUrl = './static/img/my_btn_piece2.png'
                     } else {
