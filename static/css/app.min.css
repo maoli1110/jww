@@ -828,15 +828,15 @@
 }
 
 .machine-bar {
-	width: .72rem;
-	height: .72rem;
+	width: .74rem;
+    height: .18rem;
 	position: absolute;
-	background: url(../img/fly.png) -1px, -1.5rem no-repeat;
-	background-size: 2.8rem 3.76rem;
-	-webkit-background-size: 2.8rem 3.76rem;
+	background: url(../img/ingame_catch1.png) no-repeat;
+	background-size: 100%;
+	-webkit-background-size: 100%;
 	right: 0;
-	left: 0;
-	top: -.6rem;
+	left: -2px;
+	/*top: -.6rem;*/
 	margin: auto;
 	z-index: 30;
 	-webkit-transform: translateZ(130px);
