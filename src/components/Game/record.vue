@@ -292,13 +292,13 @@
                 //     }
                 // })
             },
-            //确认合成
+            //确认碎片合成
             compound(){
                 let params = {
                     pid:this.compoundId
                 }
                 pieceCompose(params).then((res)=>{
-                    console.log(res)
+                    this.isCompound = false;
                     this.panelClose();
                     alert('合成成功！')
                 })
@@ -355,6 +355,7 @@
                     // console.log(param,'exportedList')
                     exchangeGold(param).then((res)=>{
                         if(res.data.data.status){
+                            exhangeExportedList = [];
                             this.panelClose();
                             alert('成功兑换'+res.data.data.gold+'个金币！')
                         }
