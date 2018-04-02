@@ -827,7 +827,7 @@
 	transform: translateY(350px)!important
 }
 
-.machine-bar {
+/*.machine-bar {
 	width: .74rem;
     height: .18rem;
 	position: absolute;
@@ -836,13 +836,39 @@
 	-webkit-background-size: 100%;
 	right: 0;
 	left: -2px;
-	/*top: -.6rem;*/
+	margin: auto;
+	z-index: 30;
+	-webkit-transform: translateZ(130px);
+	transform: translateZ(130px)
+}*/
+
+.machine-bar {
+	width: .74rem;
+    height: .18rem;
+	position: fixed;
+	background: url(../img/ingame_catch1.png) no-repeat;
+	background-size: 100%;
+	-webkit-background-size: 100%;
+	left: 19px;
 	margin: auto;
 	z-index: 30;
 	-webkit-transform: translateZ(130px);
 	transform: translateZ(130px)
 }
-
+.machine-bar1 {
+	display: none;
+	width: .74rem;
+    height: .18rem;
+	position: fixed;
+	background: url(../img/ingame_catch1.png) no-repeat;
+	background-size: 100%;
+	-webkit-background-size: 100%;
+	left: 19px;
+	margin: auto;
+	z-index: 30;
+	-webkit-transform: translateZ(130px);
+	transform: translateZ(130px)
+}
 .machine-clip-line {
 	width: .14rem;
 	height: 3rem;

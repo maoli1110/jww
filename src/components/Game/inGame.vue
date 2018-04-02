@@ -30,6 +30,7 @@
             <div id="ex_doll_game">
                 <div class="doll-machine">
                     <div class="machine" id="machine">
+                        <i class="machine-bar1"></i>
                         <div class="machine-clip" id="machine-clip"
                          style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);-webkit-transform: translateY(0px)">
                         <i class="machine-bar"></i>
@@ -314,9 +315,16 @@ export default {
         function restTransition(domName,type) {
             if(domName == 'xy'){
                 $('#machine-clip').css('transform', 'translateX(' + m + 'px)');
+                  $('.machine-bar1').css('transform', 'translateX(' + m + 'px)');
+
                 $('#machine-clip').css('-webkit-transform', 'translateX(' + m + 'px)');
+                $('.machine-bar1').css('-webkit-transform', 'translateX(' + m + 'px)');
+
                 $('#machine-clip').css('transition-duration', '0.5s');
+                $('.machine-bar1').css('transition-duration', '0.4s');
+
                 $('#machine-clip').css('-webkit-transition-duration', '0.5s');
+                $('.machine-bar1').css('-webkit-transition-duration', '0.4s');
             } else {
                 $('.machine').css('transform', 'translateZ(' + n + 'px)');
                 $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
@@ -413,8 +421,8 @@ export default {
                 $(d).css('display', 'none');
                 $(d).css('transformY', '0px');
                 setTimeout(()=>{
-                    games.isRun = 0;
-                    self.isRun = 0;
+                    // games.isRun = 0;
+                    // self.isRun = 0;
                 },100)
             },
 
@@ -472,6 +480,8 @@ export default {
                         case "error":
                             $(".fail").css('display','flex');
                             $(".mask").show();
+                            games.isRun = 0; //激活go按钮
+                            self.isRun = 0;
                             setIntervalIndex = setInterval(()=>{
                                 self.isfail1 = !self.isfail1;
                             },300)
@@ -479,6 +489,8 @@ export default {
                         case "success":
                             $(".success").css('display','flex');
                             $(".mask").show();
+                             games.isRun = 0; //激活go按钮
+                            self.isRun = 0;
                             setIntervalIndex = setInterval(()=>{
                                 self.isSuccess1 = !self.isSuccess1;
                             },300)
@@ -548,7 +560,10 @@ export default {
                     move(this.clip).set("transform", a).duration(this.setTime.rising).ease("linear").end();
 
                     setTimeout(()=> {
+                        $(".machine-bar1").css('display','none');
+                        $(".machine-bar").css('display','block');
                         move(_clip).set("transform", b).duration(1700).ease("linear").end();
+                        
                     }, 2e3);
 
                     m = 0;
@@ -790,8 +805,10 @@ export default {
                     //判断金币不足->提示->跳转到充值界面
                     // if(parseFloat(self.currentToyInfo.timeMoney) < parseFloat(self.userInfo.goldCounts)){
                         //判断背包是否满15个,提示背包将满, 无法获得物品, 最多20个
+                        if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
                         getUserInfo().then((res)=>{
-                            if(res.data.data.bagcounts<15){
+                            // debugger
+                            // if(res.data.data.bagcounts<15){
                                 if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
                                 isCatch = false;
                                 realCatch = false;
@@ -806,9 +823,11 @@ export default {
                                 b.init();
                                 games.isRun = 1;
                                 self.isRun = 1;
-                            } else {
-                                alert('背包将满,无法获得物品！')
-                            }
+                                $(".machine-bar1").css('display','block');
+                                $(".machine-bar").css('display','none');
+                            // } else {
+                            //     alert('背包将满,无法获得物品！')
+                            // }
                         })
                     // } else {
                     //     alert("金币不足,请充值！")
