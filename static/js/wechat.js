@@ -1,7 +1,8 @@
 ﻿
  $(function() {
 	window.share = {
-		imgUrl : window.location.origin + 'static/img/1.png',
+        imgUrl : window.location.origin + '/static/img/pic_share.jpg',
+		// imgUrl : 'http://via.placeholder.com/300x300',
 		link : "http://game.yocatch.com",
 		title : "UCATCH趣抓抓抓娃娃",
 		desc : "UCATCH趣抓抓抓娃娃"
