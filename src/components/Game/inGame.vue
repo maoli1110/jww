@@ -259,7 +259,9 @@ export default {
         // console.log(this.$route.params.num)
         let toyNum = this.$route.params.num;
         // let packetNum = parseInt(toyNum) + 1 ;
-        let moveBottom = $('#doll-list2').offset().top+$('#doll-list2').height()-$("#machine-clip").height();
+        let initMoveBottom = $('.machine-shadow').offset().top;
+        let moveBottom = $('.machine-shadow').offset().top;
+        // let moveBottom = $('#doll-list2').offset().top+$('#doll-list2').height()-$("#machine-clip").height();
         let documentWidth = $(document).width(); //document width
         let keyCodeArry=[];
         // console.log(moveBottom)
@@ -330,24 +332,26 @@ export default {
                 $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
                 $('.machine').css('transition-duration', '0.5s');
                 $('.machine').css('-webkit-transition-duration', '0.5s');
-                if(n== -30 || n== 30 ){
-                    return;
-                } else {
-                    moveBottom = -Math.abs(moveBottom);
-                    if(type == 'up'){
-                        moveBottom = moveBottom + 25;
+                // if(n== -30 || n== 30 ){
+                //     return;
+                // } else {
+                    // debugger
+                    moveBottom = $('.machine-shadow').offset().top;
+                    moveBottom = Math.abs(moveBottom);
+                    if(type == 'down' && moveBottom <= initMoveBottom + 240){
+                        moveBottom = moveBottom + 60;
                         let tempMoveBottom = moveBottom;
                         // console.log('up')
                         // console.log(moveBottom)
-                        $('.machine-shadow').animate({bottom:tempMoveBottom,speed:1000,easing:'linear'});
-                    } else {
-                        moveBottom = moveBottom - 25;
+                        $('.machine-shadow').animate({top:tempMoveBottom,speed:1000,easing:'linear'});
+                    } else if (type == 'up' && moveBottom >= initMoveBottom - 240){
+                        moveBottom = moveBottom - 60;
                         let tempMoveBottom = moveBottom;
                         // console.log('down')
                         // console.log(moveBottom)
-                        $('.machine-shadow').animate({bottom:tempMoveBottom,speed:1000,easing:'linear'});
+                        $('.machine-shadow').animate({top:tempMoveBottom,speed:1000,easing:'linear'});
                     }
-                }
+                // }
             }
         }
 
@@ -563,6 +567,12 @@ export default {
                         $(".machine-bar1").css('display','none');
                         $(".machine-bar").css('display','block');
                         move(_clip).set("transform", b).duration(1700).ease("linear").end();
+                        //爪子z轴归位
+                        $('.machine').css('transform', 'translateZ(' + 0 + 'px)');
+                        $('.machine').css('-webkit-transform', 'translateZ(' + 0 + 'px)');
+                        $('.machine').css('transition-duration', '0.5s');
+                        $('.machine').css('-webkit-transition-duration', '0.5s');
+                        //爪子z轴end
                         
                     }, 2e3);
 
@@ -708,6 +718,7 @@ export default {
         }
         /**爪子左右移动**/
         App.move = function() {
+            // debugger
             var left = document.querySelector('.btn-left');
             var right = document.querySelector('.btn-right');
             var up = document.querySelector('.btn-up');
