@@ -46,7 +46,7 @@
                         <mt-tab-container-item id="piece">
                             <div class="piece-list history-list">
                                <div class="piece-list-item history-list-item relat" v-for="(item,index) in pieceInfo" >
-                                    <label class="checkbox-select"><input type="checkbox" :data-list="item.bId" :name="item.name" :total="item.totoal" :current="item.currentCounts" :img="item.imgUrl" class="checkbox-input"  @change="checkedRadioList"> 
+                                    <label class="checkbox-select"><input type="checkbox" :data-list="item.pid" :name="item.name" :total="item.totoal" :current="item.currentCounts" :img="item.imgUrl" class="checkbox-input"  @change="checkedRadioList"> 
                                         <span class="checkbox-core"></span>
                                         <span class="piece-count-default piece-count" v-show="item.currentCounts == item.totoal">{{item.currentCounts}}/{{item.totoal}}</span>
                                         <span class="piece-count-default" v-show="item.currentCounts !== item.totoal">{{item.currentCounts}}/{{item.totoal}}</span>
@@ -81,7 +81,7 @@
                     </div>
             </div>
             <!-- 兑换碎片界面 -->
-            <div class="absol recode-list" v-show="isExchange">
+            <div class="absol recode-list" v-if="isExchange">
                 <!--table选项卡-->
                 <mt-navbar v-model="selected" class="absol" style="">
                     <mt-tab-item id="exchangeList" style=" ">
@@ -203,6 +203,8 @@
                 this.isExchange = false;
                 this.selected = 'list';
                 this.$emit('panelHide', this.hidePanel)
+                $('.checkbox-input').prop('checked',false);
+                exportedList = [];
             },
             //初始化tab选项卡的状态
             restUrl(){
