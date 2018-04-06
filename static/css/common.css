@@ -179,7 +179,7 @@ a {
 	color: #1a76cc;
 	text-decoration: none
 }
-div,a,img {
+a,img {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;

@@ -15,7 +15,7 @@ export const getLocation = params =>axios.get(`./static/js/citys.json`);
 //1.登录 app/login ok
 export const login = params =>axios.get(`${serverUrl}/app/login`);
 //2.获取娃娃机列表 app/getWlist/$page ok
-export const getWlist = params =>axios.get(`${serverUrl}/app/getWlist/1`);
+export const getWlist = params =>axios.get(`${serverUrl}/app/getWlist/${params.page}`);
 //3.娃娃机点击(get)：app/hit/$id
 //4.获取当前用户信息(get): app/getUserInfo ok
 export const getUserInfo = params =>axios.get(`${serverUrl}/app/getUserInfo`);

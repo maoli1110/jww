@@ -10,12 +10,21 @@
         <div class="relat xuanze relat"  style="height:4%">
             <p class="substr absol add-coin yellow1" @click="recharge">{{userInfo.goldCounts}}</p>
         </div>
-
+        <ul class="pageNav Grid">
+            <li src="page1" class="Grid-cell page-select" @click="pageSelect(1,$event)">1</li>
+            <li src="page2" class="Grid-cell" @click="pageSelect(2,$event)">2</li>
+            <li src="page3" class="Grid-cell" @click="pageSelect(3,$event)">3</li>
+            <li src="page4" class="Grid-cell" @click="pageSelect(4,$event)">4</li>
+            <li src="page5" class="Grid-cell" @click="pageSelect(5,$event)">5</li>
+            <li src="page6" class="Grid-cell" @click="pageSelect(6,$event)">6</li>
+            <li src="page7" class="Grid-cell" @click="pageSelect(7,$event)">7</li>
+        </ul>
        <div class="select-list">
            <ul>
                <li class="raduis-1 relat" v-for="(item,key) in list" @click="inGame(item.wid,item)">
-                  <p>{{item.title}}</p>
-                  <div><img :src="item.imgUrl" alt=""></div>
+                  <p style="height:17px;">{{item.title}}</p>
+                  <div><img :src="item.imgUrl" v-if="item.wid!=0" alt=""></div>
+                  <div><img :src="waitImg" v-if="item.wid==0" alt=""></div>
                   <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>{{item.timeMoney?item.timeMoney:0}}&nbsp;/次</span><span class="go raduis-1" >GO</span></div>
                    <!-- <div class="absol switch text-color"><span class="block switch-text">碎片合成</span></div> -->
                </li>
@@ -75,6 +84,7 @@ export default {
             mineNavImg:'./static/img/home_btn_my1.png',
             back1Img:'./static/img/ingame_btn_back1.png',
             back2Img:'./static/img/ingame_btn_back2.png',
+            waitImg:'./static/img/wait.png',
             payVisbile:false,
             recordVisible:false,
             list:[],
@@ -107,6 +117,7 @@ export default {
         },
         //初始化跳链接
         inGame(wid,item){
+            if(wid==0) return;
             setSessionstorage('currentToyInfo',item);
             this.$router.push('/main/ingame/'+wid);
 
@@ -144,6 +155,20 @@ export default {
               alert("金币不足,请充值！")
             }
           });
+        },
+        //分页
+        pageSelect(page,event) {
+            debugger
+
+            $(event.currentTarget).addClass('page-select').siblings().removeClass('page-select');
+            //获取娃娃列表
+            let params = {
+                page:page
+            };
+            getWlist(params).then((res)=>{
+                console.log(res.data.data.content,'res.data.data.content')
+                this.list = res.data.data.content;
+            });
         }
 
     },
@@ -159,7 +184,7 @@ export default {
         //获取列表
         // this.list = getSessionstorage('wlist');
         // if(!this.list){
-           getWlist().then((res)=>{
+           getWlist({page:1}).then((res)=>{
             console.log(res.data.data.content,'res.data.data.content')
               this.list = res.data.data.content;
               setSessionstorage('wlist',res.data.data.content);
@@ -213,4 +238,5 @@ export default {
     .mint-tab-item-icon > *{
         height:84%;
     }
+
 </style>
