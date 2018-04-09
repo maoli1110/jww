@@ -849,7 +849,7 @@
 	background: url(../img/ingame_catch1.png) no-repeat;
 	background-size: 100%;
 	-webkit-background-size: 100%;
-	left: 19px;
+	left: .33rem;
 	margin: auto;
 	z-index: 30;
 	-webkit-transform: translateZ(130px);
@@ -863,7 +863,7 @@
 	background: url(../img/ingame_catch1.png) no-repeat;
 	background-size: 100%;
 	-webkit-background-size: 100%;
-	left: 19px;
+	left: .33rem;
 	margin: auto;
 	z-index: 30;
 	-webkit-transform: translateZ(130px);
@@ -916,7 +916,9 @@
 	-webkit-background-size: 100%;
 	right: 0;
 	left: 0;
-	bottom:  -5rem;
+	/*bottom:  -5rem;*/
+	top: 6.7rem;
+	/*top: 2rem;*/
 	margin: auto;
 	z-index: 30;
 /*	-webkit-transform: translateZ(130px);

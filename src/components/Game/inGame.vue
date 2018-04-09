@@ -338,18 +338,21 @@ export default {
                     // debugger
                     moveBottom = $('.machine-shadow').offset().top;
                     moveBottom = Math.abs(moveBottom);
-                    if(type == 'down' && moveBottom <= initMoveBottom + 240){
-                        moveBottom = moveBottom + 60;
+
+                    if(type == 'down' && moveBottom <= initMoveBottom + 80){
+                        
+                        // console.log(moveBottom,'moveBottom')
+                        moveBottom = moveBottom + 20;
                         let tempMoveBottom = moveBottom;
                         // console.log('up')
                         // console.log(moveBottom)
-                        $('.machine-shadow').animate({top:tempMoveBottom,speed:1000,easing:'linear'});
-                    } else if (type == 'up' && moveBottom >= initMoveBottom - 240){
-                        moveBottom = moveBottom - 60;
+                        $('.machine-shadow').animate({top:tempMoveBottom,speed:10,easing:'linear'});
+                    } else if (type == 'up' && moveBottom >= initMoveBottom - 80){
+                        moveBottom = moveBottom - 20;
                         let tempMoveBottom = moveBottom;
                         // console.log('down')
                         // console.log(moveBottom)
-                        $('.machine-shadow').animate({top:tempMoveBottom,speed:1000,easing:'linear'});
+                        $('.machine-shadow').animate({top:tempMoveBottom,speed:10,easing:'linear'});
                     }
                 // }
             }
@@ -482,6 +485,8 @@ export default {
                 if (a) {
                     switch ($(".machine-tips-box").removeClass("cpm-hide"), a) {
                         case "error":
+                            n=0;
+                            $('.machine-shadow').css('top','6.7rem')
                             $(".fail").css('display','flex');
                             $(".mask").show();
                             games.isRun = 0; //激活go按钮
@@ -491,6 +496,8 @@ export default {
                             },300)
                             break;
                         case "success":
+                            n=0;
+                            $('.machine-shadow').css('top','6.7rem')
                             $(".success").css('display','flex');
                             $(".mask").show();
                              games.isRun = 0; //激活go按钮
@@ -535,6 +542,7 @@ export default {
                 this.setTime.risingEnd = this.setTime.falling + this.setTime.rising,
                 this.getHeight = function() {
                     var level = getLevel(n);
+                    // console.log(level,'level')
                     var a = $(document).height(),
                         b = $("#machine-clip").height(),
                         c = $(document.getElementById("doll-list"+level)).offset().top,
@@ -562,11 +570,15 @@ export default {
                         $(".doll-item-single").removeAttr("style").addClass('doll-rise');
                     }
                     move(this.clip).set("transform", a).duration(this.setTime.rising).ease("linear").end();
+                    //bar1归位
+                    move($(".machine-bar1")[0]).set("transform", a).duration(this.setTime.rising).ease("linear").end();
 
                     setTimeout(()=> {
                         $(".machine-bar1").css('display','none');
                         $(".machine-bar").css('display','block');
                         move(_clip).set("transform", b).duration(1700).ease("linear").end();
+                        //bar1归位
+                        move($(".machine-bar1")[0]).set("transform", b).duration(1700).ease("linear").end();
                         //爪子z轴归位
                         $('.machine').css('transform', 'translateZ(' + 0 + 'px)');
                         $('.machine').css('-webkit-transform', 'translateZ(' + 0 + 'px)');
@@ -607,7 +619,7 @@ export default {
                                     async: false,
                                     url: window.serverPath.url+'/app/getWawaStatus/'+toyNum+'/1',
                                     success: function(res){
-                                        console.log(res)
+                                        // console.log(res)
                                         res = JSON.parse(res)
                                            if(res.data==="success"){
                                                 realCatch = true;
@@ -629,7 +641,7 @@ export default {
                             getWawaStatus({id:toyNum,status:0}).then((res)=>{
                                 self.getUser();
                             });
-                            console.log("!realCatch")
+                            // console.log("!realCatch")
                             realCatch = false;
                             setTimeout(()=> {
                                 games.isRun = 0;

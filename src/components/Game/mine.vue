@@ -22,8 +22,8 @@
                             <div  v-for="(item,index) in mineInfo.logList">
                                 <div class="font-26" style="width:100%">
                                     <p class="font-26" style="float:left">{{item.createTime}}</p>
-                                    <span v-if="item.status==0" class="green font-26" style="float:right">抓取成功</span>
-                                    <span  v-if="item.status==1" class="red font-26" style="float:right">抓取失败</span>
+                                    <span v-if="item.status==1" class="green font-26" style="float:right">抓取成功</span>
+                                    <span  v-if="item.status==0" class="red font-26" style="float:right">抓取失败</span>
                                 </div>
                             </div>
                         </div>
