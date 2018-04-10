@@ -851,7 +851,7 @@
 	-webkit-background-size: 100%;
 	left: .33rem;
 	margin: auto;
-	z-index: 30;
+	z-index: 60;
 	-webkit-transform: translateZ(130px);
 	transform: translateZ(130px)
 }
@@ -865,7 +865,7 @@
 	-webkit-background-size: 100%;
 	left: .33rem;
 	margin: auto;
-	z-index: 30;
+	z-index: 60;
 	-webkit-transform: translateZ(130px);
 	transform: translateZ(130px)
 }
@@ -916,13 +916,10 @@
 	-webkit-background-size: 100%;
 	right: 0;
 	left: 0;
-	/*bottom:  -5rem;*/
-	top: 6.7rem;
-	/*top: 2rem;*/
+	/*top: 4.6rem;*/
+	top: 256px;
 	margin: auto;
 	z-index: 30;
-/*	-webkit-transform: translateZ(130px);
-	transform: translateZ(130px)*/
 }
 .machine-shadow-fixed {
 	width: 1.5rem;
@@ -1565,7 +1562,18 @@
 	    transform: translateZ(-110px);
 	    z-index: 1;
 	}
-	.machine-shadow {
+}
+/* iphone 7, 8 */
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+	html{
+        font-size: 58px!important;
+    }
+}
+
+
+/* pc */
+@media screen and (min-width: 600px) {
+    .machine-shadow {
 		width: 1.5rem;
 		height: .8rem;
 		position: absolute;
@@ -1574,12 +1582,9 @@
 		-webkit-background-size: 100%;
 		right: 0;
 		left: 0;
-		bottom:  -7rem;
+		top: 5.6rem;
+		/*top: 256px;*/
 		margin: auto;
 		z-index: 30;
-	/*	-webkit-transform: translateZ(130px);
-		transform: translateZ(130px)*/
 	}
 }
-
-

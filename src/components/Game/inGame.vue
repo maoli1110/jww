@@ -256,15 +256,11 @@ export default {
         audioAutoPlay('bg-music1');
         self = this;
         document.body.addEventListener('touchstart', function () {});
-        // console.log(this.$route.params.num)
         let toyNum = this.$route.params.num;
-        // let packetNum = parseInt(toyNum) + 1 ;
         let initMoveBottom = $('.machine-shadow').offset().top;
         let moveBottom = $('.machine-shadow').offset().top;
-        // let moveBottom = $('#doll-list2').offset().top+$('#doll-list2').height()-$("#machine-clip").height();
         let documentWidth = $(document).width(); //document width
         let keyCodeArry=[];
-        // console.log(moveBottom)
         var m = 0;
         var n = 0;
         var isCatch = false,realCatch = false;
@@ -332,29 +328,12 @@ export default {
                 $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
                 $('.machine').css('transition-duration', '0.5s');
                 $('.machine').css('-webkit-transition-duration', '0.5s');
-                // if(n== -30 || n== 30 ){
-                //     return;
-                // } else {
-                    // debugger
-                    moveBottom = $('.machine-shadow').offset().top;
-                    moveBottom = Math.abs(moveBottom);
 
-                    if(type == 'down' && moveBottom <= initMoveBottom + 80){
-                        
-                        // console.log(moveBottom,'moveBottom')
-                        moveBottom = moveBottom + 20;
-                        let tempMoveBottom = moveBottom;
-                        // console.log('up')
-                        // console.log(moveBottom)
-                        $('.machine-shadow').animate({top:tempMoveBottom,speed:10,easing:'linear'});
-                    } else if (type == 'up' && moveBottom >= initMoveBottom - 80){
-                        moveBottom = moveBottom - 20;
-                        let tempMoveBottom = moveBottom;
-                        // console.log('down')
-                        // console.log(moveBottom)
-                        $('.machine-shadow').animate({top:tempMoveBottom,speed:10,easing:'linear'});
-                    }
-                // }
+                $('.machine-shadow').css('transform', 'translateY(' + n*2 + 'px)');
+                $('.machine-shadow').css('-webkit-transform', 'translateY(' + n*2 + 'px)');
+                $('.machine-shadow').css('transition-duration', '0.5s');
+                $('.machine-shadow').css('-webkit-transition-duration', '0.5s');
+            
             }
         }
 
@@ -486,7 +465,6 @@ export default {
                     switch ($(".machine-tips-box").removeClass("cpm-hide"), a) {
                         case "error":
                             n=0;
-                            $('.machine-shadow').css('top','6.7rem')
                             $(".fail").css('display','flex');
                             $(".mask").show();
                             games.isRun = 0; //激活go按钮
@@ -497,7 +475,6 @@ export default {
                             break;
                         case "success":
                             n=0;
-                            $('.machine-shadow').css('top','6.7rem')
                             $(".success").css('display','flex');
                             $(".mask").show();
                              games.isRun = 0; //激活go按钮
@@ -584,6 +561,12 @@ export default {
                         $('.machine').css('-webkit-transform', 'translateZ(' + 0 + 'px)');
                         $('.machine').css('transition-duration', '0.5s');
                         $('.machine').css('-webkit-transition-duration', '0.5s');
+                       
+                        $('.machine-shadow').css('transform', 'translateY(' + 0 + 'px)');
+                        $('.machine-shadow').css('-webkit-transform', 'translateY(' + 0 + 'px)');
+                        $('.machine-shadow').css('transition-duration', '0.5s');
+                        $('.machine-shadow').css('-webkit-transition-duration', '0.5s');
+                        
                         //爪子z轴end
                         
                     }, 2e3);
@@ -824,14 +807,17 @@ export default {
             var a = document.querySelectorAll(".btn-go")[0];
             if ("undefined" != typeof a ) { 
                 var b = new ClampDoll;
-                $(a).bind("touchstart",function(e){
+                var operation = "touchstart"
+                if(!isIos() && !isAndroid()){
+                    operation = "click"
+                }
+                $(a).bind(operation,function(e){
                     //判断金币不足->提示->跳转到充值界面
-                    // if(parseFloat(self.currentToyInfo.timeMoney) < parseFloat(self.userInfo.goldCounts)){
+                    if(parseFloat(self.currentToyInfo.timeMoney) < parseFloat(self.userInfo.goldCounts)){
                         //判断背包是否满15个,提示背包将满, 无法获得物品, 最多20个
                         if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
                         getUserInfo().then((res)=>{
-                            // debugger
-                            // if(res.data.data.bagcounts<15){
+                            if(res.data.data.bagcounts<15){
                                 if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
                                 isCatch = false;
                                 realCatch = false;
@@ -848,32 +834,32 @@ export default {
                                 self.isRun = 1;
                                 $(".machine-bar1").css('display','block');
                                 $(".machine-bar").css('display','none');
-                            // } else {
-                            //     alert('背包将满,无法获得物品！')
-                            // }
+                            } else {
+                                alert('背包将满,无法获得物品！')
+                            }
                         })
-                    // } else {
-                    //     alert("金币不足,请充值！")
-                    //     self.payVisbile = true;
-                    // }
+                    } else {
+                        alert("金币不足,请充值！")
+                        self.payVisbile = true;
+                    }
                 });
             }
             App.move();
         },0);
     },
     watch:{
-        reFresh:function(newVal,oldVal){//监听刷新状态
-            if(newVal!=oldVal && newVal){
-                this.back();
-            }
-        },
-        '$route' (to,from){             //监听路由 改变刷新状态
-            if(from.path){
-                this.reFresh = true;
-            }else{
-                this.reFresh = false;
-            }
-        },
+        // reFresh:function(newVal,oldVal){//监听刷新状态
+        //     if(newVal!=oldVal && newVal){
+        //         this.back();
+        //     }
+        // },
+        // '$route' (to,from){             //监听路由 改变刷新状态
+        //     if(from.path){
+        //         this.reFresh = true;
+        //     }else{
+        //         this.reFresh = false;
+        //     }
+        // },
     }
 }
 </script>
