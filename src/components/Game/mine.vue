@@ -142,7 +142,7 @@
         width:44%;margin:0 0 6px 0;
     }
     .mine-log{
-        height: calc(100vh - 280px);
+        height: calc(100vh - 300px);
         overflow:auto;
     }
     .wawa-log{
