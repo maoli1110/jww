@@ -411,7 +411,7 @@
     display: block;
     padding: 0 8px;
     text-align: left;
-    font-size: 0.12rem;
+    font-size: 0.18rem;
     font-weight: bold;
 }
 </style>

@@ -33,7 +33,7 @@
     text-align:center;
 }
 .mint-navbar{
-    top:23%;z-index:100;width:88%
+    top:24%;z-index:100;width:88%
 }
 /*列表信息*/
 .record-content{
@@ -109,14 +109,14 @@
     background: #ccc;
     display: inline-block;
     border-radius: 0.3rem;
-    font-size: 0.16rem;
+    font-size: 26px;
     font-weight: bold;
     height: 100%;
 }
 .piece-list .piece-count{
     background: #F9D829;
 }
-.record-list-them{width:33%;color:#AF7300;font-weight:bold;line-height:20px;font-size:13px;text-align:left;}
+.record-list-them{width:33%;color:#AF7300;font-weight:bold;line-height:20px;font-size:.18rem;text-align:left;}
 .record-list-time{right:0;color:#AF7300;font-weight:bold;}
 .mint-tab-item-label{width:80%;margin:0}
 .mint-tab-item:nth-child(1) .mint-tab-item-label{width:80%;margin:0;margin-left:0.5rem}
@@ -132,7 +132,7 @@
 .record-content .mint-cell{border-bottom:2px dashed #fff;}
 .checkbox-select {
     position: absolute;
-    top: 6px;
+    top: 10px;
     right: 4px;
  }
 .checkbox-input:checked+.checkbox-core {
@@ -148,8 +148,8 @@
     /*border-radius: 100%;*/
     /*border: 1px solid #ccc;*/
     position: relative;
-    width: 16px;
-    height: 16px;
+    width: 26px;
+    height: 26px;
     vertical-align: middle;
 }
 .extract-info{

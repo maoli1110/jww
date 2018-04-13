@@ -63,7 +63,7 @@
 .home .select-list ul{
     position: absolute;
     left: 0;
-    top: 27%;
+    top: 25%;
     bottom: 12%;
     width: 100%;
     overflow: auto;
@@ -74,7 +74,7 @@
 .home .select-list ul>li {
     display: inline-block;
     width: 46%;
-    font-size: 10px;
+    font-size: 24px;
     list-style-type: none;
     background: #fff;
     margin: 2%;
@@ -89,7 +89,7 @@
 .home .select-list ul>li>p{
     font-weight: bold;
     color: #8c8a8b;
-    font-size: 0.16rem;
+    font-size: 0.2rem;
     text-align: center;
     padding-right: 0.15rem;
 }
@@ -130,8 +130,7 @@
 }
 .home .pageNav {
     width: 96%;
-    border-radius: 13%;
-    border-radius: 16px;
+    border-radius: 26px;
     background: #fff;
     position: absolute;
     top: 20%;
@@ -142,18 +141,19 @@
     float: left;
     width: 14%;
     text-align: center;
-    height: 25px;
+    height: 50px;
     margin: 2px;
-    line-height: 25px;
+    line-height: 50px;
     /*padding: 4% 4%;*/
-    font-size: 20px;
+    font-size: 26px;
+    font-weight: 700;
     box-sizing: border-box;
     color: #d28804;
 }
 .home li.page-select {
     color: #5c3103;
     background: #ffd200;
-    border-radius: 16px;
+    border-radius: 26px;
 }
 /*them*/
 .game-them{font-size:0.25rem;color:#FFFEAE;text-align:center;height:0.6rem;line-height:0.6rem;font-weight:bold;}

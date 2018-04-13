@@ -142,7 +142,7 @@
         width:44%;margin:0 0 6px 0;
     }
     .mine-log{
-        height: calc(100vh - 280px);
+        height: calc(100vh - 400px);
         overflow:auto;
     }
     .wawa-log{
@@ -156,7 +156,7 @@
         right: 0;
         left: 0;
         bottom: .3rem;
-        height: 3.4em;
+        height: 1rem;
         background:url('../../../static/img/mine_btn_exit1.png') no-repeat 0 0;
         background-size:100%;
     }

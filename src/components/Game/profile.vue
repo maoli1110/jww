@@ -22,7 +22,7 @@
        <div class="select-list">
            <ul>
                <li class="raduis-1 relat" v-for="(item,key) in list" @click="inGame(item.wid,item)">
-                  <p style="height:17px;">{{item.title}}</p>
+                  <p style="height:36px;">{{item.title}}</p>
                   <div><img :src="item.imgUrl" v-if="item.wid!=0" alt=""></div>
                   <div><img :src="waitImg" v-if="item.wid==0" alt=""></div>
                   <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>{{item.timeMoney?item.timeMoney:0}}&nbsp;/次</span><span class="go raduis-1" >GO</span></div>

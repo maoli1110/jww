@@ -20,7 +20,7 @@
                         </div>
                         <div class="Grid-cell u-lof40 cloumn-center align-r">
                             <p class="grey">{{item.sendTime}}</p>
-                            <p>{{item.theme}}</p>
+                            <p>{{item.theme}}</p>119
                             <p @click="detail(item.id)" class="green"><span class="detail"></span></p>
                         </div>
                    </div>
@@ -117,8 +117,8 @@
 </script>
 <style scope>
     .message-bg .dialog-close{
-        right: 4%;
-        top: 13.6%;
+        right: 6%;
+        top: 19.6%;
         z-index: 12!important;
     }
 </style>

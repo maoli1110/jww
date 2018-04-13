@@ -34,7 +34,7 @@
                         <div class="machine-clip" id="machine-clip"
                          style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);-webkit-transform: translateY(0px)">
                         <i class="machine-bar"></i>
-                        <i class="machine-clip-line" id="machine-clip-line" style="height: 433px;"></i>
+                        <i class="machine-clip-line" id="machine-clip-line" style="height:700px;"></i>
                         <i class="machine-clip-origin"></i>
                         <i class="machine-shadow"></i>
                         <div class="machine-clip-arm machine-clip-arm__left">
@@ -324,13 +324,14 @@ export default {
                 $('#machine-clip').css('-webkit-transition-duration', '0.5s');
                 $('.machine-bar1').css('-webkit-transition-duration', '0.4s');
             } else {
+                console.log(n,'n')
                 $('.machine').css('transform', 'translateZ(' + n + 'px)');
                 $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
                 $('.machine').css('transition-duration', '0.5s');
                 $('.machine').css('-webkit-transition-duration', '0.5s');
 
-                $('.machine-shadow').css('transform', 'translateY(' + n*2 + 'px)');
-                $('.machine-shadow').css('-webkit-transform', 'translateY(' + n*2 + 'px)');
+                $('.machine-shadow').css('transform', 'translateY(' + n*6 + 'px)');
+                $('.machine-shadow').css('-webkit-transform', 'translateY(' + n*6 + 'px)');
                 $('.machine-shadow').css('transition-duration', '0.5s');
                 $('.machine-shadow').css('-webkit-transition-duration', '0.5s');
             
@@ -338,13 +339,14 @@ export default {
         }
 
         function getLevel(n) {
+            console.log('getlevel',n)
             var level;
-            if(n>=-10 && n<=10 ){ //第二层
-                level=2;
-            } else if(n>10 && n<=30){ //第一层
-                level=1;
-            } else if(n>=-30 && n<10){ //第三层
+            if(n<-30 && n>=-50 ){ //第三层
                 level=3;
+            } else if(n<10 && n>=-30){ //第二层
+                level=2;
+            } else if(n>=-10 && n<=10){ //第一层
+                level=1;
             }
             return level;
         }
@@ -464,7 +466,7 @@ export default {
                 if (a) {
                     switch ($(".machine-tips-box").removeClass("cpm-hide"), a) {
                         case "error":
-                            n=0;
+                            n=1;
                             $(".fail").css('display','flex');
                             $(".mask").show();
                             games.isRun = 0; //激活go按钮
@@ -474,7 +476,7 @@ export default {
                             },300)
                             break;
                         case "success":
-                            n=0;
+                            n=1;
                             $(".success").css('display','flex');
                             $(".mask").show();
                              games.isRun = 0; //激活go按钮
@@ -519,7 +521,7 @@ export default {
                 this.setTime.risingEnd = this.setTime.falling + this.setTime.rising,
                 this.getHeight = function() {
                     var level = getLevel(n);
-                    // console.log(level,'level')
+                    console.log(level,'level')
                     var a = $(document).height(),
                         b = $("#machine-clip").height(),
                         c = $(document.getElementById("doll-list"+level)).offset().top,
@@ -588,9 +590,11 @@ export default {
                         var a = -1;
                         var level = getLevel(n);
                         b = this.$clip.offset().left;
+                        console.log(b,'b')
                         $('#doll-list'+level+' >li').map(function(c, d) {
                             var e = Math.abs($(d).offset().left);
-                            if(Math.abs(e-b) <= 10 && ($(d).css('visibility')!='hidden')){
+                            console.log(e,'e') 
+                            if(Math.abs(e-b) <= 14 && ($(d).css('visibility')!='hidden')){
                                 a = $(d).attr("data-index");
                                 isCatch = true;
                                 /**
@@ -758,10 +762,10 @@ export default {
                         restTransition('xy','');
                     } else {
                         n = n + speed;
-                        if (n > 30) {
-                            n = 30;
-                        } else if (n < -30) {
-                            n = -30;
+                        if (n >= 10) {
+                            n = 10;
+                        } else if (n <= -50) {
+                            n = -50;
                         }
                         restTransition('z',dir);
                     }
@@ -794,10 +798,10 @@ export default {
                     restTransition('xy','');
                 } else {
                     n = n + speed;
-                    if (n > 30) {
-                        n = 30;
-                    } else if (n < -30) {
-                        n = -30;
+                    if (n >= 10) {
+                        n = 10;
+                    } else if (n <= -50) {
+                        n = -50;
                     }
                     restTransition('z',dir);
                 }
@@ -817,7 +821,7 @@ export default {
                         //判断背包是否满15个,提示背包将满, 无法获得物品, 最多20个
                         if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
                         getUserInfo().then((res)=>{
-                            if(res.data.data.bagcounts<15){
+                            // if(res.data.data.bagcounts<15){
                                 if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
                                 isCatch = false;
                                 realCatch = false;
@@ -834,9 +838,9 @@ export default {
                                 self.isRun = 1;
                                 $(".machine-bar1").css('display','block');
                                 $(".machine-bar").css('display','none');
-                            } else {
-                                alert('背包将满,无法获得物品！')
-                            }
+                            // } else {
+                            //     alert('背包将满,无法获得物品！')
+                            // }
                         })
                     } else {
                         alert("金币不足,请充值！")
@@ -1123,8 +1127,8 @@ export default {
     content: '';
     background:url('../../../static/img/ingame_btn_pay3.png');
     background-size: 100% 100%;
-    width: 20px;
-    height: 20px;
+    width: 32px;
+    height: 32px;
     position: absolute;
 }
 .message {
