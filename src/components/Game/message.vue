@@ -117,8 +117,8 @@
 </script>
 <style scope>
     .message-bg .dialog-close{
-        right: 6%;
-        top: 19.6%;
+        right: 2%;
+        top: 14.6%;
         z-index: 12!important;
     }
 </style>
