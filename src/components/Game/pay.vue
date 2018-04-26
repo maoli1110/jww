@@ -75,7 +75,7 @@
                 {
                     let self = this;
                     coin = !coin?1:coin;
-                    $.get("http://game.yocatch.com/back/wxpay/pay/jsapi.php",{gold:coin}, function(result){
+                    $.get(window.serverPath.url+"/back/wxpay/pay/jsapi.php",{gold:coin}, function(result){
                         WeixinJSBridge.invoke(
                             'getBrandWCPayRequest',
                             result,
@@ -119,8 +119,7 @@
                             this.jsApiCall(coin);
                         }
                     } else {
-                        console.log("http://game.yocatch.com/back/alipay/wap.php?gold="+price)
-                        window.location.href="http://game.yocatch.com/back/alipay/wap.php?gold="+price;
+                        window.location.href=window.serverPath.url+"/back/alipay/wap.php?gold="+price;
                     }
                 }
             }

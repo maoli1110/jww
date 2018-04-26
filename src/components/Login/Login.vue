@@ -56,7 +56,7 @@ export default {
         sessionStorage.removeItem('deviceCode');
         sessionStorage.setItem('deviceCode',this.device);
 
-        this.weixinUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxeee9fa8365ffb733&redirect_uri=http://game.yocatch.com/back/app/login&response_type=code&scope=snsapi_userinfo&state='+this.device+'#wechat_redirec';
+        this.weixinUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxeee9fa8365ffb733&redirect_uri='+window.serverPath.url+'/back/app/login&response_type=code&scope=snsapi_userinfo&state='+this.device+'#wechat_redirec';
         console.log(this.weixinUrl)
     },
     methods: {
