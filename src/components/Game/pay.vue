@@ -11,10 +11,10 @@
                <div class="pay-list-wrapper common-list-wrapper">
                    <div class="pay-list-item Grid" v-for="item in payInfo">
                         <div class="Grid-cell u-lof4 icon align-h-v">
-                            <img slot="icon" v-show ="item.count==50" :src="item.imgUrl" alt="" width="80" >
-                            <img slot="icon" v-show ="item.count==100" :src="item.imgUrl" alt="" width="80" >
-                            <img slot="icon" v-show ="item.count==200" :src="item.imgUrl" alt="" width="80" >
-                            <img slot="icon" v-show ="item.count==400" :src="item.imgUrl" alt="" width="80" >
+                            <img slot="icon" v-show ="item.count==600" :src="item.imgUrl" alt="" width="100" >
+                            <img slot="icon" v-show ="item.count==1800" :src="item.imgUrl" alt="" width="100" >
+                            <img slot="icon" v-show ="item.count==6800" :src="item.imgUrl" alt="" width="100" >
+                            <img slot="icon" v-show ="item.count==9800" :src="item.imgUrl" alt="" width="100" >
                         </div>
                         <div class="Grid-cell count">
                             <div class="substr">X {{item.count}}</div>
@@ -33,7 +33,6 @@
     import "../../../static/css/pay.css";
     import {getUserInfo} from '../../api/getData';
     import { setSessionstorage, getSessionstorage,isWeixin } from "../../utils/common.js";
-    let coin = {"coin50":50,"coin100":100,"coin200":200,'coin400':400}
     export default{
         props:{isShow:Boolean},
         data(){
@@ -43,23 +42,23 @@
                     {
                         imgUrl:"./static/img/pay_icon_coin50.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
-                        price:"0.50",
-                        count:50
+                        price:"6.00",
+                        count:600
                     },{
                         imgUrl:"./static/img/pay_icon_coin100.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
-                        price:"1.00",
-                        count:100
+                        price:"18.00",
+                        count:1800
                     },{
                         imgUrl:"./static/img/pay_icon_coin400.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
-                        price:"2.00",
-                        count:200
+                        price:"68.00",
+                        count:6800
                     },{
                         imgUrl:"./static/img/pay_icon_coin400.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
-                        price:"4.00",
-                        count:400
+                        price:"98.00",
+                        count:9800
                     }
                 ],
                 hidePanel:false,

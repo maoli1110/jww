@@ -4,9 +4,11 @@
         <div class="back" @click="loginOut">
             <img :src="back1Img" alt="">
         </div>
-        <a>
+        <!-- <a>
           <div class="vedio-show" @click="vedioShow"></div>
-        </a>
+        </a> -->
+        <img :src="homeTitle" class="home-title" alt="">
+        <img :src="guize" class="guize" alt="" @click="ruleShow">
         <div class="relat xuanze relat"  style="height:4%">
             <p class="substr absol add-coin yellow1" @click="recharge">{{userInfo.goldCounts}}</p>
         </div>
@@ -45,6 +47,7 @@
        </div>
        <div class="goBack"><img src="" alt=""></div>
     </div>
+    <v-rule v-show="ruleVisible" :is-show="ruleVisible" @payPanelHide="payPanelHide"></v-rule>
     <v-paylist v-show="payVisbile" :is-show="payVisbile" @payPanelHide="payPanelHide"></v-paylist>
     <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHideRecord" ref="recordList"></v-record>
     <audio id="bg-music" controls="controls" autoplay="autoplay" style="display:none" loop="loop">
@@ -69,6 +72,7 @@ function audioAutoPlay(id){
 }
 import vPaylist from "../Game/pay.vue";
 import vRecord from '../Game/record.vue';
+import vRule from '../Game/rule.vue';
 import  '../../../static/css/home.css';             //主页样式
 import { getWlist,getUserInfo,getLocation,getGotoUrl } from "../../api/getData.js"
 import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
@@ -76,6 +80,8 @@ export default {
     data() {
         this.$router.replace('/main/home')
         return {
+            homeTitle:"./static/img/text_home.png",
+            guize:"./static/img/home_btn_point.png",
             audioUrl:"./static/happy.mp3",
             selected:"", //tab选中状态
             defalultWW:'./static/img/ingame_toy.png',
@@ -87,11 +93,12 @@ export default {
             waitImg:'./static/img/wait.png',
             payVisbile:false,
             recordVisible:false,
+            ruleVisible:false,
             list:[],
             userInfo:{}
         }
     },
-    components: {vPaylist,vRecord},
+    components: {vPaylist,vRecord,vRule},
     methods: {
         //组件关窗通信
         panelHide(visible){
@@ -101,6 +108,7 @@ export default {
             this.payVisbile =visible;
             this.recordVisible = visible;
             this.messageVisbile = visible;
+            this.ruleVisible = visible;
             //执行userinfo刷新
             getUserInfo().then((res)=>{
                 this.userInfo = res.data.data; //当前页面赋值用户信息
@@ -158,8 +166,6 @@ export default {
         },
         //分页
         pageSelect(page,event) {
-            debugger
-
             $(event.currentTarget).addClass('page-select').siblings().removeClass('page-select');
             //获取娃娃列表
             let params = {
@@ -169,6 +175,10 @@ export default {
                 console.log(res.data.data.content,'res.data.data.content')
                 this.list = res.data.data.content;
             });
+        },
+        ruleShow(){
+          debugger
+          this.ruleVisible=true;
         }
 
     },
@@ -235,8 +245,11 @@ export default {
     .mint-tab-item{
         padding:0 !important;
     }
-    .mint-tab-item-icon > *{
-        height:84%;
+    .home-title{
+      position: absolute;
+      top: 54px;
+      left: 50%;
+      margin-left: -120px;
     }
 
 </style>

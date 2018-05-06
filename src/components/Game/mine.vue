@@ -7,7 +7,7 @@
             <div class="address_content_history">
                 <div class="history_address" >
                     <div>
-                        <div class="clearfix address_list">
+                        <div class="clearfix address_list my_address"> 
                             <div class="f_l">
                                 <p class="font-26">
                                     <img class="rece-address" :src="mineInfo.defaultUrl" alt="">
@@ -16,14 +16,15 @@
                             </div>
                         </div>
                         <div class="mine-log clearfix address_list">
-                            <p class="font-26">
-                                <img class="wawa-log" :src="mineInfo.logUrl" alt="">
-                            </p>
-                            <div  v-for="(item,index) in mineInfo.logList">
-                                <div class="font-26" style="width:100%">
-                                    <p class="font-26" style="float:left">{{item.createTime}}</p>
-                                    <span v-if="item.status==1" class="green font-26" style="float:right">抓取成功</span>
-                                    <span  v-if="item.status==0" class="red font-26" style="float:right">抓取失败</span>
+                            <div class="mine-log-wrap">
+                                <div class="log-list">
+                                    <div  v-for="(item,index) in mineInfo.logList">
+                                        <div class="font-26" style="width:100%;height:30px">
+                                            <p class="font-26" style="float:left">{{item.createTime}}</p>
+                                            <span v-if="item.status==1" class="green font-26" style="float:right">抓取成功</span>
+                                            <span  v-if="item.status==0" class="red font-26" style="float:right">抓取失败</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +49,7 @@
             return {
                 selected:"",                    //tab选中状态
                 back1Img:'./static/img/ingame_btn_back1.png',
-                bgUrl:"./static/img/minebg.png",
+                bgUrl:"./static/img/home_bg2.png",
                 reFresh:false,       //刷新状态
                 addressList:[],
                 mineInfo:{
@@ -90,7 +91,7 @@
                 this.$router.push('/login');//退出当前登录
             },
             defaultPicture(){ //默认背景
-                this.bgUrl = "./static/img/minebg.png";
+                this.bgUrl = "./static/img/home_bg2.png";
             },
         },
         beforeRouteEnter (to, from, next) {//判断是不是手动刷新
@@ -140,11 +141,17 @@
     }
     .rece-address{
         width:44%;margin:0 0 6px 0;
+        opacity: 0;
     }
     .mine-log{
-        height: calc(100vh - 280px);
+        height: calc(100vh - 540px);
         overflow:auto;
+        background: url('../../../static/img/mine_record_table.png') no-repeat;
+        background-size: 100% 100%;
     }
+    .mine-log >div {
+        height:calc(100% - 100px);
+    } 
     .wawa-log{
         width:28%;margin:0 0 6px 0;
     }
@@ -155,15 +162,28 @@
         margin: 0 auto;
         right: 0;
         left: 0;
-        bottom: .3rem;
-        height: 3.4em;
+        bottom: .4rem;
+        height: 6em;
         background:url('../../../static/img/mine_btn_exit1.png') no-repeat 0 0;
         background-size:100%;
     }
     .address_list {
-        background: #fff;
+        /*background: #fff;*/
         border-radius: 10px;
         padding: 20px 15px;
         margin-bottom: 10px;
+    }
+    .my_address {
+        background: url('../../../static/img/mine_address_table.png') no-repeat;
+        background-size: 100%;
+    }
+    .mine-log-wrap {
+        overflow: hidden;
+        margin-top: 70px;
+        height: calc(100% - 50px);
+    }
+    .log-list {
+        overflow:auto;
+        height: calc(100% - 50px);
     }
 </style>

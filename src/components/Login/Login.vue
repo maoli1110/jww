@@ -79,7 +79,9 @@ export default {
 .login-bg > img {
     height: 100%;
     width: 100%;
+    max-width: 750px;
     position: fixed;
+    margin: 0 auto;
     z-index: 0;
     top: 0;
     bottom: 0;
@@ -89,12 +91,10 @@ export default {
 }
 .login-common > img {
     position: fixed;
-    width: 3rem;
     margin: 0 auto;
     right: 0;
     left: 0;
     bottom: 1.2rem;
-    /*height: .6em;*/
     user-select: none;
 }
 .login-ali-qq {

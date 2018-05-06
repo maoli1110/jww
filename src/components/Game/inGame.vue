@@ -324,14 +324,14 @@ export default {
                 $('#machine-clip').css('-webkit-transition-duration', '0.5s');
                 $('.machine-bar1').css('-webkit-transition-duration', '0.4s');
             } else {
-                // console.log(n,'n')
+                console.log(n,'n')
                 $('.machine').css('transform', 'translateZ(' + n + 'px)');
                 $('.machine').css('-webkit-transform', 'translateZ(' + n + 'px)');
                 $('.machine').css('transition-duration', '0.5s');
                 $('.machine').css('-webkit-transition-duration', '0.5s');
 
-                $('.machine-shadow').css('transform', 'translateY(' + n + 'px)');
-                $('.machine-shadow').css('-webkit-transform', 'translateY(' + n + 'px)');
+                $('.machine-shadow').css('transform', 'translateY(' + n*5 + 'px)');
+                $('.machine-shadow').css('-webkit-transform', 'translateY(' + n*5 + 'px)');
                 $('.machine-shadow').css('transition-duration', '0.5s');
                 $('.machine-shadow').css('-webkit-transition-duration', '0.5s');
             
@@ -916,7 +916,7 @@ export default {
     position: absolute;
     z-index: 3;
     width: 100%;
-    height: 17%;
+    height: 15%;
     bottom: 12.6%;
     width: 100%;
     display: flex;
@@ -1056,7 +1056,7 @@ export default {
 }
 
 #doll-list3 > li{
-    background: url('../../../static/img/toy_01.png') 0 0 no-repeat;
+    background: url('../../../static/img/1.png') 36% 0 no-repeat;
     background-size: 90%;
     width: 18%
 }
@@ -1068,7 +1068,7 @@ export default {
     background-size: 92%;
 }
 #doll-list2 > li{
-    background: url('../../../static/img/toy_01.png') 0 0 no-repeat;
+    background: url('../../../static/img/1.png') 36% 0 no-repeat;
     background-size: contain;
     width: 19%
 }
@@ -1079,7 +1079,7 @@ export default {
     background-size: 100%;
 }
 #doll-list1 > li{
-    background: url('../../../static/img/toy_01.png') 0 0 no-repeat;
+    background: url('../../../static/img/1.png') 36% 0 no-repeat;
     background-size: 100%;
     width: 18%
 }
@@ -1132,11 +1132,11 @@ export default {
 }
 .message {
     position: absolute;
-    left: .3rem;
-    top: 1.4rem;
+    left: .24rem;
+    top: 1.8rem;
     z-index: 6;
     background:url('../../../static/img/message-icon.png');
-    width: .9rem;
+    width: .92rem;
     height: .68rem;
     background-size: 100% 100%;
 

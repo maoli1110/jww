@@ -1142,7 +1142,7 @@
 .doll-box {
 	height: 1rem; 
 	position: absolute;
-	bottom: 5.64rem;
+	bottom: 6.2rem;
 	right: 0;
 	left: 0;
 	-webkit-transform: translateZ(-110px);
@@ -1566,7 +1566,7 @@
 /* iphone 7, 8 */
 @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
 	html{
-        font-size: 58px!important;
+        /*font-size: 58px!important;*/
     }
 }
 
@@ -1582,7 +1582,7 @@
 		-webkit-background-size: 100%;
 		right: 0;
 		left: 0;
-		top: 5.6rem;
+		top: 7.6rem;
 		/*top: 256px;*/
 		margin: auto;
 		z-index: 30;

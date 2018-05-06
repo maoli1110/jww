@@ -11,19 +11,19 @@
        <div class="wrap">
             <div class="register" v-show="isRegister">
                 <div class="form">
-                    <div style="font-size:16px;" class="username">
+                    <div style="font-size:18px;" class="username">
                         <label for="">用户名</label>
                         <input id="username" class="select-input" placeholder="请输入用户名" type="text" v-model="username">
                         <span class="success" v-show="usernameInvalid===1"></span>
                         <span class="error" v-show="usernameInvalid===0"></span>
                     </div>
-                    <div style="font-size:16px;" class="password">
+                    <div style="font-size:18px;" class="password">
                         <label for="">密码</label>
                         <input id="password" class="select-input"  placeholder="请输入密码"  type="password" name="" v-model="password" ></span>
                         <span class="success" v-show="passwordInvalid"></span>
                         <span class="error" v-show="!passwordInvalid"></span>
                     </div>
-                    <div style="font-size:16px;" class="repassword">
+                    <div style="font-size:18px;" class="repassword">
                         <label for="">确认密码</label>
                         <input id="repassword" class="select-input"  placeholder="请再次输入密码" type="password" name="" v-model="repassword"></span>
                         <span class="success" v-show="repasswordInvalid"></span>
@@ -110,7 +110,7 @@ export default {
             back2Img:'./static/img/ingame_btn_back2.png',
             registerSuccessImg:'./static/img/icon_success.png',
             registerTitle:'./static/img/register-title.png',
-            loginTitle:'./static/img/login-title.png',
+            loginTitle:'./static/img/text_dl.png',
             username:'',
             password:'',
             repassword:'',
@@ -258,10 +258,22 @@ export default {
 </script>
 
 <style scoped>
+.account .form > div {
+    height: 100px;
+    line-height: 100px;
+}
+.account .form > div * {
+    vertical-align: middle;
+}
+.account .form label,.account .form input {
+ /*   height: 60px;
+    line-height: 60px;
+    font-size: 18px;*/
+}
 .account .home{
     width: 100%;
     height: 100%;
-    background: url(/static/img/bg.jpg) no-repeat;
+    background: url(/static/img/bg.png) no-repeat;
     background-size: 100% 100%;
     position: absolute;
     left: 0;
@@ -269,51 +281,65 @@ export default {
 }
 .account .register .form {
     margin-top: 20%;
-    margin-left: 3%;
-    margin-right: 3%;
     background-color: #fff;
     border-radius: 6px;
 
 }
+.account .form .username>label {
+    background: url(/static/img/username-bg.png) center no-repeat;
+}
+.account .form .password>label {
+    background: url(/static/img/password-bg.png) center no-repeat;
+}
+.account .form .repassword>label {
+    background: url(/static/img/repassword-bg.png) center no-repeat;
+}
 .register>div>div{
-    padding: 14px;
-    margin: 0 10px;
+    padding: 0 14px;
     position: relative;
 }
 .register>div>div>input{
     border: transparent;
     outline: none;
+    font-size: 24px;
 }
-.register>div>div:nth-child(1),.register>div>div:nth-child(2){
-    border-bottom: 1px solid #ccc;
+.register>div>div:nth-child(1){
+    border-bottom: 3px solid #e2b57c;
+}
+.register>div>div:nth-child(2){
+    border-bottom: 3px solid #e2b57c;
+}
+.register>.form{
+    border-top: 6px solid #e2b57c;
+    border-bottom: 6px solid #e2b57c;
 }
 .register>div>div>label{
-    width: 1.33rem;
-    font-size: .23rem;
+    width: 1.6rem;
+    font-size: 0rem;
 }
 .register .username >span{
-    width: 1.6rem;
+    width: 1.7rem;
     position: absolute;
-    right: 10px;
+    right: 40px;
     height: 14px;
-    top: 22px;
+    top: 40px;
 }
 .register .password >span,.register .repassword >span{
     width: .4rem;
     line-height: 20px;
     position: absolute;
-    right: 10px;
+    right: 40px;
     height: 20px;
-    top: 22px;
+    top: 40px;
 }
 .register-btn .mint-button {
     position: absolute;
     left: 0;
     right: 0;
     margin: 0 auto;
-    margin-top: 20px;
-    width: 5.4rem;
-    height: 2.8em;
+    margin-top: 40px;
+    width: 289px;
+    height: 81px;
     background:url('../../../static/img/btn_zc2.png');
     background-size: 100% 100%;
 }
@@ -326,9 +352,9 @@ export default {
     left: 0;
     right: 0;
     margin: 0 auto;
-    margin-top: 20px;
-    width: 5.4rem;
-    height: 2.8em;
+    margin-top: 40px;
+    width: 289px;
+    height: 81px;
     background:url('../../../static/img/btn_dl2.png');
     background-size: 100% 100%;
 }
@@ -338,8 +364,8 @@ export default {
     right: 0;
     margin: 0 auto;
     margin-top: 20px;
-    width: 1rem;
-    height: 1.2em;
+    width: 112px;
+    height: 40px;
     background:url('../../../static/img/btn_zcnew.png') no-repeat;
     background-size: 100% 100%;
 }
@@ -372,6 +398,8 @@ export default {
 }
 .login-title,.register-title {
     position: absolute;
-    top: 1.2rem;
+    top: 54px;
+    left: 50%;
+    margin-left: -52px;
 }
 </style>
