@@ -8,7 +8,7 @@
                 <div class="history_address" >
                     <div>
                         <div class="clearfix address_list my_address"> 
-                            <div class="f_l">
+                            <div class="f_l" style="height:144px;">
                                 <p class="font-26">
                                     <img class="rece-address" :src="mineInfo.defaultUrl" alt="">
                                 </p>
@@ -18,7 +18,7 @@
                         <div class="mine-log clearfix address_list">
                             <div class="mine-log-wrap">
                                 <div class="log-list">
-                                    <div  v-for="(item,index) in mineInfo.logList">
+                                    <div  v-for="(item,index) in mineInfo.logList" class="clearfix">
                                         <div class="font-26" style="width:100%;height:30px">
                                             <p class="font-26" style="float:left">{{item.createTime}}</p>
                                             <span v-if="item.status==1" class="green font-26" style="float:right">抓取成功</span>
@@ -168,9 +168,7 @@
         background-size:100%;
     }
     .address_list {
-        /*background: #fff;*/
         border-radius: 10px;
-        padding: 20px 15px;
         margin-bottom: 10px;
     }
     .my_address {

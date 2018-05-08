@@ -267,7 +267,7 @@ footer,header,nav,section {
 .mint-cell{background:transparent !important;margin-bottom:0.1rem;padding-bottom:0.1rem}
 .mint-cell-value{width:100%}
 .mint-navbar{background:transparent !important;left:4%}
-.mint-navbar .mint-tab-item{padding: 13px 0px !important;}
+.mint-navbar .mint-tab-item{margin: 14px 0px !important;}
 .mint-navbar .mint-tab-item.is-selected{border-color:transparent !important;}
 /*公用弹窗样式*/
 /*遮罩*/
@@ -378,7 +378,9 @@ footer,header,nav,section {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    word-break: break-all;font-size:12px;
+    word-break: break-all;
+    font-size:18px;
+    width:33%;
 }
 .align-h-v{
 	display:flex;
@@ -517,14 +519,10 @@ footer,header,nav,section {
     html{
         /*font-size: 58px !important;*/
     }
-    .mint-navbar .mint-tab-item{padding:15px 0 !important;}
+    .mint-navbar .mint-tab-item{padding:11px 0 !important;}
     .record-content{
         margin: 3.8rem .4rem 0 !important;
         height: calc(100vh - 57%) !important;
-    }
-    .extract-pro{
-        width: 2.5rem !important;
-        margin-left: -1.25rem !important;
     }
 }
 
@@ -542,16 +540,9 @@ footer,header,nav,section {
 /* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
 @media only screen and (min-device-width : 320px) and (max-device-width : 568px){
     /* style */
-    .mint-navbar .mint-tab-item{
-        /*padding:12px 0 !important;*/
-    }
     .record-content{
         margin: 4.1rem .4rem 0 !important;
         height: calc(100vh - 60%) !important;
-    }
-    .extract-pro{
-        width: 2.5rem !important;
-        margin-left: -1.25rem !important;
     }
 }
 /* 判断iphone4-iphone4s *//* 横屏竖屏判断方法与ipad一样 */

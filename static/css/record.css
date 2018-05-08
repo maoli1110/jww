@@ -14,7 +14,7 @@
     z-index: 12;
 }
 .recode-bg .piece-exchange {
-    width: 20%;
+    width: 18%;
     height: 10%;
     background: url("../../static/img/btn_exchange.png") center no-repeat;
     background-size: 100%;
@@ -61,17 +61,16 @@
 }
 .item-infos .record-type{
     width: 25%;
-    background: #fff;
     text-align: center;
     border-radius: 8px;
     margin-right: 0.1rem;
-    background:url('../../static/img/blank_bg.png') no-repeat 0 0;
     background-size: 98%;
     height: 1.3rem;
 }
 .item-infos .record-type img{
-    width:81%;
-    margin-top:0.15rem;
+    width:62%;
+    margin-top:0.26rem;
+    margin-left: 0.2rem;
 }
 .item-infos  .payaway{ right:0.1rem;  }
 .history-list{
@@ -109,18 +108,18 @@
     background: #ccc;
     display: inline-block;
     border-radius: 0.3rem;
-    font-size: 0.16rem;
+    font-size: 0.24rem;
     font-weight: bold;
     height: 100%;
 }
 .piece-list .piece-count{
     background: #F9D829;
 }
-.record-list-them{width:33%;color:#AF7300;font-weight:bold;line-height:20px;font-size:13px;text-align:left;}
+.record-list-them{width:33%;color:#AF7300;font-weight:bold;line-height:20px;font-size:18px;text-align:left;}
 .record-list-time{right:0;color:#AF7300;font-weight:bold;}
-.mint-tab-item-label{width:80%;margin:0}
-.mint-tab-item:nth-child(1) .mint-tab-item-label{width:80%;margin:0;margin-left:0.5rem}
-.mint-tab-item:nth-child(2) .mint-tab-item-label{width:80%;margin:0;margin-left:0.25rem}
+.mint-tab-item-label{width:100%;margin:0}
+.mint-tab-item:nth-child(1) .mint-tab-item-label{width:100%;margin:0;margin-left:0.5rem}
+.mint-tab-item:nth-child(2) .mint-tab-item-label{width:100%;margin:0;margin-left:0.25rem}
 .mint-tab-container-item input {display: none;}
 /*提取娃娃*/
 .extract-pro{
@@ -129,7 +128,14 @@
     left: 50%;
     margin-left: -1.5rem;
 }
-.record-content .mint-cell{border-bottom:2px dashed #fff;}
+.record-content .mint-cell{
+    background:url('../../static/img/my_record_info_bg.png') no-repeat !important;
+    background-size: 100% 100% !important;
+    margin-bottom: 20px;
+}
+.record-content .mint-cell-value{
+    height: 146px;
+}
 .checkbox-select {
     position: absolute;
     top: 6px;
@@ -148,8 +154,8 @@
     /*border-radius: 100%;*/
     /*border: 1px solid #ccc;*/
     position: relative;
-    width: 16px;
-    height: 16px;
+    width: 28px;
+    height: 28px;
     vertical-align: middle;
 }
 .extract-info{
@@ -335,7 +341,7 @@
 .history_address .address_list {
     padding:35px 0;
     border-radius: 10px;
-    padding: 25px 36px;
+    padding: 10px 36px;
     margin-bottom: 10px;
 }
 .history_address .f_l >label {

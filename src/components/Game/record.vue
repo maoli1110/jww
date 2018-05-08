@@ -25,10 +25,6 @@
                 <!-- tab-container -->
                     <mt-tab-container v-model="selected" class="record-content relat">
                         <mt-tab-container-item id="history">
-                            <div class="extract-info">
-                                <span>提取内容</span>
-                                <span>提取时间</span>
-                            </div>
                             <div class="record-list-wrapper" >
                                 <mt-cell class="relat item-infos" v-for="item in payInfo" :key="item.price">
                                     <div class="record-type" @click="panelClose">
@@ -94,10 +90,6 @@
                 <!-- tab-container -->
                 <mt-tab-container v-model="selected" class="record-content relat">
                     <mt-tab-container-item id="exchangeHistory">
-                        <div class="extract-info">
-                            <span>兑换内容</span>
-                            <span>兑换时间</span>
-                        </div>
                         <div class="record-list-wrapper" >
                             <mt-cell class="relat item-infos" v-for="item in exchangeInfo" :key="item.price">
                                 <div class="record-type" @click="panelClose">
@@ -411,7 +403,7 @@
     display: block;
     padding: 0 8px;
     text-align: left;
-    font-size: 0.12rem;
+    font-size: 0.18rem;
     font-weight: bold;
 }
 </style>
