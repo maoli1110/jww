@@ -917,7 +917,7 @@ export default {
     position: absolute;
     z-index: 3;
     width: 100%;
-    height: 15%;
+    height: 16%;
     bottom: 12.6%;
     width: 100%;
     display: flex;
@@ -955,7 +955,7 @@ export default {
     margin-left: .6rem;
 }
 .operation-btn > div {
-    height: .56rem;
+    height: .74rem;
     width: .96rem;
 }
 
@@ -1135,7 +1135,7 @@ export default {
 .message {
     position: absolute;
     left: .24rem;
-    top: 1.8rem;
+    top: 1.7rem;
     z-index: 6;
     background:url('../../../static/img/message-icon.png');
     width: .92rem;
@@ -1172,11 +1172,13 @@ export default {
     z-index: 11;
     display: none;
 }
+.mint-tab-item {
+    padding: 40px 0px 0px 14px;
+}
 </style>
 <style>
 .in-game .mint-tabbar .mint-tab-item-icon {
     width: 50% !important;;
     height: 100%;
 }
-
 </style>

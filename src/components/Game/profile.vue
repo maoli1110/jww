@@ -9,7 +9,7 @@
         </a> -->
         <img :src="homeTitle" class="home-title" alt="">
         <img :src="guize" class="guize" alt="" @click="ruleShow">
-        <div class="relat xuanze relat"  style="height:4%">
+        <div class="relat xuanze relat">
             <p class="substr absol add-coin yellow1" @click="recharge">{{userInfo.goldCounts}}</p>
         </div>
         <ul class="pageNav Grid">
@@ -24,7 +24,7 @@
        <div class="select-list">
            <ul>
                <li class="raduis-1 relat" v-for="(item,key) in list" @click="inGame(item.wid,item)">
-                  <p style="height:17px;">{{item.title}}</p>
+                  <p style="height:30px;">{{item.title}}</p>
                   <div><img :src="item.imgUrl" v-if="item.wid!=0" alt=""></div>
                   <div><img :src="waitImg" v-if="item.wid==0" alt=""></div>
                   <div class="li-bottom"><span class="time raduis-1"><span class="pay-coin block"></span>{{item.timeMoney?item.timeMoney:0}}&nbsp;/次</span><span class="go raduis-1" >GO</span></div>
@@ -45,7 +45,6 @@
                </mt-tab-item>
            </mt-tabbar>
        </div>
-       <div class="goBack"><img src="" alt=""></div>
     </div>
     <v-rule v-show="ruleVisible" :is-show="ruleVisible" @payPanelHide="payPanelHide"></v-rule>
     <v-paylist v-show="payVisbile" :is-show="payVisbile" @payPanelHide="payPanelHide"></v-paylist>

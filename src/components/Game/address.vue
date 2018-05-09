@@ -15,28 +15,30 @@
         </div>
         <div class="address_content" v-show="isNewAddress">
             <div class="new_address">
-                <div style="font-size:16px;" class="location username">
-                    <label for="">收货人姓名</label>
-                    <input class="select-input" placeholder="请输入收货人姓名" type="text" v-model="address.reciveName">
+                <div class="new_address_wrap">
+                    <div style="font-size:16px;" class="location username">
+                        <label for="">收货人姓名</label>
+                        <input class="select-input" placeholder="请输入收货人姓名" type="text" v-model="address.reciveName">
+                    </div>
+                    <div style="font-size:16px;" class="location phone">
+                        <label for="">手机号码</label>
+                        <input class="select-input"  placeholder="请输入11位手机号码" type="number" name="" v-model="address.phoneNumber"></span>
+                    </div>
+                    <div style="font-size:16px;" class="location">
+                        <label for="">请选择省份</label>
+                        <span class="select" @click="selectProvince">{{address.province}}</span>
+                        <span class="icon" @click="selectProvince"></span>
+                    </div>
+                    <div class="" style="font-size:16px;" class="location">
+                        <label for="">请选择城市</label>
+                        <span class="select" @click="selectCity">{{address.city}}</span>
+                        <span class="icon" @click="selectCity"></span>
+                    </div>
+                    <mt-field label="详细地址" style="color:#BF9563;" placeholder="xx区9999弄99号999室" type="textarea" rows="2" v-model="address.detailAddress"></mt-field>
+                    <hr>
+                    <label class="address-checkbox-select"><input id="new_set_default" type="checkbox" class="checkbox-input"><span class="address-checkbox-core"></span>
+                    </label>
                 </div>
-                <div style="font-size:16px;" class="location phone">
-                    <label for="">手机号码</label>
-                    <input class="select-input"  placeholder="请输入11位手机号码" type="number" name="" v-model="address.phoneNumber"></span>
-                </div>
-                <div style="font-size:16px;" class="location">
-                    <label for="">请选择省份</label>
-                    <span class="select" @click="selectProvince">{{address.province}}</span>
-                    <span class="icon" @click="selectProvince"></span>
-                </div>
-                <div class="" style="font-size:16px;" class="location">
-                    <label for="">请选择城市</label>
-                    <span class="select" @click="selectCity">{{address.city}}</span>
-                    <span class="icon" @click="selectCity"></span>
-                </div>
-                <mt-field label="详细地址" style="color:#8c8c8c;" placeholder="xx区9999弄99号999室" type="textarea" rows="2" v-model="address.detailAddress"></mt-field>
-                <hr>
-                <label class="address-checkbox-select"><input id="new_set_default" type="checkbox" class="checkbox-input"><span class="address-checkbox-core"></span>
-                </label>
             </div>
             <div class="save_address">
                 <mt-button type="default" class="Grid-cell" @click="saveAddress"></mt-button>
@@ -320,9 +322,9 @@ export default {
         defaultPicture(){
             console.log(this.isAddressList,'log');
             if(this.isAddressList){
-                this.bgUrl = "./static/img/address_bg.jpg";
+                this.bgUrl = "./static/img/new_address_bg.jpg";
             }else{
-                this.bgUrl = "./static/img/address2.jpg";
+                this.bgUrl = "./static/img/manage_address_bg.jpg";
             }
         },
         refreashPage(){
@@ -400,5 +402,15 @@ export default {
     }
     .address-mask{
         width:100%;height:100%;background:#000;opacity:0.5;z-index:4
+    }
+    .save_address .mint-button {
+        width: 271px;
+        height: 89px;
+    }
+    .mint-cell-value textarea {
+        border-radius:16px;
+    }
+    .new_address label{
+        color:#BF9563;
     }
 </style>

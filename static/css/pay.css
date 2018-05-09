@@ -23,20 +23,19 @@
     width:90% !important;
     height:100%;
     font-size:12px;
-    background:url('../../static/img/pay_table_bg.png') center 45% no-repeat;
+    background:url('../../static/img/pay_table_bg.png') center 25% no-repeat;
     position:absolute;
     z-index:10;
-    /*top:15%;*/
     left:50%;
     margin-left:-45%;
     background-size: 100%;
-    padding: 9% 5% 0;
+    padding: 0% 5% 0;
 }
 /*列表信息*/
 .pay-list-wrapper{
     height: 59%;
     overflow: auto;
-    margin-top: 46%;
+    margin-top: 44%;
 }
 .common-list-wrapper{
      padding-top: 0rem !important;

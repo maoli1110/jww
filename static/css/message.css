@@ -1,6 +1,8 @@
 .message-list-wrapper {
     font-size: .2rem;
     overflow: auto;
+    margin: 40px auto;
+    
 }
 .message-bg{
     width: 100%;
@@ -8,9 +10,9 @@
     top:0;
 }
 .message-list {
-    width: 5.8rem;
-    height: 7.4rem;
-    background: url(../../static/img/message_table_bg.png) no-repeat;
+    width: 90%;
+    height: 950px;
+    background: url(/static/img/message_table_bg.png) no-repeat;
     background-size: 100% 100%;
     z-index: 11;
     padding: 1.2rem 0 .5rem;
@@ -20,19 +22,21 @@
 }
 .message-list .green .detail {
     display: inline-block;
-    width: .62rem;
-    height: .24rem;
+    width: .8rem;
+    height: .4rem;
     text-align: right;
     background: url('../../static/img/message_btn_read.png') no-repeat;
     background-size: 100% 100%;
 }
 .message-list-item {
-    width: 80%;
+    width: 90%;
+    padding: 0 10px;
     height: 1.38rem;
-    padding: 0 .1rem;
     border-radius: .2rem;
     background: #ececec;
-    margin: .2rem auto;
+    margin: .4rem auto;
+    background: url('../../static/img/message_info_table.png') no-repeat;
+    background-size: 100% 100%;
 }
 .message-list-item .icon {
     text-align: center;
@@ -42,25 +46,30 @@
 }
 .message-list-item .Grid-cell.from {
     text-align: center;
-    margin: 0.2rem 0;
+    margin: 20px 0 0 10px;
 }
 .message-list-item .Grid-cell.from .manager {
     text-align: center;
     vertical-align: middle;
-    width: 76%;
+    width: 74%;
+    height: 33px;
+    line-height: 32px;
     margin-left: 12%;
-    background: #ccc;
+    background: #b7883a;
+    color: #fff;
 }
 .message-detail {
-    padding: 0 10%;
+    margin: 0 5%;
     height: 92%;
     position: relative;
+    border: 6px solid #e9ab2d;   
+    background: #fff;
 }
 .message-detail .main-content {
-    background: #ececec;
-    min-height: 82%;
-    border-radius: .14rem;
-    padding: .3rem;
+    background: #fff2d6;
+    min-height: 70%;
+    margin: 12px;
+    padding: 0 12px;
 }
 .message-detail .main-content .header >div:nth-child(1){
     border-radius: .12rem;
@@ -68,12 +77,18 @@
     padding: .01rem .08rem;
 }
 .message-detail .op-btn {
-    position: absolute;
     bottom: 0;
     width: 80%;
+    margin:40px 56px;
 }
 .message-detail .title {
     padding: .4rem 0;
+}
+.message-detail .header {
+    background: #ffd16d;
+    margin:20px 10px;
+    padding: 15px 0;
+    font-size: 20px;
 }
 .delete-dialog .op-btn {
     position: absolute;
