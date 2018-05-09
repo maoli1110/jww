@@ -118,13 +118,16 @@
 .record-list-them{width:33%;color:#AF7300;font-weight:bold;line-height:20px;font-size:18px;text-align:left;}
 .record-list-time{right:0;color:#AF7300;font-weight:bold;}
 .mint-tab-item-label{width:100%;margin:0}
-.mint-tab-item:nth-child(1) .mint-tab-item-label{width:100%;margin:0;margin-left:0.5rem}
-.mint-tab-item:nth-child(2) .mint-tab-item-label{width:100%;margin:0;margin-left:0.25rem}
+.no-exchange .mint-tab-item:nth-child(1) .mint-tab-item-label{width:100%;margin:0;margin-left:0.35rem}
+.no-exchange .mint-tab-item:nth-child(2) .mint-tab-item-label{width:100%;margin:0;margin-left:0.11rem}
+.no-exchange .mint-tab-item:nth-child(3) .mint-tab-item-label{width:100%;margin:0;margin-left:-.12rem}
+.exchange .mint-tab-item:nth-child(1) .mint-tab-item-label{width:100%;margin:0;margin-left:0.35rem}
+.exchange .mint-tab-item:nth-child(2) .mint-tab-item-label{width:100%;margin:0;margin-left:0rem}
 .mint-tab-container-item input {display: none;}
 /*提取娃娃*/
 .extract-pro{
     width: 3rem;
-    /*bottom: 1rem;*/
+    bottom: 2.3rem;
     left: 50%;
     margin-left: -1.5rem;
 }
@@ -417,42 +420,57 @@
 }
 /*碎片合成*/
 .compound-detail{
-    width: 272px;
-    height: 396px;
+    width: 523px;
+    height: 755px;
     font-size: 12px;
     background: url(/static/img/compose_bg.png) center 25% no-repeat;
     z-index: 12;
     left: 0;
     right: 0;
-    top: 56%;
+    top: 16%;
     background-size: 100%;
     text-align: center;
     margin: 0 auto;
-    margin-top: -250px;
 }
 .compound-detail .op-btn{
-    margin-top: 38px;
+    margin-top: 26px;
 }
 .compound-info{
     color: #fff;
     padding: 0 36px;
 }
 .compound-detail .op-btn .mint-button--default{
-    margin-left: 10px;
+    height: 67px;
+    margin-left: 20px;
     background:url('/static/img/compose_btn_compose1.png') no-repeat 0 0;
     background-size: 100%;
 }
 .compound-detail .op-btn .mint-button--primary{
-    margin-right: 10px;
+    height: 67px;
+    margin-right: 20px;
     background:url('/static/img/compose_btn_back1.png') no-repeat 0 0;
     background-size: 100%;
 }
 .compound-detail .compound-img {
     width: 220px;
     height: 160px;
-    margin: 66px 26px;
+    margin: 241px 145px 160px 145px;
 }
-
+.compound-detail .compound-name {
+    color: #ffcb58;
+    font-size: 20px;
+    font-weight: bold;   
+    padding: 3px 5px;
+}
+.compound-detail .total {
+    color: #ff7a6e;
+    font-size: 30px;
+    font-weight: bold;
+}
+.compound-detail .small-compound-img >img {
+    width: 72%;
+    margin-top: -10px;
+}
 
 
 

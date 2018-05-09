@@ -585,6 +585,7 @@ export default {
                 },
 
                 this.catchDoll = function(a) {
+                    debugger
                     var _this = this;
                     var b = 1;
                     return setTimeout(function() {
@@ -1090,8 +1091,10 @@ export default {
     right: 0;
     top: .19rem;
     z-index: 8;
-    font-size: .24rem;
-    font-weight: 800;
+    font-size: .24em;
+}
+.user-info p,.user-wrap p {
+    font-weight: bold;
 }
 .user-info {
     top: 0;
@@ -1100,7 +1103,6 @@ export default {
 }
 .user-wrap >img {
     position: absolute;
-    width: .8rem;
     height: .7rem;
     z-index: 1;
     top: .2rem;
@@ -1116,18 +1118,18 @@ export default {
 .user-wrap .money {
     max-width: 1.7rem;
     position: absolute;
-    top: .62rem;
+    top: .63rem;
     right: .56rem;
     z-index: 9;
-    height: .32rem;
-    line-height: .32rem;
+    height: .34rem;
+    line-height: .34rem;
 }
 .user-wrap .money:after{
     content: '';
     background:url('../../../static/img/ingame_btn_pay3.png');
     background-size: 100% 100%;
-    width: 18px;
-    height: 18px;
+    width: 38px;
+    height: 38px;
     position: absolute;
 }
 .message {

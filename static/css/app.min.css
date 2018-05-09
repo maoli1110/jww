@@ -976,7 +976,7 @@
 .machine-clip.catch>.machine-clip-arm__left {
 	ransition-duration: .3s!important;
 	-webkit-transition-duration: .3s!important;
-	transform: rotate(10deg)
+	transform: rotate(20deg)
 }
 
 .machine-clip-arm__right {
@@ -992,7 +992,7 @@
 .machine-clip.catch>.machine-clip-arm__right {
 	ransition-duration: .3s!important;
 	-webkit-transition-duration: .3s!important;
-	transform: rotate(-10deg)
+	transform: rotate(-20deg)
 }
 
 .machine-clip-arm__right .machine-clip-arm_item {

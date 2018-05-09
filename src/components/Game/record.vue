@@ -9,7 +9,7 @@
             <!-- 兑换碎片按钮 -->
             <div class="piece-exchange absol" @click="exchange"></div>
             <!-- 非兑换碎片界面 -->
-            <div class="absol recode-list" v-show="!isExchange">
+            <div class="absol recode-list no-exchange" v-show="!isExchange">
                 <!--table选项卡-->
                 <mt-navbar v-model="selected" class="absol" style="">
                     <mt-tab-item id="list" style=" ">
@@ -77,7 +77,7 @@
                     </div>
             </div>
             <!-- 兑换碎片界面 -->
-            <div class="absol recode-list" v-if="isExchange">
+            <div class="absol recode-list exchange" v-if="isExchange">
                 <!--table选项卡-->
                 <mt-navbar v-model="selected" class="absol" style="">
                     <mt-tab-item id="exchangeList" style=" ">
@@ -126,9 +126,9 @@
         <div class="compound-detail absol" v-show="isCompound">
             <div class="compound-img"><img :src="currentCompundInfo.imgUrl" alt=""></div>
             <div class="compound-info Grid">
-                <div class="Grid-cell u-lof25 align-v-h">{{currentCompundInfo.currentCounts}}</div>
-                <div class="Grid-cell align-v-h">{{currentCompundInfo.name}}</div>
-                <div class="Grid-cell u-lof25 align-v-h">{{currentCompundInfo.total}}</div>
+                <div class="Grid-cell u-lof25 align-v-h small-compound-img"><img :src="currentCompundInfo.imgUrl" alt=""></div>
+                <div class="Grid-cell align-v-h compound-name">{{currentCompundInfo.name}}</div>
+                <div class="Grid-cell u-lof20 align-v-h total">{{currentCompundInfo.total}}</div>
             </div>
             <div class="op-btn Grid">
                 <mt-button type="default" class="Grid-cell" @click="compound"></mt-button>
