@@ -6,7 +6,6 @@
             <div class="dialog-close absol" @click="panelClose">
                 <span ></span>
             </div>
-            <img :src="ruleTitleImg" class="rule-title" alt="">
             <!--rule content-->
             <img  class="absol rule-content" :src="ruleImg" alt="">
         </div>
@@ -38,14 +37,13 @@
         z-index:11
     }
     .rule .rule-content {
-        width: 654px;
+        width: 90%;
         font-size: 12px;
         position: absolute;
         z-index: 10;
-        top: 50%;
+        top: 100px;
         left: 50%;
-        margin-left: -327px;
-        margin-top: -432px;
+        margin-left: -45%;
     }
     .rule .rule-title {
         position: absolute;

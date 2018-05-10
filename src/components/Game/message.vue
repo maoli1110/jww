@@ -44,9 +44,9 @@
             </div>
             <div class="delete-dialog" v-show="deleteDialogVisible">
                 <div  class="op-btn Grid">
-                    <mt-button type="default" class="Grid-cell" @click="deleteMsg(detailMessageInfo.id)">确定</mt-button>
+                    <mt-button type="default" class="Grid-cell" @click="deleteMsg(detailMessageInfo.id)"></mt-button>
                     <div class="Grid-cell"></div>
-                    <mt-button type="primary" class="Grid-cell" @click="deleteDialogVisible=false">取消</mt-button>
+                    <mt-button type="primary" class="Grid-cell" @click="deleteDialogVisible=false"></mt-button>
                 </div>
             </div>
         </div>
@@ -116,9 +116,9 @@
     }
 </script>
 <style scope>
-    .message-bg .dialog-close{
+ /*   .message-bg .dialog-close{
         right: 2%;
         top: 16%;
         z-index: 12!important;
-    }
+    }*/
 </style>

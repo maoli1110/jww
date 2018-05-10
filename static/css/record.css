@@ -10,7 +10,7 @@
     background: url("../../static/img/my_btn_cancel1.png") center no-repeat;
     background-size: 100%;
     right: 4%;
-    top: 10%;
+    top: 130px;
     z-index: 12;
 }
 .recode-bg .piece-exchange {
@@ -19,25 +19,26 @@
     background: url("../../static/img/btn_exchange.png") center no-repeat;
     background-size: 100%;
     left: 7.5%;
-    top: 16%;
+    top: 200px;
     z-index: 12;
 }
 .recode-bg .recode-list{
     width:90%;
-    height:100%;
+    height: 9.9rem;
     font-size:12px;
-    background:url("../../static/img/my_frame_bg.png") center 25% no-repeat;
+    background:url("../../static/img/my_frame_bg.png") no-repeat;
     z-index:10;
+    top: 100px;
     left:5%;
     background-size: 100%;
     text-align:center;
 }
 .mint-navbar{
-    top:23%;z-index:100;width:88%
+    top:218px;z-index:100;width:88%
 }
 /*列表信息*/
 .record-content{
-    margin: 4rem .4rem 0;
+    margin: 3.2rem .4rem 0;
     height: 520px;
     overflow: auto;
     }
@@ -128,7 +129,7 @@
 /*提取娃娃*/
 .extract-pro{
     width: 3rem;
-    bottom: 10%;
+    top: 890px;
     left: 50%;
     margin-left: -1.5rem;
 }
@@ -265,7 +266,7 @@
     right: 0;
     left: 0;
     bottom: 2rem;
-    height: 4em;
+    height:89px;
     background:url('../../static/img/btn_new1.png');
     background-size: 100% 100%;
 }
@@ -370,12 +371,17 @@
     padding-bottom: 2px;
 }
 .history_address .address_list {
+    border-radius: 10px;
+    padding: 15px 36px;
+    background: url('../../static/img/address_table_choose.png') no-repeat;
+    background-size: 100% 100%;
+    margin-bottom: 15px;
+}
+.history_address .mine-log {
     padding:35px 0;
     border-radius: 10px;
     padding: 20px 36px;
     margin-bottom: 15px;
-    background: url('../../static/img/address_table_choose.png') no-repeat;
-    background-size: 100% 100%;
 }
 .history_address .f_l >label {
     padding-top: 4px;

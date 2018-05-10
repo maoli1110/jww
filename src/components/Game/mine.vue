@@ -8,14 +8,14 @@
                 <div class="history_address" >
                     <div>
                         <div class="clearfix address_list my_address"> 
-                            <div class="f_l" style="height:144px;">
+                            <div class="f_l" style="height:130px;">
                                 <p class="font-26">
                                     <img class="rece-address" :src="mineInfo.defaultUrl" alt="">
                                 </p>
                                 <p class="font-26">{{mineInfo.defaultAddress.reciveName}}&nbsp;{{mineInfo.defaultAddress.phoneNumber}}&nbsp;{{mineInfo.defaultAddress.province}}{{mineInfo.defaultAddress.city}}{{mineInfo.defaultAddress.detailAddress}}</p>
                             </div>
                         </div>
-                        <div class="mine-log clearfix address_list">
+                        <div class="mine-log clearfix">
                             <div class="mine-log-wrap">
                                 <div class="log-list">
                                     <div  v-for="(item,index) in mineInfo.logList" class="clearfix">
@@ -157,12 +157,12 @@
     }
     .log-btn .mint-button{
         color: #fff;
-        position: fixed;o
+        position: fixed;
         width: 5.4rem;
         margin: 0 auto;
         right: 0;
         left: 0;
-        bottom: .4rem;
+        bottom: .04rem;
         height: 6em;
         background:url('../../../static/img/mine_btn_exit1.png') no-repeat 0 0;
         background-size:100%;
@@ -174,6 +174,7 @@
     .my_address {
         background: url('../../../static/img/mine_address_table.png') no-repeat;
         background-size: 100%;
+        height: 153px;
     }
     .mine-log-wrap {
         overflow: hidden;

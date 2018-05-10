@@ -1,7 +1,7 @@
 .message-list-wrapper {
     font-size: .2rem;
     overflow: auto;
-    margin: 40px auto;
+    margin: 10px auto;
     
 }
 .message-bg{
@@ -14,7 +14,8 @@
     height: 950px;
     background: url(/static/img/message_table_bg.png) no-repeat;
     background-size: 100% 100%;
-    z-index: 11;
+    z-index: 10;
+    top: 100px;
     padding: 1.2rem 0 .5rem;
 }
 .message-list .green {
@@ -68,8 +69,8 @@
 .message-detail .main-content {
     background: #fff2d6;
     min-height: 70%;
-    margin: 12px;
-    padding: 0 12px;
+    margin: 17px;
+    padding: 0 17px;
 }
 .message-detail .main-content .header >div:nth-child(1){
     border-radius: .12rem;
@@ -79,14 +80,14 @@
 .message-detail .op-btn {
     bottom: 0;
     width: 80%;
-    margin:40px 56px;
+    margin:28px 56px;
 }
 .message-detail .title {
     padding: .4rem 0;
 }
 .message-detail .header {
     background: #ffd16d;
-    margin:20px 10px;
+    margin:25px 15px;
     padding: 15px 0;
     font-size: 20px;
 }
@@ -94,12 +95,12 @@
     position: absolute;
     width: 100%;
     bottom: .3rem;
-    padding: 0 0.5rem;
+    padding: 0 0.8rem;
 }
 .delete-dialog {
     position: absolute;
-    width: 5.26rem;
-    height: 3.1rem;
+    width: 6rem;
+    height: 3.5rem;
     top: 30%;
     left: 0;
     right: 0;

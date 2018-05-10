@@ -21,11 +21,12 @@
 /*重置弹窗列表*/
 .pay-bg .pay-list{
     width:90% !important;
-    height:100%;
     font-size:12px;
-    background:url('../../static/img/pay_table_bg.png') center 25% no-repeat;
+    height: 9.9rem;
+    background:url('../../static/img/pay_table_bg.png') no-repeat;
     position:absolute;
     z-index:10;
+    top: 100px;
     left:50%;
     margin-left:-45%;
     background-size: 100%;
@@ -33,9 +34,9 @@
 }
 /*列表信息*/
 .pay-list-wrapper{
-    height: 59%;
+    height: 8rem;
     overflow: auto;
-    margin-top: 44%;
+    margin-top: 200px;
 }
 .common-list-wrapper{
      padding-top: 0rem !important;
@@ -104,21 +105,7 @@
 @media only screen and (device-width: 375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
     /* style */
     html{
-        font-size: 60px !important;
-    }
-    .pay-list-wrapper {
-        height: 53%;
-        overflow: auto;
-        margin: 72% 3% 0;
-    }
-    .dialog-close {
-        width: .82rem;
-        height: .82rem;
-        background: url("../../static/img/my_btn_cancel1.png") center no-repeat;
-        background-size: 100%;
-        right: 2%;
-        top: 20%;
-        z-index: 12;
+        font-size: 100px !important;
     }
 }
 

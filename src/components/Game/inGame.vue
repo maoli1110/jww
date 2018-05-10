@@ -952,7 +952,7 @@ export default {
     display: flex;
     display: -webkit-flex;
     flex-wrap:wrap;
-    margin-left: .6rem;
+    margin-left: .8rem;
 }
 .operation-btn > div {
     height: .74rem;
@@ -979,7 +979,7 @@ export default {
     background-size: 100% 100%;
 }
 .operation-btn > div:nth-child(4){
-    background: url('../../../static/img/ingame_btn_left1.png') no-repeat 6px 3px ;
+    background: url('../../../static/img/ingame_btn_left1.png') no-repeat 6px 5px ;
     background-size: 100% 100%;
 }
 .operation-btn > div:nth-child(6){
@@ -987,7 +987,7 @@ export default {
     background-size: 100% 100%;
 }
 .operation-btn > div:nth-child(8){
-    background: url('../../../static/img/ingame_btn_down1.png')no-repeat 3px 1px ;
+    background: url('../../../static/img/ingame_btn_down1.png')no-repeat 0px 0px ;
     background-size: 100% 100%;
 }
 .operation-btn > div:nth-child(2):active{
@@ -995,7 +995,7 @@ export default {
     background-size: 100% 100%;
 }
 .operation-btn > div:nth-child(4):active{
-    background: url('../../../static/img/ingame_btn_left2.png') no-repeat 6px 3px ;
+    background: url('../../../static/img/ingame_btn_left2.png') no-repeat 6px 5px ;
     background-size: 100% 100%;
 }
 .operation-btn > div:nth-child(6):active{
@@ -1011,7 +1011,7 @@ export default {
     background-size: 100% 100%;
 }
 .operation-btn > div:nth-child(4).btn-left-active{
-    background: url('../../../static/img/ingame_btn_left2.png') no-repeat 6px 3px ;
+    background: url('../../../static/img/ingame_btn_left2.png') no-repeat 6px 5px ;
     background-size: 100% 100%;
 }
 .operation-btn > div:nth-child(6).btn-right-active{

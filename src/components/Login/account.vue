@@ -109,7 +109,7 @@ export default {
             back1Img:'./static/img/ingame_btn_back1.png',
             back2Img:'./static/img/ingame_btn_back2.png',
             registerSuccessImg:'./static/img/icon_success.png',
-            registerTitle:'./static/img/register-title.png',
+            registerTitle:'./static/img/text_zc.png',
             loginTitle:'./static/img/text_dl.png',
             username:'',
             password:'',
@@ -386,14 +386,13 @@ export default {
     background-size: 100% 100%;
 }
 .registerSuccess {
-    width: 80px;
-    height: 90px;
+    width: 300px;
+    height: 100px;
     position: absolute;
     margin: 0 auto;
     left: 0;
     right: 0;
-    top: 50%;
-    margin-top: -25px;
+    top: 30%;
     z-index: 1;
 }
 .login-title,.register-title {

@@ -268,7 +268,7 @@ footer,header,nav,section {
 .mint-cell{background:transparent !important;margin-bottom:0.1rem;padding-bottom:0.1rem}
 .mint-cell-value{width:100%}
 .mint-navbar{background:transparent !important;left:4%}
-.mint-navbar .mint-tab-item{padding:22px 0 !important;margin: 0px 0px !important;}
+.mint-navbar .mint-tab-item{padding:17px 0 !important;margin: 0px 0px !important;}
 .mint-navbar .mint-tab-item.is-selected{border-color:transparent !important;}
 /*公用弹窗样式*/
 /*遮罩*/
