@@ -916,8 +916,8 @@ export default {
     position: absolute;
     z-index: 3;
     width: 100%;
-    height: 14%;
-    bottom: 14.6%;
+    height: 13%;
+    bottom: 15%;
     width: 100%;
     display: flex;
     display: -webkit-flex;
@@ -954,7 +954,7 @@ export default {
     margin-left: .8rem;
 }
 .operation-btn > div {
-    height: .64rem;
+    height: .56rem;
     width: .92rem;
 }
 
@@ -1189,7 +1189,7 @@ export default {
     }
 }
 /* 判断iphone6 *//* 横屏竖屏判断方法与ipad一样 */
-@media only screen and (min-device-width: 375px) and (max-device-width: 676px) and (orientation : portrait) { 
+ @media only screen(device-width: 320px) and (device-height:667px) and (-webkit-device-pixel-ratio:2){
    .op-btn {
         position: absolute;
         z-index: 3;
