@@ -26,7 +26,7 @@
     background:url('../../static/img/pay_table_bg.png') no-repeat;
     position:absolute;
     z-index:10;
-    top: 100px;
+    top: 80px;
     left:50%;
     margin-left:-45%;
     background-size: 100%;

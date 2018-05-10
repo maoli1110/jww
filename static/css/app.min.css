@@ -916,8 +916,7 @@
 	-webkit-background-size: 100%;
 	right: 0;
 	left: 0;
-	/*top: 4.6rem;*/
-	top: 310px;
+	top: 7.6rem;
 	margin: auto;
 	z-index: 30;
 }
@@ -1549,30 +1548,14 @@
 .machine-light {
 	bottom: .3rem
 }
-/* 判断iphonex */
-@media only screen and (device-width: 375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
-    /* style */
-    .doll-box {
-	    height: 1rem;
-	    position: absolute;
-	    bottom: 6rem;
-	    right: 0;
-	    left: 0;
-	    -webkit-transform: translateZ(-110px);
-	    transform: translateZ(-110px);
-	    z-index: 1;
-	}
-}
-/* iphone 7, 8 */
-@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
-	html{
-        /*font-size: 58px!important;*/
-    }
-}
 
 
 /* pc */
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1000px) and (max-width: 1920px) {
+	html {
+		font-size: 80px;
+		max-width: 640px;
+	}
     .machine-shadow {
 		width: 1.5rem;
 		height: .8rem;
@@ -1587,4 +1570,87 @@
 		margin: auto;
 		z-index: 30;
 	}
+	.common-dialog {
+		height: 90%!important;
+	}
+	.pay-list-wrapper {
+		height: 70%!important;
+	}
+	.record-content{
+		margin: 3.6rem .4rem 0;
+    	height: 57%;
+    	overflow: auto;
+	}
+	.mint-navbar {
+	    top: 176px!important;
+	    z-index: 100;
+	    width: 88%;
+	}
+	.recode-bg .piece-exchange{
+		top: 185px;
+	}
+	.home .xuanze{
+		margin-top: 160px!important;
+	}
+	.home .guize{
+		margin-top: 160px!important;
+	}
+	.mint-navbar{
+		top: 176px!important;
+	}
+	.record-content{
+		height: 480px!important;
+	}
+	.extract-pro{
+		top: 774px!important;
+	}
+	.operation-btn > div {
+	    height: .64rem;
+	    width: 1.2rem !important;
+	}
+	.mint-tabbar{
+		height: 120px;
+	}
+	.add-coin {
+	    height: .67rem !important;
+	    line-height: .67rem !important;
+	}
+	.pay-list-wrapper{
+		margin-top: 150px;
+	}
+}
+
+/* 判断iphonex */
+@media only screen and (device-width: 375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
+    /* style */
+    .doll-box {
+	    height: 1rem;
+	    position: absolute;
+	    bottom: 7.2rem;
+	    right: 0;
+	    left: 0;
+	    -webkit-transform: translateZ(-110px);
+	    transform: translateZ(-110px);
+	    z-index: 1;
+	}
+	.machine-shadow {
+	    top: 10.6rem;
+	}
+	.op-btn {
+	    position: absolute;
+	    z-index: 3;
+	    width: 100%;
+	    height: 15%;
+	    bottom: 13.8%;
+	    width: 100%;
+	    display: flex;
+	    display: -webkit-flex;
+	}
+}
+
+/* iphone 7, 8 */
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+	html{
+        /*font-size: 58px!important;*/
+    }
 }

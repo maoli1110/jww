@@ -41,7 +41,7 @@
         font-size: 12px;
         position: absolute;
         z-index: 10;
-        top: 100px;
+        top: 80px;
         left: 50%;
         margin-left: -45%;
     }

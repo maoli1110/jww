@@ -912,13 +912,12 @@ export default {
     vertical-align: bottom;
     height: 1.4rem;
 }
-
 .op-btn {
     position: absolute;
     z-index: 3;
     width: 100%;
-    height: 16%;
-    bottom: 12.6%;
+    height: 14%;
+    bottom: 14.6%;
     width: 100%;
     display: flex;
     display: -webkit-flex;
@@ -955,8 +954,8 @@ export default {
     margin-left: .8rem;
 }
 .operation-btn > div {
-    height: .74rem;
-    width: .96rem;
+    height: .64rem;
+    width: .92rem;
 }
 
 .doll-bets-btn{
@@ -1088,10 +1087,10 @@ export default {
     width: 3.2rem;
     height: 1.9rem;
     position: absolute;
-    right: 0;
+    right: 10px;
     top: .19rem;
     z-index: 8;
-    font-size: .24em;
+    font-size: .26em;
 }
 .user-info p,.user-wrap p {
     font-weight: bold;
@@ -1099,27 +1098,28 @@ export default {
 .user-info {
     top: 0;
     background: url('../../../static/img/ingame_table_information.png') no-repeat;
-    background-size: 3rem 1.1rem;
+    background-size: 100%;
 }
 .user-wrap >img {
     position: absolute;
-    height: .7rem;
+    height: .9rem;
+    width: .88rem;
     z-index: 1;
     top: .2rem;
-    left: .2rem;
+    left: .02rem;
 }
 .user-wrap .user-name {
     max-width: 1.7rem;
     position: absolute;
-    top: .15rem;
+    top: .18rem;
     right: .3rem;
     z-index: 9;
 }
 .user-wrap .money {
     max-width: 1.7rem;
     position: absolute;
-    top: .63rem;
-    right: .56rem;
+    top: .73rem;
+    right: .5rem;
     z-index: 9;
     height: .34rem;
     line-height: .34rem;
@@ -1129,7 +1129,7 @@ export default {
     background:url('../../../static/img/ingame_btn_pay3.png');
     background-size: 100% 100%;
     width: 38px;
-    height: 38px;
+    height: 36px;
     position: absolute;
 }
 .message {
@@ -1174,6 +1174,32 @@ export default {
 }
 .mint-tab-item {
     padding: 40px 0px 0px 14px;
+}
+/* 判断iphonex */
+@media only screen and (device-width: 375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
+    .op-btn {
+        position: absolute;
+        z-index: 3;
+        width: 100%;
+        height: 16%;
+        bottom: 12%;
+        width: 100%;
+        display: flex;
+        display: -webkit-flex;
+    }
+}
+/* 判断iphone6 *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen and (min-device-width: 375px) and (max-device-width: 676px) and (orientation : portrait) { 
+   .op-btn {
+        position: absolute;
+        z-index: 3;
+        width: 100%;
+        height: 15%;
+        bottom: 13% !important;
+        width: 100%;
+        display: flex;
+        display: -webkit-flex;
+    }
 }
 </style>
 <style>

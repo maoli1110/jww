@@ -15,7 +15,7 @@
     background: url(/static/img/message_table_bg.png) no-repeat;
     background-size: 100% 100%;
     z-index: 10;
-    top: 100px;
+    top: 80px;
     padding: 1.2rem 0 .5rem;
 }
 .message-list .green {

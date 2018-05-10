@@ -6,11 +6,11 @@
         </div>
         <div class="absol address-mask" style="" v-if="isSlectProvince || isSlectCity "></div>
         <div class="location-select rela" v-if="isSlectProvince">
-            <div class="font-16x title algin align-center"><span class="font-20">请选择省份</span><span class="icon" @click="ok"></span></div>
+            <div class="font-32 title algin align-center"><span class="font-32">请选择省份</span><span class="icon" @click="ok"></span></div>
             <mt-picker :slots="slots" valueKey="name" @change="onValuesChange"></mt-picker>
         </div>
         <div class="location-select rela" v-if="isSlectCity">
-            <div class="font-16x title algin align-center"><span class="font-20">请选择城市</span><span class="icon" @click="ok"></span></div>
+            <div class="font-32 title algin align-center"><span class="font-32">请选择城市</span><span class="icon" @click="ok"></span></div>
             <mt-picker :slots="slots1" @change="onValuesChange1"></mt-picker>
         </div>
         <div class="address_content" v-show="isNewAddress">
@@ -413,4 +413,7 @@ export default {
     .new_address label{
         color:#BF9563;
     }
+    /*.select-title {
+        font-size: 20px;
+    }*/
 </style>

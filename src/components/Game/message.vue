@@ -7,7 +7,7 @@
             <div class="dialog-close absol" @click="panelClose">
                 <span ></span>
             </div>
-            <div class="absol message-list" >
+            <div class="absol message-list common-dialog">
                 <div class="message-list-wrapper common-list-wrapper">
                     <!--站内信list-->
                    <div class="message-list-item Grid" v-for="item in messageInfo" v-show="listVisible">

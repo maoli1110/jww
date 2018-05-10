@@ -9,7 +9,7 @@
             <!-- 兑换碎片按钮 -->
             <div class="piece-exchange absol" @click="exchange"></div>
             <!-- 非兑换碎片界面 -->
-            <div class="absol recode-list no-exchange" v-show="!isExchange">
+            <div class="absol recode-list no-exchange common-dialog" v-show="!isExchange">
                 <!--table选项卡-->
                 <mt-navbar v-model="selected" class="absol" style="">
                     <mt-tab-item id="list" style=" ">

@@ -4,8 +4,8 @@
         imgUrl : window.location.origin + '/static/img/pic_share.jpg',
 		// imgUrl : 'http://via.placeholder.com/300x300',
 		link : "http://www.yixuegames.com",
-		title : "UCATCH趣抓抓抓娃娃",
-		desc : "UCATCH趣抓抓抓娃娃"
+		title : "久抓抓娃娃",
+		desc : "久抓抓娃娃"
 		}
 		shareConfig();
 	});

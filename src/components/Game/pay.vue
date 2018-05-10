@@ -7,7 +7,7 @@
                 <span ></span>
             </div>
             <!--充值身体部分-->
-            <div class="absol pay-list">
+            <div class="absol pay-list common-dialog">
                <div class="pay-list-wrapper common-list-wrapper">
                    <div class="pay-list-item Grid" v-for="item in payInfo">
                         <div class="Grid-cell u-lof4 icon align-h-v">
@@ -43,22 +43,26 @@
                         imgUrl:"./static/img/pay_icon_coin50.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:"6.00",
-                        count:600
+                        // count:600
+                        count:1
                     },{
                         imgUrl:"./static/img/pay_icon_coin100.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:"18.00",
-                        count:1800
+                        count:1800,
+                        count:1
                     },{
                         imgUrl:"./static/img/pay_icon_coin400.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:"68.00",
-                        count:6800
+                        count:6800,
+                        count:1
                     },{
                         imgUrl:"./static/img/pay_icon_coin400.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:"98.00",
-                        count:9800
+                        count:9800,
+                        count:1
                     }
                 ],
                 hidePanel:false,
@@ -114,7 +118,6 @@
                                 document.attachEvent('onWeixinJSBridgeReady', this.jsApiCall);
                             }
                         }else{
-                            alert('inwx')
                             this.jsApiCall(coin);
                         }
                     } else {
