@@ -873,7 +873,7 @@ export default {
     overflow: hidden;
 }
 .ingame-1 {
-    position: absolute;
+    position: fixed;
     z-index: 3;
     width: 100%;
     height: 100%;
@@ -881,7 +881,7 @@ export default {
     background-size:100% 100%;
 }
 .ingame-2 {
-    position: absolute;
+    position: fixed;
     z-index: 2;
     width: 100%;
     height: 100%;
@@ -889,7 +889,7 @@ export default {
     background-size:100% 100%;
 }
 .ingame-3 {
-    position: absolute;
+    position: fixed;
     z-index: 1;
     width: 100%;
     height: 100%;
@@ -913,7 +913,7 @@ export default {
     height: 1.4rem;
 }
 .op-btn {
-    position: absolute;
+    position: fixed;
     z-index: 3;
     width: 100%;
     height: 13%;
@@ -1178,7 +1178,7 @@ export default {
 /* 判断iphonex */
 @media only screen and (device-width: 375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
     .op-btn {
-        position: absolute;
+        position: fixed;
         z-index: 3;
         width: 100%;
         height: 16%;
@@ -1191,7 +1191,7 @@ export default {
 /* 判断iphone6 *//* 横屏竖屏判断方法与ipad一样 */
  @media only screen(device-width: 320px) and (device-height:667px) and (-webkit-device-pixel-ratio:2){
    .op-btn {
-        position: absolute;
+        position: fixed;
         z-index: 3;
         width: 100%;
         height: 15%;

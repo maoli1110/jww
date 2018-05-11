@@ -916,7 +916,7 @@
 	-webkit-background-size: 100%;
 	right: 0;
 	left: 0;
-	top: 7.6rem;
+	top: 7.2rem;
 	margin: auto;
 	z-index: 30;
 }
@@ -1610,6 +1610,7 @@
 	}
 	.mint-tabbar{
 		height: 120px;
+		position: fixed!important;
 	}
 	.add-coin {
 	    height: .67rem !important;
@@ -1637,7 +1638,7 @@
 	    top: 10.6rem;
 	}
 	.op-btn {
-	    position: absolute;
+	    position: fixed;
 	    z-index: 3;
 	    width: 100%;
 	    height: 15%;
