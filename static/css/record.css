@@ -178,7 +178,7 @@
 }
 /* 地址 */
 .address {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -215,7 +215,7 @@
     padding:20px 20px;
     background:#fff;
     border-radius: 6px;
-    background:url('../../static/img/table_new.png');
+    background:url('../../static/img/table_new.png') no-repeat;
     background-size: 100% 100%;
     background-color: #fff;
 }
@@ -223,7 +223,7 @@
     background: #FFF5EC;
     padding: 2px 10px;
     border-radius: 16px;
-    font-size:.18rem;
+    font-size:.24rem;
 }
 .new_address .username:after,.new_address .phone:after {
     content: '';
@@ -253,7 +253,7 @@
     border-radius: 16px;
     display: inline-block;
     padding:0px 6px;
-    font-size:.18rem;
+    font-size:.24rem;
     height: 50px;
     line-height: 50px;
 }
@@ -271,7 +271,7 @@
     background-size: 100% 100%;
 }
 .new_address .new_address_wrap {
-    margin-top: 56px;
+    margin-top: 60px;
 }
 .save_address{
     text-align:center;padding:0 10px;
@@ -358,11 +358,11 @@
     line-height: 49px;
     padding: 0 10px;
     border-radius: 16px;
-    font-size:0.18rem;
+    font-size:0.24rem;
 }
 .address_content .location {
     font-size: 16px;
-    padding: 16px 0;
+    padding: 15px 0;
 }
 .address_content .location >span {
     display: inline-block;
@@ -392,8 +392,8 @@
 .new_address .location .icon {
     background: url('../../static/img/address_btn_choose.png') no-repeat center;
     background-size: 80%;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     vertical-align: top;
     margin-top: 2px;
 }
@@ -402,7 +402,7 @@
 }
 .address .location-select {
     position: fixed;
-    /*height: 400px;*/
+    height: 400px;
     bottom: 0;
     width: 100%;
     background: #fff;
@@ -423,9 +423,9 @@
     background: url('../../static/img/address_btn_sure.png');
     background-size: 100% 100%;
     right: 20px;
-    width: 60px;
-    height: 30px;
-    top:7%;
+    width: 75px;
+    height: 40px;
+    top:3%;
 }
 .address .mint-field.is-textarea:after {
     content: '';

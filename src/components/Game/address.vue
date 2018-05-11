@@ -7,11 +7,11 @@
         <div class="absol address-mask" style="" v-if="isSlectProvince || isSlectCity "></div>
         <div class="location-select rela" v-if="isSlectProvince">
             <div class="font-32 title algin align-center"><span class="font-32">请选择省份</span><span class="icon" @click="ok"></span></div>
-            <mt-picker :slots="slots" valueKey="name" @change="onValuesChange"></mt-picker>
+            <mt-picker :slots="slots" valueKey="name" @change="onValuesChange" :itemHeight=50></mt-picker>
         </div>
         <div class="location-select rela" v-if="isSlectCity">
             <div class="font-32 title algin align-center"><span class="font-32">请选择城市</span><span class="icon" @click="ok"></span></div>
-            <mt-picker :slots="slots1" @change="onValuesChange1"></mt-picker>
+            <mt-picker :slots="slots1" @change="onValuesChange1" :itemHeight=50></mt-picker>
         </div>
         <div class="address_content" v-show="isNewAddress">
             <div class="new_address">
@@ -350,16 +350,16 @@ export default {
     },
     watch:{
         reFresh:function(newVal,oldVal){//监听刷新状态
-            if(newVal!=oldVal && newVal){
-               this.refreashPage();
-            }
+            // if(newVal!=oldVal && newVal){
+            //    this.refreashPage();
+            // }
         },
         '$route' (to,from){             //监听路由 改变刷新状态
-            if(from.path){
-                this.reFresh = true;
-            }else{
-                this.reFresh = false;
-            }
+            // if(from.path){
+            //     this.reFresh = true;
+            // }else{
+            //     this.reFresh = false;
+            // }
         },
         selected:function(newVal,oldVal){//tab索引值监听
             this.restNavBg();

@@ -301,7 +301,7 @@ export default {
 .register>div>div>input{
     border: transparent;
     outline: none;
-    font-size: 24px;
+    font-size: 30px;
 }
 .register>div>div:nth-child(1){
     border-bottom: 3px solid #e2b57c;

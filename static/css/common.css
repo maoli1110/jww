@@ -211,7 +211,7 @@ body {
 	position: relative
 }
 
-a,img,label {
+a,img,label,button {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-webkit-tap-highlight-color: transparent;
@@ -455,6 +455,9 @@ footer,header,nav,section {
     width:100%!important;
     margin:0;padding:0 !important;
 
+}
+.mint-button--default {
+    box-shadow: none!important;
 }
 /*ipad*/
 /*checkbox select*/
