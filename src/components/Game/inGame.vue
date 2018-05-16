@@ -912,7 +912,7 @@ export default {
     vertical-align: bottom;
     height: 1.4rem;
 }
-.op-btn {
+.in-game .op-btn {
     position: fixed;
     z-index: 3;
     width: 100%;
@@ -1177,7 +1177,20 @@ export default {
 }
 /* 判断iphonex */
 @media only screen and (device-width: 375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
-    .op-btn {
+     .doll-box {
+        height: 1rem;
+        position: absolute;
+        bottom: 7.2rem;
+        right: 0;
+        left: 0;
+        -webkit-transform: translateZ(-110px);
+        transform: translateZ(-110px);
+        z-index: 1;
+    }
+    .machine-shadow {
+        top: 10.6rem;
+    }
+    .ingame .op-btn {
         position: fixed;
         z-index: 3;
         width: 100%;
@@ -1187,10 +1200,13 @@ export default {
         display: flex;
         display: -webkit-flex;
     }
+    .compound-detail{
+        top: 18%!important;
+    }
 }
 /* 判断iphone6 *//* 横屏竖屏判断方法与ipad一样 */
  @media only screen(device-width: 320px) and (device-height:667px) and (-webkit-device-pixel-ratio:2){
-   .op-btn {
+   .ingame .op-btn {
         position: fixed;
         z-index: 3;
         width: 100%;

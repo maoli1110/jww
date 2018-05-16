@@ -1637,7 +1637,7 @@
 	.machine-shadow {
 	    top: 10.6rem;
 	}
-	.op-btn {
+	.ingame .op-btn {
 	    position: fixed;
 	    z-index: 3;
 	    width: 100%;
@@ -1646,6 +1646,9 @@
 	    width: 100%;
 	    display: flex;
 	    display: -webkit-flex;
+	}
+	.compound-detail{
+	    top: 18%!important;
 	}
 }
 

@@ -171,7 +171,7 @@
         border-radius: 10px;
         margin-bottom: 10px;
     }
-    .my_address {
+    .history_address .my_address {
         background: url('../../../static/img/mine_address_table.png') no-repeat;
         background-size: 100%;
         height: 153px;
@@ -180,6 +180,14 @@
         overflow: hidden;
         margin-top: 70px;
         height: calc(100% - 50px);
+    }
+    /* 判断iphonex */
+    @media only screen and (device-width: 375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3){
+        .mine-log-wrap {
+            overflow: hidden;
+            margin-top: 100px;
+            height: calc(100% - 50px);
+        }
     }
     .log-list {
         overflow:auto;
