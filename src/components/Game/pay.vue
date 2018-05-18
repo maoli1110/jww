@@ -43,26 +43,25 @@
                         imgUrl:"./static/img/pay_icon_coin50.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:"6.00",
-                        // count:600
-                        count:1
+                        count:600
                     },{
                         imgUrl:"./static/img/pay_icon_coin100.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:"18.00",
-                        count:1800,
-                        count:1
+                        count:1800
+                        // count:1
                     },{
                         imgUrl:"./static/img/pay_icon_coin400.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:"68.00",
-                        count:6800,
-                        count:1
+                        count:6800
+                        // count:1
                     },{
                         imgUrl:"./static/img/pay_icon_coin400.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:"98.00",
-                        count:9800,
-                        count:1
+                        count:9800
+                        // count:1
                     }
                 ],
                 hidePanel:false,

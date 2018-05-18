@@ -1144,9 +1144,9 @@
 	bottom: 6.2rem;
 	right: 0;
 	left: 0;
+	z-index: 1;
 	-webkit-transform: translateZ(-110px);
 	transform: translateZ(-110px);
-	z-index: 1
 }
 /*
 @media screen and (max-width: 375px) {

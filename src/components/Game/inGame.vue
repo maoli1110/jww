@@ -817,11 +817,11 @@ export default {
                 }
                 $(a).bind(operation,function(e){
                     //判断金币不足->提示->跳转到充值界面
-                    // if(parseFloat(self.currentToyInfo.timeMoney) < parseFloat(self.userInfo.goldCounts)){
+                    if(parseFloat(self.currentToyInfo.timeMoney) < parseFloat(self.userInfo.goldCounts)){
                         //判断背包是否满15个,提示背包将满, 无法获得物品, 最多20个
                         if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
                         getUserInfo().then((res)=>{
-                            // if(res.data.data.bagcounts<15){
+                            if(res.data.data.bagcounts<15){
                                 if(games.isRun===1 || !isVisibleGo)  return; //游戏过程中，go按键不可以按下
                                 isCatch = false;
                                 realCatch = false;
@@ -838,14 +838,14 @@ export default {
                                 self.isRun = 1;
                                 $(".machine-bar1").css('display','block');
                                 $(".machine-bar").css('display','none');
-                            // } else {
-                            //     alert('背包将满,无法获得物品！')
-                            // }
+                            } else {
+                                alert('背包将满,无法获得物品！')
+                            }
                         })
-                    // } else {
-                    //     alert("金币不足,请充值！")
-                    //     self.payVisbile = true;
-                    // }
+                    } else {
+                        alert("金币不足,请充值！")
+                        self.payVisbile = true;
+                    }
                 });
             }
             App.move();
@@ -923,7 +923,9 @@ export default {
     display: -webkit-flex;
 }
 .op-btn > .operation-btn {
-    flex:1;
+    flex-grow:1;
+    flex-shrink:1;
+    flex-basis:0;
 }
 .op-btn > .doll-bets-btn {
     flex:0 0 34%;

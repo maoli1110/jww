@@ -1,7 +1,7 @@
 .message-list-wrapper {
     font-size: .2rem;
     overflow: auto;
-    margin: 100px auto;
+    margin: 120px auto;
     
 }
 .message-bg{
@@ -60,10 +60,10 @@
     color: #fff;
 }
 .message-detail {
-    margin: 0 5%;
-    height: 92%;
+    margin: 50px 50px;
+    height: 74%;
     position: relative;
-    border: 6px solid #e9ab2d;   
+    border: 6px solid #e9ab2d;
     background: #fff;
 }
 .message-detail .main-content {
