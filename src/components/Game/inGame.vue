@@ -852,18 +852,18 @@ export default {
         },0);
     },
     watch:{
-        // reFresh:function(newVal,oldVal){//监听刷新状态
-        //     if(newVal!=oldVal && newVal){
-        //         this.back();
-        //     }
-        // },
-        // '$route' (to,from){             //监听路由 改变刷新状态
-        //     if(from.path){
-        //         this.reFresh = true;
-        //     }else{
-        //         this.reFresh = false;
-        //     }
-        // },
+        reFresh:function(newVal,oldVal){//监听刷新状态
+            if(newVal!=oldVal && newVal){
+                this.back();
+            }
+        },
+        '$route' (to,from){             //监听路由 改变刷新状态
+            if(from.path){
+                this.reFresh = true;
+            }else{
+                this.reFresh = false;
+            }
+        }
     }
 }
 </script>
@@ -873,7 +873,7 @@ export default {
     overflow: hidden;
 }
 .ingame-1 {
-    position: fixed;
+    position: absolute;
     z-index: 3;
     width: 100%;
     height: 100%;
@@ -881,7 +881,7 @@ export default {
     background-size:100% 100%;
 }
 .ingame-2 {
-    position: fixed;
+    position: absolute;
     z-index: 2;
     width: 100%;
     height: 100%;
@@ -889,7 +889,7 @@ export default {
     background-size:100% 100%;
 }
 .ingame-3 {
-    position: fixed;
+    position: absolute;
     z-index: 1;
     width: 100%;
     height: 100%;
@@ -913,7 +913,7 @@ export default {
     height: 1.4rem;
 }
 .in-game .op-btn {
-    position: fixed;
+    position: absolute;
     z-index: 3;
     width: 100%;
     height: 13%;
@@ -1191,7 +1191,7 @@ export default {
         top: 10.6rem;
     }
     .ingame .op-btn {
-        position: fixed;
+        position: absolute;
         z-index: 3;
         width: 100%;
         height: 16%;
@@ -1207,7 +1207,7 @@ export default {
 /* 判断iphone6 *//* 横屏竖屏判断方法与ipad一样 */
  @media only screen(device-width: 320px) and (device-height:667px) and (-webkit-device-pixel-ratio:2){
    .ingame .op-btn {
-        position: fixed;
+        position: absolute;
         z-index: 3;
         width: 100%;
         height: 15%;
