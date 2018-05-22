@@ -390,8 +390,12 @@ footer,header,nav,section {
     font-size:.32rem;
 }
 .cloumn-center{
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
-    justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;/*水平居中*/
+    -webkit-flex-direction: column;
     flex-direction: column;
 }
 /*substr*/
