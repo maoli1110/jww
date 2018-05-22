@@ -118,7 +118,7 @@
     background: #F9D829;
 }
 .record-list-them{width:33%;color:#AF7300;font-weight:bold;line-height:20px;font-size:18px;text-align:left;}
-.record-list-time{right:0;color:#AF7300;font-weight:bold;}
+.record-list-time{color:#AF7300;font-weight:bold;line-height:20px;text-align:right;}
 .mint-tab-item-label{width:100%;margin:0}
 .no-exchange .mint-tab-item:nth-child(1) .mint-tab-item-label{width:100%;margin:0;margin-left:0.35rem}
 .no-exchange .mint-tab-item:nth-child(2) .mint-tab-item-label{width:100%;margin:0;margin-left:0.11rem}

@@ -1553,8 +1553,8 @@
 /* pc */
 @media screen and (min-width: 1000px) and (max-width: 1920px) {
 	html {
-		font-size: 80px;
-		max-width: 640px;
+		font-size: 70px;
+		max-width: 600px;
 	}
     .machine-shadow {
 		width: 1.5rem;
@@ -1610,7 +1610,7 @@
 	}
 	.mint-tabbar{
 		height: 120px;
-		position: fixed!important;
+		position: absolute!important;
 	}
 	.add-coin {
 	    height: .67rem !important;

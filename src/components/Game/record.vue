@@ -33,7 +33,7 @@
                                     <div class=" relat record-list-them">
                                         {{item.name}}
                                     </div>
-                                    <div class="record-list-time absol substr">
+                                    <div class="relat record-list-time substr">
                                         {{item.sendTime}}
                                     </div>
                                 </mt-cell>
@@ -98,7 +98,7 @@
                                 <div class=" relat record-list-them">
                                     {{item.name}}
                                 </div>
-                                <div class="record-list-time absol substr">
+                                <div class="relat record-list-time substr">
                                     {{item.sendTime}}
                                 </div>
                             </mt-cell>

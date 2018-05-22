@@ -2,7 +2,7 @@
     <div>
         <div class="absol mask"> </div>
         <div class="absol mask1" v-show="deleteDialogVisible"> </div>
-        <div v-show="isShow" class="absol message-bg align-h-v">
+        <div v-show="isShow" class="absol message-bg">
             <!--关闭按钮-->
             <div class="dialog-close absol" @click="panelClose">
                 <span ></span>

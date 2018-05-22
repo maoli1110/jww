@@ -242,8 +242,12 @@ footer,header,nav,section {
 	color:#3bcd96
 }
 .align-v-h {
-    display:flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items:center;
     align-items:center;/*垂直居中*/
+    -webkit-justify-content: center;
     justify-content: center;/*水平居中*/
     width:100%;
     height:100%;
@@ -400,8 +404,12 @@ footer,header,nav,section {
     width:33%;
 }
 .align-h-v{
-	display:flex;
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items:center;
     align-items:center;/*垂直居中*/
+    -webkit-justify-content: center;
     justify-content: center;/*水平居中*/
     width:100%;
     height:100%;
@@ -450,7 +458,7 @@ footer,header,nav,section {
 }
 .common-list-wrapper {
     width: 100%;
-    height: 100%;
+    height: 80%;
     padding-top: 1.4rem;
 }
 .mint-checklist-label{

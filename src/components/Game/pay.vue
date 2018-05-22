@@ -11,13 +11,13 @@
                <div class="pay-list-wrapper common-list-wrapper">
                    <div class="pay-list-item Grid" v-for="item in payInfo">
                         <div class="Grid-cell u-lof4 icon align-h-v">
-                            <img slot="icon" v-show ="item.count==600" :src="item.imgUrl" alt="" width="100" >
-                            <img slot="icon" v-show ="item.count==1800" :src="item.imgUrl" alt="" width="100" >
-                            <img slot="icon" v-show ="item.count==6800" :src="item.imgUrl" alt="" width="100" >
-                            <img slot="icon" v-show ="item.count==9800" :src="item.imgUrl" alt="" width="100" >
+                            <img slot="icon" v-show ="item.gold==60" :src="item.imgUrl" alt="" width="100" >
+                            <img slot="icon" v-show ="item.gold==180" :src="item.imgUrl" alt="" width="100" >
+                            <img slot="icon" v-show ="item.gold==680" :src="item.imgUrl" alt="" width="100" >
+                            <img slot="icon" v-show ="item.gold==980" :src="item.imgUrl" alt="" width="100" >
                         </div>
                         <div class="Grid-cell count">
-                            <div class="substr">X {{item.count}}</div>
+                            <div class="substr">X {{item.gold}}</div>
                             <div class="substr price">￥ {{item.price}}</div>
                         </div>
                         <div class="Grid-cell u-lof3 buy" @click="callpay(item.count,item.price)">
@@ -43,24 +43,28 @@
                         imgUrl:"./static/img/pay_icon_coin50.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:"6.00",
-                        count:600
+                        count:600,
+                        gold:60
                     },{
                         imgUrl:"./static/img/pay_icon_coin100.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:"18.00",
-                        count:1800
+                        count:1800,
+                        gold:180
                         // count:1
                     },{
                         imgUrl:"./static/img/pay_icon_coin400.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:"68.00",
-                        count:6800
+                        count:6800,
+                        gold:680
                         // count:1
                     },{
                         imgUrl:"./static/img/pay_icon_coin400.png",
                         btnBg:"./static/img/pay_btn_buy1.png",
                         price:"98.00",
-                        count:9800
+                        count:9800,
+                        gold:980
                         // count:1
                     }
                 ],
