@@ -467,7 +467,7 @@ export default {
                     switch ($(".machine-tips-box").removeClass("cpm-hide"), a) {
                         case "error":
                             n=0;
-                            $(".fail").css('display','flex');
+                            $(".fail").css({'display':'flex','display':'-webkit-flex'});
                             $(".mask").show();
                             games.isRun = 0; //激活go按钮
                             self.isRun = 0;
@@ -477,7 +477,7 @@ export default {
                             break;
                         case "success":
                             n=0;
-                            $(".success").css('display','flex');
+                            $(".success").css({'display':'flex','display':'-webkit-flex'});
                             $(".mask").show();
                              games.isRun = 0; //激活go按钮
                             self.isRun = 0;
@@ -906,7 +906,9 @@ export default {
     text-align: center;
 }
 .pay-bag-button > div {
-    flex: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1
 }
 .pay-bag-button >div img {
     vertical-align: bottom;
