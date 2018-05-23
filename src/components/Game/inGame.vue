@@ -954,6 +954,7 @@ export default {
 .operation-btn {
     display: flex;
     display: -webkit-flex;
+    -webkit-flex-wrap:wrap;
     flex-wrap:wrap;
     margin-left: .8rem;
 }
@@ -1209,7 +1210,7 @@ export default {
     }
 }
 /* 判断iphone6 *//* 横屏竖屏判断方法与ipad一样 */
- @media only screen(device-width: 320px) and (device-height:667px) and (-webkit-device-pixel-ratio:2){
+ @media only screen and (device-width: 320px) and (device-height:667px) and (-webkit-device-pixel-ratio:2){
    .ingame .op-btn {
         position: absolute;
         z-index: 3;
@@ -1221,6 +1222,7 @@ export default {
         display: -webkit-flex;
     }
 }
+
 </style>
 <style>
 .in-game .mint-tabbar .mint-tab-item-icon {
