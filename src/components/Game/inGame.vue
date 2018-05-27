@@ -91,15 +91,10 @@
         </div>
         <div class="op-btn">
             <div class="operation-btn">
-                <div></div>
                 <div class="btn-up"></div>
-                <div></div>
                 <div class="btn-left"></div>
-                <div></div>
                 <div class="btn-right"></div>
-                <div></div>
                 <div class="btn-down"></div>
-                <div></div>
             </div>
             <div class="doll-bets-btn pull-right">
                 <div class="btn-go"></div>
@@ -235,6 +230,7 @@ export default {
     },
     components: {vPaylist,vRecord,vMessage},
     created(){
+        alert('test');
         this.currentToyInfo = getSessionstorage('currentToyInfo');
         //获取用户信息
         getUserInfo().then((res)=>{
@@ -919,20 +915,14 @@ export default {
     z-index: 3;
     width: 100%;
     height: 13%;
-    bottom: 15%;
+    bottom: 15.4%;
     width: 100%;
     display: flex;
     display: -webkit-flex;
 }
-.op-btn > .operation-btn {
-    flex-grow:1;
-    flex-shrink:1;
-    flex-basis:0;
-}
 .op-btn > .doll-bets-btn {
-    flex:0 0 34%;
-    vertical-align: middle;
-    -webkit-tap-highlight-color:rgba(255,255,255,0);
+    position: absolute;
+    right: 10%;
 }
 .op-btn > .doll-bets-btn .btn-go {
     background: url('../../../static/img/ingame_btn_go1.png') no-repeat;
@@ -951,22 +941,10 @@ export default {
     display: inline-block;
     margin-top: 0.3rem;
 }
-.operation-btn {
-    display: flex;
-    display: -webkit-flex;
-    -webkit-flex-wrap:wrap;
-    flex-wrap:wrap;
-    margin-left: .8rem;
-}
-.operation-btn > div {
-    height: .56rem;
-    width: .92rem;
-}
 
-.doll-bets-btn{
-    width: 28%;
-    margin-right: 10%;
-    text-align: right;
+.operation-btn > div {
+    height: .54rem;
+    width: .9rem;
 }
 
 .doll-bets-btn > img {
@@ -978,51 +956,63 @@ export default {
     z-index: 1;
     bottom: 3px;
 }
-.operation-btn > div:nth-child(2){
+.operation-btn > div:nth-child(1){
     background: url('../../../static/img/ingame_btn_up1.png') no-repeat 2px 5px ;
     background-size: 100% 100%;
+    position: absolute;
+    top: 0;
+    left: 180px;
 }
-.operation-btn > div:nth-child(4){
+.operation-btn > div:nth-child(2){
     background: url('../../../static/img/ingame_btn_left1.png') no-repeat 6px 5px ;
     background-size: 100% 100%;
+    position: absolute;
+    top: 65px;
+    left: 80px;
 }
-.operation-btn > div:nth-child(6){
+.operation-btn > div:nth-child(3){
     background: url('../../../static/img/ingame_btn_right1.png') no-repeat -4px 4px ;
     background-size: 100% 100%;
+    position: absolute;
+    top: 65px;
+    left: 280px;
 }
-.operation-btn > div:nth-child(8){
+.operation-btn > div:nth-child(4){
     background: url('../../../static/img/ingame_btn_down1.png')no-repeat 0px 0px ;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 135px;
+    left: 180px;
+}
+.operation-btn > div:nth-child(1):active{
+    background: url('../../../static/img/ingame_btn_up2.png') no-repeat 2px 5px ;
     background-size: 100% 100%;
 }
 .operation-btn > div:nth-child(2):active{
-    background: url('../../../static/img/ingame_btn_up2.png') no-repeat 2px 5px ;
+    background: url('../../../static/img/ingame_btn_left2.png') no-repeat 6px 5px ;
+    background-size: 100% 100%;
+}
+.operation-btn > div:nth-child(3):active{
+    background: url('../../../static/img/ingame_btn_right2.png') no-repeat -4px 4px ;
     background-size: 100% 100%;
 }
 .operation-btn > div:nth-child(4):active{
-    background: url('../../../static/img/ingame_btn_left2.png') no-repeat 6px 5px ;
-    background-size: 100% 100%;
-}
-.operation-btn > div:nth-child(6):active{
-    background: url('../../../static/img/ingame_btn_right2.png') no-repeat -4px 4px ;
-    background-size: 100% 100%;
-}
-.operation-btn > div:nth-child(8):active{
     background: url('../../../static/img/ingame_btn_down2.png')no-repeat 3px 1px ;
     background-size: 100% 100%;
 }
-.operation-btn > div:nth-child(2).btn-up-active{
+.operation-btn > div:nth-child(1).btn-up-active{
     background: url('../../../static/img/ingame_btn_up2.png') no-repeat 2px 5px ;
     background-size: 100% 100%;
 }
-.operation-btn > div:nth-child(4).btn-left-active{
+.operation-btn > div:nth-child(2).btn-left-active{
     background: url('../../../static/img/ingame_btn_left2.png') no-repeat 6px 5px ;
     background-size: 100% 100%;
 }
-.operation-btn > div:nth-child(6).btn-right-active{
+.operation-btn > div:nth-child(3).btn-right-active{
     background: url('../../../static/img/ingame_btn_right2.png') no-repeat -4px 4px ;
     background-size: 100% 100%;
 }
-.operation-btn > div:nth-child(8).btn-down-active{
+.operation-btn > div:nth-child(4).btn-down-active{
     background: url('../../../static/img/ingame_btn_down2.png')no-repeat 3px 1px ;
     background-size: 100% 100%;
 }
@@ -1188,8 +1178,6 @@ export default {
         bottom: 7.2rem;
         right: 0;
         left: 0;
-        -webkit-transform: translateZ(-110px);
-        transform: translateZ(-110px);
         z-index: 1;
     }
     .machine-shadow {

@@ -226,16 +226,6 @@
 	z-index: 2
 }
 
-/*.doll-bets-btn {
-	-webkit-box-flex: 1;
-	-webkit-flex: 1;
-	flex: 1;
-	margin: 0 .05rem;
-	position: relative;
-	height: .44rem;
-	z-index: 1
-}*/
-
 .doll-bets-bg {
 	position: absolute;
 	top: .13rem;
@@ -1145,20 +1135,7 @@
 	right: 0;
 	left: 0;
 	z-index: 1;
-	-webkit-transform: translateZ(-110px);
-	transform: translateZ(-110px);
 }
-/*
-@media screen and (max-width: 375px) {
-	.doll-box {
-	height: 1rem;
-	position: absolute;
-	bottom: 6rem;  
-	right: 0;
-	left: 0;
-	z-index: 1
-	} 
-}*/
 
 .doll-list {
 	height: 2rem;
@@ -1630,8 +1607,6 @@
 	    bottom: 7.2rem;
 	    right: 0;
 	    left: 0;
-	    -webkit-transform: translateZ(-110px);
-	    transform: translateZ(-110px);
 	    z-index: 1;
 	}
 	.machine-shadow {
@@ -1660,7 +1635,7 @@
 }
 
 /* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
-@media only screen and (device-width: 320px) and (device-height:568px){
+/*@media only screen and (device-width: 320px) and (device-height:568px){
    .operation-btn > div {
         height: 0.6rem !important;
         width: 1.2rem !important; 
@@ -1676,5 +1651,5 @@
         flex-wrap:wrap;
         margin-left: .8rem !important;
     }
-}
+}*/
 
