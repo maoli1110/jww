@@ -914,7 +914,7 @@ export default {
     z-index: 4;
     width: 100%;
     height: 14.8%;
-    bottom: 14%;
+    bottom: 14.4%;
     width: 100%;
     display: flex;
     display: -webkit-flex;
