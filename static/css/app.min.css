@@ -908,7 +908,7 @@
 	left: 0;
 	top: 7.2rem;
 	margin: auto;
-	z-index: 30;
+	/*z-index: 30;*/
 }
 .machine-shadow-fixed {
 	width: 1.5rem;
