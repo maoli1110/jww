@@ -230,7 +230,6 @@ export default {
     },
     components: {vPaylist,vRecord,vMessage},
     created(){
-        alert('test');
         this.currentToyInfo = getSessionstorage('currentToyInfo');
         //获取用户信息
         getUserInfo().then((res)=>{
@@ -914,8 +913,8 @@ export default {
     position: absolute;
     z-index: 3;
     width: 100%;
-    height: 13%;
-    bottom: 15.4%;
+    height: 14%;
+    bottom: 14.6%;
     width: 100%;
     display: flex;
     display: -webkit-flex;
@@ -944,7 +943,7 @@ export default {
 
 .operation-btn > div {
     height: .54rem;
-    width: .9rem;
+    width: 1rem;
 }
 
 .doll-bets-btn > img {
