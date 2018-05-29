@@ -34,7 +34,7 @@
                         <div class="machine-clip" id="machine-clip"
                          style="transition-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75); transform: translateY(0px);-webkit-transform: translateY(0px)">
                         <i class="machine-bar"></i>
-                        <i class="machine-clip-line" id="machine-clip-line" style="height:740px;"></i>
+                        <i class="machine-clip-line" id="machine-clip-line" style="height:780px;"></i>
                         <i class="machine-clip-origin"></i>
                         <i class="machine-shadow"></i>
                         <div class="machine-clip-arm machine-clip-arm__left">
@@ -308,7 +308,7 @@ export default {
         function restTransition(domName,type) {
             if(domName == 'xy'){
                 $('#machine-clip').css('transform', 'translateX(' + m + 'px)');
-                  $('.machine-bar1').css('transform', 'translateX(' + m + 'px)');
+                $('.machine-bar1').css('transform', 'translateX(' + m + 'px)');
 
                 $('#machine-clip').css('-webkit-transform', 'translateX(' + m + 'px)');
                 $('.machine-bar1').css('-webkit-transform', 'translateX(' + m + 'px)');
@@ -911,10 +911,10 @@ export default {
 }
 .in-game .op-btn {
     position: absolute;
-    z-index: 3;
+    z-index: 4;
     width: 100%;
-    height: 14%;
-    bottom: 14.6%;
+    height: 14.8%;
+    bottom: 14%;
     width: 100%;
     display: flex;
     display: -webkit-flex;
@@ -940,9 +940,11 @@ export default {
     display: inline-block;
     margin-top: 0.3rem;
 }
-
+.operation-btn {
+    width: 100%;
+}
 .operation-btn > div {
-    height: .54rem;
+    height: .58rem;
     width: 1rem;
 }
 
@@ -960,28 +962,32 @@ export default {
     background-size: 100% 100%;
     position: absolute;
     top: 0;
-    left: 180px;
+    left: 170px;
+    z-index: 4;
 }
 .operation-btn > div:nth-child(2){
     background: url('../../../static/img/ingame_btn_left1.png') no-repeat 6px 5px ;
     background-size: 100% 100%;
     position: absolute;
     top: 65px;
-    left: 80px;
+    left: 70px;
+    z-index: 4;
 }
 .operation-btn > div:nth-child(3){
     background: url('../../../static/img/ingame_btn_right1.png') no-repeat -4px 4px ;
     background-size: 100% 100%;
     position: absolute;
     top: 65px;
-    left: 280px;
+    left: 270px;
+    z-index: 4;
 }
 .operation-btn > div:nth-child(4){
     background: url('../../../static/img/ingame_btn_down1.png')no-repeat 0px 0px ;
     background-size: 100% 100%;
     position: absolute;
     top: 135px;
-    left: 180px;
+    left: 170px;
+    z-index: 4;
 }
 .operation-btn > div:nth-child(1):active{
     background: url('../../../static/img/ingame_btn_up2.png') no-repeat 2px 5px ;
@@ -996,7 +1002,7 @@ export default {
     background-size: 100% 100%;
 }
 .operation-btn > div:nth-child(4):active{
-    background: url('../../../static/img/ingame_btn_down2.png')no-repeat 3px 1px ;
+    background: url('../../../static/img/ingame_btn_down2.png')no-repeat 0px 0px ;
     background-size: 100% 100%;
 }
 .operation-btn > div:nth-child(1).btn-up-active{
@@ -1012,7 +1018,7 @@ export default {
     background-size: 100% 100%;
 }
 .operation-btn > div:nth-child(4).btn-down-active{
-    background: url('../../../static/img/ingame_btn_down2.png')no-repeat 3px 1px ;
+    background: url('../../../static/img/ingame_btn_down2.png')no-repeat 0px 0px ;
     background-size: 100% 100%;
 }
 .doll-machine{

@@ -835,7 +835,7 @@
 .machine-bar {
 	width: .74rem;
     height: .18rem;
-	position: fixed;
+	position: absolute;
 	background: url(../img/ingame_catch1.png) no-repeat;
 	background-size: 100%;
 	-webkit-background-size: 100%;
