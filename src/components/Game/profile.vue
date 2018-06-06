@@ -13,13 +13,13 @@
             <p class="substr absol add-coin yellow1" @click="recharge">{{userInfo.goldCounts}}</p>
         </div>
         <ul class="pageNav Grid">
-            <li src="page1" class="Grid-cell page-select" @click="pageSelect(1,$event)">1</li>
-            <li src="page2" class="Grid-cell" @click="pageSelect(2,$event)">2</li>
-            <li src="page3" class="Grid-cell" @click="pageSelect(3,$event)">3</li>
-            <li src="page4" class="Grid-cell" @click="pageSelect(4,$event)">4</li>
-            <li src="page5" class="Grid-cell" @click="pageSelect(5,$event)">5</li>
-            <li src="page6" class="Grid-cell" @click="pageSelect(6,$event)">6</li>
-            <li src="page7" class="Grid-cell" @click="pageSelect(7,$event)">7</li>
+            <li src="page1" class="Grid-cell page-select" @click="pageSelect(1,$event)"></li>
+            <li src="page2" class="Grid-cell" @click="pageSelect(2,$event)"></li>
+            <li src="page3" class="Grid-cell" @click="pageSelect(3,$event)"></li>
+            <li src="page4" class="Grid-cell" @click="pageSelect(4,$event)"></li>
+            <li src="page5" class="Grid-cell" @click="pageSelect(5,$event)"></li>
+            <li src="page6" class="Grid-cell" @click="pageSelect(6,$event)"></li>
+            <li src="page7" class="Grid-cell" @click="pageSelect(7,$event)"></li>
         </ul>
        <div class="select-list">
            <ul>

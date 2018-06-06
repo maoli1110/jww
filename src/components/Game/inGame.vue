@@ -515,7 +515,6 @@ export default {
                 this.setTime.fallingToRising = this.setTime.falling,
                 this.setTime.risingEnd = this.setTime.falling + this.setTime.rising,
                 this.getHeight = function() {
-                    debugger
                     var level = getLevel(n);
                     // console.log(level,'level')
                     var a = $(document).height(),
@@ -580,7 +579,6 @@ export default {
                 },
 
                 this.catchDoll = function(a) {
-                    debugger
                     var _this = this;
                     var b = 1;
                     return setTimeout(function() {
@@ -712,7 +710,6 @@ export default {
         }
         /**爪子左右移动**/
         App.move = function() {
-            // debugger
             var left = document.querySelector('.btn-left');
             var right = document.querySelector('.btn-right');
             var up = document.querySelector('.btn-up');

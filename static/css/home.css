@@ -149,10 +149,14 @@
     box-sizing: border-box;
     color: #ffefd4;
     font-weight: bold;
+    background: url('../../static/img/home_btn_num1_1.png') no-repeat;
+    background-size: 100% 100%;
 }
 .home li.page-select {
     color: #9e620e;
     background: #ffefd4;
+    background: url('../../static/img/home_btn_num1_2.png') no-repeat;
+    background-size: 100% 100%;
     border-radius: 16px;
 }
 /*them*/
