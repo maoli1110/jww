@@ -228,7 +228,7 @@
 /*them*/
 .game-them{font-size:0.25rem;color:#FFFEAE;text-align:center;height:0.6rem;line-height:0.6rem;font-weight:bold;}
 .home .xuanze {
-    margin-top: 1.9rem;
+    margin-top: 1.84rem;
     width: 200px;
     height: 54px;
     background: url('../../static/img/home_table_coin.png') 0 0 no-repeat;
@@ -237,7 +237,7 @@
     float:right;
 }
 .home .guize {
-    margin-top: 190px;
+    margin-top: 1.84rem;
     margin-left: 2.2%;
     height: 54px;
 }
