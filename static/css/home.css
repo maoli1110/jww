@@ -152,12 +152,78 @@
     background: url('../../static/img/home_btn_num1_1.png') no-repeat;
     background-size: 100% 100%;
 }
+.home .pageNav li {
+    float: left;
+    width: 20px;
+    text-align: center;
+    height: 60px;
+    margin: 2px;
+    line-height: 60px;
+    font-size: 28px;
+    box-sizing: border-box;
+    color: #ffefd4;
+    font-weight: bold;
+}
+.home .pageNav li.page1 {
+    background: url('../../static/img/home_btn_num1_1.png') no-repeat;
+    background-size: 100% 100%;
+}
+.home .pageNav li.page2 {
+    background: url('../../static/img/home_btn_num2_1.png') no-repeat;
+    background-size: 100% 100%;
+}
+.home .pageNav li.page3 {
+    background: url('../../static/img/home_btn_num3_1.png') no-repeat;
+    background-size: 100% 100%;
+}
+.home .pageNav li.page4 {
+    background: url('../../static/img/home_btn_num4_1.png') no-repeat;
+    background-size: 100% 100%;
+}
+.home .pageNav li.page5 {
+    background: url('../../static/img/home_btn_num5_1.png') no-repeat;
+    background-size: 100% 100%;
+}
+.home .pageNav li.page6 {
+    background: url('../../static/img/home_btn_num6_1.png') no-repeat;
+    background-size: 100% 100%;
+}
+.home .pageNav li.page7 {
+    background: url('../../static/img/home_btn_num7_1.png') no-repeat;
+    background-size: 100% 100%;
+}
 .home li.page-select {
     color: #9e620e;
     background: #ffefd4;
+    border-radius: 16px;
+}
+.home li.page1.page-select {
     background: url('../../static/img/home_btn_num1_2.png') no-repeat;
     background-size: 100% 100%;
-    border-radius: 16px;
+}
+.home li.page2.page-select {
+    background: url('../../static/img/home_btn_num2_2.png') no-repeat;
+    background-size: 100% 100%;
+}
+.home li.page3.page-select {
+    background: url('../../static/img/home_btn_num3_2.png') no-repeat;
+    background-size: 100% 100%;
+}
+.home li.page4.page-select {
+    background: url('../../static/img/home_btn_num4_2.png') no-repeat;
+    background-size: 100% 100%;
+}
+.home li.page5.page-select {
+    background: url('../../static/img/home_btn_num5_2.png') no-repeat;
+    background-size: 100% 100%;
+}
+.home li.page6.page-select {
+    background: url('../../static/img/home_btn_num6_2.png') no-repeat;
+    background-size: 100% 100%;
+}
+.home li.page7.page-select {
+    background: url('../../static/img/home_btn_num7_2.png') no-repeat;
+    background-size: 100% 100%;
 }
 /*them*/
 .game-them{font-size:0.25rem;color:#FFFEAE;text-align:center;height:0.6rem;line-height:0.6rem;font-weight:bold;}
