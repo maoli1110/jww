@@ -4,7 +4,7 @@
         <div class="absol mask1" v-show="deleteDialogVisible"> </div>
         <div v-show="isShow" class="absol message-bg">
             <!--关闭按钮-->
-            <div class="dialog-close absol" @click="panelClose">
+            <div class="dialog-close absol" @click="messagePanelHide">
                 <span ></span>
             </div>
             <div class="absol message-list common-dialog">
@@ -37,7 +37,7 @@
                     <div class="op-btn Grid">
                         <mt-button type="default" class="Grid-cell" @click="deleteMessage"></mt-button>
                         <div class="Grid-cell"></div>
-                        <mt-button type="primary" class="Grid-cell" @click="panelClose"></mt-button>
+                        <mt-button type="primary" class="Grid-cell" @click="messagePanelHide"></mt-button>
                     </div>
                    </div>
                 </div>
@@ -76,10 +76,11 @@
                 this.deleteDialogVisible = false;
                 this.listVisible = true;
             },
-            panelClose(){
+            messagePanelHide(){
+                debugger
                 this.reset();
                 this.hidePanel = false;
-                this.$emit('panelHide',this.hidePanel)
+                this.$emit('messagePanelHide',this.hidePanel)
             },
             detail(id){
                 this.detailVisible = true;

@@ -73,8 +73,8 @@
         },
         methods:{
             panelClose(){
-                this.hidePanel = false;
-                this.$emit('payPanelHide',this.hidePanel);
+                // this.hidePanel = false;
+                this.$emit('payPanelHide',false);
             },
             //调用微信JS api 支付
             jsApiCall(coin,price)

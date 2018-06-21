@@ -113,7 +113,7 @@
         </div>
         <v-paylist v-show="payVisbile" :is-show="payVisbile" @payPanelHide="payPanelHide"></v-paylist>
         <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHide" ref="recordList"></v-record>
-        <v-message v-show="messageVisbile" :is-show="messageVisbile" @panelHide="panelHide"></v-message>
+        <v-message v-show="messageVisbile" :is-show="messageVisbile" @messagePanelHide="messagePanelHide"></v-message>
         <audio id="bg-music1" controls="controls" autoplay="autoplay" style="display:none" loop="loop">
           <source :src="audioUrl" type="audio/mpeg" />
         Your browser does not support the audio element.
@@ -187,6 +187,11 @@ export default {
     },
     methods: {
         panelHide(visible){
+            this.payVisbile =visible;
+            this.recordVisible = visible;
+            this.messageVisbile = visible;
+        },
+        messagePanelHide(visible){
             this.payVisbile =visible;
             this.recordVisible = visible;
             this.messageVisbile = visible;

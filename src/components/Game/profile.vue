@@ -48,7 +48,8 @@
     </div>
     <v-rule v-show="ruleVisible" :is-show="ruleVisible" @payPanelHide="payPanelHide"></v-rule>
     <v-paylist v-show="payVisbile" :is-show="payVisbile" @payPanelHide="payPanelHide"></v-paylist>
-    <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHideRecord" ref="recordList"></v-record>
+    <v-record v-show="recordVisible" :is-show="recordVisible" @panelHide="panelHideRecord"  @panelMessageShow="panelMessageShow" ref="recordList"></v-record>
+    <v-message v-show="messageVisbile" :is-show="messageVisbile" @messagePanelHide="messagePanelHide"></v-message>
     <audio id="bg-music" controls="controls" autoplay="autoplay" style="display:none" loop="loop">
       <source :src="audioUrl" type="audio/mpeg" />
     Your browser does not support the audio element.
@@ -72,6 +73,7 @@ function audioAutoPlay(id){
 import vPaylist from "../Game/pay.vue";
 import vRecord from '../Game/record.vue';
 import vRule from '../Game/rule.vue';
+import vMessage from '../Game/message.vue';
 import  '../../../static/css/home.css';             //主页样式
 import { getWlist,getUserInfo,getLocation,getGotoUrl } from "../../api/getData.js"
 import { setSessionstorage, getSessionstorage } from "../../utils/common.js";
@@ -93,17 +95,21 @@ export default {
             payVisbile:false,
             recordVisible:false,
             ruleVisible:false,
+            messageVisbile:false,
             list:[],
             userInfo:{}
         }
     },
-    components: {vPaylist,vRecord,vRule},
+    components: {vPaylist,vRecord,vRule,vMessage},
     methods: {
         //组件关窗通信
         panelHide(visible){
+          console.log('1')
             this.payVisbile =visible;
         },
         payPanelHide(visible){
+          console.log('2')
+
             this.payVisbile =visible;
             this.recordVisible = visible;
             this.messageVisbile = visible;
@@ -114,7 +120,21 @@ export default {
             });
         },
         panelHideRecord(visible){
+          console.log('3')
           this.recordVisible = visible;
+          this.messageVisbile = visible;
+        },
+        panelMessageShow(visible){
+          console.log('4')
+          this.payVisbile =false;
+          this.messageVisbile = false;
+          this.ruleVisible = false;
+          this.recordVisible = false;
+          this.messageVisbile = visible;
+        },
+        messagePanelHide(visible) {
+          this.recordVisible = true;
+          this.messageVisbile = visible;
         },
         //tab 背景重置
         restNavBg() {
@@ -176,7 +196,6 @@ export default {
             });
         },
         ruleShow(){
-          debugger
           this.ruleVisible=true;
         }
 
@@ -190,6 +209,9 @@ export default {
         // this.vedioUrl = "http://wwj.agoraio.cn/play.html?account=rNQszzDai4&machine=wawaji_machine_leidi";
     },
     mounted(){
+      this.$on('panelMessageShow',()=>{
+        console.log('3232323')
+      })
         //获取列表
         // this.list = getSessionstorage('wlist');
         // if(!this.list){

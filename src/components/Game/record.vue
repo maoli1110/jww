@@ -8,6 +8,7 @@
             </div>
             <!-- 兑换碎片按钮 -->
             <div class="piece-exchange absol" @click="exchange"></div>
+            <div class="message-show absol" @click="panelShow()"></div>
             <!-- 非兑换碎片界面 -->
             <div class="absol recode-list no-exchange common-dialog" v-show="!isExchange">
                 <!--table选项卡-->
@@ -168,6 +169,7 @@
                 extractList:[], //我的娃娃导出记录
                 exhangeExportedList:[],//我的娃娃兑换记录
                 hidePanel: false,
+                messageShow: false,
                 tableSwitch:{
                     mineUrl:'./static/img/my_btn_mine1.png',
                     historyUrl:'./static/img/my_btn_record1.png',
@@ -190,6 +192,11 @@
             }
         },
         methods: {
+            panelShow(){
+                this.messageShow = true;
+                this.panelClose();
+                this.$emit('panelMessageShow', this.messageShow);
+            },
             panelClose(){
                 this.hidePanel = false;
                 this.isExchange = false;
@@ -198,6 +205,7 @@
                 $('.checkbox-input').prop('checked',false);
                 exportedList = [];
             },
+
             //初始化tab选项卡的状态
             restUrl(){
                 this.tableSwitch.mineUrl = './static/img/my_btn_mine1.png';
@@ -358,6 +366,7 @@
                     alert('请选择要兑换的娃娃信息');
                 }
             }
+
         },
 
         created(){
