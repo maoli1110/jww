@@ -165,10 +165,11 @@ export default {
         //登录用户 =============接口=============
         loginAccount() {
             // this.$router.push("/main/home");
+            let deviceCode = sessionStorage.getItem('deviceCode')?sessionStorage.getItem('deviceCode'):'1';
             let params = {
                 name:this.loginUsername,
                 password:this.loginPassword,
-                code:sessionStorage.getItem('deviceCode')?getSessionstorage.getItem('deviceCode'):'1'
+                code:deviceCode
             }
             userLogin(params).then((res)=>{
                 console.log(res,'res')
