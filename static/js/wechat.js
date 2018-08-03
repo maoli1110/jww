@@ -2,10 +2,9 @@
  $(function() {
 	window.share = {
         imgUrl : window.location.origin + '/static/img/pic_share.jpg',
-		// imgUrl : 'http://via.placeholder.com/300x300',
 		link : "http://www.yixuegames.com",
 		title : "久抓抓娃娃",
-		desc : "久抓抓娃娃"
+		desc : "不一样的抓娃娃平台！各种限定娃娃，充值卡，礼金卡等，来就送大礼包！"
 		}
 		shareConfig();
 	});
